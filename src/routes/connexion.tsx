@@ -21,7 +21,7 @@ function ConnexionPage() {
     <div className="min-h-screen bg-background">
       <SiteHeader />
       <main className="mx-auto max-w-md px-4 py-8">
-        <div className="rounded-2xl border bg-card p-6 shadow-sm">
+        <div className="page-in rounded-3xl border bg-card p-6 shadow-xl shadow-primary/10">
           {me.status === 'loading' && <p className="py-10 text-center text-muted-foreground">Chargement…</p>}
           {me.status === 'anonymous' && <AuthForm initial="signUp" />}
           {me.status === 'needs-profile' && <ProfileForm />}

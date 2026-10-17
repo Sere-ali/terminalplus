@@ -39,13 +39,13 @@ export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp'
       }}
     >
       <h2 className="text-xl font-bold">{isSignUp ? 'Crée ton compte' : 'Content de te revoir !'}</h2>
-      <input name="email" type="text" autoComplete="username" autoCapitalize="none" required placeholder="Ton identifiant (e-mail, numéro ou nom)" className={inputCls} disabled={loading} />
+      <input name="email" type="text" autoComplete="username" autoCapitalize="none" required placeholder="Ton identifiant (nom ou numéro)" className={inputCls} disabled={loading} />
       <PasswordInput
         name="password"
         autoComplete={isSignUp ? 'new-password' : 'current-password'}
         minLength={8}
         required
-        placeholder={isSignUp ? 'Mot de passe (8 caractères minimum)' : 'Mot de passe'}
+        placeholder={isSignUp ? 'Mot de passe (8 caractères min.)' : 'Mot de passe'}
         className={inputCls}
         disabled={loading}
       />

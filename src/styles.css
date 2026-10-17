@@ -27,26 +27,26 @@
   --hero-a: 177 42% 52% / 0.36;
   --hero-b: 148 39% 30% / 0.2;
 
-  --background: 42 40% 97%;
+  --background: 140 22% 97%;
   --foreground: 165 30% 10%;
-  --brand-orange: 24 92% 52%;
-  --brand-orange-soft: 28 95% 92%;
-  --brand-green-soft: 150 40% 92%;
+  --brand-orange: 29 100% 50%;
+  --brand-orange-soft: 31 100% 93%;
+  --brand-green-soft: 150 35% 92%;
   --card: 0 0% 100%;
   --card-foreground: 0 0% 3.9%;
   --popover: 0 0% 100%;
   --popover-foreground: 0 0% 3.9%;
-  --primary: 155 72% 22%;
+  --primary: 154 77% 18%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 96.1%;
+  --secondary: 140 18% 94%;
   --secondary-foreground: 0 0% 9%;
   --muted: 0 0% 96.1%;
-  --muted-foreground: 0 0% 45.1%;
+  --muted-foreground: 160 8% 38%;
   --accent: 0 0% 96.1%;
   --accent-foreground: 0 0% 9%;
   --destructive: 0 84.2% 60.2%;
   --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 89.8%;
+  --border: 145 14% 88%;
   --input: 0 0% 89.8%;
   --ring: 155 72% 30%;
   --chart-1: 12 76% 61%;
@@ -54,7 +54,7 @@
   --chart-3: 197 37% 24%;
   --chart-4: 43 74% 66%;
   --chart-5: 27 87% 67%;
-  --radius: 0.625rem;
+  --radius: 0.875rem;
   --sidebar: 0 0% 98%;
   --sidebar-foreground: 0 0% 3.9%;
   --sidebar-primary: 0 0% 9%;
@@ -193,4 +193,84 @@ body { font-family: var(--font-sans); }
 /* Hide Vite badge and error messages */
 body vite-error-overlay {
   display: none;
+}
+
+
+/* ========== Identité TERMINALE+ : vert forêt, orange, blanc (couleurs de la Côte d'Ivoire) ========== */
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
+body { padding-bottom: env(safe-area-inset-bottom); }
+::selection { background: hsl(var(--brand-orange) / .3); }
+:focus-visible { outline: 3px solid hsl(var(--brand-orange)); outline-offset: 2px; border-radius: 8px; }
+button, a { touch-action: manipulation; }
+
+.tricolor { height: 3px; background: linear-gradient(90deg, #ff8200 0 33.3%, #ffffff 33.3% 66.6%, #009e60 66.6% 100%); }
+
+.hero-night {
+  position: relative; isolation: isolate; color: #fff; overflow: hidden;
+  background:
+    radial-gradient(60rem 30rem at 85% -10%, rgba(255,130,0,.28), transparent 60%),
+    radial-gradient(40rem 26rem at -10% 110%, rgba(0,158,96,.35), transparent 60%),
+    #05301f;
+}
+.hero-night::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; opacity: .5;
+  background-image: radial-gradient(rgba(255,255,255,.14) 1px, transparent 1.2px);
+  background-size: 22px 22px;
+  mask-image: linear-gradient(180deg, #000, transparent 85%);
+}
+
+/* Entrée orchestrée du hero (une seule séquence au chargement) */
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.rise { opacity: 0; animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; animation-delay: calc(var(--d, 0) * 1ms); }
+
+@keyframes float { 0%,100% { transform: translateY(0) rotate(-1.2deg); } 50% { transform: translateY(-12px) rotate(.6deg); } }
+.float { animation: float 7s ease-in-out infinite; }
+
+@keyframes pop-in { from { opacity: 0; transform: translateY(10px) scale(.94); } to { opacity: 1; transform: none; } }
+.bubble { opacity: 0; animation: pop-in .5s cubic-bezier(.2,.8,.3,1.2) forwards; animation-delay: calc(var(--d, 0) * 1ms); }
+
+@keyframes dot { 0%,80%,100% { transform: scale(.55); opacity: .4; } 40% { transform: scale(1); opacity: 1; } }
+.dots span { display: inline-block; width: 6px; height: 6px; margin: 0 1.5px; border-radius: 50%; background: currentColor; animation: dot 1.2s infinite; }
+.dots span:nth-child(2) { animation-delay: .15s; }
+.dots span:nth-child(3) { animation-delay: .3s; }
+
+@keyframes ring { 0% { box-shadow: 0 0 0 0 rgba(255,130,0,.55); } 70%,100% { box-shadow: 0 0 0 16px rgba(255,130,0,0); } }
+.install-pulse { animation: ring 2.4s ease-out infinite; }
+
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes sheet-fade { from { opacity: 0; } to { opacity: 1; } }
+.sheet-up { animation: sheet-up .38s cubic-bezier(.2,.8,.2,1); }
+.sheet-fade { animation: sheet-fade .3s ease; }
+@keyframes bar-in { from { transform: translateY(140%); opacity: 0; } to { transform: none; opacity: 1; } }
+.install-bar { animation: bar-in .6s cubic-bezier(.2,.8,.2,1) 1.2s backwards; }
+
+/* Barres de progression qui se remplissent */
+@keyframes grow-x { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.grow-x { transform-origin: left; animation: grow-x 1s cubic-bezier(.2,.8,.2,1) .15s backwards; }
+
+/* Cartes interactives */
+.lift { transition: transform .25s cubic-bezier(.2,.8,.2,1), box-shadow .25s ease, border-color .25s ease; }
+@media (hover: hover) {
+  .lift:hover { transform: translateY(-4px); box-shadow: 0 18px 34px -16px rgba(5,48,31,.35); border-color: hsl(var(--primary) / .4); }
+}
+.lift:active { transform: scale(.985); }
+
+/* Apparition douce de la page et des cartes (déclenchée au chargement / changement de série) */
+@keyframes fade-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+.page-in { animation: fade-up .5s cubic-bezier(.2,.7,.2,1) both; }
+.stagger > * { animation: fade-up .55s cubic-bezier(.2,.7,.2,1) both; }
+.stagger > *:nth-child(1) { animation-delay: .02s; } .stagger > *:nth-child(2) { animation-delay: .07s; }
+.stagger > *:nth-child(3) { animation-delay: .12s; } .stagger > *:nth-child(4) { animation-delay: .17s; }
+.stagger > *:nth-child(5) { animation-delay: .22s; } .stagger > *:nth-child(6) { animation-delay: .27s; }
+.stagger > *:nth-child(n+7) { animation-delay: .32s; }
+
+/* Cercle de progression */
+.ring-progress { transition: stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1) .2s; }
+
+/* Défilement horizontal des chiffres clés sur mobile */
+.glass { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(10px); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .001ms !important; animation-delay: 0ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
+  .rise, .bubble { opacity: 1; }
 }

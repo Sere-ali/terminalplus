@@ -2,16 +2,17 @@ import { Link, useNavigate } from '@tanstack/react-router'
 import { GraduationCap, LogOut, ShieldCheck } from 'lucide-react'
 import { useMe } from '@/lib/use-me'
 import { post } from '@/lib/api'
+import { InstallButton } from '@/components/install-app'
 
 export function SiteHeader() {
   const me = useMe()
   const navigate = useNavigate()
 
   return (
-    <header className="sticky top-0 z-30 border-b bg-background/90 backdrop-blur">
+    <header className="sticky top-0 z-30 border-b bg-background/85 backdrop-blur-xl" style={{ paddingTop: 'env(safe-area-inset-top)' }}>
       <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2 font-bold tracking-tight">
-          <span className="flex size-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+          <span className="flex size-9 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-md shadow-primary/30">
             <GraduationCap className="size-5" />
           </span>
           <span className="font-[family-name:var(--font-display)] text-lg">
@@ -20,14 +21,15 @@ export function SiteHeader() {
         </Link>
 
         <nav className="flex items-center gap-1 text-sm">
+          <span className="mr-1 hidden sm:block"><InstallButton variant="header" /></span>
           {me.status === 'ready' && (
             <>
-              <Link to="/tableau" className="rounded-md px-3 py-2 font-medium hover:bg-secondary">
+              <Link to="/tableau" className="whitespace-nowrap rounded-md px-2 py-2 font-medium hover:bg-secondary sm:px-3">
                 Mes cours
               </Link>
               {me.isAdmin && (
-                <Link to="/admin" className="flex items-center gap-1 rounded-md px-3 py-2 font-medium text-brand-orange hover:bg-secondary">
-                  <ShieldCheck className="size-4" /> Super admin
+                <Link to="/admin" className="flex items-center gap-1 whitespace-nowrap rounded-md px-2 py-2 font-medium text-brand-orange hover:bg-secondary sm:px-3">
+                  <ShieldCheck className="size-4" /> <span className="sm:hidden">Admin</span><span className="hidden sm:inline">Super admin</span>
                 </Link>
               )}
               <button
@@ -54,6 +56,7 @@ export function SiteHeader() {
           )}
         </nav>
       </div>
+      <div className="tricolor" />
     </header>
   )
 }

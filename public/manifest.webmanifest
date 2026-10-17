@@ -1,0 +1,23 @@
+{
+  "id": "/",
+  "name": "TERMINALE+ — Cours de Terminale",
+  "short_name": "TERMINALE+",
+  "description": "Cours de Terminale A, C et D de Côte d'Ivoire, avec un professeur virtuel.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "/tableau",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0A4D32",
+  "background_color": "#0A4D32",
+  "categories": ["education"],
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Mes cours", "url": "/tableau", "icons": [{ "src": "/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

@@ -142,7 +142,7 @@ function StudentRow({ u }: { u: StudentInfo }) {
         <span className="font-medium">{u.name}{u.role === 'admin' && ' 👑'}</span>
         <span className="block text-xs text-muted-foreground">Identifiant : {u.email}</span>
       </span>
-      <span className="flex items-center gap-2">
+      <span className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
         <span className="text-xs text-muted-foreground">{SERIE_LABEL[u.serie]} · {new Date(u.createdAt).toLocaleDateString('fr-FR')}</span>
         <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${u.paid ? 'bg-brand-green-soft text-primary' : 'bg-brand-orange-soft'}`}>
           {u.role === 'admin' ? 'Super admin' : u.paid ? 'Payé' : 'Non payé'}

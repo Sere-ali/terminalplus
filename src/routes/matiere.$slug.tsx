@@ -56,7 +56,7 @@ function Content({ slug, isAdmin }: { slug: string; isAdmin: boolean }) {
                       const available = c.status === 'published' || isAdmin
                       const p = prog.get(c.slug)
                       const inner = (
-                        <div className={`flex items-center gap-3 rounded-xl border bg-card p-3.5 ${available ? 'hover:border-primary' : 'opacity-60'}`}>
+                        <div className={`flex items-center gap-3 lift rounded-2xl border bg-card p-3.5 ${available ? ""  : 'opacity-60'}`}>
                           <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-xs font-bold">
                             {p?.done ? <Check className="size-4 text-primary" /> : c.order}
                           </span>
