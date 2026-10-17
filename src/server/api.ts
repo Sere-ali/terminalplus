@@ -475,6 +475,32 @@ route('POST', '/admin/reset-password', admin(async ({ body }) => {
   return n > 0 ? { ok: true } : { ok: false, message: 'Élève introuvable.' }
 }))
 
+route('POST', '/admin/edit-student', admin(async ({ body }) => {
+  const name = String(body?.name ?? '').trim().slice(0, 80)
+  const identifier = cleanIdentifier(body?.identifier)
+  if (name.length < 2) return { ok: false, message: 'Nom trop court.' }
+  if (!identifier) return { ok: false, message: 'Identifiant invalide (2 à 60 caractères).' }
+  if (!SERIES.includes(body?.serie)) return { ok: false, message: 'Série invalide.' }
+  if (ADMIN_IDENTIFIERS.includes(identifier)) return { ok: false, message: 'Identifiant réservé.' }
+  const target = await one<any>(
+    `SELECT u.id, u.identifier FROM users u JOIN profiles p ON p.user_id = u.id WHERE u.id = $1 AND p.role = 'student'`,
+    [body?.profileId],
+  )
+  if (!target) return { ok: false, message: 'Élève introuvable.' }
+  try {
+    await withTx(async (q: any) => {
+      await q('UPDATE profiles SET name = $2, serie = $3 WHERE user_id = $1', [target.id, name, body.serie])
+      if (identifier !== target.identifier) {
+        await q('UPDATE users SET identifier = $2, session_version = session_version + 1 WHERE id = $1', [target.id, identifier])
+      }
+    })
+  } catch (e: any) {
+    if (e?.code === '23505') return { ok: false, message: 'Cet identifiant est déjà utilisé.' }
+    throw e
+  }
+  return { ok: true }
+}))
+
 route('POST', '/admin/delete-student', admin(async ({ body }) => {
   const n = await exec(
     `DELETE FROM users WHERE id = $1 AND id IN (SELECT user_id FROM profiles WHERE role = 'student')`,

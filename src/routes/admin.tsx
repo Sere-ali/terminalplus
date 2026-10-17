@@ -131,6 +131,11 @@ function StudentRow({ u }: { u: StudentInfo }) {
   const [resetting, setResetting] = useState(false)
   const [pw, setPw] = useState('')
   const [msg, setMsg] = useState<string | null>(null)
+  const [editing, setEditing] = useState(false)
+  const [eName, setEName] = useState(u.name)
+  const [eId, setEId] = useState(u.email)
+  const [eSerie, setESerie] = useState<string>(u.serie)
+  const [eMsg, setEMsg] = useState<string | null>(null)
   return (
     <li className="flex flex-wrap items-center justify-between gap-2 p-3">
       <span>
@@ -163,6 +168,15 @@ function StudentRow({ u }: { u: StudentInfo }) {
         {u.role !== 'admin' && (
           <button
             type="button"
+            onClick={() => { setEditing(!editing); setEName(u.name); setEId(u.email); setESerie(u.serie); setEMsg(null) }}
+            className="rounded-lg border px-2.5 py-1 text-xs font-semibold hover:bg-secondary"
+          >
+            Modifier
+          </button>
+        )}
+        {u.role !== 'admin' && (
+          <button
+            type="button"
             onClick={() => {
               if (window.confirm(`Supprimer définitivement le compte de ${u.name} ?`)) {
                 post('/api/admin/delete-student', { profileId: u.id })
@@ -174,6 +188,34 @@ function StudentRow({ u }: { u: StudentInfo }) {
           </button>
         )}
       </span>
+      {editing && (
+        <div className="flex w-full flex-wrap items-center gap-2 rounded-lg bg-secondary p-2">
+          <input value={eName} onChange={(e) => setEName(e.target.value)} placeholder="Nom"
+            className="rounded-lg border bg-background px-3 py-1.5 text-sm" aria-label="Nom" />
+          <input value={eId} onChange={(e) => setEId(e.target.value)} placeholder="Identifiant"
+            className="rounded-lg border bg-background px-3 py-1.5 text-sm" aria-label="Identifiant" />
+          <select value={eSerie} onChange={(e) => setESerie(e.target.value)}
+            className="rounded-lg border bg-background px-3 py-1.5 text-sm" aria-label="Série">
+            <option value="A">Terminale A</option>
+            <option value="C">Terminale C</option>
+            <option value="D">Terminale D</option>
+          </select>
+          <button
+            type="button"
+            onClick={async () => {
+              const r = await post<{ ok: boolean; message?: string }>('/api/admin/edit-student', {
+                profileId: u.id, name: eName, identifier: eId, serie: eSerie,
+              })
+              if (r.ok) setEditing(false)
+              else setEMsg(r.message ?? 'Erreur.')
+            }}
+            className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground"
+          >
+            Enregistrer
+          </button>
+          {eMsg && <span className="text-xs font-medium text-destructive">{eMsg}</span>}
+        </div>
+      )}
       {resetting && (
         <div className="flex w-full flex-wrap items-center gap-2 rounded-lg bg-secondary p-2">
           <input
