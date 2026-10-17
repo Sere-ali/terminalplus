@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useMutation, useQuery } from 'convex/react'
+import { useAction, useMutation, useQuery } from 'convex/react'
 import { api } from '@/convex/_generated/api'
 import type { Id } from '@/convex/_generated/dataModel'
 import { SiteHeader } from '@/components/site-header'
@@ -89,13 +89,23 @@ type StudentInfo = {
   createdAt: number
 }
 
+function makePassword() {
+  const chars = 'abcdefghijkmnpqrstuvwxyz23456789'
+  const bytes = crypto.getRandomValues(new Uint8Array(8))
+  return Array.from(bytes, (b) => chars[b % chars.length]).join('')
+}
+
 function StudentRow({ u }: { u: StudentInfo }) {
   const setAccess = useMutation(api.payments.setAccess)
+  const resetPassword = useAction(api.adminActions.resetPassword)
+  const [resetting, setResetting] = useState(false)
+  const [pw, setPw] = useState('')
+  const [msg, setMsg] = useState<string | null>(null)
   return (
     <li className="flex flex-wrap items-center justify-between gap-2 p-3">
       <span>
         <span className="font-medium">{u.name}{u.role === 'admin' && ' 👑'}</span>
-        <span className="block text-xs text-muted-foreground">{u.email}</span>
+        <span className="block text-xs text-muted-foreground">Identifiant : {u.email}</span>
       </span>
       <span className="flex items-center gap-2">
         <span className="text-xs text-muted-foreground">{SERIE_LABEL[u.serie]} · {new Date(u.createdAt).toLocaleDateString('fr-FR')}</span>
@@ -111,7 +121,37 @@ function StudentRow({ u }: { u: StudentInfo }) {
             {u.paid ? "Retirer l'accès" : "Donner l'accès"}
           </button>
         )}
+        {u.role !== 'admin' && (
+          <button
+            type="button"
+            onClick={() => { setResetting(!resetting); setPw(makePassword()); setMsg(null) }}
+            className="rounded-lg border px-2.5 py-1 text-xs font-semibold hover:bg-secondary"
+          >
+            Mot de passe
+          </button>
+        )}
       </span>
+      {resetting && (
+        <div className="flex w-full flex-wrap items-center gap-2 rounded-lg bg-secondary p-2">
+          <input
+            value={pw}
+            onChange={(e) => setPw(e.target.value)}
+            className="rounded-lg border bg-background px-3 py-1.5 font-mono text-sm"
+            aria-label="Nouveau mot de passe"
+          />
+          <button
+            type="button"
+            onClick={async () => {
+              const r = await resetPassword({ profileId: u.id, newPassword: pw })
+              setMsg(r.ok ? `Mot de passe changé. Donne « ${pw} » à ${u.name}.` : (r.message ?? 'Erreur.'))
+            }}
+            className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground"
+          >
+            Réinitialiser
+          </button>
+          {msg && <span className="text-xs font-medium text-primary">{msg}</span>}
+        </div>
+      )}
     </li>
   )
 }

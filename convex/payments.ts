@@ -6,6 +6,9 @@ import { getMyProfile, hasAccess, isAdminCtx } from "./lib"
 /** Prix de l'accès complet, en francs CFA (payé une seule fois par Wave). */
 export const PRICE_FCFA = 1000
 
+/** Numéro Wave qui reçoit les paiements (modifiable par l'administrateur). */
+export const DEFAULT_WAVE_NUMBER = "01 00 35 40 93"
+
 async function readSetting(ctx: QueryCtx | MutationCtx, key: string) {
   return await ctx.db
     .query("settings")
@@ -18,7 +21,7 @@ export const config = query({
   args: {},
   handler: async (ctx) => {
     const wave = await readSetting(ctx, "waveNumber")
-    return { price: PRICE_FCFA, waveNumber: wave?.value ?? null }
+    return { price: PRICE_FCFA, waveNumber: wave?.value || DEFAULT_WAVE_NUMBER }
   },
 })
 
@@ -117,7 +120,7 @@ export const adminList = query({
     })
     return {
       ok: true as const,
-      waveNumber: wave?.value ?? "",
+      waveNumber: wave?.value || DEFAULT_WAVE_NUMBER,
       pending: pending.map(shape),
       decided: decided.map(shape),
     }

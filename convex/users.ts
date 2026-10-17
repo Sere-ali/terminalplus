@@ -3,6 +3,9 @@ import { v } from "convex/values"
 import { mutation, query } from "./_generated/server"
 import { hasAccess } from "./lib"
 
+/** Identifiant(s) du super administrateur (comparés en minuscules). */
+const ADMIN_IDENTIFIERS = ["ali"]
+
 const serieValidator = v.union(v.literal("A"), v.literal("C"), v.literal("D"))
 
 /** État de la session : connecté ? profil créé ? */
@@ -41,9 +44,7 @@ export const createProfile = mutation({
     if (existing) return { ok: true as const }
 
     const user = await ctx.db.get(userId)
-    const adminEmail = (process.env.ADMIN_EMAIL ?? "").trim().toLowerCase()
-    const isAdmin =
-      adminEmail.length > 0 && (user?.email ?? "").trim().toLowerCase() === adminEmail
+    const isAdmin = ADMIN_IDENTIFIERS.includes((user?.email ?? "").trim().toLowerCase())
 
     await ctx.db.insert("profiles", {
       userId,

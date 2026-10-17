@@ -10,6 +10,7 @@
 
 import type * as ResendOTP from "../ResendOTP.js";
 import type * as admin from "../admin.js";
+import type * as adminActions from "../adminActions.js";
 import type * as auth from "../auth.js";
 import type * as catalog from "../catalog.js";
 import type * as content_catalogue from "../content/catalogue.js";
@@ -43,6 +44,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   ResendOTP: typeof ResendOTP;
   admin: typeof admin;
+  adminActions: typeof adminActions;
   auth: typeof auth;
   catalog: typeof catalog;
   "content/catalogue": typeof content_catalogue;

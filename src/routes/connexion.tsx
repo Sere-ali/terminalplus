@@ -29,7 +29,7 @@ function ConnexionPage() {
           {me.status === 'ready' && <p className="py-10 text-center text-muted-foreground">Redirection…</p>}
         </div>
         <p className="mt-4 text-center text-xs text-muted-foreground">
-          Ton e-mail sert uniquement à créer et sécuriser ton compte. Il n'est jamais partagé. L'accès aux cours coûte 1 000 F CFA, payés une seule fois par Wave.
+          Ton identifiant sert uniquement à créer et sécuriser ton compte. Il n'est jamais partagé. L'accès aux cours coûte 1 000 F CFA, payés une seule fois par Wave.
         </p>
       </main>
     </div>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuthActions } from '@convex-dev/auth/react'
+import { PasswordInput } from '@/components/password-input'
 
 const inputCls =
   'w-full rounded-lg border bg-background px-3.5 py-3 text-base outline-none focus:border-primary focus:ring-2 focus:ring-primary/25 disabled:opacity-60'
@@ -28,13 +29,13 @@ export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp'
         } catch (err) {
           const msg = err instanceof Error ? err.message : ''
           if (/already exists|AccountAlreadyExists/i.test(msg)) {
-            setError('Un compte existe déjà avec cet e-mail. Connecte-toi.')
+            setError('Cet identifiant existe déjà. Connecte-toi.')
           } else if (/InvalidSecret|InvalidAccountId|Invalid password/i.test(msg)) {
-            setError('E-mail ou mot de passe incorrect.')
+            setError('Identifiant ou mot de passe incorrect. Mot de passe oublié ? Demande à l\'administrateur de le réinitialiser.')
           } else if (isSignUp) {
-            setError("Inscription impossible. Vérifie l'e-mail et choisis un mot de passe de 8 caractères minimum.")
+            setError('Inscription impossible. Choisis un mot de passe de 8 caractères minimum.')
           } else {
-            setError('Connexion impossible. Vérifie ton e-mail et ton mot de passe.')
+            setError('Connexion impossible. Vérifie ton identifiant et ton mot de passe.')
           }
         } finally {
           setLoading(false)
@@ -42,10 +43,9 @@ export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp'
       }}
     >
       <h2 className="text-xl font-bold">{isSignUp ? 'Crée ton compte' : 'Content de te revoir !'}</h2>
-      <input name="email" type="email" autoComplete="email" required placeholder="Ton adresse e-mail" className={inputCls} disabled={loading} />
-      <input
+      <input name="email" type="text" autoComplete="username" autoCapitalize="none" required placeholder="Ton identifiant (e-mail, numéro ou nom)" className={inputCls} disabled={loading} />
+      <PasswordInput
         name="password"
-        type="password"
         autoComplete={isSignUp ? 'new-password' : 'current-password'}
         minLength={8}
         required
