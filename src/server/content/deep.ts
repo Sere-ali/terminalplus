@@ -15,5 +15,7 @@ import { DEEP_FR_1 } from "./deep/fr1"
 import { DEEP_FR_2 } from "./deep/fr2"
 import { DEEP_PHILO_1 } from "./deep/philo1"
 import { DEEP_PHILO_2 } from "./deep/philo2"
+import { DEEP_EN } from "./deep/en1"
+import { DEEP_DE_ES } from "./deep/de_es"
 
-export const DEEP: Record<string, string> = { ...DEEP_MATHS_1, ...DEEP_MATHS_2, ...DEEP_MATHS_3, ...DEEP_PC_1, ...DEEP_PC_2, ...DEEP_PC_3, ...DEEP_PC_4, ...DEEP_PC_5, ...DEEP_SVT, ...DEEP_MATHS_4, ...DEEP_PC_6, ...DEEP_FR_1, ...DEEP_FR_2, ...DEEP_PHILO_1, ...DEEP_PHILO_2 }
+export const DEEP: Record<string, string> = { ...DEEP_MATHS_1, ...DEEP_MATHS_2, ...DEEP_MATHS_3, ...DEEP_PC_1, ...DEEP_PC_2, ...DEEP_PC_3, ...DEEP_PC_4, ...DEEP_PC_5, ...DEEP_SVT, ...DEEP_MATHS_4, ...DEEP_PC_6, ...DEEP_FR_1, ...DEEP_FR_2, ...DEEP_PHILO_1, ...DEEP_PHILO_2, ...DEEP_EN, ...DEEP_DE_ES }
