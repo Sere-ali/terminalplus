@@ -13,6 +13,7 @@ import { FRANCAIS as FRANCAIS_CONTENT } from "./francais"
 import { LANGUES } from "./langues"
 import { SVT_CONTENT } from "./svt"
 import { PHILO as PHILO_CONTENT } from "./philo"
+import { DEEP } from "./deep"
 
 export type Serie = "A" | "C" | "D"
 
@@ -61,7 +62,7 @@ function build(subjectSlug: string, serie: Serie, rows: Row[]): ChapterDef[] {
     title,
     theme,
     order: i + 1,
-    content: CONTENT[`${subjectSlug}-${key}`] ?? CONTENT[key] ?? "",
+    content: DEEP[`${subjectSlug}-${key}`] ?? DEEP[key] ?? CONTENT[`${subjectSlug}-${key}`] ?? CONTENT[key] ?? "",
   }))
 }
 

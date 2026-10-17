@@ -1,5 +1,6 @@
 import { exec, one, getPool } from './db'
 import { hashPassword } from './security'
+import { createHash } from 'node:crypto'
 import { CHAPTERS, SUBJECTS } from './content/catalogue'
 
 const DDL = `
@@ -41,6 +42,8 @@ CREATE TABLE IF NOT EXISTS chapters (
   status text NOT NULL DEFAULT 'draft' CHECK (status IN ('published','draft')),
   updated_at timestamptz NOT NULL DEFAULT now()
 );
+ALTER TABLE chapters ADD COLUMN IF NOT EXISTS content_hash text;
+ALTER TABLE chapters ADD COLUMN IF NOT EXISTS edited boolean NOT NULL DEFAULT false;
 CREATE INDEX IF NOT EXISTS chapters_subject_idx ON chapters(subject_slug, ord);
 
 CREATE TABLE IF NOT EXISTS progress (
@@ -99,16 +102,19 @@ async function seedCatalogue() {
   }
   for (const c of CHAPTERS) {
     const status = c.content.trim().length > 0 ? 'published' : 'draft'
-    // Les leçons déjà rédigées ou modifiées à la main ne sont jamais écrasées.
+    // Une leçon est mise à jour quand une version plus riche est livrée, sauf si le super admin l'a modifiée à la main.
     await exec(
-      `INSERT INTO chapters (slug, subject_slug, serie, title, theme, ord, content, status)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8)
+      `INSERT INTO chapters (slug, subject_slug, serie, title, theme, ord, content, status, content_hash)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
        ON CONFLICT (slug) DO UPDATE SET
          ord = EXCLUDED.ord,
          theme = EXCLUDED.theme,
-         content = CASE WHEN btrim(chapters.content) = '' THEN EXCLUDED.content ELSE chapters.content END,
-         status = CASE WHEN btrim(chapters.content) = '' THEN EXCLUDED.status ELSE chapters.status END`,
-      [c.slug, c.subjectSlug, c.serie, c.title, c.theme, c.order, c.content, status],
+         content = CASE WHEN btrim(chapters.content) = '' OR (NOT chapters.edited AND chapters.content_hash IS DISTINCT FROM EXCLUDED.content_hash AND btrim(EXCLUDED.content) <> '')
+                        THEN EXCLUDED.content ELSE chapters.content END,
+         status = CASE WHEN btrim(chapters.content) = '' THEN EXCLUDED.status ELSE chapters.status END,
+         content_hash = CASE WHEN btrim(chapters.content) = '' OR (NOT chapters.edited AND chapters.content_hash IS DISTINCT FROM EXCLUDED.content_hash AND btrim(EXCLUDED.content) <> '')
+                        THEN EXCLUDED.content_hash ELSE chapters.content_hash END`,
+      [c.slug, c.subjectSlug, c.serie, c.title, c.theme, c.order, c.content, status, createHash('sha1').update(c.content).digest('hex')],
     )
   }
 }

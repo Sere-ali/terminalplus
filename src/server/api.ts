@@ -518,7 +518,7 @@ route('GET', '/admin/chapter', async ({ session, url }) => {
 route('POST', '/admin/chapter', admin(async ({ body }) => {
   const status = body?.status === 'published' ? 'published' : 'draft'
   const n = await exec(
-    'UPDATE chapters SET title = $2, content = $3, status = $4, updated_at = now() WHERE slug = $1',
+    'UPDATE chapters SET title = $2, content = $3, status = $4, edited = true, updated_at = now() WHERE slug = $1',
     [body?.slug, String(body?.title ?? '').trim().slice(0, 160), String(body?.content ?? ''), status],
   )
   return { ok: n > 0 }
