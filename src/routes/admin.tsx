@@ -35,6 +35,12 @@ function AdminGate() {
             <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold">Super administration</h1>
             <p className="text-sm text-muted-foreground">{overview.bySerie.reduce((n, x) => n + x.students, 0)} élève(s) inscrit(s) · 1 Super admin (toi)</p>
 
+            <div className="mt-5 rounded-2xl border bg-brand-orange-soft p-4">
+              <p className="text-sm font-bold">Argent reçu au total</p>
+              <p className="text-3xl font-bold">{overview.totalReceived.toLocaleString('fr-FR')} F CFA</p>
+              <p className="text-xs text-muted-foreground">Somme des paiements que tu as validés.</p>
+            </div>
+
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {overview.bySerie.map((s) => (
                 <div key={s.serie} className="rounded-2xl border bg-card p-4">
@@ -96,6 +102,7 @@ type AdminOverview =
       ok: true
       totalUsers: number
       paidCount: number
+      totalReceived: number
       bySerie: {
         serie: Serie
         students: number

@@ -459,6 +459,7 @@ route('GET', '/admin/overview', async ({ session }) => {
     ok: true,
     totalUsers: total?.n ?? 0,
     paidCount: total?.paid ?? 0,
+    totalReceived: (await one<{ s: number }>("SELECT COALESCE(sum(amount),0)::int AS s FROM payments WHERE status = 'approved'"))?.s ?? 0,
     bySerie: (['A', 'C', 'D'] as const).map((serie) => ({
       serie,
       students: counts.find((c) => c.serie === serie)?.students ?? 0,
