@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useMutation } from 'convex/react'
-import { api } from '@/convex/_generated/api'
+import { post } from '@/lib/api'
 import { SiteHeader } from '@/components/site-header'
 import { AuthForm } from '@/components/auth-form'
 import { SERIE_LABEL, SERIE_TAGLINE, useMe, type Serie } from '@/lib/use-me'
@@ -37,7 +36,6 @@ function ConnexionPage() {
 }
 
 function ProfileForm() {
-  const createProfile = useMutation(api.users.createProfile)
   const [name, setName] = useState('')
   const [serie, setSerie] = useState<Serie>('D')
   const [error, setError] = useState<string | null>(null)
@@ -50,9 +48,9 @@ function ProfileForm() {
         e.preventDefault()
         setLoading(true)
         setError(null)
-        const res = await createProfile({ name, serie })
+        const res = await post('/api/profile', { name, serie })
         setLoading(false)
-        if (!res.ok) setError(res.message)
+        if (!res.ok) setError(res.message ?? 'Une erreur est survenue.')
       }}
     >
       <div>

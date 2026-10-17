@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useMutation, useQuery } from 'convex/react'
 import { ArrowLeft, ArrowRight, Check, Star } from 'lucide-react'
-import { api } from '@/convex/_generated/api'
+import { post, useApi } from '@/lib/api'
+import type { ChapterResponse, ProgressRow } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
 import { Markdown } from '@/components/markdown'
@@ -16,9 +16,9 @@ function CoursPage() {
 }
 
 function Lesson({ slug }: { slug: string }) {
-  const res = useQuery(api.catalog.chapter, { slug })
-  const progress = useQuery(api.progress.mine, {})
-  const toggle = useMutation(api.progress.toggle)
+  const res = useApi<ChapterResponse>(`/api/chapters/${encodeURIComponent(slug)}`)
+  const progress = useApi<ProgressRow[]>('/api/progress')
+  const toggle = (arg: { chapterSlug: string; field: 'done' | 'favorite' }) => post('/api/progress/toggle', arg)
   const [tab, setTab] = useState<'cours' | 'prof'>('cours')
 
   const mine = progress?.find((p) => p.chapterSlug === slug)

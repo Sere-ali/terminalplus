@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useQuery } from 'convex/react'
 import { ArrowLeft, Check, Lock, Star } from 'lucide-react'
-import { api } from '@/convex/_generated/api'
+import { useApi } from '@/lib/api'
+import type { ChapterListResponse, ProgressRow } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
 
@@ -13,8 +13,8 @@ function MatierePage() {
 }
 
 function Content({ slug, isAdmin }: { slug: string; isAdmin: boolean }) {
-  const data = useQuery(api.catalog.chapterList, { subjectSlug: slug })
-  const progress = useQuery(api.progress.mine, {})
+  const data = useApi<ChapterListResponse>(`/api/subjects/${encodeURIComponent(slug)}/chapters`)
+  const progress = useApi<ProgressRow[]>('/api/progress')
   const prog = new Map((progress ?? []).map((p) => [p.chapterSlug, p]))
 
   const themes: { theme: string; items: NonNullable<typeof data>['chapters'] }[] = []

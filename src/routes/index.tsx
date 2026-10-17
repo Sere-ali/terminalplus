@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useQuery } from 'convex/react'
 import { BookOpenCheck, Bot, GraduationCap, Smartphone, Sparkles } from 'lucide-react'
-import { api } from '@/convex/_generated/api'
+import { useApi } from '@/lib/api'
+import type { SubjectCard } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
 import { SERIE_LABEL, SERIE_TAGLINE, useMe, type Serie } from '@/lib/use-me'
 
@@ -11,7 +11,7 @@ export const Route = createFileRoute('/')({ component: Home })
 function Home() {
   const me = useMe()
   const [serie, setSerie] = useState<Serie>('D')
-  const subjects = useQuery(api.catalog.subjects, { serie })
+  const subjects = useApi<SubjectCard[]>(`/api/subjects?serie=${serie}`)
 
   return (
     <div className="min-h-screen bg-background">

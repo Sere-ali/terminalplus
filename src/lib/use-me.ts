@@ -1,5 +1,4 @@
-import { useQuery } from 'convex/react'
-import { api } from '@/convex/_generated/api'
+import { useApi } from '@/lib/api'
 
 export type Serie = 'A' | 'C' | 'D'
 
@@ -16,15 +15,24 @@ export type MeState =
       hasAccess: boolean
     }
 
+type MeResponse =
+  | { authenticated: false }
+  | {
+      authenticated: true
+      identifier: string
+      profile: { name: string; serie: Serie; role: 'student' | 'admin'; paid: boolean } | null
+      hasAccess: boolean
+    }
+
 /** État de la session de l'élève (identité toujours lue côté serveur). */
 export function useMe(): MeState {
-  const me = useQuery(api.users.me, {})
+  const me = useApi<MeResponse>('/api/me')
   if (me === undefined) return { status: 'loading' }
   if (!me.authenticated) return { status: 'anonymous' }
-  if (!me.profile) return { status: 'needs-profile', email: me.email }
+  if (!me.profile) return { status: 'needs-profile', email: me.identifier }
   return {
     status: 'ready',
-    email: me.email,
+    email: me.identifier,
     name: me.profile.name,
     serie: me.profile.serie,
     isAdmin: me.profile.role === 'admin',

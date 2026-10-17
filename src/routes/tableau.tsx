@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { useMutation, useQuery } from 'convex/react'
 import { ChevronRight } from 'lucide-react'
-import { api } from '@/convex/_generated/api'
+import { post, useApi } from '@/lib/api'
+import type { ProgressRow, SubjectCard } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
 import { SERIE_LABEL, type Serie } from '@/lib/use-me'
@@ -17,9 +17,8 @@ function TableauPage() {
 }
 
 function Dashboard({ name, serie }: { name: string; serie: Serie }) {
-  const subjects = useQuery(api.catalog.subjects, { serie })
-  const progress = useQuery(api.progress.mine, {})
-  const updateSerie = useMutation(api.users.updateSerie)
+  const subjects = useApi<SubjectCard[]>(`/api/subjects?serie=${serie}`)
+  const progress = useApi<ProgressRow[]>('/api/progress')
 
   const doneSlugs = new Set((progress ?? []).filter((p) => p.done).map((p) => p.chapterSlug))
   const totalPublished = (subjects ?? []).reduce((n, s) => n + s.published, 0)
@@ -82,7 +81,7 @@ function Dashboard({ name, serie }: { name: string; serie: Serie }) {
           {(['A', 'C', 'D'] as const)
             .filter((s) => s !== serie)
             .map((s) => (
-              <button key={s} type="button" onClick={() => updateSerie({ serie: s })} className="mr-2 font-semibold text-primary underline-offset-4 hover:underline">
+              <button key={s} type="button" onClick={() => post('/api/profile/serie', { serie: s })} className="mr-2 font-semibold text-primary underline-offset-4 hover:underline">
                 Passer en {SERIE_LABEL[s]}
               </button>
             ))}

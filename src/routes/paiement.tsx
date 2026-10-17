@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { useMutation, useQuery } from 'convex/react'
 import { CheckCircle2, Clock, Smartphone } from 'lucide-react'
-import { api } from '@/convex/_generated/api'
+import { post, useApi } from '@/lib/api'
 import { SiteHeader } from '@/components/site-header'
 import { useMe } from '@/lib/use-me'
 
@@ -11,9 +10,11 @@ export const Route = createFileRoute('/paiement')({ component: PaiementPage })
 function PaiementPage() {
   const me = useMe()
   const navigate = useNavigate()
-  const config = useQuery(api.payments.config, {})
-  const status = useQuery(api.payments.myStatus, {})
-  const submit = useMutation(api.payments.submit)
+  const config = useApi<{ price: number; waveNumber: string | null }>('/api/payments/config')
+  const status = useApi<{
+    hasAccess: boolean
+    last: { status: 'pending' | 'approved' | 'rejected'; reference: string; createdAt: number } | null
+  } | null>('/api/payments/status')
   const [reference, setReference] = useState('')
   const [phone, setPhone] = useState('')
   const [error, setError] = useState<string | null>(null)
@@ -75,9 +76,9 @@ function PaiementPage() {
                 e.preventDefault()
                 setLoading(true)
                 setError(null)
-                const res = await submit({ reference, phone })
+                const res = await post('/api/payments/submit', { reference, phone })
                 setLoading(false)
-                if (!res.ok) setError(res.message)
+                if (!res.ok) setError(res.message ?? 'Une erreur est survenue.')
               }}
             >
               {rejected && (

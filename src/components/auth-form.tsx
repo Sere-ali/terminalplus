@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useAuthActions } from '@convex-dev/auth/react'
+import { post } from '@/lib/api'
 import { PasswordInput } from '@/components/password-input'
 
 const inputCls =
@@ -9,7 +9,6 @@ const btnCls =
 const linkCls = 'text-sm font-medium text-primary underline-offset-4 hover:underline'
 
 export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp' }) {
-  const { signIn } = useAuthActions()
   const [step, setStep] = useState<'signIn' | 'signUp'>(initial)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -21,24 +20,21 @@ export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp'
       onSubmit={async (e) => {
         e.preventDefault()
         const fd = new FormData(e.currentTarget)
-        fd.set('email', String(fd.get('email') ?? '').trim().toLowerCase())
+        const identifier = String(fd.get('email') ?? '').trim().toLowerCase()
+        const password = String(fd.get('password') ?? '')
         setError(null)
         setLoading(true)
-        try {
-          await signIn('password', fd)
-        } catch (err) {
-          const msg = err instanceof Error ? err.message : ''
-          if (/already exists|AccountAlreadyExists/i.test(msg)) {
-            setError('Cet identifiant existe déjà. Connecte-toi.')
-          } else if (/InvalidSecret|InvalidAccountId|Invalid password/i.test(msg)) {
-            setError('Identifiant ou mot de passe incorrect. Mot de passe oublié ? Demande à l\'administrateur de le réinitialiser.')
-          } else if (isSignUp) {
-            setError('Inscription impossible. Choisis un mot de passe de 8 caractères minimum.')
+        const res = await post<{ ok: boolean; message?: string; code?: string }>(
+          isSignUp ? '/api/auth/signup' : '/api/auth/login',
+          { identifier, password },
+        )
+        setLoading(false)
+        if (!res.ok) {
+          if (res.code === 'BAD_CREDENTIALS') {
+            setError("Identifiant ou mot de passe incorrect. Mot de passe oublié ? Demande à l'administrateur de le réinitialiser.")
           } else {
-            setError('Connexion impossible. Vérifie ton identifiant et ton mot de passe.')
+            setError(res.message ?? 'Une erreur est survenue.')
           }
-        } finally {
-          setLoading(false)
         }
       }}
     >

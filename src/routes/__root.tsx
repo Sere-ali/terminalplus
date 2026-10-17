@@ -1,6 +1,5 @@
 import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { MacalyBridge } from '@macaly/bridge'
-import AppConvexProvider from '@/components/convex-client-provider'
 
 // CSS imported as a side effect — do NOT add `?url` or `?inline`.
 import '../styles.css'
@@ -33,7 +32,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       </head>
       <MacalyBridge>
         <body>
-          <AppConvexProvider>{children}</AppConvexProvider>
+          {children}
           <Scripts />
         </body>
       </MacalyBridge>

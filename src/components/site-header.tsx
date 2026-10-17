@@ -1,11 +1,10 @@
 import { Link, useNavigate } from '@tanstack/react-router'
-import { useAuthActions } from '@convex-dev/auth/react'
 import { GraduationCap, LogOut, ShieldCheck } from 'lucide-react'
 import { useMe } from '@/lib/use-me'
+import { post } from '@/lib/api'
 
 export function SiteHeader() {
   const me = useMe()
-  const { signOut } = useAuthActions()
   const navigate = useNavigate()
 
   return (
@@ -35,7 +34,7 @@ export function SiteHeader() {
                 type="button"
                 aria-label="Déconnexion"
                 onClick={async () => {
-                  await signOut()
+                  await post('/api/auth/logout')
                   navigate({ to: '/' })
                 }}
                 className="flex items-center gap-1 rounded-md px-3 py-2 text-muted-foreground hover:bg-secondary"

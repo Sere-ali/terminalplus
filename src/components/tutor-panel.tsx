@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
-import { useAction, useQuery } from 'convex/react'
 import { GraduationCap, Loader2, Send } from 'lucide-react'
-import { api } from '@/convex/_generated/api'
+import { post, useApi } from '@/lib/api'
 import { Markdown } from '@/components/markdown'
 
 export function TutorPanel({ chapterSlug, title }: { chapterSlug: string; title: string }) {
-  const messages = useQuery(api.tutorData.myMessages, { chapterSlug })
-  const ask = useAction(api.tutor.ask)
+  const messages = useApi<{ id: string; role: 'user' | 'assistant'; mode: string; content: string }[]>(
+    `/api/tutor/messages?chapterSlug=${encodeURIComponent(chapterSlug)}`,
+  )
+  const ask = (arg: { chapterSlug: string; question: string; mode: 'chat' | 'prof' }) =>
+    post<{ ok: boolean; message?: string }>('/api/tutor/ask', arg)
   const [question, setQuestion] = useState('')
   const [busy, setBusy] = useState<null | 'chat' | 'prof'>(null)
   const [error, setError] = useState<string | null>(null)

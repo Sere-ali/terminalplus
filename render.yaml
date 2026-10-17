@@ -1,16 +1,29 @@
 # Blueprint Render pour TERMINALE+
-# Le site est servi par un serveur Node (SSR). La base de données et les comptes sont sur Convex.
+# Serveur Node (SSR) + base PostgreSQL Render.
+databases:
+  - name: terminalplus-db
+    region: frankfurt
+    plan: free
+
 services:
   - type: web
-    name: terminale-plus
+    name: terminalplus
     runtime: node
     plan: free
     region: frankfurt
     buildCommand: npm ci && npm run build
     startCommand: node .output/server/index.mjs
-    healthCheckPath: /
+    healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
         value: "22"
-      - key: VITE_CONVEX_URL
-        sync: false # URL de TON déploiement Convex (https://xxxx.convex.cloud)
+      - key: DATABASE_URL
+        fromDatabase:
+          name: terminalplus-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_BOOTSTRAP_PASSWORD
+        sync: false # mot de passe du compte admin "Ali" (à retirer après la 1re connexion)
+      - key: ANTHROPIC_API_KEY
+        sync: false # optionnel : active le professeur IA
