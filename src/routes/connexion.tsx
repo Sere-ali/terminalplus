@@ -6,12 +6,15 @@ import { AuthForm } from '@/components/auth-form'
 import { SERIE_LABEL, SERIE_TAGLINE, useMe, type Serie } from '@/lib/use-me'
 
 export const Route = createFileRoute('/connexion')({
+  validateSearch: (search: Record<string, unknown>): { mode?: 'signup' } =>
+    search.mode === 'signup' ? { mode: 'signup' } : {},
   component: ConnexionPage,
 })
 
 function ConnexionPage() {
   const me = useMe()
   const navigate = useNavigate()
+  const { mode } = Route.useSearch()
 
   useEffect(() => {
     if (me.status === 'ready') navigate({ to: '/tableau' })
@@ -23,7 +26,7 @@ function ConnexionPage() {
       <main className="mx-auto max-w-md px-4 py-8">
         <div className="page-in rounded-3xl border bg-card p-6 shadow-xl shadow-primary/10">
           {me.status === 'loading' && <p className="py-10 text-center text-muted-foreground">Chargement…</p>}
-          {me.status === 'anonymous' && <AuthForm initial="signUp" />}
+          {me.status === 'anonymous' && <AuthForm initial={mode === 'signup' ? 'signUp' : 'signIn'} />}
           {me.status === 'needs-profile' && <ProfileForm />}
           {me.status === 'ready' && <p className="py-10 text-center text-muted-foreground">Redirection…</p>}
         </div>
