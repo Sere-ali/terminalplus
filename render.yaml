@@ -1,0 +1,16 @@
+# Blueprint Render pour TERMINALE+
+# Le site est servi par un serveur Node (SSR). La base de données et les comptes sont sur Convex.
+services:
+  - type: web
+    name: terminale-plus
+    runtime: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm ci && npm run build
+    startCommand: node .output/server/index.mjs
+    healthCheckPath: /
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: VITE_CONVEX_URL
+        sync: false # URL de TON déploiement Convex (https://xxxx.convex.cloud)
