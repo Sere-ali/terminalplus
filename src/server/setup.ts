@@ -12,6 +12,10 @@ CREATE TABLE IF NOT EXISTS users (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 
+ALTER TABLE users ADD COLUMN IF NOT EXISTS device_id text;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS device_strikes integer NOT NULL DEFAULT 0;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS locked boolean NOT NULL DEFAULT false;
+
 CREATE TABLE IF NOT EXISTS profiles (
   user_id uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
   name text NOT NULL,

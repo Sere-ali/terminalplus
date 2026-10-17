@@ -3,6 +3,8 @@ import { exec, one, rows, withTx } from './db'
 import {
   clearAttempts,
   clearCookie,
+  DEVICE_COOKIE,
+  deviceCookie,
   getCookie,
   hashPassword,
   readSession,
@@ -11,6 +13,7 @@ import {
   tooManyAttempts,
   verifyPassword,
 } from './security'
+import { randomBytes } from 'node:crypto'
 import { generate, tutorEnabled } from './llm'
 import { BASE_RULES } from './tutor-rules'
 
@@ -38,6 +41,11 @@ function json(data: unknown, status = 200, extra: Record<string, string> = {}) {
     headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store', ...extra },
   })
 }
+function withCookies(data: unknown, cookies: string[]) {
+  const h = new Headers({ 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' })
+  for (const c of cookies) h.append('set-cookie', c)
+  return new Response(JSON.stringify(data), { status: 200, headers: h })
+}
 const fail = (message: string, status = 400, code?: string) => json({ ok: false, message, code }, status)
 
 const hasAccess = (p: Profile | null) => !!p && (p.role === 'admin' || p.paid === true)
@@ -49,11 +57,15 @@ async function getSession(request: Request): Promise<Session | null> {
   const tok = readSession(getCookie(request))
   if (!tok) return null
   const u = await one<any>(
-    `SELECT u.id, u.identifier, u.session_version, p.name, p.serie, p.role, p.paid
+    `SELECT u.id, u.identifier, u.session_version, u.device_id, u.locked, p.name, p.serie, p.role, p.paid
      FROM users u LEFT JOIN profiles p ON p.user_id = u.id WHERE u.id = $1`,
     [tok.uid],
   )
   if (!u || u.session_version !== tok.v) return null
+  if (u.role !== 'admin') {
+    if (u.locked) return null
+    if (u.device_id && getCookie(request, DEVICE_COOKIE) !== u.device_id) return null
+  }
   return {
     uid: u.id,
     identifier: u.identifier,
@@ -112,16 +124,18 @@ route('POST', '/auth/signup', async ({ request, body }) => {
   }
   const hash = await hashPassword(password)
   let user: { id: string; session_version: number } | null
+  const dev = getCookie(request, DEVICE_COOKIE) || randomBytes(24).toString('hex')
   try {
-    user = await one('INSERT INTO users (identifier, password_hash) VALUES ($1,$2) RETURNING id, session_version', [
+    user = await one('INSERT INTO users (identifier, password_hash, device_id) VALUES ($1,$2,$3) RETURNING id, session_version', [
       identifier,
       hash,
+      dev,
     ])
   } catch (e: any) {
     if (e?.code === '23505') return fail('Cet identifiant existe déjà. Connecte-toi.', 409, 'EXISTS')
     throw e
   }
-  return json({ ok: true }, 200, { 'set-cookie': sessionCookie(signSession(user!.id, user!.session_version), request) })
+  return withCookies({ ok: true }, [sessionCookie(signSession(user!.id, user!.session_version), request), deviceCookie(dev, request)])
 })
 
 route('POST', '/auth/login', async ({ request, body }) => {
@@ -130,12 +144,38 @@ route('POST', '/auth/login', async ({ request, body }) => {
   const key = `login:${clientIp(request)}:${identifier}`
   if (tooManyAttempts(key)) return fail('Trop de tentatives. Réessaie dans quelques minutes.', 429)
   const user = identifier
-    ? await one<any>('SELECT id, password_hash, session_version FROM users WHERE identifier = $1', [identifier])
+    ? await one<any>(
+        `SELECT u.id, u.password_hash, u.session_version, u.device_id, u.device_strikes, u.locked, p.role
+         FROM users u LEFT JOIN profiles p ON p.user_id = u.id WHERE u.identifier = $1`,
+        [identifier],
+      )
     : null
   const ok = user ? await verifyPassword(password, user.password_hash) : false
   if (!user || !ok) return fail('Identifiant ou mot de passe incorrect.', 401, 'BAD_CREDENTIALS')
   clearAttempts(key)
-  return json({ ok: true }, 200, { 'set-cookie': sessionCookie(signSession(user.id, user.session_version), request) })
+  let dev = getCookie(request, DEVICE_COOKIE) || ''
+  if (user.role !== 'admin') {
+    if (user.locked) {
+      return fail("Ce compte est bloqué car il a été utilisé sur plusieurs appareils. Contacte l'administrateur.", 403, 'DEVICE_LOCKED')
+    }
+    if (!user.device_id) {
+      dev = dev || randomBytes(24).toString('hex')
+      await exec('UPDATE users SET device_id = $2 WHERE id = $1', [user.id, dev])
+    } else if (dev !== user.device_id) {
+      const strikes = user.device_strikes + 1
+      await exec('UPDATE users SET device_strikes = $2, locked = $3 WHERE id = $1', [user.id, strikes, strikes >= 3])
+      return fail(
+        strikes >= 3
+          ? "Ce compte est bloqué car il a été utilisé sur plusieurs appareils. Contacte l'administrateur."
+          : 'Ce compte est déjà lié à un autre appareil. Un compte ne peut être utilisé que sur un seul appareil. Si tu as changé de téléphone, contacte l\'administrateur.',
+        403,
+        'OTHER_DEVICE',
+      )
+    }
+  } else if (!dev) {
+    dev = randomBytes(24).toString('hex')
+  }
+  return withCookies({ ok: true }, [sessionCookie(signSession(user.id, user.session_version), request), deviceCookie(dev, request)])
 })
 
 route('POST', '/auth/logout', async () => json({ ok: true }, 200, { 'set-cookie': clearCookie() }))
@@ -449,7 +489,7 @@ route('GET', '/admin/overview', async ({ session }) => {
      FROM subjects s LEFT JOIN chapters c ON c.subject_slug = s.slug GROUP BY s.slug ORDER BY s.ord`,
   )
   const people = await rows<any>(
-    `SELECT p.user_id, p.name, p.serie, p.role, p.paid, p.created_at, u.identifier
+    `SELECT p.user_id, p.name, p.serie, p.role, p.paid, p.created_at, u.identifier, u.locked, u.device_strikes, (u.device_id IS NOT NULL) AS has_device
      FROM profiles p JOIN users u ON u.id = p.user_id ORDER BY p.created_at DESC LIMIT 300`,
   )
   const total = await one<{ n: number; paid: number }>(
@@ -475,6 +515,9 @@ route('GET', '/admin/overview', async ({ session }) => {
       role: p.role,
       paid: p.role === 'admin' || p.paid === true,
       createdAt: ms(p.created_at),
+      locked: p.locked === true,
+      strikes: p.device_strikes ?? 0,
+      hasDevice: p.has_device === true,
     })),
   }
 })
@@ -510,6 +553,15 @@ route('POST', '/admin/access', admin(async ({ body }) => {
     `UPDATE profiles SET paid = $2, paid_at = CASE WHEN $2 THEN now() ELSE NULL END
      WHERE user_id = $1 AND role = 'student'`,
     [body?.profileId, body?.paid === true],
+  )
+  return { ok: n > 0 }
+}))
+
+route('POST', '/admin/reset-device', admin(async ({ body }) => {
+  const n = await exec(
+    `UPDATE users SET device_id = NULL, device_strikes = 0, locked = false, session_version = session_version + 1
+     WHERE id = $1 AND id IN (SELECT user_id FROM profiles WHERE role = 'student')`,
+    [body?.profileId],
   )
   return { ok: n > 0 }
 }))

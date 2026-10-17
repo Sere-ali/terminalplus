@@ -93,3 +93,10 @@ export function tooManyAttempts(key: string, max = 10, windowMs = 10 * 60 * 1000
 export function clearAttempts(key: string) {
   attempts.delete(key)
 }
+
+// --- Appareil : un compte = un appareil (cookie long, illisible par les scripts) ---
+export const DEVICE_COOKIE = 'tp_dev'
+export function deviceCookie(id: string, request: Request): string {
+  const secure = new URL(request.url).protocol === 'https:' || request.headers.get('x-forwarded-proto') === 'https'
+  return `${DEVICE_COOKIE}=${id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${60 * 60 * 24 * 730}${secure ? '; Secure' : ''}`
+}

@@ -95,6 +95,9 @@ type StudentInfo = {
   role: 'student' | 'admin'
   paid: boolean
   createdAt: number
+  locked?: boolean
+  strikes?: number
+  hasDevice?: boolean
 }
 
 type AdminOverview =
@@ -149,6 +152,9 @@ function StudentRow({ u }: { u: StudentInfo }) {
       <span>
         <span className="font-medium">{u.name}{u.role === 'admin' && ' 👑'}</span>
         <span className="block text-xs text-muted-foreground">Identifiant : {u.email}</span>
+        {u.role !== 'admin' && (u.strikes ?? 0) > 0 && (
+          <span className="block text-xs font-semibold text-destructive">{u.locked ? 'Compte bloqué' : 'Alerte'} : {u.strikes} tentative(s) depuis un autre appareil</span>
+        )}
       </span>
       <span className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
         <span className="text-xs text-muted-foreground">{SERIE_LABEL[u.serie]} · {new Date(u.createdAt).toLocaleDateString('fr-FR')}</span>
@@ -162,6 +168,15 @@ function StudentRow({ u }: { u: StudentInfo }) {
             className="rounded-lg border px-2.5 py-1 text-xs font-semibold hover:bg-secondary"
           >
             {u.paid ? "Retirer l'accès" : "Donner l'accès"}
+          </button>
+        )}
+        {u.role !== 'admin' && (u.locked || (u.strikes ?? 0) > 0 || u.hasDevice) && (
+          <button
+            type="button"
+            onClick={() => { if (window.confirm(`Autoriser ${u.name} à se connecter depuis un nouvel appareil ?`)) void post('/api/admin/reset-device', { profileId: u.id }) }}
+            className={`rounded-lg border px-2.5 py-1 text-xs font-semibold hover:bg-secondary ${u.locked ? 'border-destructive/40 text-destructive' : ''}`}
+          >
+            {u.locked ? '🔒 Débloquer' : 'Changer d\'appareil'}
           </button>
         )}
         {u.role !== 'admin' && (
