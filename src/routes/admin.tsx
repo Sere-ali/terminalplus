@@ -306,18 +306,7 @@ function PaymentsPanel() {
       <ul className="mt-2 divide-y rounded-xl border text-sm">
         {data.pending.length === 0 && <li className="p-3 text-muted-foreground">Aucun paiement en attente.</li>}
         {data.pending.map((p) => (
-          <li key={p.id} className="flex flex-wrap items-center justify-between gap-2 p-3">
-            <span>
-              <span className="font-semibold">{p.name}</span> · {p.phone}
-              <span className="block text-xs text-muted-foreground">
-                Transaction : <strong>{p.reference}</strong> · {p.amount} F · {new Date(p.createdAt).toLocaleString('fr-FR')}
-              </span>
-            </span>
-            <span className="flex gap-2">
-              <button type="button" onClick={() => decide({ paymentId: p.id, approve: true })} className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">Valider</button>
-              <button type="button" onClick={() => decide({ paymentId: p.id, approve: false })} className="rounded-lg border px-3 py-1.5 text-xs font-semibold hover:bg-secondary">Refuser</button>
-            </span>
-          </li>
+          <PendingRow key={p.id} p={p} decide={decide} />
         ))}
       </ul>
 
@@ -545,5 +534,37 @@ function ExamsPanel() {
         )}
       </div>
     </section>
+  )
+}
+
+
+function PendingRow({ p, decide }: { p: PaymentRow; decide: (arg: { paymentId: string; approve: boolean }) => Promise<unknown> }) {
+  const [received, setReceived] = useState(false)
+  return (
+    <li className="space-y-2 p-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span>
+          <span className="font-semibold">{p.name}</span>
+          <span className="block text-xs text-muted-foreground">
+            En attente depuis le {new Date(p.createdAt).toLocaleString('fr-FR')} · {p.amount} F
+          </span>
+        </span>
+        <span className="flex gap-2">
+          <button
+            type="button"
+            disabled={!received}
+            onClick={() => decide({ paymentId: p.id, approve: true })}
+            className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground disabled:cursor-not-allowed disabled:opacity-40"
+          >
+            Valider
+          </button>
+          <button type="button" onClick={() => decide({ paymentId: p.id, approve: false })} className="rounded-lg border px-3 py-1.5 text-xs font-semibold hover:bg-secondary">Refuser</button>
+        </span>
+      </div>
+      <label className="flex items-start gap-2 text-xs">
+        <input type="checkbox" checked={received} onChange={(e) => setReceived(e.target.checked)} className="mt-0.5 size-4" />
+        <span>J'ai vérifié dans mon application Wave : {p.amount} F sont bien arrivés sur mon compte. (Le bouton Valider s'active seulement après.)</span>
+      </label>
+    </li>
   )
 }
