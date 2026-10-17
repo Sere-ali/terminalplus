@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS payments (
   created_at timestamptz NOT NULL DEFAULT now(),
   decided_at timestamptz
 );
+ALTER TABLE payments ADD COLUMN IF NOT EXISTS checkout_id text;
 CREATE INDEX IF NOT EXISTS payments_user_idx ON payments(user_id, created_at);
 CREATE INDEX IF NOT EXISTS payments_ref_idx ON payments(reference);
 CREATE INDEX IF NOT EXISTS payments_status_idx ON payments(status, created_at);

@@ -341,13 +341,76 @@ ${String(chapter.content).slice(0, 9000)}`
 // --- Paiement Wave ---
 route('GET', '/payments/config', async () => {
   const wave = await readSetting('waveNumber')
-  return { price: PRICE_FCFA, waveNumber: wave?.value || DEFAULT_WAVE_NUMBER }
+  return { price: PRICE_FCFA, waveNumber: wave?.value || DEFAULT_WAVE_NUMBER, auto: !!process.env.WAVE_API_KEY }
+})
+
+// Paiement automatique : Wave Checkout (nécessite WAVE_API_KEY, compte Wave Business)
+const WAVE_API = 'https://api.wave.com/v1/checkout/sessions'
+async function waveFetch(url: string, init?: RequestInit) {
+  const r = await fetch(url, {
+    ...init,
+    headers: { Authorization: `Bearer ${process.env.WAVE_API_KEY}`, 'content-type': 'application/json' },
+  })
+  const data: any = await r.json().catch(() => ({}))
+  return { ok: r.ok, data }
+}
+
+route('POST', '/payments/checkout', async ({ session, request, url }) => {
+  if (!session?.profile) return fail("Connecte-toi d'abord.", 401)
+  if (hasAccess(session.profile)) return { ok: true, already: true }
+  if (!process.env.WAVE_API_KEY) return fail("Le paiement automatique n'est pas encore activé.", 503)
+  const proto = request.headers.get('x-forwarded-proto') ?? url.protocol.replace(':', '')
+  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? url.host
+  const origin = process.env.PUBLIC_URL || `${proto}://${host}`
+  const id = crypto.randomUUID()
+  const w = await waveFetch(WAVE_API, {
+    method: 'POST',
+    body: JSON.stringify({
+      amount: String(PRICE_FCFA),
+      currency: 'XOF',
+      client_reference: id,
+      success_url: `${origin}/paiement?wave=ok`,
+      error_url: `${origin}/paiement?wave=erreur`,
+    }),
+  })
+  if (!w.ok || !w.data?.wave_launch_url) return fail("Impossible de lancer Wave pour l'instant. Réessaie dans un instant.", 502)
+  await exec(
+    `INSERT INTO payments (id, user_id, name, phone, reference, amount, checkout_id) VALUES ($1,$2,$3,'wave-auto',$4,$5,$6)`,
+    [id, session.uid, session.profile.name, 'WAVE-' + String(w.data.id), PRICE_FCFA, String(w.data.id)],
+  )
+  return { ok: true, url: w.data.wave_launch_url }
+})
+
+// Vérifie côté serveur auprès de Wave (on ne fait jamais confiance à la redirection).
+route('POST', '/payments/verify', async ({ session }) => {
+  if (!session?.profile) return fail("Connecte-toi d'abord.", 401)
+  if (hasAccess(session.profile)) return { ok: true, paid: true }
+  if (!process.env.WAVE_API_KEY) return { ok: true, paid: false }
+  const list = await rows<any>(
+    `SELECT id, checkout_id FROM payments WHERE user_id = $1 AND status = 'pending' AND checkout_id IS NOT NULL
+     ORDER BY created_at DESC LIMIT 3`,
+    [session.uid],
+  )
+  for (const p of list) {
+    const w = await waveFetch(`${WAVE_API}/${encodeURIComponent(p.checkout_id)}`)
+    if (w.ok && w.data?.payment_status === 'succeeded' && String(w.data?.currency) === 'XOF' && Number(w.data?.amount) >= PRICE_FCFA) {
+      await withTx(async (q) => {
+        await q(`UPDATE payments SET status = 'approved', decided_at = now() WHERE id = $1 AND status = 'pending'`, [p.id])
+        await q('UPDATE profiles SET paid = true, paid_at = now() WHERE user_id = $1', [session.uid])
+      })
+      return { ok: true, paid: true }
+    }
+    if (w.ok && (w.data?.checkout_status === 'expired' || w.data?.payment_status === 'cancelled')) {
+      await exec(`UPDATE payments SET status = 'rejected', decided_at = now() WHERE id = $1 AND status = 'pending'`, [p.id])
+    }
+  }
+  return { ok: true, paid: false }
 })
 
 route('GET', '/payments/status', async ({ session }) => {
   if (!session?.profile) return null
   const last = await one<any>(
-    'SELECT status, reference, created_at FROM payments WHERE user_id = $1 ORDER BY created_at DESC LIMIT 1',
+    'SELECT status, reference, created_at FROM payments WHERE user_id = $1 AND checkout_id IS NULL ORDER BY created_at DESC LIMIT 1',
     [session.uid],
   )
   return {
@@ -363,7 +426,7 @@ route('POST', '/payments/submit', async ({ session, body }) => {
   const phone = String(body?.phone ?? '').trim().slice(0, 20)
   if (reference.length < 6) return fail("Entre l'identifiant de transaction Wave (il est dans le SMS ou le reçu Wave).")
   if (phone.replace(/\D/g, '').length < 8) return fail('Entre le numéro Wave avec lequel tu as payé.')
-  const pending = await one("SELECT 1 FROM payments WHERE user_id = $1 AND status = 'pending'", [session.uid])
+  const pending = await one("SELECT 1 FROM payments WHERE user_id = $1 AND status = 'pending' AND checkout_id IS NULL", [session.uid])
   if (pending) return fail('Ton paiement est déjà en attente de validation. Patiente un peu.')
   const dup = await one("SELECT 1 FROM payments WHERE reference = $1 AND status <> 'rejected'", [reference])
   if (dup) return fail('Cet identifiant de transaction a déjà été utilisé.')
@@ -425,7 +488,7 @@ route('GET', '/admin/payments', async ({ session }) => {
     id: p.id, name: p.name, phone: p.phone, reference: p.reference,
     amount: p.amount, status: p.status, createdAt: ms(p.created_at),
   })
-  const pending = await rows("SELECT * FROM payments WHERE status = 'pending' ORDER BY created_at")
+  const pending = await rows("SELECT * FROM payments WHERE status = 'pending' AND checkout_id IS NULL ORDER BY created_at")
   const decided = await rows("SELECT * FROM payments WHERE status <> 'pending' ORDER BY created_at DESC LIMIT 40")
   const wave = await readSetting('waveNumber')
   return { ok: true, waveNumber: wave?.value || DEFAULT_WAVE_NUMBER, pending: pending.map(shape), decided: decided.map(shape) }

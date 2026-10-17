@@ -10,7 +10,7 @@ export const Route = createFileRoute('/paiement')({ component: PaiementPage })
 function PaiementPage() {
   const me = useMe()
   const navigate = useNavigate()
-  const config = useApi<{ price: number; waveNumber: string | null }>('/api/payments/config')
+  const config = useApi<{ price: number; waveNumber: string | null; auto?: boolean }>('/api/payments/config')
   const status = useApi<{
     hasAccess: boolean
     last: { status: 'pending' | 'approved' | 'rejected'; reference: string; createdAt: number } | null
@@ -24,6 +24,20 @@ function PaiementPage() {
     if (me.status === 'anonymous' || me.status === 'needs-profile') navigate({ to: '/connexion' })
     if (me.status === 'ready' && me.hasAccess) navigate({ to: '/tableau' })
   }, [me, navigate])
+
+  // Retour depuis Wave : on vérifie le paiement auprès de Wave, côté serveur.
+  useEffect(() => {
+    if (typeof window === 'undefined' || !new URLSearchParams(window.location.search).get('wave')) return
+    let tries = 0
+    const run = async () => {
+      const r: any = await post('/api/payments/verify', {})
+      if (r.paid) window.location.href = '/tableau'
+      else if (++tries < 6) timer = setTimeout(run, 3000)
+      else setError("Paiement non confirmé pour l'instant. Si tu as payé, patiente une minute puis recharge la page.")
+    }
+    let timer = setTimeout(run, 500)
+    return () => clearTimeout(timer)
+  }, [])
 
   const pending = status?.last?.status === 'pending'
   const rejected = status?.last?.status === 'rejected'
@@ -45,6 +59,27 @@ function PaiementPage() {
               Nous avons bien reçu ton identifiant <strong>{status?.last?.reference}</strong>. Dès que le paiement est
               confirmé, tes cours s'ouvrent automatiquement. Reviens sur cette page dans quelques minutes.
             </p>
+          </div>
+        ) : config?.auto ? (
+          <div className="mt-6 space-y-4 rounded-2xl border bg-card p-5">
+            <p className="text-sm">Appuie sur le bouton : Wave s'ouvre, tu valides le paiement, et tes cours se débloquent tout seuls.</p>
+            {error && <p className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
+            <button
+              type="button"
+              disabled={loading}
+              onClick={async () => {
+                setLoading(true)
+                setError(null)
+                const res: any = await post('/api/payments/checkout', {})
+                if (res.ok && res.url) { window.location.href = res.url; return }
+                if (res.ok) { window.location.href = '/tableau'; return }
+                setLoading(false)
+                setError(res.message ?? 'Une erreur est survenue.')
+              }}
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
+            >
+              <Smartphone className="size-5" /> {loading ? 'Ouverture de Wave…' : `Payer ${price} F avec Wave`}
+            </button>
           </div>
         ) : (
           <div className="mt-6 space-y-5 rounded-2xl border bg-card p-5">
