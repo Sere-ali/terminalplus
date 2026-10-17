@@ -6,7 +6,7 @@ DEEP_PC_4["nucleaire-spontanees"] = String.raw`## 💡 L'essentiel en une phrase
 Un noyau instable se transforme **spontanément** en un autre noyau en émettant un rayonnement ($\alpha$, $\beta^-$, $\beta^+$, $\gamma$) ; le nombre de noyaux **décroît exponentiellement** avec le temps.
 
 ## 📚 1. Le noyau
-- Notation ${}^A_ZX$ : $Z$ protons, $N=A-Z$ neutrons, $A$ nucléons.
+- Notation $\,{}^A_ZX$ : $Z$ protons, $N=A-Z$ neutrons, $A$ nucléons.
 - **Isotopes** : même $Z$, $A$ différent.
 - **Unité de masse atomique** : $1\ \text{u}=1{,}66\times10^{-27}$ kg, soit $931{,}5\ \text{MeV}/c^2$.
 - $1\ \text{eV}=1{,}6\times10^{-19}$ J ; $1\ \text{MeV}=1{,}6\times10^{-13}$ J.
@@ -15,9 +15,9 @@ Un noyau instable se transforme **spontanément** en un autre noyau en émettant
 Dans toute réaction nucléaire : conservation du **nombre de charge** $Z$ et du **nombre de nucléons** $A$.
 
 ## 📚 3. Les types de radioactivité
-- **$\alpha$** : émission d'un noyau d'hélium ${}^4_2\text{He}$. ${}^A_ZX\to{}^{A-4}_{Z-2}Y+{}^4_2\text{He}$.
-- **$\beta^-$** : un neutron devient proton, un électron est émis ($n\to p+e^-+\bar\nu$). ${}^A_ZX\to{}^{\ A}_{Z+1}Y+{}^{\ 0}_{-1}e$.
-- **$\beta^+$** : un proton devient neutron, un positon est émis. ${}^A_ZX\to{}^{\ A}_{Z-1}Y+{}^{0}_{+1}e$.
+- **$\alpha$** : émission d'un noyau d'hélium $\,{}^4_2\text{He}$. $\,{}^A_ZX\to{}^{A-4}_{Z-2}Y+{}^4_2\text{He}$.
+- **$\beta^-$** : un neutron devient proton, un électron est émis ($n\to p+e^-+\bar\nu$). $\,{}^A_ZX\to{}^{\ A}_{Z+1}Y+{}^{\ 0}_{-1}e$.
+- **$\beta^+$** : un proton devient neutron, un positon est émis. $\,{}^A_ZX\to{}^{\ A}_{Z-1}Y+{}^{0}_{+1}e$.
 - **$\gamma$** : désexcitation du noyau fils, émission d'un photon, sans changement de $A$ ni $Z$.
 - **Pouvoir de pénétration** : $\alpha$ (arrêté par une feuille de papier) < $\beta$ (quelques mm d'aluminium) < $\gamma$ (plomb épais, béton).
 
@@ -40,10 +40,10 @@ $N=\dfrac mM\,\mathcal N_A$ avec $\mathcal N_A=6{,}02\times10^{23}\ \text{mol}^{
 
 ## 🧪 Exemples corrigés pas à pas
 ### Exemple 1 — Équation $\alpha$
-${}^{226}_{88}\text{Ra}\to{}^{A}_{Z}\text{Rn}+{}^4_2\text{He}$ : $A=222$, $Z=86$ : **radon 222**.
+$\,{}^{226}_{88}\text{Ra}\to{}^{A}_{Z}\text{Rn}+{}^4_2\text{He}$ : $A=222$, $Z=86$ : **radon 222**.
 
 ### Exemple 2 — Équation $\beta^-$
-${}^{14}_{6}\text{C}\to{}^{A}_{Z}\text{N}+{}^{0}_{-1}e$ : $A=14$, $Z=7$ : **azote 14**.
+$\,{}^{14}_{6}\text{C}\to{}^{A}_{Z}\text{N}+{}^{0}_{-1}e$ : $A=14$, $Z=7$ : **azote 14**.
 
 ### Exemple 3 — Après $n$ périodes
 Pour un échantillon d'iode 131 ($T=8$ jours), après 24 jours ($n=3$) il reste $\dfrac{1}{8}=12{,}5\%$ des noyaux.
@@ -56,10 +56,10 @@ Pour $N=10^{15}$ noyaux : $A=\lambda N\approx\mathbf{3{,}9\times10^3\ Bq}$.
 Un échantillon n'a plus que 25 % de son activité initiale : $t=\dfrac{T}{\ln2}\ln\dfrac{1}{0{,}25}=2T=\mathbf{11\,140\ ans}$.
 
 ### Exemple 6 — Nombre de noyaux dans une masse
-$1$ µg de ${}^{131}$I ($M=131$ g/mol) : $N=\dfrac{10^{-6}}{131}\times6{,}02\times10^{23}\approx\mathbf{4{,}6\times10^{15}}$ noyaux.
+$1$ µg de $\,{}^{131}$I ($M=131$ g/mol) : $N=\dfrac{10^{-6}}{131}\times6{,}02\times10^{23}\approx\mathbf{4{,}6\times10^{15}}$ noyaux.
 
 ## ✏️ Exercices d'entraînement
-**Exercice 1.** Compléter : ${}^{238}_{92}\text{U}\to{}^{A}_{Z}\text{Th}+{}^4_2\text{He}$ puis ${}^{234}_{90}\text{Th}\to{}^{A}_{Z}\text{Pa}+{}^{0}_{-1}e$.
+**Exercice 1.** Compléter : $\,{}^{238}_{92}\text{U}\to{}^{A}_{Z}\text{Th}+{}^4_2\text{He}$ puis $\,{}^{234}_{90}\text{Th}\to{}^{A}_{Z}\text{Pa}+{}^{0}_{-1}e$.
 
 :::corrige
 Premier : $A=234$, $Z=90$ ($^{234}_{90}$Th). Second : $A=234$, $Z=91$ ($^{234}_{91}$Pa).
@@ -98,7 +98,7 @@ $T=43\,200$ s : $\lambda=\dfrac{0{,}693}{43\,200}\approx\mathbf{1{,}6\times10^{-
 
 ## ✅ À retenir
 - $N=N_0e^{-\lambda t}$ ; $T=\dfrac{\ln2}\lambda$ ; $A=\lambda N$.
-- $\alpha$ : ${}^4_2$He ; $\beta^-$ : $Z+1$ ; $\beta^+$ : $Z-1$ ; $\gamma$ : photon.
+- $\alpha$ : $\,{}^4_2$He ; $\beta^-$ : $Z+1$ ; $\beta^+$ : $Z-1$ ; $\gamma$ : photon.
 - Après $n$ périodes, il reste $N_0/2^n$.
 `
 
@@ -125,13 +125,13 @@ Si $m_{\text{réactifs}}>m_{\text{produits}}$ : l'énergie est **libérée** ($|
 
 ## 📚 5. Fission
 Un neutron lent casse un noyau lourd (uranium 235) :
-${}^{235}_{92}\text{U}+{}^1_0n\to{}^{94}_{38}\text{Sr}+{}^{140}_{54}\text{Xe}+2\,{}^1_0n$
+$\,{}^{235}_{92}\text{U}+{}^1_0n\to{}^{94}_{38}\text{Sr}+{}^{140}_{54}\text{Xe}+2\,{}^1_0n$
 - Les neutrons émis peuvent provoquer d'autres fissions : **réaction en chaîne**, contrôlée dans une **centrale nucléaire** (barres de contrôle absorbant des neutrons) ou non contrôlée dans une bombe.
 - Énergie libérée : environ **200 MeV** par fission.
 - Inconvénients : déchets radioactifs, risque d'accident.
 
 ## 📚 6. Fusion
-${}^2_1\text{H}+{}^3_1\text{H}\to{}^4_2\text{He}+{}^1_0n$ : environ **17,6 MeV** pour 5 nucléons.
+$\,{}^2_1\text{H}+{}^3_1\text{H}\to{}^4_2\text{He}+{}^1_0n$ : environ **17,6 MeV** pour 5 nucléons.
 - Nécessite des températures de plusieurs millions de degrés (étoiles, projet ITER).
 - Énergie par nucléon plus grande que la fission, et sans déchets à longue durée de vie.
 
@@ -167,7 +167,7 @@ $E=\Delta mc^2=3{,}2\times10^{-28}\times9\times10^{16}=2{,}88\times10^{-11}$ J ;
 $E_\ell=0{,}5285\times931{,}5=492{,}3$ MeV ; $\dfrac{E_\ell}{A}=\dfrac{492{,}3}{56}\approx\mathbf{8{,}79\ MeV/nucléon}$.
 :::
 
-**Exercice 3.** Équilibrer : ${}^{235}_{92}\text{U}+{}^1_0n\to{}^{139}_{54}\text{Xe}+{}^{A}_{Z}\text{Sr}+3\,{}^1_0n$.
+**Exercice 3.** Équilibrer : $\,{}^{235}_{92}\text{U}+{}^1_0n\to{}^{139}_{54}\text{Xe}+{}^{A}_{Z}\text{Sr}+3\,{}^1_0n$.
 
 :::corrige
 $A$ : $236=139+A+3\Rightarrow A=94$. $Z$ : $92=54+Z\Rightarrow Z=38$ : $^{94}_{38}$Sr.
