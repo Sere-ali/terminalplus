@@ -91,6 +91,15 @@ function Dashboard({ name, serie }: { name: string; serie: Serie }) {
           })}
         </div>
 
+        <Link to="/sujets" className="lift mt-6 flex items-center gap-3 rounded-3xl border bg-card p-5 shadow-sm">
+          <span className="flex size-14 items-center justify-center rounded-2xl bg-brand-orange-soft text-3xl" aria-hidden>📝</span>
+          <div className="flex-1">
+            <h2 className="font-bold">Sujets du BAC 2021 – 2025</h2>
+            <p className="text-xs text-muted-foreground">Les anciens sujets officiels de ta série</p>
+          </div>
+          <ChevronRight className="size-5 text-muted-foreground" />
+        </Link>
+
         <div className="mt-8 rounded-2xl border border-dashed p-4 text-sm text-muted-foreground">
           Tu t'es trompé de série ?{' '}
           {(['A', 'C', 'D'] as const)

@@ -584,13 +584,82 @@ route('POST', '/admin/chapter', admin(async ({ body }) => {
   return { ok: n > 0 }
 }))
 
+// ---------- Sujets de BAC ----------
+const EXAM_MIMES = ['application/pdf', 'image/png', 'image/jpeg', 'image/webp']
+const EXAM_MAX = 8 * 1024 * 1024
+
+route('GET', '/exams', async ({ session }) => {
+  if (!session?.profile) return fail("Connecte-toi d'abord.", 401)
+  if (!hasAccess(session.profile)) return fail('Débloque tes cours pour voir les sujets.', 403, 'PAYMENT_REQUIRED')
+  const serie = SERIES.includes(String(session.profile.serie)) ? session.profile.serie : 'D'
+  const list = await rows<any>(
+    'SELECT id, serie, subject, year, kind, file_name FROM exams WHERE serie = $1 ORDER BY year DESC, subject, kind DESC',
+    [isAdmin(session) ? (SERIES.includes(session.profile.serie) ? session.profile.serie : serie) : serie],
+  )
+  return { ok: true, serie, exams: list.map((e) => ({ id: e.id, subject: e.subject, year: e.year, kind: e.kind, fileName: e.file_name })) }
+})
+
+route('GET', '/exams/all', async ({ session, url }) => {
+  if (!isAdmin(session)) return { ok: false }
+  const list = await rows<any>(
+    'SELECT id, serie, subject, year, kind, file_name FROM exams WHERE ($1::text IS NULL OR serie = $1) ORDER BY serie, year DESC, subject, kind DESC',
+    [SERIES.includes(url.searchParams.get('serie') ?? '') ? url.searchParams.get('serie') : null],
+  )
+  return { ok: true, exams: list.map((e) => ({ id: e.id, serie: e.serie, subject: e.subject, year: e.year, kind: e.kind, fileName: e.file_name })) }
+})
+
+route('GET', '/exams/file/:id', async ({ session, params }) => {
+  if (!hasAccess(session?.profile ?? null)) return fail('Accès refusé.', 403)
+  const e = await one<any>('SELECT mime, data, file_name FROM exams WHERE id::text = $1', [params.id])
+  if (!e) return fail('Introuvable.', 404)
+  return new Response(e.data, {
+    headers: {
+      'content-type': e.mime,
+      'content-disposition': `inline; filename="${String(e.file_name).replace(/[^\w.\- ]/g, '_')}"`,
+      'cache-control': 'private, max-age=3600',
+      'x-content-type-options': 'nosniff',
+    },
+  })
+})
+
+// Envoi d'un fichier (binaire brut) : réservé au Super admin, en-tête x-upload obligatoire.
+route('POST', '/admin/exams/upload', admin(async ({ request, body }) => {
+  if (request.headers.get('x-upload') !== '1') return fail('Requête invalide.', 400)
+  const q = new URL(request.url).searchParams
+  const serie = q.get('serie') ?? ''
+  const subject = (q.get('subject') ?? '').trim().slice(0, 80)
+  const year = Number(q.get('year'))
+  const kind = q.get('kind') === 'corrige' ? 'corrige' : 'sujet'
+  const mime = (request.headers.get('content-type') ?? '').split(';')[0].trim()
+  const fileName = (q.get('name') ?? 'fichier').slice(0, 120)
+  if (!SERIES.includes(serie) || !subject || !(year >= 2000 && year <= 2100)) return fail('Série, matière ou année invalide.')
+  if (!EXAM_MIMES.includes(mime)) return fail('Fichier accepté : PDF, PNG, JPG ou WEBP.')
+  const buf: Buffer = body
+  if (!buf || buf.length === 0) return fail('Fichier vide.')
+  if (buf.length > EXAM_MAX) return fail('Fichier trop lourd (8 Mo maximum).')
+  await exec(
+    'INSERT INTO exams (serie, subject, year, kind, file_name, mime, data) VALUES ($1,$2,$3,$4,$5,$6,$7)',
+    [serie, subject, year, kind, fileName, mime, buf],
+  )
+  return { ok: true }
+}))
+
+route('POST', '/admin/exams/delete', admin(async ({ body }) => {
+  const n = await exec('DELETE FROM exams WHERE id::text = $1', [String(body?.id ?? '')])
+  return { ok: n > 0 }
+}))
+
 // ---------- Point d'entrée ----------
 export async function handle(request: Request, path: string): Promise<Response> {
   try {
     await ensureReady()
     const url = new URL(request.url)
     let body: any = null
-    if (request.method === 'POST') {
+    if (request.method === 'POST' && path === '/admin/exams/upload') {
+      const ab = await request.arrayBuffer()
+      if (ab.byteLength > EXAM_MAX) return fail('Fichier trop lourd (8 Mo maximum).', 413)
+      body = Buffer.from(ab)
+    } else if (request.method === 'POST') {
       if (!(request.headers.get('content-type') ?? '').includes('application/json')) {
         return fail('Requête invalide.', 415)
       }

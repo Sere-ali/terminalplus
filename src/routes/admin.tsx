@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { post, useApi } from '@/lib/api'
+import { invalidate, post, useApi } from '@/lib/api'
 import { PasswordInput } from '@/components/password-input'
 import type { ChapterListResponse } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
@@ -52,6 +52,7 @@ function AdminGate() {
             </div>
 
             <PaymentsPanel />
+            <ExamsPanel />
             <ChangePasswordPanel />
 
             <h2 className="mt-8 text-lg font-bold">Contenus par matière</h2>
@@ -451,5 +452,83 @@ function Editor({ slug, onClose }: { slug: string; onClose: () => void }) {
         )}
       </div>
     </div>
+  )
+}
+
+
+function ExamsPanel() {
+  const [serie, setSerie] = useState<Serie>('D')
+  const [subject, setSubject] = useState('')
+  const [year, setYear] = useState('2025')
+  const [kind, setKind] = useState<'sujet' | 'corrige'>('sujet')
+  const [msg, setMsg] = useState<string | null>(null)
+  const [busy, setBusy] = useState(false)
+  const subs = useApi<{ name: string }[]>(`/api/subjects?serie=${serie}`)
+  const list = useApi<{ ok: boolean; exams: { id: string; serie: Serie; subject: string; year: number; kind: string }[] }>('/api/exams/all')
+
+  async function send(files: FileList | null) {
+    if (!files || files.length === 0) return
+    setBusy(true)
+    setMsg(null)
+    let done = 0
+    for (const f of Array.from(files)) {
+      const q = new URLSearchParams({ serie, subject: subject.trim(), year, kind, name: f.name })
+      const r = await fetch(`/api/admin/exams/upload?${q}`, {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'content-type': f.type || 'application/octet-stream', 'x-upload': '1' },
+        body: f,
+      })
+      const j = await r.json().catch(() => ({ ok: false, message: 'Erreur.' }))
+      if (!j.ok) { setMsg(`${f.name} : ${j.message ?? 'refusé'}`); break }
+      done++
+    }
+    setBusy(false)
+    if (done > 0) { setMsg(`${done} fichier(s) ajouté(s).`); invalidate() }
+  }
+
+  return (
+    <section className="mt-8">
+      <h2 className="text-lg font-bold">Sujets du BAC</h2>
+      <div className="mt-2 space-y-3 rounded-2xl border bg-card p-4 text-sm">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <select value={serie} onChange={(e) => setSerie(e.target.value as Serie)} className="rounded-lg border bg-background px-3 py-2.5">
+            {(['A', 'C', 'D'] as const).map((s) => <option key={s} value={s}>{SERIE_LABEL[s]}</option>)}
+          </select>
+          <input value={subject} onChange={(e) => setSubject(e.target.value)} list="exam-subjects" placeholder="Matière" className="rounded-lg border bg-background px-3 py-2.5" />
+          <datalist id="exam-subjects">{(subs ?? []).map((s) => <option key={s.name} value={s.name} />)}</datalist>
+          <select value={year} onChange={(e) => setYear(e.target.value)} className="rounded-lg border bg-background px-3 py-2.5">
+            {[2025, 2024, 2023, 2022, 2021].map((y) => <option key={y} value={y}>{y}</option>)}
+          </select>
+          <select value={kind} onChange={(e) => setKind(e.target.value as 'sujet' | 'corrige')} className="rounded-lg border bg-background px-3 py-2.5">
+            <option value="sujet">Sujet</option>
+            <option value="corrige">Corrigé</option>
+          </select>
+        </div>
+        <input
+          type="file"
+          multiple
+          accept="application/pdf,image/png,image/jpeg,image/webp"
+          disabled={busy || !subject.trim()}
+          onChange={(e) => { void send(e.target.files); e.target.value = '' }}
+          className="w-full text-sm"
+        />
+        <p className="text-xs text-muted-foreground">PDF ou photos, 8 Mo maximum par fichier. Choisis d'abord la série, la matière, l'année et le type.</p>
+        {busy && <p>Envoi…</p>}
+        {msg && <p className="font-semibold">{msg}</p>}
+        {list?.ok && list.exams.length > 0 && (
+          <ul className="divide-y rounded-xl border">
+            {list.exams.map((e) => (
+              <li key={e.id} className="flex items-center justify-between gap-2 px-3 py-2">
+                <a href={`/api/exams/file/${e.id}`} target="_blank" rel="noreferrer" className="min-w-0 truncate underline-offset-4 hover:underline">
+                  {SERIE_LABEL[e.serie]} · {e.subject} · {e.year} · {e.kind === 'sujet' ? 'Sujet' : 'Corrigé'}
+                </a>
+                <button type="button" onClick={() => { if (confirm('Supprimer ce fichier ?')) void post('/api/admin/exams/delete', { id: e.id }) }} className="shrink-0 text-destructive">Supprimer</button>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </section>
   )
 }

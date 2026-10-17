@@ -83,6 +83,19 @@ CREATE INDEX IF NOT EXISTS payments_user_idx ON payments(user_id, created_at);
 CREATE INDEX IF NOT EXISTS payments_ref_idx ON payments(reference);
 CREATE INDEX IF NOT EXISTS payments_status_idx ON payments(status, created_at);
 
+CREATE TABLE IF NOT EXISTS exams (
+  id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
+  serie text NOT NULL CHECK (serie IN ('A','C','D')),
+  subject text NOT NULL,
+  year integer NOT NULL,
+  kind text NOT NULL CHECK (kind IN ('sujet','corrige')),
+  file_name text NOT NULL,
+  mime text NOT NULL,
+  data bytea NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS exams_serie_idx ON exams(serie, year);
+
 CREATE TABLE IF NOT EXISTS settings (
   key text PRIMARY KEY,
   value text NOT NULL
