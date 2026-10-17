@@ -47,6 +47,15 @@ function Sujets({ serie, isAdmin }: { serie: Serie; isAdmin: boolean }) {
           </p>
         )}
 
+        <a
+          href="https://fomesoutra.com"
+          target="_blank"
+          rel="noreferrer"
+          className="mt-6 block rounded-2xl border border-dashed p-4 text-sm font-semibold text-primary"
+        >
+          Plus de sujets sur Fomesoutra →
+        </a>
+
         <div className="mt-6 space-y-5">
           {subjects.map((s) => (
             <section key={s} className="rounded-2xl border bg-card p-4">
