@@ -41,7 +41,7 @@ function PaiementPage() {
 
   const pending = status?.last?.status === 'pending'
   const rejected = status?.last?.status === 'rejected'
-  const price = (config?.price ?? 1000).toLocaleString('fr-FR')
+  const price = (config?.price ?? 1100).toLocaleString('fr-FR')
 
   return (
     <div className="min-h-screen bg-background">
@@ -87,7 +87,13 @@ function PaiementPage() {
               <li className="flex gap-3">
                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
                 <div>
-                  <p className="font-semibold">Envoie {price} F par Wave au numéro :</p>
+                  <a
+                    href="https://pay.wave.com/m/M_ci_n-Uu27Sg_p8T/c/ci/?amount=1100"
+                    className="mb-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
+                  >
+                    <Smartphone className="size-5" /> Payer {price} F avec Wave
+                  </a>
+                  <p className="font-semibold">Ou envoie {price} F par Wave au numéro :</p>
                   {config === undefined ? (
                     <p className="text-muted-foreground">Chargement…</p>
                   ) : config.waveNumber ? (

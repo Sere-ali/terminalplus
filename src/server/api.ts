@@ -14,8 +14,8 @@ import {
 import { generate, tutorEnabled } from './llm'
 import { BASE_RULES } from './tutor-rules'
 
-const PRICE_FCFA = 1000
-const DEFAULT_WAVE_NUMBER = '01 00 35 40 93'
+const PRICE_FCFA = 1100
+const DEFAULT_WAVE_NUMBER = '05 86 18 96 63'
 const DAILY_LIMIT = 40
 const SERIES = ['A', 'C', 'D']
 
@@ -275,7 +275,7 @@ route('GET', '/tutor/messages', async ({ session, url }) => {
 
 route('POST', '/tutor/ask', async ({ session, body }) => {
   if (!session?.profile) return { ok: false, message: 'Connecte-toi pour discuter avec le professeur.' }
-  if (!hasAccess(session.profile)) return { ok: false, message: 'Débloque tes cours (1 000 F par Wave) pour parler au professeur.' }
+  if (!hasAccess(session.profile)) return { ok: false, message: 'Débloque tes cours (1 100 F par Wave) pour parler au professeur.' }
   const mode = body?.mode === 'prof' ? 'prof' : 'chat'
   const question = typeof body?.question === 'string' ? body.question.trim().slice(0, 1200) : ''
   if (mode === 'chat' && question.length < 2) return { ok: false, message: 'Écris ta question.' }

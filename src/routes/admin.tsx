@@ -253,7 +253,7 @@ function PaymentsPanel() {
 
   return (
     <section className="mt-8 rounded-2xl border bg-card p-4">
-      <h2 className="text-lg font-bold">Paiements Wave (1 000 F)</h2>
+      <h2 className="text-lg font-bold">Paiements Wave (1 100 F)</h2>
       <p className="text-sm text-muted-foreground">
         Les élèves paient sur ton numéro Wave puis saisissent l'identifiant de transaction. Vérifie-le dans ton application Wave, puis valide.
       </p>
