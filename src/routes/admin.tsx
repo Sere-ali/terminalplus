@@ -33,7 +33,7 @@ function AdminGate() {
         {overview && overview.ok && (
           <>
             <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold">Super administration</h1>
-            <p className="text-sm text-muted-foreground">{overview.totalUsers} compte(s) enregistré(s)</p>
+            <p className="text-sm text-muted-foreground">{overview.bySerie.reduce((n, x) => n + x.students, 0)} élève(s) inscrit(s) · 1 Super admin (toi)</p>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
               {overview.bySerie.map((s) => (
@@ -66,7 +66,7 @@ function AdminGate() {
 
             {editing && <Editor slug={editing} onClose={() => setEditing(null)} />}
 
-            <h2 className="mt-8 text-lg font-bold">Tous les inscrits ({overview.totalUsers}) · {overview.paidCount} ont payé</h2>
+            <h2 className="mt-8 text-lg font-bold">Tous les comptes ({overview.totalUsers}) · {overview.paidCount} élève(s) ont payé</h2>
             <ul className="mt-2 divide-y rounded-2xl border bg-card text-sm">
               {overview.recent.length === 0 && <li className="p-4 text-muted-foreground">Aucun élève pour l'instant.</li>}
               {overview.recent.map((u) => (
