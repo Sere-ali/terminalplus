@@ -13,5 +13,7 @@ import { DEEP_MATHS_4 } from "./deep/maths4"
 import { DEEP_PC_6 } from "./deep/pc6"
 import { DEEP_FR_1 } from "./deep/fr1"
 import { DEEP_FR_2 } from "./deep/fr2"
+import { DEEP_PHILO_1 } from "./deep/philo1"
+import { DEEP_PHILO_2 } from "./deep/philo2"
 
-export const DEEP: Record<string, string> = { ...DEEP_MATHS_1, ...DEEP_MATHS_2, ...DEEP_MATHS_3, ...DEEP_PC_1, ...DEEP_PC_2, ...DEEP_PC_3, ...DEEP_PC_4, ...DEEP_PC_5, ...DEEP_SVT, ...DEEP_MATHS_4, ...DEEP_PC_6, ...DEEP_FR_1, ...DEEP_FR_2 }
+export const DEEP: Record<string, string> = { ...DEEP_MATHS_1, ...DEEP_MATHS_2, ...DEEP_MATHS_3, ...DEEP_PC_1, ...DEEP_PC_2, ...DEEP_PC_3, ...DEEP_PC_4, ...DEEP_PC_5, ...DEEP_SVT, ...DEEP_MATHS_4, ...DEEP_PC_6, ...DEEP_FR_1, ...DEEP_FR_2, ...DEEP_PHILO_1, ...DEEP_PHILO_2 }
