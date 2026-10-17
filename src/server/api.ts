@@ -422,14 +422,10 @@ route('GET', '/payments/status', async ({ session }) => {
 route('POST', '/payments/submit', async ({ session, body }) => {
   if (!session?.profile) return fail("Connecte-toi d'abord.", 401)
   if (hasAccess(session.profile)) return { ok: true }
-  const reference = String(body?.reference ?? '').trim().toUpperCase().replace(/\s+/g, '').slice(0, 40)
-  const phone = String(body?.phone ?? '').trim().slice(0, 20)
-  if (reference.length < 6) return fail("Entre l'identifiant de transaction Wave (il est dans le SMS ou le reçu Wave).")
-  if (phone.replace(/\D/g, '').length < 8) return fail('Entre le numéro Wave avec lequel tu as payé.')
   const pending = await one("SELECT 1 FROM payments WHERE user_id = $1 AND status = 'pending' AND checkout_id IS NULL", [session.uid])
   if (pending) return fail('Ton paiement est déjà en attente de validation. Patiente un peu.')
-  const dup = await one("SELECT 1 FROM payments WHERE reference = $1 AND status <> 'rejected'", [reference])
-  if (dup) return fail('Cet identifiant de transaction a déjà été utilisé.')
+  const reference = 'DEMANDE-' + crypto.randomUUID().slice(0, 8).toUpperCase()
+  const phone = '-'
   await exec(
     'INSERT INTO payments (user_id, name, phone, reference, amount) VALUES ($1,$2,$3,$4,$5)',
     [session.uid, session.profile.name, phone, reference, PRICE_FCFA],

@@ -15,8 +15,6 @@ function PaiementPage() {
     hasAccess: boolean
     last: { status: 'pending' | 'approved' | 'rejected'; reference: string; createdAt: number } | null
   } | null>('/api/payments/status')
-  const [reference, setReference] = useState('')
-  const [phone, setPhone] = useState('')
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
@@ -56,7 +54,7 @@ function PaiementPage() {
           <div className="mt-6 rounded-2xl border bg-brand-orange-soft p-5">
             <p className="flex items-center gap-2 font-bold"><Clock className="size-5 text-brand-orange" /> Paiement en cours de vérification</p>
             <p className="mt-2 text-sm">
-              Nous avons bien reçu ton identifiant <strong>{status?.last?.reference}</strong>. Dès que le paiement est
+              Nous avons bien reçu ta demande. Dès que le paiement est
               confirmé, tes cours s'ouvrent automatiquement. Reviens sur cette page dans quelques minutes.
             </p>
           </div>
@@ -107,7 +105,7 @@ function PaiementPage() {
               </li>
               <li className="flex gap-3">
                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-                <p className="font-semibold">Recopie ci-dessous l'identifiant de transaction que Wave t'envoie par SMS.</p>
+                <p className="font-semibold">Une fois payé, reviens ici et appuie sur « J'ai payé ». Ton accès est ouvert dès que le paiement est validé.</p>
               </li>
             </ol>
 
@@ -117,35 +115,20 @@ function PaiementPage() {
                 e.preventDefault()
                 setLoading(true)
                 setError(null)
-                const res = await post('/api/payments/submit', { reference, phone })
+                const res = await post('/api/payments/submit', {})
                 setLoading(false)
                 if (!res.ok) setError(res.message ?? 'Une erreur est survenue.')
               }}
             >
               {rejected && (
                 <p className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
-                  Ton dernier paiement n'a pas pu être confirmé. Vérifie l'identifiant et réessaie.
+                  Ton dernier paiement n'a pas pu être confirmé. Si tu as bien payé, appuie à nouveau sur « J'ai payé ».
                 </p>
               )}
-              <input
-                value={reference}
-                onChange={(e) => setReference(e.target.value)}
-                required
-                placeholder="Identifiant de transaction Wave"
-                className="w-full rounded-lg border bg-background px-3.5 py-3 text-base outline-none focus:border-primary focus:ring-2 focus:ring-primary/25"
-              />
-              <input
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                required
-                inputMode="tel"
-                placeholder="Ton numéro Wave (celui qui a payé)"
-                className="w-full rounded-lg border bg-background px-3.5 py-3 text-base outline-none focus:border-primary focus:ring-2 focus:ring-primary/25"
-              />
               {error && <p className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
               <button
                 type="submit"
-                disabled={loading || !config?.waveNumber}
+                disabled={loading}
                 className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
               >
                 <CheckCircle2 className="size-5" /> {loading ? 'Envoi…' : "J'ai payé, débloquer mes cours"}
