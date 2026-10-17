@@ -27,7 +27,7 @@ export function SiteHeader() {
               </Link>
               {me.isAdmin && (
                 <Link to="/admin" className="flex items-center gap-1 rounded-md px-3 py-2 font-medium text-brand-orange hover:bg-secondary">
-                  <ShieldCheck className="size-4" /> Admin
+                  <ShieldCheck className="size-4" /> Super admin
                 </Link>
               )}
               <button

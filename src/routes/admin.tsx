@@ -32,7 +32,7 @@ function AdminGate() {
         )}
         {overview && overview.ok && (
           <>
-            <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold">Administration</h1>
+            <h1 className="font-[family-name:var(--font-display)] text-3xl font-bold">Super administration</h1>
             <p className="text-sm text-muted-foreground">{overview.totalUsers} compte(s) enregistré(s)</p>
 
             <div className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -140,7 +140,7 @@ function StudentRow({ u }: { u: StudentInfo }) {
       <span className="flex items-center gap-2">
         <span className="text-xs text-muted-foreground">{SERIE_LABEL[u.serie]} · {new Date(u.createdAt).toLocaleDateString('fr-FR')}</span>
         <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${u.paid ? 'bg-brand-green-soft text-primary' : 'bg-brand-orange-soft'}`}>
-          {u.role === 'admin' ? 'Admin' : u.paid ? 'Payé' : 'Non payé'}
+          {u.role === 'admin' ? 'Super admin' : u.paid ? 'Payé' : 'Non payé'}
         </span>
         {u.role !== 'admin' && (
           <button
