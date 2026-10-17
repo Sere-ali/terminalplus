@@ -1,0 +1,18 @@
+{
+  "/": {
+    "title": "TERMINALE+ — Réussis ton BAC en Côte d'Ivoire",
+    "description": "Résumés de cours clairs pour les Terminales A, C et D de Côte d'Ivoire, selon le programme officiel, avec un professeur virtuel pour t'expliquer chaque leçon."
+  },
+  "/connexion": {
+    "title": "Connexion — TERMINALE+",
+    "description": "Crée ton compte élève gratuit ou connecte-toi pour accéder à tes cours."
+  },
+  "/tableau": {
+    "title": "Mon tableau de bord — TERMINALE+",
+    "description": "Retrouve tes matières, ta progression et tes leçons favorites."
+  },
+  "/admin": {
+    "title": "Administration — TERMINALE+",
+    "description": "Espace du super administrateur."
+  }
+}
