@@ -32,7 +32,7 @@ function Lesson({ slug }: { slug: string }) {
         {res && !res.ok && (
           <div className="py-16 text-center">
             <p className="text-lg font-semibold">
-              {res.code === 'NOT_PUBLISHED' ? 'Cette leçon sera bientôt disponible.' : res.code === 'NOT_FOUND' ? 'Leçon introuvable.' : 'Connecte-toi pour lire cette leçon.'}
+              {res.code === 'NOT_PUBLISHED' ? 'Cette leçon sera bientôt disponible.' : res.code === 'NOT_FOUND' ? 'Leçon introuvable.' : res.code === 'PAYMENT_REQUIRED' ? 'Paie ton accès (1 000 F par Wave) pour lire cette leçon.' : 'Connecte-toi pour lire cette leçon.'}
             </p>
             <Link to="/tableau" className="mt-4 inline-block font-semibold text-primary underline">Retour à mes matières</Link>
           </div>

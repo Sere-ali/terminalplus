@@ -1,6 +1,7 @@
 import { getAuthUserId } from "@convex-dev/auth/server"
 import { v } from "convex/values"
 import { mutation, query } from "./_generated/server"
+import { hasAccess } from "./lib"
 
 const serieValidator = v.union(v.literal("A"), v.literal("C"), v.literal("D"))
 
@@ -19,6 +20,7 @@ export const me = query({
       authenticated: true as const,
       email: user?.email ?? null,
       profile,
+      hasAccess: hasAccess(profile),
     }
   },
 })

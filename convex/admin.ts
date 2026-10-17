@@ -1,5 +1,6 @@
 import { v } from "convex/values"
 import { mutation, query } from "./_generated/server"
+import type { Id } from "./_generated/dataModel"
 import { isAdminCtx } from "./lib"
 
 /** Tableau de bord du super administrateur. */
@@ -31,20 +32,34 @@ export const overview = query({
         }),
     }))
 
-    const recent = [...profiles]
-      .sort((a, b) => b.createdAt - a.createdAt)
-      .slice(0, 25)
-      .map((p) => ({
+    const latest = [...profiles].sort((a, b) => b.createdAt - a.createdAt).slice(0, 300)
+    const recent: {
+      id: Id<"profiles">
+      name: string
+      email: string
+      serie: "A" | "C" | "D"
+      role: "student" | "admin"
+      paid: boolean
+      createdAt: number
+    }[] = []
+    for (const p of latest) {
+      const user = await ctx.db.get(p.userId)
+      recent.push({
         id: p._id,
         name: p.name,
+        email: user?.email ?? "",
         serie: p.serie,
         role: p.role,
+        paid: p.role === "admin" || p.paid === true,
         createdAt: p.createdAt,
-      }))
+      })
+    }
+    const paidCount = profiles.filter((p) => p.role === "student" && p.paid === true).length
 
     return {
       ok: true as const,
       totalUsers: profiles.length,
+      paidCount,
       bySerie,
       recent,
     }

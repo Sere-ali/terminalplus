@@ -12,7 +12,31 @@ export default defineSchema({
     serie: v.union(v.literal("A"), v.literal("C"), v.literal("D")),
     role: v.union(v.literal("student"), v.literal("admin")),
     createdAt: v.number(),
+    // Accès payant (1 000 F par Wave) : validé par l'administrateur
+    paid: v.optional(v.boolean()),
+    paidAt: v.optional(v.number()),
   }).index("by_user", ["userId"]),
+
+  // Paiements Wave déclarés par les élèves (à valider par l'administrateur)
+  payments: defineTable({
+    userId: v.id("users"),
+    name: v.string(),
+    phone: v.string(),
+    reference: v.string(),
+    amount: v.number(),
+    status: v.union(v.literal("pending"), v.literal("approved"), v.literal("rejected")),
+    createdAt: v.number(),
+    decidedAt: v.optional(v.number()),
+  })
+    .index("by_user", ["userId"])
+    .index("by_reference", ["reference"])
+    .index("by_status", ["status", "createdAt"]),
+
+  // Réglages modifiables par l'administrateur (ex. numéro Wave)
+  settings: defineTable({
+    key: v.string(),
+    value: v.string(),
+  }).index("by_key", ["key"]),
 
   // Matières d'une série
   subjects: defineTable({

@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ConnexionRouteImport } from './routes/connexion'
+import { Route as PaiementRouteImport } from './routes/paiement'
 import { Route as TableauRouteImport } from './routes/tableau'
 import { Route as CoursSlugRouteImport } from './routes/cours.$slug'
 import { Route as MatiereSlugRouteImport } from './routes/matiere.$slug'
@@ -29,6 +30,11 @@ const AdminRoute = AdminRouteImport.update({
 const ConnexionRoute = ConnexionRouteImport.update({
   id: '/connexion',
   path: '/connexion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaiementRoute = PaiementRouteImport.update({
+  id: '/paiement',
+  path: '/paiement',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TableauRoute = TableauRouteImport.update({
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/paiement': typeof PaiementRoute
   '/tableau': typeof TableauRoute
   '/cours/$slug': typeof CoursSlugRoute
   '/matiere/$slug': typeof MatiereSlugRoute
@@ -59,6 +66,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/paiement': typeof PaiementRoute
   '/tableau': typeof TableauRoute
   '/cours/$slug': typeof CoursSlugRoute
   '/matiere/$slug': typeof MatiereSlugRoute
@@ -68,6 +76,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/paiement': typeof PaiementRoute
   '/tableau': typeof TableauRoute
   '/cours/$slug': typeof CoursSlugRoute
   '/matiere/$slug': typeof MatiereSlugRoute
@@ -78,6 +87,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/paiement'
     | '/tableau'
     | '/cours/$slug'
     | '/matiere/$slug'
@@ -86,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/paiement'
     | '/tableau'
     | '/cours/$slug'
     | '/matiere/$slug'
@@ -94,6 +105,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/paiement'
     | '/tableau'
     | '/cours/$slug'
     | '/matiere/$slug'
@@ -103,6 +115,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   ConnexionRoute: typeof ConnexionRoute
+  PaiementRoute: typeof PaiementRoute
   TableauRoute: typeof TableauRoute
   CoursSlugRoute: typeof CoursSlugRoute
   MatiereSlugRoute: typeof MatiereSlugRoute
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/connexion'
       fullPath: '/connexion'
       preLoaderRoute: typeof ConnexionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/paiement': {
+      id: '/paiement'
+      path: '/paiement'
+      fullPath: '/paiement'
+      preLoaderRoute: typeof PaiementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tableau': {
@@ -159,6 +179,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   ConnexionRoute: ConnexionRoute,
+  PaiementRoute: PaiementRoute,
   TableauRoute: TableauRoute,
   CoursSlugRoute: CoursSlugRoute,
   MatiereSlugRoute: MatiereSlugRoute,

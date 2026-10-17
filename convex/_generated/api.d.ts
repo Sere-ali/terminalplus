@@ -26,6 +26,7 @@ import type * as content_svt from "../content/svt.js";
 import type * as http from "../http.js";
 import type * as lib from "../lib.js";
 import type * as llm from "../llm.js";
+import type * as payments from "../payments.js";
 import type * as macaly from "../macaly.js";
 import type * as progress from "../progress.js";
 import type * as seed from "../seed.js";
@@ -58,6 +59,7 @@ declare const fullApi: ApiFromModules<{
   http: typeof http;
   lib: typeof lib;
   llm: typeof llm;
+  payments: typeof payments;
   macaly: typeof macaly;
   progress: typeof progress;
   seed: typeof seed;

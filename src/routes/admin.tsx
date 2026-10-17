@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useMutation, useQuery } from 'convex/react'
 import { api } from '@/convex/_generated/api'
+import type { Id } from '@/convex/_generated/dataModel'
 import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
 import { Markdown } from '@/components/markdown'
@@ -44,6 +45,8 @@ function AdminGate() {
               ))}
             </div>
 
+            <PaymentsPanel />
+
             <h2 className="mt-8 text-lg font-bold">Contenus par matière</h2>
             <div className="mt-2 grid grid-cols-3 gap-1 rounded-xl border bg-card p-1 text-sm font-semibold sm:max-w-md">
               {(['A', 'C', 'D'] as const).map((s) => (
@@ -62,20 +65,130 @@ function AdminGate() {
 
             {editing && <Editor slug={editing} onClose={() => setEditing(null)} />}
 
-            <h2 className="mt-8 text-lg font-bold">Derniers inscrits</h2>
+            <h2 className="mt-8 text-lg font-bold">Tous les inscrits ({overview.totalUsers}) · {overview.paidCount} ont payé</h2>
             <ul className="mt-2 divide-y rounded-2xl border bg-card text-sm">
               {overview.recent.length === 0 && <li className="p-4 text-muted-foreground">Aucun élève pour l'instant.</li>}
               {overview.recent.map((u) => (
-                <li key={u.id} className="flex items-center justify-between p-3">
-                  <span className="font-medium">{u.name}{u.role === 'admin' && ' 👑'}</span>
-                  <span className="text-muted-foreground">{SERIE_LABEL[u.serie]} · {new Date(u.createdAt).toLocaleDateString('fr-FR')}</span>
-                </li>
+                <StudentRow key={u.id} u={u} />
               ))}
             </ul>
           </>
         )}
       </main>
     </div>
+  )
+}
+
+type StudentInfo = {
+  id: Id<'profiles'>
+  name: string
+  email: string
+  serie: Serie
+  role: 'student' | 'admin'
+  paid: boolean
+  createdAt: number
+}
+
+function StudentRow({ u }: { u: StudentInfo }) {
+  const setAccess = useMutation(api.payments.setAccess)
+  return (
+    <li className="flex flex-wrap items-center justify-between gap-2 p-3">
+      <span>
+        <span className="font-medium">{u.name}{u.role === 'admin' && ' 👑'}</span>
+        <span className="block text-xs text-muted-foreground">{u.email}</span>
+      </span>
+      <span className="flex items-center gap-2">
+        <span className="text-xs text-muted-foreground">{SERIE_LABEL[u.serie]} · {new Date(u.createdAt).toLocaleDateString('fr-FR')}</span>
+        <span className={`rounded-full px-2 py-0.5 text-[11px] font-semibold ${u.paid ? 'bg-brand-green-soft text-primary' : 'bg-brand-orange-soft'}`}>
+          {u.role === 'admin' ? 'Admin' : u.paid ? 'Payé' : 'Non payé'}
+        </span>
+        {u.role !== 'admin' && (
+          <button
+            type="button"
+            onClick={() => setAccess({ profileId: u.id, paid: !u.paid })}
+            className="rounded-lg border px-2.5 py-1 text-xs font-semibold hover:bg-secondary"
+          >
+            {u.paid ? "Retirer l'accès" : "Donner l'accès"}
+          </button>
+        )}
+      </span>
+    </li>
+  )
+}
+
+function PaymentsPanel() {
+  const data = useQuery(api.payments.adminList, {})
+  const decide = useMutation(api.payments.decide)
+  const setWave = useMutation(api.payments.setWaveNumber)
+  const [wave, setWaveValue] = useState<string | null>(null)
+  const [saved, setSaved] = useState(false)
+
+  if (!data || !data.ok) return null
+  const current = wave ?? data.waveNumber
+
+  return (
+    <section className="mt-8 rounded-2xl border bg-card p-4">
+      <h2 className="text-lg font-bold">Paiements Wave (1 000 F)</h2>
+      <p className="text-sm text-muted-foreground">
+        Les élèves paient sur ton numéro Wave puis saisissent l'identifiant de transaction. Vérifie-le dans ton application Wave, puis valide.
+      </p>
+
+      <form
+        className="mt-3 flex flex-wrap items-center gap-2"
+        onSubmit={async (e) => {
+          e.preventDefault()
+          await setWave({ value: current })
+          setSaved(true)
+        }}
+      >
+        <label className="text-sm font-semibold" htmlFor="wave">Mon numéro Wave :</label>
+        <input
+          id="wave"
+          value={current}
+          onChange={(e) => { setWaveValue(e.target.value); setSaved(false) }}
+          inputMode="tel"
+          placeholder="Ex. 07 00 00 00 00"
+          className="rounded-lg border bg-background px-3 py-2 text-sm"
+        />
+        <button type="submit" className="rounded-lg bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground">Enregistrer</button>
+        {saved && <span className="text-sm font-medium text-primary">Enregistré ✔</span>}
+      </form>
+
+      <h3 className="mt-5 text-sm font-bold uppercase tracking-wider text-brand-orange">À valider ({data.pending.length})</h3>
+      <ul className="mt-2 divide-y rounded-xl border text-sm">
+        {data.pending.length === 0 && <li className="p-3 text-muted-foreground">Aucun paiement en attente.</li>}
+        {data.pending.map((p) => (
+          <li key={p.id} className="flex flex-wrap items-center justify-between gap-2 p-3">
+            <span>
+              <span className="font-semibold">{p.name}</span> · {p.phone}
+              <span className="block text-xs text-muted-foreground">
+                Transaction : <strong>{p.reference}</strong> · {p.amount} F · {new Date(p.createdAt).toLocaleString('fr-FR')}
+              </span>
+            </span>
+            <span className="flex gap-2">
+              <button type="button" onClick={() => decide({ paymentId: p.id, approve: true })} className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">Valider</button>
+              <button type="button" onClick={() => decide({ paymentId: p.id, approve: false })} className="rounded-lg border px-3 py-1.5 text-xs font-semibold hover:bg-secondary">Refuser</button>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      {data.decided.length > 0 && (
+        <>
+          <h3 className="mt-5 text-sm font-bold uppercase tracking-wider text-muted-foreground">Derniers traités</h3>
+          <ul className="mt-2 divide-y rounded-xl border text-xs">
+            {data.decided.slice(0, 10).map((p) => (
+              <li key={p.id} className="flex justify-between gap-2 p-2.5">
+                <span>{p.name} · {p.reference}</span>
+                <span className={p.status === 'approved' ? 'font-semibold text-primary' : 'text-muted-foreground'}>
+                  {p.status === 'approved' ? 'Validé' : 'Refusé'}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+    </section>
   )
 }
 

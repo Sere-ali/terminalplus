@@ -1,7 +1,7 @@
 import { getAuthUserId } from "@convex-dev/auth/server"
 import { v } from "convex/values"
 import { query } from "./_generated/server"
-import { getMyProfile } from "./lib"
+import { getMyProfile, hasAccess } from "./lib"
 
 const serieValidator = v.union(v.literal("A"), v.literal("C"), v.literal("D"))
 
@@ -71,7 +71,7 @@ export const chapterList = query({
   },
 })
 
-/** Contenu d'une leçon : réservé aux comptes connectés. Les brouillons sont réservés à l'admin. */
+/** Contenu d'une leçon : réservé aux comptes connectés ayant payé (ou administrateur). Les brouillons sont réservés à l'admin. */
 export const chapter = query({
   args: { slug: v.string() },
   handler: async (ctx, args) => {
@@ -79,12 +79,15 @@ export const chapter = query({
     if (!userId) {
       return { ok: false as const, code: "LOGIN_REQUIRED" as const }
     }
+    const profile = await getMyProfile(ctx)
+    if (!hasAccess(profile)) {
+      return { ok: false as const, code: "PAYMENT_REQUIRED" as const }
+    }
     const c = await ctx.db
       .query("chapters")
       .withIndex("by_slug", (q) => q.eq("slug", args.slug))
       .unique()
     if (!c) return { ok: false as const, code: "NOT_FOUND" as const }
-    const profile = await getMyProfile(ctx)
     const isAdmin = profile?.role === "admin"
     if (c.status !== "published" && !isAdmin) {
       return { ok: false as const, code: "NOT_PUBLISHED" as const }

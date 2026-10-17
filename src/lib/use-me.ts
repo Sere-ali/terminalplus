@@ -13,6 +13,7 @@ export type MeState =
       name: string
       serie: Serie
       isAdmin: boolean
+      hasAccess: boolean
     }
 
 /** État de la session de l'élève (identité toujours lue côté serveur). */
@@ -27,6 +28,7 @@ export function useMe(): MeState {
     name: me.profile.name,
     serie: me.profile.serie,
     isAdmin: me.profile.role === 'admin',
+    hasAccess: me.hasAccess,
   }
 }
 

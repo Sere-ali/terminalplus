@@ -17,3 +17,8 @@ export async function isAdminCtx(ctx: Ctx): Promise<boolean> {
   const profile = await getMyProfile(ctx)
   return !!profile && profile.role === "admin"
 }
+
+/** Accès aux cours : administrateur, ou élève dont le paiement Wave a été validé. */
+export function hasAccess(profile: { role: "student" | "admin"; paid?: boolean } | null): boolean {
+  return !!profile && (profile.role === "admin" || profile.paid === true)
+}

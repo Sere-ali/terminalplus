@@ -30,6 +30,9 @@ function Home() {
             Des résumés de cours pour les <strong>Terminales A, C et D</strong>, expliqués simplement,
             avec un <strong>professeur virtuel</strong> qui répond à tes questions à toute heure.
           </p>
+          <p className="mt-5 text-sm font-semibold text-primary">
+            Accès complet à tous les cours : <span className="text-brand-orange">1 000 F CFA</span> une seule fois, par Wave
+          </p>
           <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
             {me.status === 'ready' ? (
               <Link to="/tableau" className="rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow hover:bg-primary/90">
@@ -37,7 +40,7 @@ function Home() {
               </Link>
             ) : (
               <Link to="/connexion" className="rounded-xl bg-primary px-6 py-3.5 text-base font-semibold text-primary-foreground shadow hover:bg-primary/90">
-                Créer mon compte gratuit
+                Créer mon compte
               </Link>
             )}
             <a href="#matieres" className="rounded-xl border bg-card px-6 py-3.5 text-base font-semibold hover:bg-secondary">

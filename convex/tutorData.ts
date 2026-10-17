@@ -1,6 +1,7 @@
 import { getAuthUserId } from "@convex-dev/auth/server"
 import { v } from "convex/values"
 import { internalMutation, internalQuery, query } from "./_generated/server"
+import { hasAccess } from "./lib"
 
 export const DAILY_LIMIT = 40
 
@@ -16,6 +17,7 @@ export const context = internalQuery({
       .withIndex("by_user", (q) => q.eq("userId", userId))
       .unique()
     if (!profile) return { ok: false as const, code: "PROFILE_REQUIRED" as const }
+    if (!hasAccess(profile)) return { ok: false as const, code: "PAYMENT_REQUIRED" as const }
 
     const chapter = await ctx.db
       .query("chapters")
