@@ -57,7 +57,7 @@ const config = defineConfig({
       },
     }),
     // IMPORTANT: Do not remove nitro() — required for production build. Do NOT create nitro.config.ts; it breaks both production and preview builds.
-    nitro(),
+    nitro({ compressPublicAssets: true }),
     viteReact(),
   ],
 })

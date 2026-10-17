@@ -14,6 +14,7 @@ import {
   verifyPassword,
 } from './security'
 import { randomBytes } from 'node:crypto'
+import { gzipSync } from 'node:zlib'
 import { generate, tutorEnabled } from './llm'
 import { BASE_RULES } from './tutor-rules'
 
@@ -701,6 +702,18 @@ route('POST', '/admin/exams/delete', admin(async ({ body }) => {
   return { ok: n > 0 }
 }))
 
+// Compression des réponses JSON volumineuses (leçons, listes) : 3 à 5 fois moins de données à télécharger.
+async function maybeGzip(request: Request, res: Response): Promise<Response> {
+  const type = res.headers.get('content-type') ?? ''
+  if (!type.startsWith('application/json') || !(request.headers.get('accept-encoding') ?? '').includes('gzip')) return res
+  const buf = Buffer.from(await res.arrayBuffer())
+  if (buf.length < 1024) return new Response(buf, { status: res.status, headers: res.headers })
+  const h = new Headers(res.headers)
+  h.set('content-encoding', 'gzip')
+  h.set('vary', 'Accept-Encoding')
+  return new Response(gzipSync(buf, { level: 6 }), { status: res.status, headers: h })
+}
+
 // ---------- Point d'entrée ----------
 export async function handle(request: Request, path: string): Promise<Response> {
   try {
@@ -729,7 +742,8 @@ export async function handle(request: Request, path: string): Promise<Response> 
       if (!params) continue
       const session = await getSession(request)
       const out = await r.handler({ request, url, params, session, body })
-      return out instanceof Response ? out : json(out)
+      const res = out instanceof Response ? out : json(out)
+      return maybeGzip(request, res)
     }
     return fail('Introuvable.', 404)
   } catch (e) {
