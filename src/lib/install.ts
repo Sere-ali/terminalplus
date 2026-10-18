@@ -30,6 +30,15 @@ export function initInstall() {
   if (started || typeof window === 'undefined') return
   started = true
   set({ installed: isStandalone(), platform: detectPlatform(), ready: true })
+  const early = (window as any).__bip as BIPEvent | undefined
+  if (early) {
+    deferred = early
+    set({ canPrompt: true })
+  }
+  window.addEventListener('tp-bip', () => {
+    deferred = (window as any).__bip as BIPEvent
+    set({ canPrompt: true })
+  })
   window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault()
     deferred = e as BIPEvent
@@ -40,9 +49,6 @@ export function initInstall() {
     set({ installed: true, canPrompt: false, sheetOpen: false })
   })
   window.matchMedia('(display-mode: standalone)').addEventListener('change', (e) => set({ installed: e.matches }))
-  if ('serviceWorker' in navigator && import.meta.env.PROD) {
-    navigator.serviceWorker.register('/sw.js').catch(() => {})
-  }
 }
 
 export async function startInstall() {
@@ -50,9 +56,18 @@ export async function startInstall() {
     const d = deferred
     deferred = null
     set({ canPrompt: false })
-    await d.prompt()
-    await d.userChoice.catch(() => {})
-    return
+    try {
+      await d.prompt()
+      const choice = await d.userChoice
+      if (choice.outcome === 'dismissed') {
+        deferred = d // l'élève a refusé : on pourra reproposer
+        set({ canPrompt: true })
+      }
+      return
+    } catch {
+      set({ sheetOpen: true })
+      return
+    }
   }
   set({ sheetOpen: true })
 }

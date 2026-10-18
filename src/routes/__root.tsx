@@ -35,6 +35,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
     <html lang="fr" suppressHydrationWarning>
       <head>
         <HeadContent />
+        {/* Capte tout de suite l'invitation d'installation du navigateur (elle arrive avant le chargement du site) et active le mode hors-ligne. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__bip=e;window.dispatchEvent(new Event('tp-bip'))});" +
+              "if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}",
+          }}
+        />
       </head>
       <MacalyBridge>
         <body>
