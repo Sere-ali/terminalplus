@@ -82,7 +82,7 @@ function PaiementPage() {
               }}
               className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
             >
-              <Smartphone className="size-5" /> {loading ? 'Ouverture de Wave…' : `Payer ${price} F avec Wave`}
+              <Smartphone className="size-5" /> {loading ? 'Ouverture de Wave…' : `Appuie ici pour solder (${price} F)`}
             </button>
           </div>
         ) : (
@@ -95,7 +95,7 @@ function PaiementPage() {
                     href="https://pay.wave.com/m/M_ci_n-Uu27Sg_p8T/c/ci/?amount=1100"
                     className="mb-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
                   >
-                    <Smartphone className="size-5" /> Payer {price} F avec Wave
+                    <Smartphone className="size-5" /> Appuie ici pour solder ({price} F)
                   </a>
                   <p className="font-semibold">Ou envoie {price} F par Wave au numéro :</p>
                   {config === undefined ? (
