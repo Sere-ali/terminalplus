@@ -51,7 +51,7 @@ export function SiteHeader() {
               to="/connexion"
               className="whitespace-nowrap rounded-md bg-primary px-3 py-2 font-semibold sm:px-4 text-primary-foreground hover:bg-primary/90"
             >
-              {me.status === 'needs-profile' ? (<><span className="sm:hidden">Terminer</span><span className="hidden sm:inline">Terminer mon inscription</span></>) : 'Se connecter'}
+              {me.status === 'needs-profile' ? (<><span className="sm:hidden">Terminer</span><span className="hidden sm:inline">Terminer mon inscription</span></>) : 'Connexion'}
             </Link>
           )}
         </nav>

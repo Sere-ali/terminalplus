@@ -73,9 +73,14 @@ function Home() {
                   Continuer mes cours <ArrowRight className="size-5 transition group-hover:translate-x-1" />
                 </Link>
               ) : (
-                <Link to="/connexion" search={{ mode: 'signup' }} className="group flex items-center justify-center gap-2 rounded-2xl glass px-7 py-4 text-base font-bold transition hover:bg-white/15 active:scale-[0.98]">
-                  Créer mon compte <ArrowRight className="size-5 transition group-hover:translate-x-1" />
-                </Link>
+                <>
+                  <Link to="/connexion" search={{ mode: 'signup' }} className="flex items-center justify-center gap-2 rounded-2xl bg-white px-7 py-4 text-base font-bold text-primary shadow-lg transition active:scale-[0.98]">
+                    Inscription
+                  </Link>
+                  <Link to="/connexion" className="flex items-center justify-center gap-2 rounded-2xl glass px-7 py-4 text-base font-bold transition hover:bg-white/15 active:scale-[0.98]">
+                    Connexion
+                  </Link>
+                </>
               )}
             </div>
           </div>

@@ -38,20 +38,6 @@ export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp'
         }
       }}
     >
-      <div className="grid grid-cols-2 gap-1 rounded-xl bg-secondary p-1" role="tablist">
-        {(['signIn', 'signUp'] as const).map((t) => (
-          <button
-            key={t}
-            type="button"
-            role="tab"
-            aria-selected={step === t}
-            onClick={() => { setStep(t); setError(null) }}
-            className={`rounded-lg py-2.5 text-sm font-bold transition ${step === t ? 'bg-card text-primary shadow' : 'text-muted-foreground'}`}
-          >
-            {t === 'signIn' ? 'Connexion' : 'Inscription'}
-          </button>
-        ))}
-      </div>
       <h2 className="text-xl font-bold">{isSignUp ? 'Crée ton compte' : 'Content de te revoir !'}</h2>
       <input name="email" type="text" autoComplete="username" autoCapitalize="none" required placeholder="Ton identifiant" className={inputCls} disabled={loading} />
       <PasswordInput
