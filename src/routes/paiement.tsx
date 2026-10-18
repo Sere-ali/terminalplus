@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { Clock, Smartphone } from 'lucide-react'
+import { ArrowDown, ArrowRight, Clock, Smartphone } from 'lucide-react'
 import { invalidate, post, useApi } from '@/lib/api'
 import { SiteHeader } from '@/components/site-header'
 import { useMe } from '@/lib/use-me'
@@ -68,6 +68,7 @@ function PaiementPage() {
           <div className="mt-6 space-y-4 rounded-2xl border bg-card p-5">
             <p className="text-sm">Appuie sur le bouton : Wave s'ouvre, tu valides le paiement, et tes cours se débloquent tout seuls.</p>
             {error && <p className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
+            <ArrowDown className="mx-auto size-8 animate-bounce text-brand-orange" aria-hidden />
             <button
               type="button"
               disabled={loading}
@@ -82,7 +83,7 @@ function PaiementPage() {
               }}
               className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
             >
-              <Smartphone className="size-5" /> {loading ? 'Ouverture de Wave…' : `Appuie ici pour solder (${price} F)`}
+              <Smartphone className="size-5" /> {loading ? 'Ouverture de Wave…' : `Appuie ici pour solder (${price} F)`} {!loading && <ArrowRight className="size-5" aria-hidden />}
             </button>
           </div>
         ) : (
@@ -91,11 +92,12 @@ function PaiementPage() {
               <li className="flex gap-3">
                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">1</span>
                 <div>
+                  <ArrowDown className="mx-auto mb-1 size-8 animate-bounce text-brand-orange" aria-hidden />
                   <a
                     href="https://pay.wave.com/m/M_ci_n-Uu27Sg_p8T/c/ci/?amount=1100"
                     className="mb-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
                   >
-                    <Smartphone className="size-5" /> Appuie ici pour solder ({price} F)
+                    <Smartphone className="size-5" /> Appuie ici pour solder ({price} F) <ArrowRight className="size-5" aria-hidden />
                   </a>
                   <p className="font-semibold">Ou envoie {price} F par Wave au numéro :</p>
                   {config === undefined ? (
