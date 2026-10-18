@@ -313,6 +313,9 @@ function PaymentsPanel() {
         {saved && <span className="text-sm font-medium text-primary">Enregistré ✔</span>}
       </form>
 
+      <p className="mt-3 rounded-xl bg-secondary p-3 text-sm">
+        Les élèves ne signalent plus leur paiement. Quand tu reçois de l'argent sur Wave, repère le numéro qui a payé, retrouve l'élève dans « Tous les comptes » (son numéro WhatsApp est affiché) et appuie sur « Donner l'accès ».
+      </p>
       <h3 className="mt-5 text-sm font-bold uppercase tracking-wider text-brand-orange">À valider ({data.pending.length})</h3>
       <ul className="mt-2 divide-y rounded-xl border text-sm">
         {data.pending.length === 0 && <li className="p-3 text-muted-foreground">Aucun paiement en attente.</li>}

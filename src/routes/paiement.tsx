@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import { CheckCircle2, Clock, Smartphone } from 'lucide-react'
-import { post, useApi } from '@/lib/api'
+import { Clock, Smartphone } from 'lucide-react'
+import { invalidate, post, useApi } from '@/lib/api'
 import { SiteHeader } from '@/components/site-header'
 import { useMe } from '@/lib/use-me'
 
@@ -35,6 +35,12 @@ function PaiementPage() {
     }
     let timer = setTimeout(run, 500)
     return () => clearTimeout(timer)
+  }, [])
+
+  // Vérifie régulièrement si le paiement a été reçu : l'accès s'ouvre sans rien faire.
+  useEffect(() => {
+    const t = setInterval(() => invalidate(), 15000)
+    return () => clearInterval(t)
   }, [])
 
   const pending = status?.last?.status === 'pending'
@@ -105,35 +111,14 @@ function PaiementPage() {
               </li>
               <li className="flex gap-3">
                 <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">2</span>
-                <p className="font-semibold">Une fois payé, reviens ici et appuie sur « J'ai payé ». Ton accès est ouvert dès que le paiement est validé.</p>
+                <p className="font-semibold">Après ton paiement, reste sur cette page. Ton accès s'ouvre dès que nous recevons l'argent, en général en quelques minutes.</p>
               </li>
             </ol>
 
-            <form
-              className="space-y-3"
-              onSubmit={async (e) => {
-                e.preventDefault()
-                setLoading(true)
-                setError(null)
-                const res = await post('/api/payments/submit', {})
-                setLoading(false)
-                if (!res.ok) setError(res.message ?? 'Une erreur est survenue.')
-              }}
-            >
-              {rejected && (
-                <p className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">
-                  Ton dernier paiement n'a pas pu être confirmé. Si tu as bien payé, appuie à nouveau sur « J'ai payé ».
-                </p>
-              )}
-              {error && <p className="rounded-lg bg-destructive/10 p-3 text-sm text-destructive">{error}</p>}
-              <button
-                type="submit"
-                disabled={loading}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-base font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60"
-              >
-                <CheckCircle2 className="size-5" /> {loading ? 'Envoi…' : "J'ai payé, débloquer mes cours"}
-              </button>
-            </form>
+            <p className="flex items-start gap-2 rounded-lg bg-brand-orange-soft p-3 text-sm font-semibold">
+              <Clock className="mt-0.5 size-4 shrink-0 text-brand-orange" />
+              <span>Cette page se met à jour toute seule : dès que ton paiement est reçu, tes cours s'ouvrent.</span>
+            </p>
           </div>
         )}
       </main>
