@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from '@tanstack/react-router'
 import { post } from '@/lib/api'
 import { PasswordInput } from '@/components/password-input'
 
@@ -8,11 +9,10 @@ const btnCls =
   'w-full rounded-lg bg-primary px-4 py-3 text-base font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-60'
 const linkCls = 'text-sm font-medium text-primary underline-offset-4 hover:underline'
 
-export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp' }) {
-  const [step, setStep] = useState<'signIn' | 'signUp'>(initial)
+export function AuthForm({ mode }: { mode: 'signIn' | 'signUp' }) {
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const isSignUp = step === 'signUp'
+  const isSignUp = mode === 'signUp'
 
   return (
     <form
@@ -55,9 +55,9 @@ export function AuthForm({ initial = 'signUp' }: { initial?: 'signIn' | 'signUp'
         {loading ? 'Un instant…' : isSignUp ? "Je m'inscris" : 'Me connecter'}
       </button>
       <div className="flex flex-col items-center gap-2">
-        <button type="button" className={linkCls} onClick={() => { setStep(isSignUp ? 'signIn' : 'signUp'); setError(null) }}>
+        <Link to={isSignUp ? '/connexion' : '/inscription'} className={linkCls}>
           {isSignUp ? "J'ai déjà un compte" : "Je n'ai pas encore de compte"}
-        </button>
+        </Link>
       </div>
     </form>
   )

@@ -171,6 +171,14 @@ export function ensureReady(): Promise<void> {
         await client.query('SELECT pg_advisory_unlock(481516)').catch(() => {})
         client.release()
       }
+      // Élèves débloqués à la main avant le compteur : on leur crée le paiement correspondant (une seule fois).
+      await exec(
+        `INSERT INTO payments (user_id, name, phone, reference, amount, status, decided_at)
+         SELECT p.user_id, p.name, '-', 'MANUEL-' || substr(md5(p.user_id::text), 1, 8), 1100, 'approved', COALESCE(p.paid_at, now())
+         FROM profiles p
+         WHERE p.role = 'student' AND p.paid = true
+           AND NOT EXISTS (SELECT 1 FROM payments x WHERE x.user_id = p.user_id AND x.status = 'approved')`,
+      )
       await seedCatalogue()
       await bootstrapAdmin()
     })().catch((e) => {

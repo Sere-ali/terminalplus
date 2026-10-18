@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ConnexionRouteImport } from './routes/connexion'
+import { Route as InscriptionRouteImport } from './routes/inscription'
 import { Route as PaiementRouteImport } from './routes/paiement'
 import { Route as SujetsRouteImport } from './routes/sujets'
 import { Route as TableauRouteImport } from './routes/tableau'
@@ -32,6 +33,11 @@ const AdminRoute = AdminRouteImport.update({
 const ConnexionRoute = ConnexionRouteImport.update({
   id: '/connexion',
   path: '/connexion',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InscriptionRoute = InscriptionRouteImport.update({
+  id: '/inscription',
+  path: '/inscription',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PaiementRoute = PaiementRouteImport.update({
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/inscription': typeof InscriptionRoute
   '/paiement': typeof PaiementRoute
   '/sujets': typeof SujetsRoute
   '/tableau': typeof TableauRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/inscription': typeof InscriptionRoute
   '/paiement': typeof PaiementRoute
   '/sujets': typeof SujetsRoute
   '/tableau': typeof TableauRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/admin': typeof AdminRoute
   '/connexion': typeof ConnexionRoute
+  '/inscription': typeof InscriptionRoute
   '/paiement': typeof PaiementRoute
   '/sujets': typeof SujetsRoute
   '/tableau': typeof TableauRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/inscription'
     | '/paiement'
     | '/sujets'
     | '/tableau'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/inscription'
     | '/paiement'
     | '/sujets'
     | '/tableau'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/admin'
     | '/connexion'
+    | '/inscription'
     | '/paiement'
     | '/sujets'
     | '/tableau'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AdminRoute: typeof AdminRoute
   ConnexionRoute: typeof ConnexionRoute
+  InscriptionRoute: typeof InscriptionRoute
   PaiementRoute: typeof PaiementRoute
   SujetsRoute: typeof SujetsRoute
   TableauRoute: typeof TableauRoute
@@ -168,6 +181,13 @@ declare module '@tanstack/react-router' {
       path: '/connexion'
       fullPath: '/connexion'
       preLoaderRoute: typeof ConnexionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inscription': {
+      id: '/inscription'
+      path: '/inscription'
+      fullPath: '/inscription'
+      preLoaderRoute: typeof InscriptionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/paiement': {
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AdminRoute: AdminRoute,
   ConnexionRoute: ConnexionRoute,
+  InscriptionRoute: InscriptionRoute,
   PaiementRoute: PaiementRoute,
   SujetsRoute: SujetsRoute,
   TableauRoute: TableauRoute,
