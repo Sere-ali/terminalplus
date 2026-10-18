@@ -74,6 +74,15 @@ async function getSession(request: Request): Promise<Session | null> {
   }
 }
 
+/** Numéro WhatsApp : chiffres seulement, au format international (Côte d'Ivoire : 225 + 10 chiffres). */
+function cleanWhatsapp(raw: unknown): string | null {
+  if (typeof raw !== 'string') return null
+  let d = raw.replace(/\D/g, '')
+  if (d.startsWith('00')) d = d.slice(2)
+  if (d.length === 10) d = '225' + d
+  return d.length >= 11 && d.length <= 15 ? d : null
+}
+
 function cleanIdentifier(raw: unknown): string | null {
   if (typeof raw !== 'string') return null
   const v = raw.trim().toLowerCase().replace(/\s+/g, ' ')
@@ -120,6 +129,8 @@ route('POST', '/auth/signup', async ({ request, body }) => {
   const password = typeof body?.password === 'string' ? body.password : ''
   if (!identifier) return fail('Choisis un identifiant (2 à 60 caractères).')
   if (password.length < 8 || password.length > 200) return fail('Le mot de passe doit avoir 8 caractères minimum.')
+  const whatsapp = cleanWhatsapp(body?.whatsapp)
+  if (!whatsapp) return fail('Entre ton numéro WhatsApp (10 chiffres, par exemple 07 00 00 00 00).')
   if (tooManyAttempts(`signup:${clientIp(request)}`, 20, 60 * 60 * 1000)) {
     return fail('Trop de tentatives. Réessaie plus tard.', 429)
   }
@@ -127,10 +138,11 @@ route('POST', '/auth/signup', async ({ request, body }) => {
   let user: { id: string; session_version: number } | null
   const dev = getCookie(request, DEVICE_COOKIE) || randomBytes(24).toString('hex')
   try {
-    user = await one('INSERT INTO users (identifier, password_hash, device_id) VALUES ($1,$2,$3) RETURNING id, session_version', [
+    user = await one('INSERT INTO users (identifier, password_hash, device_id, whatsapp) VALUES ($1,$2,$3,$4) RETURNING id, session_version', [
       identifier,
       hash,
       dev,
+      whatsapp,
     ])
   } catch (e: any) {
     if (e?.code === '23505') return fail('Cet identifiant existe déjà. Connecte-toi.', 409, 'EXISTS')
@@ -490,7 +502,7 @@ route('GET', '/admin/overview', async ({ session }) => {
      FROM subjects s LEFT JOIN chapters c ON c.subject_slug = s.slug GROUP BY s.slug ORDER BY s.ord`,
   )
   const people = await rows<any>(
-    `SELECT p.user_id, p.name, p.serie, p.role, p.paid, p.created_at, u.identifier, u.locked, u.device_strikes, (u.device_id IS NOT NULL) AS has_device
+    `SELECT p.user_id, p.name, p.serie, p.role, p.paid, p.created_at, u.identifier, u.whatsapp, u.locked, u.device_strikes, (u.device_id IS NOT NULL) AS has_device
      FROM profiles p JOIN users u ON u.id = p.user_id ORDER BY p.created_at DESC LIMIT 300`,
   )
   const total = await one<{ n: number; paid: number }>(
@@ -516,6 +528,7 @@ route('GET', '/admin/overview', async ({ session }) => {
       role: p.role,
       paid: p.role === 'admin' || p.paid === true,
       createdAt: ms(p.created_at),
+      whatsapp: p.whatsapp ?? null,
       locked: p.locked === true,
       strikes: p.device_strikes ?? 0,
       hasDevice: p.has_device === true,

@@ -95,6 +95,7 @@ type StudentInfo = {
   role: 'student' | 'admin'
   paid: boolean
   createdAt: number
+  whatsapp?: string | null
   locked?: boolean
   strikes?: number
   hasDevice?: boolean
@@ -152,6 +153,16 @@ function StudentRow({ u }: { u: StudentInfo }) {
       <span>
         <span className="font-medium">{u.name}{u.role === 'admin' && ' 👑'}</span>
         <span className="block text-xs text-muted-foreground">Identifiant : {u.email}</span>
+        {u.whatsapp && (
+          <a
+            href={`https://wa.me/${u.whatsapp}`}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-0.5 inline-block text-xs font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            WhatsApp : +{u.whatsapp} · Écrire
+          </a>
+        )}
         {u.role !== 'admin' && (u.strikes ?? 0) > 0 && (
           <span className="block text-xs font-semibold text-destructive">{u.locked ? 'Compte bloqué' : 'Alerte'} : {u.strikes} tentative(s) depuis un autre appareil</span>
         )}

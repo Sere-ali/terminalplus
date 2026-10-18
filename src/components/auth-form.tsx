@@ -26,7 +26,7 @@ export function AuthForm({ mode }: { mode: 'signIn' | 'signUp' }) {
         setLoading(true)
         const res = await post<{ ok: boolean; message?: string; code?: string }>(
           isSignUp ? '/api/auth/signup' : '/api/auth/login',
-          { identifier, password },
+          isSignUp ? { identifier, password, whatsapp: String(fd.get('whatsapp') ?? '') } : { identifier, password },
         )
         setLoading(false)
         if (!res.ok) {
@@ -40,6 +40,12 @@ export function AuthForm({ mode }: { mode: 'signIn' | 'signUp' }) {
     >
       <h2 className="text-xl font-bold">{isSignUp ? 'Crée ton compte' : 'Content de te revoir !'}</h2>
       <input name="email" type="text" autoComplete="username" autoCapitalize="none" required placeholder="Ton identifiant" className={inputCls} disabled={loading} />
+      {isSignUp && (
+        <div>
+          <input name="whatsapp" type="tel" inputMode="tel" autoComplete="tel" required placeholder="Ton numéro WhatsApp" className={inputCls} disabled={loading} />
+          <p className="mt-1 text-xs text-muted-foreground">Pour que nous puissions t'écrire sur WhatsApp. Ex : 07 00 00 00 00</p>
+        </div>
+      )}
       <PasswordInput
         name="password"
         autoComplete={isSignUp ? 'new-password' : 'current-password'}
