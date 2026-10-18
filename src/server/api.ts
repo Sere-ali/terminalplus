@@ -550,12 +550,28 @@ route('POST', '/admin/payments/decide', admin(async ({ body }) => {
 }))
 
 route('POST', '/admin/access', admin(async ({ body }) => {
-  const n = await exec(
-    `UPDATE profiles SET paid = $2, paid_at = CASE WHEN $2 THEN now() ELSE NULL END
-     WHERE user_id = $1 AND role = 'student'`,
-    [body?.profileId, body?.paid === true],
-  )
-  return { ok: n > 0 }
+  const paid = body?.paid === true
+  const ok = await withTx(async (q) => {
+    const upd = await q(
+      `UPDATE profiles SET paid = $2, paid_at = CASE WHEN $2 THEN now() ELSE NULL END
+       WHERE user_id = $1 AND role = 'student' RETURNING user_id, name`,
+      [body?.profileId, paid],
+    )
+    if (!upd[0]) return false
+    if (paid) {
+      // L'accès donné à la main compte aussi dans « Argent reçu » (une seule fois par élève).
+      const has = await q(`SELECT 1 FROM payments WHERE user_id = $1 AND status = 'approved' LIMIT 1`, [upd[0].user_id])
+      if (!has[0]) {
+        await q(
+          `INSERT INTO payments (user_id, name, phone, reference, amount, status, decided_at)
+           VALUES ($1,$2,'-',$3,$4,'approved',now())`,
+          [upd[0].user_id, upd[0].name, 'MANUEL-' + randomBytes(4).toString('hex').toUpperCase(), PRICE_FCFA],
+        )
+      }
+    }
+    return true
+  })
+  return { ok }
 }))
 
 route('POST', '/admin/reset-device', admin(async ({ body }) => {
