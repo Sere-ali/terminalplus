@@ -243,11 +243,10 @@ route('POST', '/profile', async ({ session, body }) => {
   return { ok: true }
 })
 
-route('POST', '/profile/serie', async ({ session, body }) => {
+// Un élève ne peut pas changer de série lui-même : seul le Super admin le fait (/admin/edit-student).
+route('POST', '/profile/serie', async ({ session }) => {
   if (!session?.profile) return fail('Connecte-toi d\'abord.', 401)
-  if (!SERIES.includes(body?.serie)) return fail('Série invalide.')
-  await exec('UPDATE profiles SET serie = $2 WHERE user_id = $1', [session.uid, body.serie])
-  return { ok: true }
+  return fail('Ta série ne peut être changée que par l\'administrateur.', 403)
 })
 
 // --- Catalogue ---
@@ -284,6 +283,7 @@ route('GET', '/chapters/:slug', async ({ params, session }) => {
   if (!c) return { ok: false, code: 'NOT_FOUND' }
   const admin = isAdmin(session)
   if (c.status !== 'published' && !admin) return { ok: false, code: 'NOT_PUBLISHED' }
+  if (!admin && c.serie !== session.profile?.serie) return { ok: false, code: 'NOT_FOUND' }
   const subject = await one<any>('SELECT name, emoji FROM subjects WHERE slug = $1', [c.subject_slug])
   const visible = await rows<any>(
     `SELECT slug, title FROM chapters WHERE subject_slug = $1 AND ($2 OR status = 'published') ORDER BY ord`,
@@ -322,7 +322,7 @@ route('POST', '/progress/toggle', async ({ session, body }) => {
   const slug = typeof body?.chapterSlug === 'string' ? body.chapterSlug : ''
   const field = body?.field
   if (!slug || (field !== 'done' && field !== 'favorite')) return fail('Requête invalide.')
-  const exists = await one('SELECT 1 FROM chapters WHERE slug = $1', [slug])
+  const exists = await one('SELECT 1 FROM chapters WHERE slug = $1 AND ($2 OR serie = $3)', [slug, isAdmin(session), session.profile.serie])
   if (!exists) return fail('Leçon introuvable.', 404)
   await exec(
     `INSERT INTO progress (user_id, chapter_slug, done, favorite)
@@ -357,11 +357,12 @@ route('POST', '/tutor/ask', async ({ session, body }) => {
   if (!tutorEnabled()) return { ok: false, message: "Le professeur virtuel n'est pas encore activé. Reviens bientôt !" }
 
   const chapter = await one<any>(
-    `SELECT c.slug, c.title, c.content, c.status, s.name AS subject_name
+    `SELECT c.slug, c.title, c.content, c.status, c.serie, s.name AS subject_name
      FROM chapters c LEFT JOIN subjects s ON s.slug = c.subject_slug WHERE c.slug = $1`,
     [body?.chapterSlug],
   )
   if (!chapter || (chapter.status !== 'published' && !isAdmin(session))) return { ok: false, message: 'Leçon introuvable.' }
+  if (!isAdmin(session) && chapter.serie !== session.profile.serie) return { ok: false, message: 'Leçon introuvable.' }
 
   if (tooManyAttempts(`tutor:${session.uid}`, 12, 60 * 1000)) {
     return { ok: false, message: 'Doucement ! Attends une minute avant de poser une autre question.' }
@@ -730,7 +731,7 @@ route('GET', '/exams/all', async ({ session, url }) => {
 
 route('GET', '/exams/file/:id', async ({ session, params }) => {
   if (!hasAccess(session?.profile ?? null)) return fail('Accès refusé.', 403)
-  const e = await one<any>('SELECT mime, data, file_name FROM exams WHERE id::text = $1', [params.id])
+  const e = await one<any>('SELECT mime, data, file_name FROM exams WHERE id::text = $1 AND ($2 OR serie = $3)', [params.id, isAdmin(session), session?.profile?.serie ?? ''])
   if (!e) return fail('Introuvable.', 404)
   return new Response(e.data, {
     headers: {

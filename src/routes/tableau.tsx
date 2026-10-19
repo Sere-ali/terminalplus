@@ -100,16 +100,9 @@ function Dashboard({ name, serie }: { name: string; serie: Serie }) {
           <ChevronRight className="size-5 text-muted-foreground" />
         </Link>
 
-        <div className="mt-8 rounded-2xl border border-dashed p-4 text-sm text-muted-foreground">
-          Tu t'es trompé de série ?{' '}
-          {(['A', 'C', 'D'] as const)
-            .filter((s) => s !== serie)
-            .map((s) => (
-              <button key={s} type="button" onClick={() => post('/api/profile/serie', { serie: s })} className="mr-2 font-semibold text-primary underline-offset-4 hover:underline">
-                Passer en {SERIE_LABEL[s]}
-              </button>
-            ))}
-        </div>
+        <p className="mt-8 rounded-2xl border border-dashed p-4 text-sm text-muted-foreground">
+          Ta série est {SERIE_LABEL[serie]}. Tu t'es trompé de série ? Écris-nous sur WhatsApp et nous la changerons pour toi.
+        </p>
       </main>
     </div>
   )
