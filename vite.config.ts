@@ -67,7 +67,7 @@ const config = defineConfig({
             'X-Content-Type-Options': 'nosniff',
             'X-Frame-Options': 'DENY',
             'Referrer-Policy': 'strict-origin-when-cross-origin',
-            'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+            'Permissions-Policy': 'camera=(), microphone=(self), geolocation=(), payment=()',
             'Cross-Origin-Opener-Policy': 'same-origin',
             'Content-Security-Policy':
               "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
