@@ -1,3 +1,4 @@
+import { WAVE_PAY_URL } from '@/lib/wave'
 import { useEffect, useState } from 'react'
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { ArrowDown, ArrowRight, Clock, Smartphone } from 'lucide-react'
@@ -94,7 +95,7 @@ function PaiementPage() {
                 <div>
                   <ArrowDown className="mx-auto mb-1 size-8 animate-bounce text-brand-orange" aria-hidden />
                   <a
-                    href="https://pay.wave.com/m/M_ci_n-Uu27Sg_p8T/c/ci/?amount=1100"
+                    href={WAVE_PAY_URL}
                     className="mb-2 flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
                   >
                     <Smartphone className="size-5" /> Appuie ici pour solder ({price} F) <ArrowRight className="size-5" aria-hidden />

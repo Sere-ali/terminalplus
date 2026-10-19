@@ -11,7 +11,7 @@ export function AuthPage({ mode }: { mode: 'signUp' | 'signIn' }) {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (me.status === 'ready') navigate({ to: '/tableau' })
+    if (me.status === 'ready' && !(window as any).__paying) navigate({ to: '/tableau' })
   }, [me.status, navigate])
 
   return (

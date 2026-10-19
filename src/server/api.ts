@@ -148,6 +148,9 @@ route('POST', '/auth/signup', async ({ request, body }) => {
   }
   const whatsapp = cleanWhatsapp(body?.whatsapp)
   if (!whatsapp) return fail('Entre ton numéro WhatsApp (10 chiffres, par exemple 07 00 00 00 00).')
+  const fullName = typeof body?.name === 'string' ? body.name.trim().replace(/\s+/g, ' ').slice(0, 60) : ''
+  if (fullName.length < 2) return fail('Écris ton nom et ton prénom.')
+  if (!SERIES.includes(body?.serie)) return fail('Choisis la série que tu prépares.')
   if (tooManyAttempts(`signup:${clientIp(request)}`, 20, 60 * 60 * 1000) || tooManyAttempts('signup:global', 400, 60 * 60 * 1000)) {
     return fail('Trop de tentatives. Réessaie plus tard.', 429)
   }
@@ -155,12 +158,17 @@ route('POST', '/auth/signup', async ({ request, body }) => {
   let user: { id: string; session_version: number } | null
   const dev = getCookie(request, DEVICE_COOKIE) || randomBytes(24).toString('hex')
   try {
-    user = await one('INSERT INTO users (identifier, password_hash, device_id, whatsapp) VALUES ($1,$2,$3,$4) RETURNING id, session_version', [
-      identifier,
-      hash,
-      dev,
-      whatsapp,
-    ])
+    // Compte + profil créés ensemble : l'élève peut payer tout de suite, sans étape supplémentaire.
+    user = await withTx(async (q) => {
+      const r = await q('INSERT INTO users (identifier, password_hash, device_id, whatsapp) VALUES ($1,$2,$3,$4) RETURNING id, session_version', [
+        identifier,
+        hash,
+        dev,
+        whatsapp,
+      ])
+      await q("INSERT INTO profiles (user_id, name, serie, role) VALUES ($1,$2,$3,'student')", [r[0].id, fullName, body.serie])
+      return r[0] as { id: string; session_version: number }
+    })
   } catch (e: any) {
     if (e?.code === '23505') return fail('Cet identifiant existe déjà. Connecte-toi.', 409, 'EXISTS')
     throw e
