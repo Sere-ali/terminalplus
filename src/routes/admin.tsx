@@ -15,7 +15,7 @@ function AdminPage() {
 }
 
 function AdminGate() {
-  const overview = useApi<AdminOverview>('/api/admin/overview')
+  const overview = useApi<AdminOverview>('/api/admin/overview', { every: 15000 })
   const [editing, setEditing] = useState<string | null>(null)
   const [serieTab, setSerieTab] = useState<Serie>('D')
 
@@ -276,7 +276,7 @@ function StudentRow({ u }: { u: StudentInfo }) {
 }
 
 function PaymentsPanel() {
-  const data = useApi<PaymentsAdmin>('/api/admin/payments')
+  const data = useApi<PaymentsAdmin>('/api/admin/payments', { every: 15000 })
   const decide = (arg: { paymentId: string; approve: boolean }) => post('/api/admin/payments/decide', arg)
   const setWave = (arg: { value: string }) => post('/api/admin/wave', arg)
   const [wave, setWaveValue] = useState<string | null>(null)

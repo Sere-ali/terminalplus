@@ -39,9 +39,35 @@ function fetchShared(path: string, v: number): Promise<any> {
 }
 
 /** Lit une adresse de l'API. Renvoie undefined pendant le chargement. */
-export function useApi<T>(path: string | null): T | undefined {
+export function useApi<T>(path: string | null, opts?: { every?: number }): T | undefined {
   const v = useSyncExternalStore(subscribe, () => version, () => 0)
   const [state, setState] = useState<{ path: string | null; data: T | undefined }>({ path: null, data: undefined })
+  const [tick, setTick] = useState(0)
+  const every = opts?.every
+
+  // Mise à jour automatique : au retour sur l'application (si les données ont plus de 20 s) et, si demandé, à intervalle régulier.
+  useEffect(() => {
+    if (path === null) return
+    let last = Date.now()
+    const refresh = () => {
+      if (document.hidden) return
+      last = Date.now()
+      setTick((n) => n + 1)
+    }
+    const onVisible = () => {
+      if (!document.hidden && Date.now() - last > 20_000) refresh()
+    }
+    document.addEventListener('visibilitychange', onVisible)
+    window.addEventListener('focus', onVisible)
+    window.addEventListener('online', refresh)
+    const timer = every ? setInterval(refresh, every) : undefined
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible)
+      window.removeEventListener('focus', onVisible)
+      window.removeEventListener('online', refresh)
+      if (timer) clearInterval(timer)
+    }
+  }, [path, every])
 
   useEffect(() => {
     if (path === null) return
@@ -56,7 +82,7 @@ export function useApi<T>(path: string | null): T | undefined {
     return () => {
       cancelled = true
     }
-  }, [path, v])
+  }, [path, v, tick])
 
   // On ne montre jamais les données d'une autre adresse.
   return path !== null && state.path === path ? state.data : undefined

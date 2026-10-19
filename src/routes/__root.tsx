@@ -44,6 +44,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             __html:
               "window.__me=fetch('/api/me',{credentials:'same-origin'}).then(function(r){return r.ok?r.json():null}).catch(function(){return null});" +
               "window.addEventListener('beforeinstallprompt',function(e){e.preventDefault();window.__bip=e;window.dispatchEvent(new Event('tp-bip'))});" +
+              "(function(){var cur=null;function go(){var a=document.activeElement;if(a&&/^(INPUT|TEXTAREA)$/.test(a.tagName)&&a.value)return;try{var t=+sessionStorage.getItem('tp_rl')||0;if(Date.now()-t<30000)return;sessionStorage.setItem('tp_rl',String(Date.now()))}catch(e){}location.reload()}" +
+              "function check(){fetch('/api/version',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){if(!d||!d.v)return;if(cur===null)cur=d.v;else if(d.v!==cur)go()}).catch(function(){})}" +
+              "check();setInterval(check,45000);document.addEventListener('visibilitychange',function(){if(!document.hidden)check()});" +
+              "window.addEventListener('vite:preloadError',function(e){if(e.preventDefault)e.preventDefault();go()})})();" +
               "if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js').catch(function(){})})}",
           }}
         />

@@ -122,6 +122,10 @@ function match(pattern: string, path: string): Record<string, string> | null {
 
 route('GET', '/health', async () => ({ ok: true }))
 
+// Identifiant de la version en ligne : change à chaque mise à jour du site (les téléphones se rechargent alors tout seuls).
+const BUILD_ID = process.env.RENDER_GIT_COMMIT || `boot-${Date.now()}`
+route('GET', '/version', async () => ({ v: BUILD_ID }))
+
 // --- Session et compte ---
 route('GET', '/me', async ({ session }) => {
   if (!session) return { authenticated: false }
