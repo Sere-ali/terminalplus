@@ -57,7 +57,26 @@ const config = defineConfig({
       },
     }),
     // IMPORTANT: Do not remove nitro() — required for production build. Do NOT create nitro.config.ts; it breaks both production and preview builds.
-    nitro({ compressPublicAssets: true }),
+    nitro({
+      compressPublicAssets: true,
+      // Protections du navigateur : pas d'intégration du site dans une autre page, HTTPS obligatoire, scripts de ce site seulement.
+      routeRules: {
+        '/**': {
+          headers: {
+            'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+            'X-Content-Type-Options': 'nosniff',
+            'X-Frame-Options': 'DENY',
+            'Referrer-Policy': 'strict-origin-when-cross-origin',
+            'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+            'Cross-Origin-Opener-Policy': 'same-origin',
+            'Content-Security-Policy':
+              "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; " +
+              "font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self'; " +
+              "manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'",
+          },
+        },
+      },
+    }),
     viteReact(),
   ],
 })

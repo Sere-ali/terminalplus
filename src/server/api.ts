@@ -22,6 +22,13 @@ const PRICE_FCFA = 1100
 const DEFAULT_WAVE_NUMBER = '05 86 18 96 63'
 const DAILY_LIMIT = 40
 const SERIES = ['A', 'C', 'D']
+const DUMMY_HASH = 'scrypt$AAAAAAAAAAAAAAAAAAAAAA==$AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
+const WEAK_PASSWORDS = new Set([
+  '12345678', '123456789', '1234567890', '87654321', '11111111', '00000000', 'password', 'password1', 'motdepasse',
+  'motdepasse1', 'azertyui', 'azerty123', 'azertyuiop', 'qwertyui', 'qwerty123', 'abcd1234', 'terminale', 'terminale+',
+  'terminaleplus', 'bonjour1', 'iloveyou', 'ivoire225', '0000000000', '0123456789',
+])
+const inflight = new Set<string>()
 
 type Profile = { name: string; serie: 'A' | 'C' | 'D'; role: 'student' | 'admin'; paid: boolean }
 type Session = { uid: string; identifier: string; profile: Profile | null }
@@ -51,7 +58,9 @@ const fail = (message: string, status = 400, code?: string) => json({ ok: false,
 
 const hasAccess = (p: Profile | null) => !!p && (p.role === 'admin' || p.paid === true)
 const isAdmin = (s: Session | null) => !!s?.profile && s.profile.role === 'admin'
-const clientIp = (r: Request) => (r.headers.get('x-forwarded-for') ?? 'local').split(',')[0].trim()
+// Adresse du visiteur : l'en-tête posé par Cloudflare (non falsifiable) en priorité.
+const clientIp = (r: Request) =>
+  (r.headers.get('cf-connecting-ip') ?? r.headers.get('x-forwarded-for') ?? 'local').split(',')[0].trim()
 const ms = (d: Date | null) => (d ? d.getTime() : 0)
 
 async function getSession(request: Request): Promise<Session | null> {
@@ -128,10 +137,14 @@ route('POST', '/auth/signup', async ({ request, body }) => {
   const identifier = cleanIdentifier(body?.identifier)
   const password = typeof body?.password === 'string' ? body.password : ''
   if (!identifier) return fail('Choisis un identifiant (2 à 60 caractères).')
+  if (ADMIN_IDENTIFIERS.includes(identifier)) return fail('Cet identifiant est réservé. Choisis-en un autre.')
   if (password.length < 8 || password.length > 200) return fail('Le mot de passe doit avoir 8 caractères minimum.')
+  if (password.toLowerCase() === identifier || WEAK_PASSWORDS.has(password.toLowerCase())) {
+    return fail('Ce mot de passe est trop facile à deviner. Choisis-en un autre.')
+  }
   const whatsapp = cleanWhatsapp(body?.whatsapp)
   if (!whatsapp) return fail('Entre ton numéro WhatsApp (10 chiffres, par exemple 07 00 00 00 00).')
-  if (tooManyAttempts(`signup:${clientIp(request)}`, 20, 60 * 60 * 1000)) {
+  if (tooManyAttempts(`signup:${clientIp(request)}`, 20, 60 * 60 * 1000) || tooManyAttempts('signup:global', 400, 60 * 60 * 1000)) {
     return fail('Trop de tentatives. Réessaie plus tard.', 429)
   }
   const hash = await hashPassword(password)
@@ -155,7 +168,14 @@ route('POST', '/auth/login', async ({ request, body }) => {
   const identifier = cleanIdentifier(body?.identifier)
   const password = typeof body?.password === 'string' ? body.password : ''
   const key = `login:${clientIp(request)}:${identifier}`
-  if (tooManyAttempts(key)) return fail('Trop de tentatives. Réessaie dans quelques minutes.', 429)
+  // Trois verrous : par adresse + compte, par compte (quelle que soit l'adresse) et global (protège le processeur).
+  if (
+    tooManyAttempts(key) ||
+    tooManyAttempts(`login-acct:${identifier}`, 15, 15 * 60 * 1000) ||
+    tooManyAttempts('login:global', 600, 10 * 60 * 1000)
+  ) {
+    return fail('Trop de tentatives. Réessaie dans quelques minutes.', 429)
+  }
   const user = identifier
     ? await one<any>(
         `SELECT u.id, u.password_hash, u.session_version, u.device_id, u.device_strikes, u.locked, p.role
@@ -163,7 +183,8 @@ route('POST', '/auth/login', async ({ request, body }) => {
         [identifier],
       )
     : null
-  const ok = user ? await verifyPassword(password, user.password_hash) : false
+  // Même temps de calcul que le compte existe ou non (pas de devinette d'identifiants par le chrono).
+  const ok = password.length <= 200 && (await verifyPassword(password, user ? user.password_hash : DUMMY_HASH)) && !!user
   if (!user || !ok) return fail('Identifiant ou mot de passe incorrect.', 401, 'BAD_CREDENTIALS')
   clearAttempts(key)
   let dev = getCookie(request, DEVICE_COOKIE) || ''
@@ -195,7 +216,8 @@ route('POST', '/auth/logout', async () => json({ ok: true }, 200, { 'set-cookie'
 
 route('POST', '/auth/change-password', async ({ request, session, body }) => {
   if (!session) return fail('Connecte-toi d\'abord.', 401)
-  const current = typeof body?.current === 'string' ? body.current : ''
+  if (tooManyAttempts(`chpw:${session.uid}`, 10, 15 * 60 * 1000)) return fail('Trop de tentatives. Réessaie plus tard.', 429)
+  const current = typeof body?.current === 'string' ? body.current.slice(0, 200) : ''
   const next = typeof body?.next === 'string' ? body.next : ''
   if (next.length < 8 || next.length > 200) return fail('Le nouveau mot de passe doit avoir 8 caractères minimum.')
   const user = await one<any>('SELECT password_hash FROM users WHERE id = $1', [session.uid])
@@ -213,7 +235,7 @@ route('POST', '/profile', async ({ session, body }) => {
   const name = typeof body?.name === 'string' ? body.name.trim().slice(0, 60) : ''
   if (name.length < 2) return fail('Indique ton nom (2 lettres minimum).')
   if (!SERIES.includes(body?.serie)) return fail('Choisis ta série.')
-  const role = ADMIN_IDENTIFIERS.includes(session.identifier) ? 'admin' : 'student'
+  const role = 'student' // le compte administrateur n'est créé que par le serveur (jamais par une inscription)
   await exec(
     'INSERT INTO profiles (user_id, name, serie, role) VALUES ($1,$2,$3,$4) ON CONFLICT (user_id) DO NOTHING',
     [session.uid, name, body.serie, role],
@@ -341,6 +363,12 @@ route('POST', '/tutor/ask', async ({ session, body }) => {
   )
   if (!chapter || (chapter.status !== 'published' && !isAdmin(session))) return { ok: false, message: 'Leçon introuvable.' }
 
+  if (tooManyAttempts(`tutor:${session.uid}`, 12, 60 * 1000)) {
+    return { ok: false, message: 'Doucement ! Attends une minute avant de poser une autre question.' }
+  }
+  if (inflight.has(session.uid)) return { ok: false, message: 'Le professeur est encore en train de répondre à ta question précédente.' }
+  inflight.add(session.uid)
+  try {
   const used = await one<{ n: number }>(
     `SELECT count(*)::int AS n FROM chat_messages WHERE user_id = $1 AND role = 'user' AND created_at > now() - interval '24 hours'`,
     [session.uid],
@@ -389,6 +417,9 @@ ${String(chapter.content).slice(0, 9000)}`
     ])
   })
   return { ok: true }
+  } finally {
+    inflight.delete(session.uid)
+  }
 })
 
 // --- Paiement Wave ---
@@ -669,6 +700,13 @@ route('POST', '/admin/chapter', admin(async ({ body }) => {
 // ---------- Sujets de BAC ----------
 const EXAM_MIMES = ['application/pdf', 'image/png', 'image/jpeg', 'image/webp']
 const EXAM_MAX = 8 * 1024 * 1024
+function looksLike(mime: string, b: Buffer): boolean {
+  if (mime === 'application/pdf') return b.subarray(0, 5).toString('latin1') === '%PDF-'
+  if (mime === 'image/png') return b.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]))
+  if (mime === 'image/jpeg') return b[0] === 0xff && b[1] === 0xd8
+  if (mime === 'image/webp') return b.subarray(0, 4).toString('latin1') === 'RIFF' && b.subarray(8, 12).toString('latin1') === 'WEBP'
+  return false
+}
 
 route('GET', '/exams', async ({ session }) => {
   if (!session?.profile) return fail("Connecte-toi d'abord.", 401)
@@ -700,6 +738,7 @@ route('GET', '/exams/file/:id', async ({ session, params }) => {
       'content-disposition': `inline; filename="${String(e.file_name).replace(/[^\w.\- ]/g, '_')}"`,
       'cache-control': 'private, max-age=3600',
       'x-content-type-options': 'nosniff',
+      'content-security-policy': "default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; sandbox",
     },
   })
 })
@@ -719,6 +758,7 @@ route('POST', '/admin/exams/upload', admin(async ({ request, body }) => {
   const buf: Buffer = body
   if (!buf || buf.length === 0) return fail('Fichier vide.')
   if (buf.length > EXAM_MAX) return fail('Fichier trop lourd (8 Mo maximum).')
+  if (!looksLike(mime, buf)) return fail("Le contenu du fichier ne correspond pas à son type.")
   await exec(
     'INSERT INTO exams (serie, subject, year, kind, file_name, mime, data) VALUES ($1,$2,$3,$4,$5,$6,$7)',
     [serie, subject, year, kind, fileName, mime, buf],
@@ -749,6 +789,17 @@ export async function handle(request: Request, path: string): Promise<Response> 
     await ensureReady()
     const url = new URL(request.url)
     let body: any = null
+    if (request.method === 'POST') {
+      // Défense contre les requêtes envoyées depuis un autre site : l'origine doit être ce site.
+      const origin = request.headers.get('origin')
+      if (origin) {
+        const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host') ?? url.host
+        let ok = false
+        try { ok = new URL(origin).host === host } catch {}
+        if (!ok) return fail('Requête refusée.', 403)
+      }
+      if (Number(request.headers.get('content-length') ?? 0) > EXAM_MAX + 1024) return fail('Requête trop volumineuse.', 413)
+    }
     if (request.method === 'POST' && path === '/admin/exams/upload') {
       const ab = await request.arrayBuffer()
       if (ab.byteLength > EXAM_MAX) return fail('Fichier trop lourd (8 Mo maximum).', 413)

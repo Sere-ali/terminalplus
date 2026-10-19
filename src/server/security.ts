@@ -81,6 +81,7 @@ const attempts = new Map<string, { count: number; reset: number }>()
 
 export function tooManyAttempts(key: string, max = 10, windowMs = 10 * 60 * 1000): boolean {
   const now = Date.now()
+  if (attempts.size > 5000) for (const [k, v] of attempts) if (v.reset < now) attempts.delete(k) // évite que la mémoire gonfle
   const entry = attempts.get(key)
   if (!entry || entry.reset < now) {
     attempts.set(key, { count: 1, reset: now + windowMs })
