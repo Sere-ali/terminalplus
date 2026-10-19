@@ -17,6 +17,27 @@ function subscribe(l: () => void) {
   return () => listeners.delete(l)
 }
 
+// Plusieurs écrans demandent parfois la même adresse en même temps (ex. /api/me) : une seule requête part.
+const inflight = new Map<string, Promise<any>>()
+function fetchShared(path: string, v: number): Promise<any> {
+  const key = `${v}|${path}`
+  let p = inflight.get(key)
+  if (!p && v === 0 && path === '/api/me' && typeof window !== 'undefined' && (window as any).__me) {
+    // La page a déjà demandé /api/me dès son démarrage (avant même le chargement des scripts) : on réutilise la réponse.
+    p = (window as any).__me
+    ;(window as any).__me = null
+    inflight.set(key, p!)
+    setTimeout(() => inflight.delete(key), 300)
+  }
+  if (!p) {
+    p = fetch(path, { credentials: 'same-origin' })
+      .then((r) => (r.ok ? r.json() : null))
+      .finally(() => setTimeout(() => inflight.delete(key), 300))
+    inflight.set(key, p)
+  }
+  return p
+}
+
 /** Lit une adresse de l'API. Renvoie undefined pendant le chargement. */
 export function useApi<T>(path: string | null): T | undefined {
   const v = useSyncExternalStore(subscribe, () => version, () => 0)
@@ -25,10 +46,9 @@ export function useApi<T>(path: string | null): T | undefined {
   useEffect(() => {
     if (path === null) return
     let cancelled = false
-    fetch(path, { credentials: 'same-origin' })
-      .then((r) => (r.ok ? r.json() : null))
+    fetchShared(path, v)
       .then((data) => {
-        if (!cancelled) setState({ path, data: data as T })
+        if (!cancelled) setState({ path, data: (data ?? undefined) as T | undefined }) // réponse d'erreur : on reste en « chargement » au lieu de planter
       })
       .catch(() => {
         if (!cancelled) setState({ path, data: undefined })
