@@ -35,12 +35,15 @@ export async function generate(messages: ChatMsg[]): Promise<string> {
     body: JSON.stringify({
       model: process.env.ANTHROPIC_MODEL ?? 'claude-sonnet-5-5',
       max_tokens: 1800,
-      temperature: 0.4,
       system,
       messages: normalize(messages),
     }),
   })
-  if (!res.ok) throw new Error(`Anthropic API error ${res.status}`)
+  if (!res.ok) {
+    const detail = (await res.text().catch(() => '')).slice(0, 300)
+    console.error('Anthropic API error', res.status, detail)
+    throw new Error(`Anthropic API error ${res.status}`)
+  }
   const data = (await res.json()) as { content?: { type: string; text?: string }[] }
   return (data.content ?? [])
     .filter((c) => c.type === 'text')
