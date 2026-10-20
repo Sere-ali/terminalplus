@@ -20,7 +20,7 @@ ALTER TABLE users ADD COLUMN IF NOT EXISTS locked boolean NOT NULL DEFAULT false
 CREATE TABLE IF NOT EXISTS profiles (
   user_id uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
   name text NOT NULL,
-  serie text NOT NULL CHECK (serie IN ('A','C','D')),
+  serie text NOT NULL CHECK (serie IN ('A','B','C','D','G1','G2')),
   role text NOT NULL DEFAULT 'student' CHECK (role IN ('student','admin')),
   paid boolean NOT NULL DEFAULT false,
   paid_at timestamptz,
@@ -90,7 +90,7 @@ CREATE INDEX IF NOT EXISTS payments_status_idx ON payments(status, created_at);
 
 CREATE TABLE IF NOT EXISTS exams (
   id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  serie text NOT NULL CHECK (serie IN ('A','C','D')),
+  serie text NOT NULL CHECK (serie IN ('A','B','C','D','G1','G2')),
   subject text NOT NULL,
   year integer NOT NULL,
   kind text NOT NULL CHECK (kind IN ('sujet','corrige')),
@@ -100,6 +100,12 @@ CREATE TABLE IF NOT EXISTS exams (
   created_at timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS exams_serie_idx ON exams(serie, year);
+
+-- Nouvelles séries (B, G1, G2) : on élargit les contrôles des bases déjà créées.
+ALTER TABLE profiles DROP CONSTRAINT IF EXISTS profiles_serie_check;
+ALTER TABLE profiles ADD CONSTRAINT profiles_serie_check CHECK (serie IN ('A','B','C','D','G1','G2'));
+ALTER TABLE exams DROP CONSTRAINT IF EXISTS exams_serie_check;
+ALTER TABLE exams ADD CONSTRAINT exams_serie_check CHECK (serie IN ('A','B','C','D','G1','G2'));
 
 CREATE TABLE IF NOT EXISTS settings (
   key text PRIMARY KEY,

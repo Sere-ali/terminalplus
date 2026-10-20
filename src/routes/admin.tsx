@@ -6,7 +6,7 @@ import type { ChapterListResponse } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
 import { Markdown } from '@/components/markdown'
-import { SERIE_LABEL, type Serie } from '@/lib/use-me'
+import { SERIE_LABEL, SERIES, type Serie } from '@/lib/use-me'
 
 export const Route = createFileRoute('/admin')({ component: AdminPage })
 
@@ -56,8 +56,8 @@ function AdminGate() {
             <ChangePasswordPanel />
 
             <h2 className="mt-8 text-lg font-bold">Contenus par matière</h2>
-            <div className="mt-2 grid grid-cols-3 gap-1 rounded-xl border bg-card p-1 text-sm font-semibold sm:max-w-md">
-              {(['A', 'C', 'D'] as const).map((s) => (
+            <div className="mt-2 grid grid-cols-3 gap-1 rounded-xl border bg-card p-1 text-sm font-semibold sm:max-w-lg">
+              {SERIES.map((s) => (
                 <button key={s} type="button" onClick={() => setSerieTab(s)} className={`rounded-lg px-3 py-2 ${serieTab === s ? 'bg-primary text-primary-foreground' : 'hover:bg-secondary'}`}>
                   {SERIE_LABEL[s]}
                 </button>
@@ -230,9 +230,9 @@ function StudentRow({ u }: { u: StudentInfo }) {
             className="rounded-lg border bg-background px-3 py-1.5 text-sm" aria-label="Identifiant" />
           <select value={eSerie} onChange={(e) => setESerie(e.target.value)}
             className="rounded-lg border bg-background px-3 py-1.5 text-sm" aria-label="Série">
-            <option value="A">Terminale A</option>
-            <option value="C">Terminale C</option>
-            <option value="D">Terminale D</option>
+            {SERIES.map((s) => (
+              <option key={s} value={s}>{SERIE_LABEL[s]}</option>
+            ))}
           </select>
           <button
             type="button"
@@ -511,7 +511,7 @@ function ExamsPanel() {
       <div className="mt-2 space-y-3 rounded-2xl border bg-card p-4 text-sm">
         <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
           <select value={serie} onChange={(e) => setSerie(e.target.value as Serie)} className="rounded-lg border bg-background px-3 py-2.5">
-            {(['A', 'C', 'D'] as const).map((s) => <option key={s} value={s}>{SERIE_LABEL[s]}</option>)}
+            {SERIES.map((s) => <option key={s} value={s}>{SERIE_LABEL[s]}</option>)}
           </select>
           <input value={subject} onChange={(e) => setSubject(e.target.value)} list="exam-subjects" placeholder="Matière" className="rounded-lg border bg-background px-3 py-2.5" />
           <datalist id="exam-subjects">{(subs ?? []).map((s) => <option key={s.name} value={s.name} />)}</datalist>

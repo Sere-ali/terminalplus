@@ -5,7 +5,7 @@ import { useApi } from '@/lib/api'
 import type { SubjectCard } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
 import { InstallButton } from '@/components/install-app'
-import { SERIE_LABEL, SERIE_TAGLINE, useMe, type Serie } from '@/lib/use-me'
+import { SERIE_LABEL, SERIE_TAGLINE, SERIES, useMe, type Serie } from '@/lib/use-me'
 
 export const Route = createFileRoute('/')({ component: Home })
 
@@ -55,7 +55,7 @@ function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 pt-12 lg:grid-cols-[1.15fr_.85fr] lg:pb-24 lg:pt-20">
           <div className="text-center lg:text-left">
             <p className="rise inline-flex items-center gap-2 rounded-full glass px-3.5 py-1.5 text-xs font-semibold text-white/90" style={{ ['--d' as string]: 50 }}>
-              <span className="size-2 rounded-full bg-brand-orange" /> Terminales A, C et D · Côte d'Ivoire
+              <span className="size-2 rounded-full bg-brand-orange" /> Terminales A, B, C, D, G1 et G2 · Côte d'Ivoire
             </p>
             <h1 className="rise mx-auto mt-5 max-w-2xl font-[family-name:var(--font-display)] text-[2.5rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:mx-0" style={{ ['--d' as string]: 180 }}>
               Ton BAC se prépare ici, leçon après leçon.
@@ -93,8 +93,8 @@ function Home() {
 
       <section id="matieres" className="mx-auto max-w-6xl px-5 py-16">
         <h2 className="text-center font-[family-name:var(--font-display)] text-3xl font-bold sm:text-4xl">Choisis ta série</h2>
-        <div className="mx-auto mt-7 grid max-w-md grid-cols-3 gap-1.5 rounded-2xl border bg-card p-1.5 shadow-sm">
-          {(['A', 'C', 'D'] as const).map((s) => (
+        <div className="mx-auto mt-7 grid max-w-lg grid-cols-3 gap-1.5 rounded-2xl border bg-card p-1.5 shadow-sm">
+          {SERIES.map((s) => (
             <button
               key={s}
               type="button"

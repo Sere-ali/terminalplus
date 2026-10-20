@@ -3,7 +3,7 @@ import { Link } from '@tanstack/react-router'
 import { post } from '@/lib/api'
 import { PasswordInput } from '@/components/password-input'
 import { WAVE_PAY_URL } from '@/lib/wave'
-import { SERIE_LABEL, SERIE_TAGLINE, type Serie } from '@/lib/use-me'
+import { SERIE_LABEL, SERIE_TAGLINE, type Serie, SERIES } from '@/lib/use-me'
 
 const inputCls =
   'w-full rounded-lg border bg-background px-3.5 py-3 text-base outline-none focus:border-primary focus:ring-2 focus:ring-primary/25 disabled:opacity-60'
@@ -78,7 +78,7 @@ export function AuthForm({ mode }: { mode: 'signIn' | 'signUp' }) {
       {isSignUp && (
         <fieldset className="space-y-2" disabled={loading}>
           <legend className="mb-1 text-sm font-semibold">La série que tu prépares</legend>
-          {(['A', 'C', 'D'] as const).map((s) => (
+          {SERIES.map((s) => (
             <label key={s} className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 ${serie === s ? 'border-primary bg-brand-green-soft' : 'hover:bg-secondary'}`}>
               <input type="radio" name="serie" checked={serie === s} onChange={() => setSerie(s)} className="accent-[hsl(155_72%_22%)]" />
               <span>

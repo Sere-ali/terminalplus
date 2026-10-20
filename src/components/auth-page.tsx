@@ -3,7 +3,7 @@ import { useNavigate } from '@tanstack/react-router'
 import { post } from '@/lib/api'
 import { SiteHeader } from '@/components/site-header'
 import { AuthForm } from '@/components/auth-form'
-import { SERIE_LABEL, SERIE_TAGLINE, useMe, type Serie } from '@/lib/use-me'
+import { SERIE_LABEL, SERIE_TAGLINE, useMe, SERIES, type Serie } from '@/lib/use-me'
 
 /** Page d'inscription OU de connexion (jamais les deux ensemble). */
 export function AuthPage({ mode }: { mode: 'signUp' | 'signIn' }) {
@@ -64,7 +64,7 @@ function ProfileForm() {
       />
       <fieldset className="space-y-2">
         <legend className="mb-1 text-sm font-semibold">Ma série</legend>
-        {(['A', 'C', 'D'] as const).map((s) => (
+        {SERIES.map((s) => (
           <label
             key={s}
             className={`flex cursor-pointer items-center gap-3 rounded-xl border p-3 ${serie === s ? 'border-primary bg-brand-green-soft' : 'hover:bg-secondary'}`}

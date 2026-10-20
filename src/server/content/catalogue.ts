@@ -14,8 +14,14 @@ import { LANGUES } from "./langues"
 import { SVT_CONTENT } from "./svt"
 import { PHILO as PHILO_CONTENT } from "./philo"
 import { DEEP } from "./deep"
+import { HG_1 } from "./hg1"
+import { HG_2 } from "./hg2"
+import { HG_3 } from "./hg3"
+import { ECO } from "./eco"
+import { DROIT } from "./droit"
+import { GESTION } from "./gestion"
 
-export type Serie = "A" | "C" | "D"
+export type Serie = "A" | "B" | "C" | "D" | "G1" | "G2"
 
 export type SubjectDef = {
   slug: string
@@ -36,7 +42,7 @@ export type ChapterDef = {
   content: string
 }
 
-const CONTENT: Record<string, string> = { ...MATHS_1, ...MATHS_2, ...MATHS_3, ...EXTRA, ...EXTRA2, ...EXTRA3, ...FRANCAIS_CONTENT, ...PHILO_CONTENT, ...LANGUES, ...SVT_CONTENT }
+const CONTENT: Record<string, string> = { ...MATHS_1, ...MATHS_2, ...MATHS_3, ...EXTRA, ...EXTRA2, ...EXTRA3, ...FRANCAIS_CONTENT, ...PHILO_CONTENT, ...LANGUES, ...SVT_CONTENT, ...HG_1, ...HG_2, ...HG_3, ...ECO, ...DROIT, ...GESTION }
 
 export const SUBJECTS: SubjectDef[] = [
   { slug: "d-maths", serie: "D", name: "Mathématiques", emoji: "📐", description: "Programme éducatif Tle D : fonctions, intégrales, suites, probabilités…", order: 1 },
@@ -50,19 +56,39 @@ export const SUBJECTS: SubjectDef[] = [
   { slug: "a-anglais", serie: "A", name: "Anglais", emoji: "🇬🇧", description: "Grammaire, expression écrite et compréhension de texte.", order: 3 },
   { slug: "a-allemand", serie: "A", name: "Allemand", emoji: "🇩🇪", description: "Grammaire et expression en allemand (LV2).", order: 4 },
   { slug: "a-espagnol", serie: "A", name: "Espagnol", emoji: "🇪🇸", description: "Grammaire et expression en espagnol (LV2).", order: 5 },
+  { slug: "a-hg", serie: "A", name: "Histoire-Géographie", emoji: "🌍", description: "Le monde depuis 1945, l'Afrique, la Côte d'Ivoire et la géographie de la mondialisation.", order: 6 },
+  { slug: "c-hg", serie: "C", name: "Histoire-Géographie", emoji: "🌍", description: "Le monde depuis 1945, l'Afrique, la Côte d'Ivoire et la géographie de la mondialisation.", order: 4 },
+  { slug: "d-hg", serie: "D", name: "Histoire-Géographie", emoji: "🌍", description: "Le monde depuis 1945, l'Afrique, la Côte d'Ivoire et la géographie de la mondialisation.", order: 4 },
+  { slug: "b-ses", serie: "B", name: "Sciences économiques et sociales", emoji: "📊", description: "Croissance, chômage, monnaie, commerce, État, stratification et changement social.", order: 1 },
+  { slug: "b-maths", serie: "B", name: "Mathématiques", emoji: "📐", description: "Fonctions, suites, logarithmes, statistiques et probabilités.", order: 2 },
+  { slug: "b-hg", serie: "B", name: "Histoire-Géographie", emoji: "🌍", description: "Le monde depuis 1945, l'Afrique, la Côte d'Ivoire et la géographie de la mondialisation.", order: 3 },
+  { slug: "b-philo", serie: "B", name: "Philosophie", emoji: "🧠", description: "Notions, auteurs et méthode de la dissertation philosophique.", order: 4 },
+  { slug: "b-anglais", serie: "B", name: "Anglais", emoji: "🇬🇧", description: "Grammaire, expression écrite et compréhension de texte.", order: 5 },
+  { slug: "g1-admin", serie: "G1", name: "Techniques administratives", emoji: "🗂️", description: "Organisation de l'entreprise, communication, courrier, archivage, secrétariat, personnel.", order: 1 },
+  { slug: "g1-droit", serie: "G1", name: "Droit", emoji: "⚖️", description: "Notions de droit, contrats, commerçants et sociétés (OHADA), droit du travail.", order: 2 },
+  { slug: "g1-eco", serie: "G1", name: "Économie générale", emoji: "💹", description: "Croissance, chômage, inflation, monnaie, commerce extérieur, État.", order: 3 },
+  { slug: "g1-maths", serie: "G1", name: "Mathématiques", emoji: "📐", description: "Fonctions, suites, statistiques et probabilités appliquées à la gestion.", order: 4 },
+  { slug: "g1-anglais", serie: "G1", name: "Anglais", emoji: "🇬🇧", description: "Grammaire, expression écrite et compréhension de texte.", order: 5 },
+  { slug: "g2-compta", serie: "G2", name: "Comptabilité et gestion", emoji: "🧾", description: "SYSCOHADA : partie double, TVA, amortissements, stocks, bilan, coûts.", order: 1 },
+  { slug: "g2-mf", serie: "G2", name: "Mathématiques financières", emoji: "💰", description: "Intérêts simples et composés, annuités, emprunts.", order: 2 },
+  { slug: "g2-droit", serie: "G2", name: "Droit", emoji: "⚖️", description: "Notions de droit, contrats, commerçants et sociétés (OHADA), droit du travail.", order: 3 },
+  { slug: "g2-eco", serie: "G2", name: "Économie générale", emoji: "💹", description: "Croissance, chômage, inflation, monnaie, commerce extérieur, État.", order: 4 },
+  { slug: "g2-maths", serie: "G2", name: "Mathématiques", emoji: "📐", description: "Fonctions, suites, statistiques et probabilités appliquées à la gestion.", order: 5 },
+  { slug: "g2-anglais", serie: "G2", name: "Anglais", emoji: "🇬🇧", description: "Grammaire, expression écrite et compréhension de texte.", order: 6 },
 ]
 
-type Row = [key: string, title: string, theme: string]
+// 4e élément facultatif : clé du contenu quand elle diffère de la clé de la leçon (contenu partagé entre séries).
+type Row = [key: string, title: string, theme: string, contentKey?: string]
 
 function build(subjectSlug: string, serie: Serie, rows: Row[]): ChapterDef[] {
-  return rows.map(([key, title, theme], i) => ({
+  return rows.map(([key, title, theme, ck], i) => ({
     slug: `${subjectSlug}-${key}`,
     subjectSlug,
     serie,
     title,
     theme,
     order: i + 1,
-    content: DEEP[`${subjectSlug}-${key}`] ?? DEEP[key] ?? CONTENT[`${subjectSlug}-${key}`] ?? CONTENT[key] ?? "",
+    content: DEEP[`${subjectSlug}-${key}`] ?? DEEP[key] ?? (ck ? DEEP[ck] ?? CONTENT[ck] : undefined) ?? CONTENT[`${subjectSlug}-${key}`] ?? CONTENT[key] ?? "",
   }))
 }
 
@@ -234,6 +260,93 @@ const ESPAGNOL: Row[] = [
   ["expresion", "Expression écrite et compréhension de texte", "Expression"],
 ]
 
+// ---------- HISTOIRE-GÉOGRAPHIE (séries A, B, C, D) ----------
+const HG: Row[] = [
+  ["seconde-guerre-mondiale", "La Seconde Guerre mondiale (1939-1945)", "Histoire", "hg-seconde-guerre-mondiale"],
+  ["guerre-froide", "La guerre froide : un monde bipolaire", "Histoire", "hg-guerre-froide"],
+  ["crises-detente", "Crises et détente entre les deux blocs", "Histoire", "hg-crises-detente"],
+  ["decolonisation", "La décolonisation", "Histoire", "hg-decolonisation"],
+  ["tiers-monde", "Le Tiers-Monde et le non-alignement", "Histoire", "hg-tiers-monde"],
+  ["afrique-independances", "L'Afrique après les indépendances", "Histoire", "hg-afrique-independances"],
+  ["cote-ivoire-independance", "La Côte d'Ivoire depuis l'indépendance", "Histoire", "hg-cote-ivoire-independance"],
+  ["onu", "L'ONU et les relations internationales", "Histoire", "hg-onu"],
+  ["construction-europeenne", "La construction européenne", "Histoire", "hg-construction-europeenne"],
+  ["monde-apres-1991", "Le monde après la guerre froide (depuis 1991)", "Histoire", "hg-monde-apres-1991"],
+  ["mondialisation", "La mondialisation", "Géographie", "hg-mondialisation"],
+  ["inegalites-developpement", "Les inégalités de développement", "Géographie", "hg-inegalites-developpement"],
+  ["integration-regionale-afrique", "L'intégration régionale en Afrique", "Géographie", "hg-integration-regionale-afrique"],
+  ["cote-ivoire-economie", "La Côte d'Ivoire : espace et économie", "Géographie", "hg-cote-ivoire-economie"],
+  ["etats-unis", "Les États-Unis, première puissance", "Géographie", "hg-etats-unis"],
+  ["chine", "La Chine, puissance émergente", "Géographie", "hg-chine"],
+]
+
+// ---------- SÉRIE B ----------
+const SES_B: Row[] = [
+  ["croissance", "Croissance économique et développement", "Économie", "eco-croissance-developpement"],
+  ["chomage-inflation", "Chômage et inflation", "Économie", "eco-chomage-inflation"],
+  ["monnaie-banques", "Monnaie, banques et banque centrale", "Économie", "eco-monnaie-banques"],
+  ["commerce-international", "Le commerce international", "Économie", "eco-commerce-international"],
+  ["etat-budget", "L'État et le budget", "Économie", "eco-etat-budget"],
+  ["stratification", "Stratification et mobilité sociales", "Sociologie", "ses-stratification-sociale"],
+  ["socialisation", "Socialisation et changement social", "Sociologie", "ses-socialisation-changement-social"],
+]
+
+const MATHS_GESTION: Row[] = [
+  ["limites-continuite", "Limites et continuité", "Fonctions"],
+  ["derivabilite-etude-fonctions", "Dérivabilité et étude de fonctions", "Fonctions"],
+  ["fonctions-logarithmes", "Fonctions logarithmes", "Fonctions"],
+  ["fonctions-exponentielles", "Fonctions exponentielles", "Fonctions"],
+  ["calcul-integral", "Calcul intégral", "Fonctions"],
+  ["suites-numeriques", "Suites numériques", "Fonctions"],
+  ["statistiques-deux-variables", "Statistiques à deux variables", "Organisation des données"],
+  ["probabilites-variable-aleatoire", "Probabilités et variable aléatoire", "Phénomènes aléatoires"],
+]
+
+// ---------- SÉRIES G1 / G2 ----------
+const ADMIN_G1: Row[] = [
+  ["organisation-entreprise", "L'entreprise et son organisation", "L'entreprise", "adm-organisation-entreprise"],
+  ["communication", "La communication dans l'entreprise", "Communication", "adm-communication"],
+  ["courrier", "Le traitement du courrier", "Communication", "adm-courrier"],
+  ["classement-archivage", "Classement et archivage", "Organisation", "adm-classement-archivage"],
+  ["reunions-secretariat", "Réunions, accueil et secrétariat", "Organisation", "adm-reunions-secretariat"],
+  ["gestion-personnel", "La gestion du personnel", "Ressources humaines", "adm-gestion-personnel"],
+]
+
+const DROIT_G: Row[] = [
+  ["notions-generales", "Notions générales de droit", "Introduction", "droit-notions-generales"],
+  ["personnes", "Les personnes physiques et morales", "Les personnes", "droit-personnes"],
+  ["contrats", "Le contrat", "Les obligations", "droit-contrats"],
+  ["commercants-societes", "Commerçants et sociétés commerciales (OHADA)", "Droit commercial", "droit-commercants-societes"],
+  ["travail", "Le contrat de travail", "Droit du travail", "droit-travail"],
+  ["justice-preuve", "La justice et la preuve", "Justice", "droit-justice-preuve"],
+]
+
+const ECO_G: Row[] = [
+  ["croissance", "Croissance économique et développement", "Économie", "eco-croissance-developpement"],
+  ["chomage-inflation", "Chômage et inflation", "Économie", "eco-chomage-inflation"],
+  ["monnaie-banques", "Monnaie, banques et banque centrale", "Économie", "eco-monnaie-banques"],
+  ["commerce-international", "Le commerce international", "Économie", "eco-commerce-international"],
+  ["etat-budget", "L'État et le budget", "Économie", "eco-etat-budget"],
+]
+
+const COMPTA_G2: Row[] = [
+  ["principes", "Principes de la comptabilité (SYSCOHADA)", "Comptabilité générale", "compta-principes"],
+  ["tva", "La TVA", "Comptabilité générale", "compta-tva"],
+  ["amortissements", "Les amortissements", "Opérations de fin d'année", "compta-amortissements"],
+  ["stocks", "Les stocks", "Opérations de fin d'année", "compta-stocks"],
+  ["regularisations", "Régularisations et provisions", "Opérations de fin d'année", "compta-regularisations"],
+  ["rapprochement-bancaire", "Le rapprochement bancaire", "Trésorerie", "compta-rapprochement-bancaire"],
+  ["bilan-resultat", "Bilan et compte de résultat", "États financiers", "compta-bilan-resultat"],
+  ["couts", "Comptabilité analytique et seuil de rentabilité", "Gestion", "compta-couts"],
+]
+
+const MF_G2: Row[] = [
+  ["interets-simples", "Intérêts simples et escompte", "Mathématiques financières", "mf-interets-simples"],
+  ["interets-composes", "Intérêts composés", "Mathématiques financières", "mf-interets-composes"],
+  ["annuites", "Les annuités", "Mathématiques financières", "mf-annuites"],
+  ["emprunts", "Les emprunts indivis", "Mathématiques financières", "mf-emprunts"],
+]
+
 export const CHAPTERS: ChapterDef[] = [
   ...build("d-maths", "D", MATHS_D),
   ...build("c-maths", "C", MATHS_C),
@@ -246,4 +359,23 @@ export const CHAPTERS: ChapterDef[] = [
   ...build("a-anglais", "A", ANGLAIS),
   ...build("a-allemand", "A", ALLEMAND),
   ...build("a-espagnol", "A", ESPAGNOL),
+  ...build("a-hg", "A", HG),
+  ...build("c-hg", "C", HG),
+  ...build("d-hg", "D", HG),
+  ...build("b-hg", "B", HG),
+  ...build("b-ses", "B", SES_B),
+  ...build("b-maths", "B", MATHS_GESTION),
+  ...build("b-philo", "B", PHILO),
+  ...build("b-anglais", "B", ANGLAIS),
+  ...build("g1-admin", "G1", ADMIN_G1),
+  ...build("g1-droit", "G1", DROIT_G),
+  ...build("g1-eco", "G1", ECO_G),
+  ...build("g1-maths", "G1", MATHS_GESTION),
+  ...build("g1-anglais", "G1", ANGLAIS),
+  ...build("g2-compta", "G2", COMPTA_G2),
+  ...build("g2-mf", "G2", MF_G2),
+  ...build("g2-droit", "G2", DROIT_G),
+  ...build("g2-eco", "G2", ECO_G),
+  ...build("g2-maths", "G2", MATHS_GESTION),
+  ...build("g2-anglais", "G2", ANGLAIS),
 ]

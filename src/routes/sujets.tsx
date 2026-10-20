@@ -4,7 +4,7 @@ import { FileText, CheckCircle2 } from 'lucide-react'
 import { useApi } from '@/lib/api'
 import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
-import { SERIE_LABEL, type Serie } from '@/lib/use-me'
+import { SERIE_LABEL, SERIES, type Serie } from '@/lib/use-me'
 
 export const Route = createFileRoute('/sujets')({ component: SujetsPage })
 
@@ -31,8 +31,8 @@ function Sujets({ serie, isAdmin }: { serie: Serie; isAdmin: boolean }) {
         <p className="text-sm text-muted-foreground">Les anciens sujets officiels, de 2021 à 2025, pour t'entraîner.</p>
 
         {isAdmin && (
-          <div className="mt-4 grid grid-cols-3 gap-1 rounded-xl border bg-card p-1 text-sm font-semibold sm:max-w-md">
-            {(['A', 'C', 'D'] as const).map((s) => (
+          <div className="mt-4 grid grid-cols-3 gap-1 rounded-xl border bg-card p-1 text-sm font-semibold sm:max-w-lg">
+            {SERIES.map((s) => (
               <button key={s} type="button" onClick={() => setTab(s)} className={`rounded-lg px-3 py-2 ${tab === s ? 'bg-primary text-primary-foreground' : 'hover:bg-secondary'}`}>
                 {SERIE_LABEL[s]}
               </button>

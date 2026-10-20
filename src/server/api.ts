@@ -21,7 +21,7 @@ import { BASE_RULES } from './tutor-rules'
 const PRICE_FCFA = 1100
 const DEFAULT_WAVE_NUMBER = '05 86 18 96 63'
 const DAILY_LIMIT = 40
-const SERIES = ['A', 'C', 'D']
+const SERIES = ['A', 'B', 'C', 'D', 'G1', 'G2']
 const DUMMY_HASH = 'scrypt$AAAAAAAAAAAAAAAAAAAAAA==$AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
 const WEAK_PASSWORDS = new Set([
   '12345678', '123456789', '1234567890', '87654321', '11111111', '00000000', 'password', 'password1', 'motdepasse',
@@ -30,7 +30,7 @@ const WEAK_PASSWORDS = new Set([
 ])
 const inflight = new Set<string>()
 
-type Profile = { name: string; serie: 'A' | 'C' | 'D'; role: 'student' | 'admin'; paid: boolean }
+type Profile = { name: string; serie: 'A' | 'B' | 'C' | 'D' | 'G1' | 'G2'; role: 'student' | 'admin'; paid: boolean }
 type Session = { uid: string; identifier: string; profile: Profile | null }
 type Ctx = {
   request: Request
@@ -557,7 +557,7 @@ route('GET', '/admin/overview', async ({ session }) => {
     totalUsers: total?.n ?? 0,
     paidCount: total?.paid ?? 0,
     totalReceived: (await one<{ s: number }>("SELECT COALESCE(sum(amount),0)::int AS s FROM payments WHERE status = 'approved'"))?.s ?? 0,
-    bySerie: (['A', 'C', 'D'] as const).map((serie) => ({
+    bySerie: (['A', 'B', 'C', 'D', 'G1', 'G2'] as const).map((serie) => ({
       serie,
       students: counts.find((c) => c.serie === serie)?.students ?? 0,
       subjects: subjects

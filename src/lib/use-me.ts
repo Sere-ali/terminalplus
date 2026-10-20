@@ -1,6 +1,7 @@
 import { useApi } from '@/lib/api'
 
-export type Serie = 'A' | 'C' | 'D'
+export type Serie = 'A' | 'B' | 'C' | 'D' | 'G1' | 'G2'
+export const SERIES: readonly Serie[] = ['A', 'B', 'C', 'D', 'G1', 'G2']
 
 export type MeState =
   | { status: 'loading' }
@@ -42,12 +43,18 @@ export function useMe(): MeState {
 
 export const SERIE_LABEL: Record<Serie, string> = {
   A: 'Terminale A',
+  B: 'Terminale B',
   C: 'Terminale C',
   D: 'Terminale D',
+  G1: 'Terminale G1',
+  G2: 'Terminale G2',
 }
 
 export const SERIE_TAGLINE: Record<Serie, string> = {
   A: 'Lettres et langues',
+  B: 'Sciences économiques et sociales',
   C: 'Mathématiques et sciences physiques',
   D: 'Sciences de la vie et de la terre',
+  G1: 'Techniques administratives',
+  G2: 'Comptabilité et gestion',
 }
