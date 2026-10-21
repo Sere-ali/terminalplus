@@ -1,686 +1,520 @@
-// Techniques administratives (G1) et Comptabilité / mathématiques financières (G2).
-// Comptabilité selon le SYSCOHADA révisé (espace OHADA). Liste des chapitres à valider avec le programme officiel.
+// Techniques administratives (G1) – leçons détaillées avec modèles de documents.
+// Liste des chapitres à valider avec le programme officiel de l'année.
 
 export const GESTION: Record<string, string> = {}
 
 GESTION["adm-organisation-entreprise"] = String.raw`## 💡 L'essentiel en une phrase
-Une **entreprise** est une unité économique qui produit des biens ou des services pour les vendre ; son **organisation** répartit les tâches et les responsabilités.
+Une **entreprise** est une unité économique qui **combine des facteurs de production** (travail, capital) pour produire des **biens ou des services** destinés à être **vendus** ; son **organisation** répartit les tâches, les pouvoirs et les responsabilités.
 
-## 📚 1. Les fonctions de l'entreprise
-Production, commercial, financière, ressources humaines, administrative.
+## 📚 1. Les types d'entreprises
 
-## 📚 2. L'organigramme
-Schéma qui montre la hiérarchie : direction, services, postes.
-- **Structure hiérarchique** : un chef unique, ordres du haut vers le bas.
-- **Structure fonctionnelle** : spécialistes par fonction.
-- **Structure mixte** (hiérarchico-fonctionnelle).
+| Critère | Catégories | Exemples |
+|---|---|---|
+| **Secteur d'activité** | **Primaire** (agriculture, pêche, mines) ; **secondaire** (industrie, construction) ; **tertiaire** (commerce, banque, transport, services) | Plantation de cacao ; usine de chocolat ; supermarché |
+| **Taille** | **TPE** (très petite), **PME**, **grande entreprise** (selon effectifs et chiffre d'affaires) | Boutique ; entreprise de 80 salariés ; multinationale |
+| **Statut juridique** | **Entreprise individuelle** ; **société** (SARL, SA…) ; **entreprise publique** | |
+| **Propriété du capital** | **Privée**, **publique** (État), **mixte** | |
+| **Finalité** | **Lucrative** (profit) / **non lucrative** (associations) | |
 
-## 📚 3. Types d'entreprises
-Selon la taille (TPE, PME, grande), le secteur (primaire, secondaire, tertiaire), le statut (individuelle, société, publique).
+## 📚 2. Les fonctions de l'entreprise
+
+| Fonction | Rôle | Exemples d'activités |
+|---|---|---|
+| **Approvisionnement** | Acheter les matières et marchandises | Choisir les fournisseurs, passer commande |
+| **Production** | Fabriquer les biens ou rendre le service | Fabrication, contrôle qualité |
+| **Commerciale** | Vendre | Marketing, vente, service après-vente |
+| **Financière et comptable** | Gérer l'argent | Comptabilité, trésorerie, paie |
+| **Ressources humaines** | Gérer le personnel | Recrutement, formation |
+| **Administrative / direction** | Organiser et décider | Planification, contrôle |
+
+## 📚 3. Les facteurs d'organisation
+- **Division du travail** : chaque salarié a une tâche précise (spécialisation, gain de temps).
+- **Hiérarchie** : chaîne de commandement du chef aux exécutants ; **délégation** de pouvoir.
+- **Coordination et contrôle** : réunions, rapports, procédures.
+- **Principes classiques** (Taylor, Fayol) : prévoir, organiser, commander, coordonner, contrôler.
+
+## 📚 4. L'organigramme
+Un **organigramme** est un **schéma** qui représente les **postes, services et liens hiérarchiques** de l'entreprise.
+
+**Exemple d'organigramme hiérarchique d'une PME :**
+
+| Niveau | Postes |
+|---|---|
+| **Direction** | Directeur général |
+| **Services** | Chef du service commercial · Chef du service comptable · Chef du service du personnel · Chef de production |
+| **Exécution** | Vendeurs · Comptables et caissier · Secrétaire / gestionnaire du personnel · Ouvriers |
+
+| Structure | Principe | Avantage | Inconvénient |
+|---|---|---|---|
+| **Hiérarchique (linéaire)** | **Un seul chef** pour chaque salarié (unité de commandement) | Autorité claire | Lenteur, surcharge du chef |
+| **Fonctionnelle** | **Spécialistes** par fonction qui conseillent tous les services | Expertise | Risque d'ordres contradictoires |
+| **Hiérarchico-fonctionnelle (mixte)** | Autorité hiérarchique + services conseils (staff) | **La plus courante** | Plus complexe |
+
+## 📚 5. L'entreprise et son environnement
+Clients, fournisseurs, banques, concurrents, **État** (impôts, législation), **CNPS**, **CEPICI**, **chambre de commerce**. L'entreprise a des **obligations** envers ses salariés, ses clients et l'État.
 
 ## 🧪 Exemple
-Dans une PME : un directeur, un service comptable, un service commercial, un service du personnel : voilà son organigramme.
+Dans une boutique-grossiste, le gérant (direction) reçoit les rapports du comptable, du chef des ventes et du magasinier : **c'est une structure hiérarchique simple**. À mesure que l'entreprise grandit, on ajoute des services (ressources humaines, informatique) : la structure devient **mixte**.
 
 ## ✏️ Exercices
 **Exercice 1.** À quoi sert un organigramme ?
 
 :::corrige
-À représenter l'organisation de l'entreprise : services, postes et liens hiérarchiques.
+À **représenter l'organisation** de l'entreprise : services, postes et **liens hiérarchiques** ; il montre qui dépend de qui.
 :::
 
-**Exercice 2.** Cite trois fonctions de l'entreprise.
+**Exercice 2.** Classe par secteur : (a) une usine de fabrication de jus ; (b) une banque ; (c) une plantation d'hévéa.
 
 :::corrige
-Production, commerciale, financière, ressources humaines, administrative (trois au choix).
+(a) **secondaire** ; (b) **tertiaire** ; (c) **primaire**.
+:::
+
+**Exercice 3.** Cite quatre fonctions de l'entreprise et une activité de chacune.
+
+:::corrige
+Approvisionnement (acheter), production (fabriquer), commerciale (vendre), financière (comptabilité), ressources humaines (recruter).
+:::
+
+**Exercice 4.** Quel est l'inconvénient d'une structure hiérarchique pure ?
+
+:::corrige
+Le chef est **surchargé** et les décisions peuvent être lentes ; il n'y a pas de spécialistes pour l'aider.
 :::
 
 ## ⚠️ Pièges
-- Confondre fonction (activité) et service (structure).
+- **Fonction** (activité) ≠ **service** (structure) : la fonction commerciale s'exerce dans le service commercial.
+- La **taille** ne se juge pas seulement au nombre de salariés mais aussi au chiffre d'affaires.
 
 ## 🏆 À retenir pour le BAC
-Fonctions de l'entreprise, organigramme, structures hiérarchique / fonctionnelle, classification des entreprises.
+Types d'entreprises (secteur, taille, statut) ; fonctions de l'entreprise ; division du travail et hiérarchie ; organigramme (hiérarchique, fonctionnel, mixte).
 `
 
 GESTION["adm-communication"] = String.raw`## 💡 L'essentiel en une phrase
-La **communication** est l'échange d'informations entre un émetteur et un récepteur ; dans l'entreprise elle peut être **orale** ou **écrite**, **interne** ou **externe**.
+La **communication** est l'**échange d'informations** entre un **émetteur** et un **récepteur** ; dans l'entreprise elle peut être **orale** ou **écrite**, **interne** ou **externe**, et son efficacité dépend de la **clarté du message** et de la **rétroaction**.
 
 ## 📚 1. Le schéma de la communication
-Émetteur → **message** (par un canal) → récepteur, avec une **rétroaction** (feedback). Les **bruits** perturbent le message.
+**Émetteur** → (code) **message** → **canal** → **récepteur** → **rétroaction** (feedback).
+- **Bruit** : tout ce qui perturbe le message (bruit sonore, mauvaise écriture, mot incompris, désintérêt).
+- **Code** : langue ou langage commun aux deux parties.
+- **Contexte** (la situation).
 
-## 📚 2. Les formes
-- **Orale** : téléphone, réunion, entretien. **Écrite** : lettre, note, rapport, courriel.
-- **Interne** : entre services (note de service). **Externe** : clients, fournisseurs, administrations.
+## 📚 2. Les formes de communication
 
-## 📚 3. Qualités d'une bonne communication
-Clarté, concision, courtoisie, exactitude, rapidité.
+| Critère | Formes | Exemples |
+|---|---|---|
+| **Support** | **Orale** (téléphone, réunion, entretien) / **écrite** (lettre, note, courriel) / **visuelle** (affiche, schéma) | |
+| **Destinataire** | **Interne** (entre services, direction ↔ personnel) / **externe** (clients, fournisseurs, administration, banque) | Note de service / lettre commerciale |
+| **Sens** | **Descendante** (direction → personnel : ordres, notes) ; **ascendante** (personnel → direction : rapports, suggestions) ; **horizontale** (entre services) | |
+| **Caractère** | **Formelle** (officielle, tracée) / **informelle** (rumeurs, conversations) | |
 
-## 🧪 Exemple
-Une note de service informe tous les employés du changement d'horaires : communication **interne écrite** et **descendante**.
+## 📚 3. Les outils de la communication
+- **Écrits** : lettre, note de service, note d'information, circulaire, rapport, compte rendu, procès-verbal, courrier électronique.
+- **Oraux** : téléphone (fixe, mobile), réunions, entretien, visioconférence.
+- **Numériques** : messagerie, WhatsApp professionnel, intranet, site web, réseaux sociaux.
+- **Affichage** et **tableaux d'information**.
+
+## 📚 4. Exemple de note de service
+**Entreprise ABC — NOTE DE SERVICE n° 012/DG/2026**
+De : le Directeur général — À : l'ensemble du personnel — Date : 5 mars 2026
+**Objet : horaires de travail**
+À compter du lundi 10 mars, les horaires de travail sont fixés de **7 h 30 à 16 h 30**, avec une pause de 12 h à 13 h. Les chefs de service veilleront à l'application de cette mesure.
+*Signature du Directeur général.*
+
+C'est une **communication interne, écrite, descendante, formelle**.
+
+## 📚 5. Les obstacles à la communication
+
+| Obstacle | Exemple | Remède |
+|---|---|---|
+| **Matériel** | Téléphone coupé, mauvaise connexion | Vérifier le canal |
+| **Linguistique** | Termes techniques incompris | Mots simples |
+| **Psychologique** | Stress, désintérêt, préjugés | Écoute active |
+| **Organisationnel** | Trop d'intermédiaires | Circuits courts |
+
+## 📚 6. Les qualités d'un bon message
+**Clarté**, **concision**, **précision**, **courtoisie**, **exactitude**, **rapidité**. Pour écrire : **qui ? quoi ? où ? quand ? comment ? pourquoi ?**
+
+## 🧪 Cas pratique
+Un directeur demande oralement à une secrétaire « d'envoyer le dossier au client ». Elle ne sait pas **quel client**, ni **quel dossier**, ni **quand** : le message est incomplet ; il aurait fallu un **écrit précis** et un **retour** pour vérifier la compréhension.
 
 ## ✏️ Exercices
 **Exercice 1.** Quels sont les éléments du schéma de la communication ?
 
 :::corrige
-Émetteur, message, canal, récepteur, rétroaction (et bruits possibles).
+Émetteur, message, canal, récepteur, **rétroaction** ; les **bruits** peuvent perturber le message.
 :::
 
-**Exercice 2.** Donne un exemple de communication externe.
+**Exercice 2.** Classe : (a) un rapport du comptable au directeur ; (b) une note de service ; (c) une lettre à un fournisseur.
 
 :::corrige
-Une lettre commerciale envoyée à un client ou à un fournisseur.
+(a) interne, écrite, **ascendante** ; (b) interne, écrite, **descendante** ; (c) **externe**, écrite.
+:::
+
+**Exercice 3.** Pourquoi la rétroaction est-elle importante ?
+
+:::corrige
+Elle permet à l'émetteur de **vérifier que le message est compris** et de le corriger si besoin.
+:::
+
+**Exercice 4.** Rédige en trois lignes une note d'information annonçant la fermeture exceptionnelle de l'entreprise le vendredi 20 mars.
+
+:::corrige
+*Objet : fermeture exceptionnelle.* « Le personnel est informé que l'entreprise sera fermée le vendredi 20 mars 2026. Les activités reprendront normalement le lundi 23 mars à 7 h 30. La Direction. » (objet, message clair, date et signature.)
 :::
 
 ## ⚠️ Pièges
-- Sans retour du récepteur, on ne sait pas si le message est compris.
+- Une communication **sans retour** n'est pas complète.
+- **Interne** ≠ **orale** : une note de service est interne mais **écrite**.
+- Un message long et confus produit des **erreurs**.
 
 ## 🏆 À retenir pour le BAC
-Schéma de la communication, formes orale / écrite, interne / externe, qualités d'un bon message.
+Schéma de la communication ; formes (orale / écrite, interne / externe, descendante / ascendante / horizontale) ; outils ; obstacles ; qualités d'un bon message ; modèle de note de service.
 `
 
 GESTION["adm-courrier"] = String.raw`## 💡 L'essentiel en une phrase
-Le **courrier** est l'ensemble des documents reçus ou envoyés par l'entreprise ; son traitement suit des étapes précises pour ne rien perdre.
+Le **courrier** (documents reçus ou envoyés) est traité selon un **circuit précis** (réception, enregistrement, répartition, suivi) qui garantit qu'**aucun document ne se perd** et que chacun est traité à temps.
 
 ## 📚 1. Le courrier « arrivée »
-Réception → **ouverture** → **tampon dateur** → **enregistrement** (registre) → **répartition** vers les services → suivi.
+
+| Étape | Action |
+|---|---|
+| **1. Réception** | Tri : courrier **ordinaire**, **recommandé**, **confidentiel** (non ouvert), **urgent** |
+| **2. Ouverture** | Vérifier le contenu et les pièces jointes ; conserver l'enveloppe si la date compte |
+| **3. Tampon dateur** | Apposer la **date d'arrivée** (et éventuellement le numéro) |
+| **4. Enregistrement** | Inscrire dans le **registre (cahier) du courrier arrivée** avec un **numéro d'ordre** |
+| **5. Analyse et répartition** | Lire, préciser le **service destinataire**, établir un **bordereau** ou fiche de circulation |
+| **6. Remise et suivi** | Remettre contre **décharge** ; suivre les **réponses** à faire |
+| **7. Classement** | Après traitement |
+
+**Modèle de registre du courrier arrivée :**
+
+| N° d'ordre | Date d'arrivée | Expéditeur | Objet | Service destinataire | Réponse (date) |
+|---|---|---|---|---|---|
+| 001 | 03/03/2026 | Société XYZ | Offre de prix | Achats | 05/03/2026 |
+| 002 | 03/03/2026 | CNPS | Appel de cotisations | Personnel | 10/03/2026 |
 
 ## 📚 2. Le courrier « départ »
-Rédaction → **signature** → **copie** conservée → mise sous pli → **enregistrement** → expédition (poste, coursier, courriel).
 
-## 📚 3. La lettre commerciale
-- **En-tête** (expéditeur), **références**, **destinataire**, **lieu et date**, **objet**, **formule d'appel**, **corps**, **formule de politesse**, **signature**, **pièces jointes (PJ)**.
+| Étape | Action |
+|---|---|
+| **1. Rédaction** | Lettre, note ; après **ordre du chef** ou minute |
+| **2. Signature** | Par la personne qui a **qualité** |
+| **3. Copie** | **Photocopie** conservée (double) |
+| **4. Mise sous pli** | Enveloppe, adresse, affranchissement |
+| **5. Enregistrement** | Inscription au **registre départ** (numéro, date, destinataire, objet) |
+| **6. Expédition** | Poste, coursier, **recommandé avec accusé de réception**, courriel |
+| **7. Classement** | De la copie et des preuves d'envoi |
 
-## 🧪 Exemple
-Une lettre arrive le lundi : on appose le tampon dateur, on l'inscrit au registre « arrivée » puis on la remet au service comptable.
+## 📚 3. La lettre commerciale (modèle)
+Une lettre commerciale comporte, dans l'ordre :
+1. **L'en-tête** (nom, adresse, contacts de l'expéditeur).
+2. **Les références** (numéro, « V/Réf », « N/Réf »).
+3. **Le destinataire** (nom, adresse).
+4. **Lieu et date**.
+5. **L'objet** (en quelques mots).
+6. **Les pièces jointes (PJ)** si besoin.
+7. **La formule d'appel** (« Monsieur le Directeur, »).
+8. **Le corps** : introduction, développement, conclusion.
+9. **La formule de politesse**.
+10. **La signature** (nom, fonction, signature).
+
+**Exemple (extrait) :**
+> **Établissements KONÉ** — BP 120 Abidjan — Tél. 27 00 00 00 00
+>
+> Réf. : 045/KON/2026 Abidjan, le 12 mars 2026
+>
+> **À Monsieur le Directeur de la société SOCOPAC — Bouaké**
+>
+> **Objet : demande de devis**
+>
+> Monsieur le Directeur,
+>
+> Nous souhaiterions recevoir votre meilleure offre pour la fourniture de 200 sacs de ciment de 50 kg, livrables à Abidjan avant le 30 mars. Nous vous remercions de nous préciser vos prix, vos délais et vos conditions de paiement.
+>
+> Dans l'attente de votre réponse, nous vous prions d'agréer, Monsieur le Directeur, l'expression de nos salutations distinguées.
+>
+> *Le Gérant, M. Koné*
+
+## 📚 4. Les documents associés
+**Le bordereau d'envoi** (liste des pièces envoyées), l'**accusé de réception**, la **fiche de circulation**, le **télégramme** et le **courrier électronique** (valeur de preuve de plus en plus reconnue).
 
 ## ✏️ Exercices
-**Exercice 1.** Cite les étapes du courrier arrivée.
+**Exercice 1.** Cite les étapes du traitement du courrier arrivée.
 
 :::corrige
-Ouverture, tampon dateur, enregistrement, répartition, suivi.
+Réception et tri, ouverture, **tampon dateur**, enregistrement, répartition (bordereau), remise contre décharge, suivi, classement.
 :::
 
-**Exercice 2.** Pourquoi garder une copie du courrier départ ?
+**Exercice 2.** Pourquoi garde-t-on une copie du courrier départ ?
 
 :::corrige
-Pour conserver une preuve de l'envoi et du contenu, et pouvoir le consulter ensuite.
+Pour garder une **preuve** du contenu et de l'envoi, et pour pouvoir le **consulter** ensuite (relance, litige).
+:::
+
+**Exercice 3.** Une lettre est adressée « À l'attention personnelle de M. Diallo ». Doit-on l'ouvrir ?
+
+:::corrige
+Non : le courrier **personnel ou confidentiel** est remis **fermé** à son destinataire ; on l'enregistre seulement.
+:::
+
+**Exercice 4.** Rédige l'objet et la formule d'appel d'une lettre de réclamation à un fournisseur dont le directeur est M. Soro.
+
+:::corrige
+*Objet : réclamation sur la livraison du 4 mars.* Formule d'appel : « Monsieur le Directeur, ».
 :::
 
 ## ⚠️ Pièges
-- Oublier l'objet ou la formule de politesse dans une lettre commerciale.
+- Oublier l'**objet**, la **date** ou la **signature**.
+- Ne pas **dater** le courrier à l'arrivée (on perd la preuve).
+- Envoyer un document important sans **accusé de réception**.
 
 ## 🏆 À retenir pour le BAC
-Circuit du courrier arrivée et départ, registre, tampon dateur, plan d'une lettre commerciale.
+Circuit du courrier arrivée et départ ; tampon dateur et registres ; plan d'une lettre commerciale ; courrier confidentiel ; accusé de réception.
 `
 
 GESTION["adm-classement-archivage"] = String.raw`## 💡 L'essentiel en une phrase
-Le **classement** range les documents pour les retrouver vite ; l'**archivage** conserve les documents anciens pour une durée légale.
+Le **classement** range les documents pour les **retrouver vite** ; l'**archivage** conserve pendant une **durée légale** les documents qui ne servent plus tous les jours mais qui peuvent servir de **preuve**.
 
-## 📚 1. Les modes de classement
-- **Alphabétique** (noms), **numérique** (numéros), **chronologique** (dates), **thématique** (sujets), **géographique** (lieux).
-- Matériel : chemises, dossiers suspendus, classeurs, armoires, logiciels de gestion.
+## 📚 1. Pourquoi classer ?
+Gagner du **temps**, éviter les **pertes**, retrouver les **preuves** (litiges, contrôles fiscaux), assurer la **continuité** quand un employé change de poste.
 
-## 📚 2. Les trois âges des archives
-- **Archives courantes** (utilisées souvent), **intermédiaires** (rarement), **historiques / définitives**.
+## 📚 2. Les modes de classement
 
-## 📚 3. Durées de conservation
-Documents comptables conservés plusieurs années (au moins 10 ans en espace OHADA), contrats de travail et pièces fiscales selon la loi.
+| Mode | Principe | Exemple d'usage |
+|---|---|---|
+| **Alphabétique** | Ordre alphabétique des **noms** | Fichier des clients |
+| **Numérique** | Par **numéro** (croissant) | Factures, bons de commande |
+| **Chronologique** | Par **date** | Courrier, relevés |
+| **Thématique (analytique, par objet)** | Par **sujet** | Dossiers « Assurances », « Impôts » |
+| **Géographique** | Par **lieu** | Agences, clients par ville |
+| **Mixte** | Combine plusieurs modes | Dossiers par client, classés chronologiquement |
+
+## 📚 3. Le matériel de classement
+**Pochettes et chemises**, **classeurs à levier**, **dossiers suspendus**, **armoires** à tiroirs, **fiches** (fichier clients), **intercalaires** (séparateurs), **boîtes d'archives**, et en **numérique** : **dossiers informatiques** bien nommés, **sauvegardes**, **GED** (gestion électronique de documents).
+**Bonnes pratiques :** un document = un seul emplacement ; **étiqueter** ; renvois (fiche) quand un document concerne deux dossiers ; **mise à jour** régulière.
+
+## 📚 4. Les trois âges des archives
+
+| Âge | Fréquence d'usage | Où ? | Exemple |
+|---|---|---|---|
+| **Archives courantes** | Constamment | **Dans le bureau** | Dossiers en cours |
+| **Archives intermédiaires** | De temps en temps | **Local d'archives** de l'entreprise | Factures d'il y a 2 ans |
+| **Archives définitives (historiques)** | Rarement ; valeur de **mémoire** ou obligation légale | **Archives** d'entreprise ou nationales | Statuts, livres comptables anciens |
+
+## 📚 5. Durées de conservation (à retenir)
+
+| Document | Durée (ordre de grandeur, à confirmer par le cours) |
+|---|---|
+| **Livres et pièces comptables** | **10 ans** (Acte uniforme OHADA sur la comptabilité) |
+| **Contrats commerciaux** | 5 à 10 ans |
+| **Documents fiscaux** | Plusieurs années (selon le code des impôts) |
+| **Dossiers du personnel** | Longue durée (retraite, contentieux) |
+| **Statuts, actes de société** | **Toute la vie** de l'entreprise |
+
+Passé le délai, on **détruit** (broyage) selon un **procès-verbal d'élimination**.
+
+## 📚 6. Sécurité
+Contre l'**incendie**, l'**humidité**, le **vol**, les **insectes** ; et en numérique, **mot de passe**, **sauvegardes** régulières, **antivirus**.
 
 ## 🧪 Exemple
-Les factures clients sont classées par ordre chronologique dans un classeur par année.
+Les factures clients sont classées **numériquement** dans un classeur par année. À chaque facture correspond un **dossier client** classé **alphabétiquement**. Après trois ans, les factures sont transférées aux **archives intermédiaires**, avec un registre de transfert.
 
 ## ✏️ Exercices
-**Exercice 1.** Cite trois modes de classement.
+**Exercice 1.** Quel mode de classement pour (a) un fichier de clients ; (b) des bons de livraison ; (c) un dossier « Assurances » ?
 
 :::corrige
-Alphabétique, numérique, chronologique, thématique, géographique (trois au choix).
+(a) **alphabétique** ; (b) **numérique** (ou chronologique) ; (c) **thématique**.
 :::
 
-**Exercice 2.** Différence entre classement et archivage ?
+**Exercice 2.** Cite les trois âges des archives.
 
 :::corrige
-Le classement range pour retrouver rapidement ; l'archivage conserve les documents devenus peu utiles pendant une durée légale.
+Archives **courantes**, **intermédiaires**, **définitives** (historiques).
+:::
+
+**Exercice 3.** Différence entre classement et archivage ?
+
+:::corrige
+Le **classement** range pour **retrouver rapidement** des documents en usage ; l'**archivage** **conserve** les documents anciens pour une **durée légale**.
+:::
+
+**Exercice 4.** Peut-on détruire une facture de 5 ans ?
+
+:::corrige
+**Non** : les pièces comptables doivent être conservées environ **10 ans** (règle OHADA).
 :::
 
 ## ⚠️ Pièges
-- Détruire un document avant la fin de sa durée légale de conservation.
+- Détruire un document avant la **fin de sa durée légale**.
+- Mélanger **classement** (activité quotidienne) et **archivage** (conservation).
+- Oublier de **sauvegarder** les fichiers numériques.
 
 ## 🏆 À retenir pour le BAC
-Modes de classement, trois âges des archives, durées de conservation, rôle du secrétariat.
+Cinq modes de classement ; matériel ; trois âges des archives ; durées de conservation (comptabilité : 10 ans) ; sécurité des documents.
 `
 
 GESTION["adm-reunions-secretariat"] = String.raw`## 💡 L'essentiel en une phrase
-Le **secrétariat** assure l'accueil, l'organisation des **réunions** et la rédaction de leurs comptes rendus.
+Le **secrétariat** assure l'**accueil**, le **téléphone**, la **gestion de l'agenda** et l'**organisation des réunions** (convocation, ordre du jour, feuille de présence, **procès-verbal**).
 
 ## 📚 1. Préparer une réunion
-- Fixer **objectif, date, lieu, participants**.
-- Envoyer la **convocation** avec l'**ordre du jour**.
-- Préparer salle, documents, matériel.
 
-## 📚 2. Pendant et après
-- **Pendant** : feuille de présence, prise de notes.
-- **Après** : **procès-verbal (PV)** ou **compte rendu** : date, lieu, présents / absents, points discutés, décisions, signature.
+| Étape | Contenu |
+|---|---|
+| **Définir l'objectif** | Informer, décider, former ? |
+| **Fixer date, lieu, durée** | Vérifier les agendas |
+| **Choisir les participants** | Les personnes concernées par les sujets |
+| **Établir l'ordre du jour** | Liste ordonnée des points à traiter |
+| **Envoyer la convocation** | Délai raisonnable (souvent 8 jours pour une assemblée) |
+| **Préparer la salle et les documents** | Siège, matériel, dossiers |
 
-## 📚 3. L'accueil et le téléphone
-Accueillir avec courtoisie, filtrer les appels, prendre des messages exacts.
+**Modèle de convocation :**
+> **CONVOCATION** — Abidjan, le 2 mars 2026
+>
+> Le Directeur général a l'honneur de vous convier à la **réunion du comité de direction**, le **jeudi 12 mars 2026 à 9 h**, en **salle de conférence**.
+>
+> **Ordre du jour :** 1. Résultats du premier trimestre ; 2. Projet d'achat d'un véhicule ; 3. Questions diverses.
+>
+> *Le Directeur général.*
+
+## 📚 2. Pendant la réunion
+- **Feuille de présence** signée par chaque participant.
+- **Animateur** (président de séance), **secrétaire de séance** qui prend les notes, **gardien du temps**.
+- **Respecter l'ordre du jour**, donner la parole à chacun, procéder aux **votes** si besoin.
+
+## 📚 3. Après la réunion : le procès-verbal (PV) et le compte rendu
+Le **PV** garde la **trace officielle** des décisions ; le **compte rendu** résume les discussions (plus libre).
+
+**Modèle de procès-verbal :**
+> **PROCÈS-VERBAL DE LA RÉUNION DU 12 MARS 2026**
+>
+> **Présents :** M. Koné (DG), Mme Diallo (comptable), M. Soro (commercial). **Absents excusés :** M. Yao.
+>
+> **Président de séance :** M. Koné — **Secrétaire :** Mme Diallo. Ouverture à 9 h 05.
+>
+> **Point 1 — Résultats du trimestre :** le chiffre d'affaires est en hausse de 8 %. *Décision : maintenir la politique actuelle.*
+>
+> **Point 2 — Achat d'un véhicule :** après discussion, vote : 3 voix pour, 0 contre. *Décision : acheter un véhicule utilitaire d'un montant maximum de 8 000 000 F.*
+>
+> La séance est levée à 10 h 30. *Signatures : le Président, le Secrétaire.*
+
+## 📚 4. L'accueil et le téléphone
+- **Accueil** : sourire, salutation, **identifier** le visiteur, l'**orienter** ou l'annoncer, tenir le **registre des visiteurs**.
+- **Téléphone** : décrocher rapidement, **se présenter** (« Établissements Koné, bonjour »), écouter, **filtrer** les appels, noter un **message** (qui, quand, pourquoi, numéro à rappeler).
+- **Agenda et planning** : noter les rendez-vous, les échéances ; **relancer**, éviter les chevauchements.
 
 ## 🧪 Exemple
-Un PV d'assemblée générale note les résolutions votées et est signé par le président et le secrétaire.
+Une réunion se tient sans ordre du jour : on parle de tout, on ne décide rien. Avec une **convocation** et un **ordre du jour**, les participants se préparent et les décisions sont consignées dans un **PV**.
 
 ## ✏️ Exercices
 **Exercice 1.** Que contient une convocation ?
 
 :::corrige
-La date, l'heure, le lieu, les participants et l'ordre du jour.
+La **date**, l'**heure**, le **lieu**, l'**objet** de la réunion, l'**ordre du jour**, la liste des **destinataires**, et la **signature** de celui qui convoque.
 :::
 
 **Exercice 2.** Que contient un procès-verbal ?
 
 :::corrige
-Date, lieu, présents et absents, points traités, décisions prises, signatures.
+La **date**, le **lieu**, les **présents et absents**, le **président et le secrétaire**, les **points traités**, les **décisions** et **votes**, l'**heure de clôture** et les **signatures**.
+:::
+
+**Exercice 3.** À quoi sert la feuille de présence ?
+
+:::corrige
+À prouver la **présence** des participants (et le **quorum** pour valider les décisions).
+:::
+
+**Exercice 4.** Rédige un message téléphonique : M. Soro (fournisseur) a appelé à 10 h pour confirmer la livraison de vendredi ; il demande à être rappelé au 07 07 07 07 07.
+
+:::corrige
+*« Message pour M. le Directeur — Appel de M. Soro (fournisseur), ce jour à 10 h. Objet : confirmation de la livraison de vendredi. À rappeler au 07 07 07 07 07. »*
 :::
 
 ## ⚠️ Pièges
-- Un PV doit rapporter les décisions, pas tous les propos mot à mot.
+- Un PV rapporte les **décisions**, pas tous les propos mot à mot.
+- Oublier de faire **signer** la feuille de présence.
+- Une réunion sans **ordre du jour** perd son temps.
 
 ## 🏆 À retenir pour le BAC
-Convocation, ordre du jour, feuille de présence, procès-verbal, accueil et téléphone.
+Préparation (objectif, convocation, ordre du jour) ; feuille de présence ; PV et compte rendu ; accueil et téléphone ; agenda.
 `
 
 GESTION["adm-gestion-personnel"] = String.raw`## 💡 L'essentiel en une phrase
-La **gestion du personnel** recrute, forme, rémunère et suit les salariés dans le respect du Code du travail.
+La **gestion du personnel** (ou des ressources humaines) **recrute**, **forme**, **rémunère**, **suit** et **fait évoluer** les salariés, dans le respect du **Code du travail**.
 
 ## 📚 1. Le recrutement
-Définir le **besoin**, rédiger l'**offre**, sélectionner les **candidatures**, mener l'**entretien**, **embaucher** (contrat de travail, déclaration CNPS).
+
+| Étape | Contenu |
+|---|---|
+| **Définir le besoin** | Quel poste ? profil, compétences, salaire |
+| **Rechercher** | Annonce, réseaux, agences d'emploi, **ANPE / Agence Emploi Jeunes** |
+| **Sélectionner** | **Tri des CV**, tests, **entretiens** |
+| **Embaucher** | **Contrat de travail** écrit, **déclaration à la CNPS**, **visite médicale**, **dossier du personnel**, période d'essai |
+| **Intégrer** | Accueil, présentation, formation à la tâche |
 
 ## 📚 2. Le dossier du personnel
-Pièces d'identité, diplômes, contrat, bulletins de paie, congés, absences, évaluations.
+Pièce d'identité, **CV**, diplômes, **extrait de casier judiciaire**, **contrat de travail**, avenants, **bulletins de paie**, **congés**, absences, **sanctions**, évaluations, **certificats médicaux**, numéro CNPS.
 
-## 📚 3. La paie
-- **Salaire brut** − **cotisations salariales** (CNPS…) − impôts = **salaire net**.
-- **Bulletin de paie** remis chaque mois.
-- **Congés payés**, absences, heures supplémentaires.
+## 📚 3. La rémunération et le bulletin de paie
+$$ Salaire\ brut - Retenues\ du\ salari\acute{e}\ (CNPS,\ imp\hat{o}t) = Salaire\ net $$
+**Exemple :** brut **300 000 F** ; CNPS salarié 6,3 % = 18 900 ; impôt retenu 12 000 ⇒ **net = 269 100 F**.
 
-## 📚 4. La formation et l'évolution
-Plan de formation, promotion, évaluation, discipline et fin de contrat.
+**Modèle de bulletin de paie (simplifié) :**
 
-## 🧪 Exemple corrigé
-Brut = 300 000 F ; retenues = 30 000 F → net = **270 000 F**.
+| Rubrique | Base | Taux | Gain | Retenue |
+|---|---|---|---|---|
+| Salaire de base | 300 000 | | 300 000 | |
+| CNPS salarié (retraite) | 300 000 | 6,3 % | | 18 900 |
+| Impôt sur salaire | | | | 12 000 |
+| **Total** | | | **300 000** | **30 900** |
+| **Net à payer** | | | | **269 100** |
+
+**Charges patronales** (à la charge de l'entreprise) : CNPS employeur (retraite, prestations familiales, accidents du travail), qui s'ajoutent au **coût total du salarié**.
+
+## 📚 4. Congés, absences et horaires
+- **Congés payés annuels**, **congés de maternité**, congés exceptionnels (mariage, décès).
+- **Absences** justifiées / injustifiées ; **retards**.
+- **Heures supplémentaires** payées avec majoration.
+- **Registre** et **pointage**.
+
+## 📚 5. Formation, évaluation, discipline
+- **Plan de formation**, **évaluation** annuelle, **promotion**.
+- **Règlement intérieur** : règles de discipline et d'hygiène.
+- **Sanctions** graduées : avertissement, blâme, mise à pied, licenciement (procédure obligatoire).
+
+## 📚 6. La fin du contrat
+**Démission**, **licenciement**, fin de CDD, **retraite** : remise du **certificat de travail**, du **solde de tout compte** et de l'**attestation** pour la CNPS.
 
 ## ✏️ Exercices
-**Exercice 1.** Brut 250 000 F, retenues 22 500 F. Net ?
+**Exercice 1.** Brut 250 000 F ; retenues 22 500 F. Quel est le net ?
 
 :::corrige
 250 000 − 22 500 = **227 500 F**.
 :::
 
-**Exercice 2.** Que contient un dossier du personnel ?
+**Exercice 2.** Cite quatre pièces d'un dossier du personnel.
 
 :::corrige
-Identité, diplômes, contrat, bulletins de paie, congés, évaluations.
+Contrat de travail, CV, diplômes, bulletins de paie, pièce d'identité, certificats médicaux, congés (quatre au choix).
+:::
+
+**Exercice 3.** Quelles sont les étapes du recrutement ?
+
+:::corrige
+Définir le besoin → rechercher → sélectionner (CV, entretien) → embaucher (contrat, CNPS) → intégrer.
+:::
+
+**Exercice 4.** Brut 400 000 F ; retenue CNPS 6,3 % ; impôt retenu 25 000 F. Calcule le net.
+
+:::corrige
+CNPS = 25 200 ; net = 400 000 − 25 200 − 25 000 = **349 800 F**.
 :::
 
 ## ⚠️ Pièges
-- Confondre salaire brut et salaire net.
+- Confondre **salaire brut** et **salaire net**.
+- Oublier la **déclaration à la CNPS** à l'embauche.
+- Appliquer une **sanction** sans respecter la procédure.
 
 ## 🏆 À retenir pour le BAC
-Étapes du recrutement, dossier du personnel, calcul du net, bulletin de paie.
-`
-
-GESTION["compta-principes"] = String.raw`## 💡 L'essentiel en une phrase
-La **comptabilité** enregistre toutes les opérations de l'entreprise pour en connaître le **patrimoine** et le **résultat** ; elle suit en espace OHADA le **SYSCOHADA révisé**.
-
-## 📚 1. Notions de base
-- **Patrimoine** = ce que l'entreprise possède (**actif**) et ce qu'elle doit (**passif**).
-- **Équation** : Actif = Capitaux propres + Dettes.
-- **Compte** : tableau avec un **débit** (à gauche) et un **crédit** (à droite).
-- **Partie double** : toute opération est enregistrée dans au moins deux comptes, avec **total débit = total crédit**.
-
-## 📚 2. Les classes de comptes (SYSCOHADA)
-1 Ressources durables · 2 Actif immobilisé · 3 Stocks · 4 Tiers · 5 Trésorerie · 6 Charges · 7 Produits · 8 Autres charges et produits.
-
-## 📚 3. Le journal et le grand livre
-Les opérations sont d'abord inscrites au **journal** (ordre chronologique), puis reportées au **grand livre** (compte par compte), pour dresser la **balance**.
-
-## 🧪 Exemple corrigé
-Achat de marchandises 100 000 F payé en espèces :
-- Débit 601 Achats de marchandises : 100 000
-- Crédit 571 Caisse : 100 000
-
-## ✏️ Exercices
-**Exercice 1.** Que signifie « partie double » ?
-
-:::corrige
-Chaque opération est inscrite au débit d'un ou plusieurs comptes et au crédit d'un ou plusieurs autres, pour des totaux égaux.
-:::
-
-**Exercice 2.** Classe : loyer payé, ventes de marchandises, banque.
-
-:::corrige
-Loyer : charge (classe 6) · Ventes : produit (classe 7) · Banque : trésorerie (classe 5).
-:::
-
-## ⚠️ Pièges
-- Débit ne veut pas dire « moins » : l'effet dépend de la nature du compte.
-
-## 🏆 À retenir pour le BAC
-Actif = Capitaux propres + Dettes, partie double, classes 1 à 8, journal, grand livre, balance.
-`
-
-GESTION["compta-tva"] = String.raw`## 💡 L'essentiel en une phrase
-La **TVA** (taxe sur la valeur ajoutée) est un impôt sur la consommation, payé par le client final et reversé à l'État par l'entreprise ; en Côte d'Ivoire le taux normal est de **18 %**.
-
-## 📚 1. Principe
-- L'entreprise **collecte** la TVA sur ses ventes (**TVA facturée**, compte 443).
-- Elle **récupère** la TVA payée sur ses achats (**TVA déductible**, comptes 445).
-- Elle verse à l'État la **différence**.
-- $$ TVA\ due = TVA\ collectée - TVA\ déductible $$
-
-## 📚 2. Calculs
-- $$ TTC = HT \times 1{,}18 $$ et $$ HT = \frac{TTC}{1{,}18} $$ et $$ TVA = HT \times 0{,}18 $$
-- Si la TVA déductible est supérieure, il y a un **crédit de TVA**.
-
-## 🧪 Exemple corrigé
-Ventes HT 1 000 000 ; achats HT 600 000.
-- TVA collectée = 180 000. TVA déductible = 108 000.
-- TVA due = **72 000 F**.
-
-## ✏️ Exercices
-**Exercice 1.** Prix HT 50 000 F. Calcule la TVA et le TTC.
-
-:::corrige
-TVA = 50 000 × 0,18 = 9 000 F ; TTC = **59 000 F**.
-:::
-
-**Exercice 2.** TTC 118 000 F. Calcule HT et TVA.
-
-:::corrige
-HT = 118 000 / 1,18 = **100 000 F** ; TVA = 18 000 F.
-:::
-
-## ⚠️ Pièges
-- Diviser par 1,18 (et non retirer 18 %) pour passer du TTC au HT.
-- La TVA n'est pas une charge pour l'entreprise : elle la collecte pour l'État.
-
-## 🏆 À retenir pour le BAC
-Taux normal 18 %, TTC = HT × 1,18, TVA due = collectée − déductible.
-`
-
-GESTION["compta-amortissements"] = String.raw`## 💡 L'essentiel en une phrase
-L'**amortissement** constate la perte de valeur d'une immobilisation (machine, véhicule, bâtiment) liée à l'usage et au temps, en répartissant son coût sur sa durée d'utilisation.
-
-## 📚 1. L'amortissement linéaire
-- $$ Annuité = \frac{Valeur\ d'origine}{Durée\ d'utilisation} $$
-- Taux linéaire = 100 / durée. Exemple : 5 ans → 20 %.
-- Première année : prorata temporis (nombre de jours ou de mois d'utilisation).
-
-## 📚 2. Valeur nette comptable (VNC)
-$$ VNC = Valeur\ d'origine - Amortissements\ cumul\acute{e}s $$
-
-## 📚 3. Écriture
-- Débit **681** Dotations aux amortissements.
-- Crédit **28x** Amortissements de l'immobilisation concernée.
-
-## 🧪 Exemple corrigé
-Matériel acheté 2 000 000 F, durée 5 ans.
-Annuité = 2 000 000 / 5 = **400 000 F**. VNC après 2 ans = 2 000 000 − 800 000 = **1 200 000 F**.
-
-## ✏️ Exercices
-**Exercice 1.** Véhicule 8 000 000 F, durée 4 ans. Annuité et taux ?
-
-:::corrige
-Annuité = **2 000 000 F** ; taux = 25 %.
-:::
-
-**Exercice 2.** Quelle est la VNC après 3 ans ?
-
-:::corrige
-8 000 000 − 3 × 2 000 000 = **2 000 000 F**.
-:::
-
-## ⚠️ Pièges
-- Les terrains ne sont **pas** amortis.
-- Ne pas oublier le prorata la première année.
-
-## 🏆 À retenir pour le BAC
-Annuité = valeur d'origine / durée, taux = 100 / durée, VNC, écriture 681 / 28.
-`
-
-GESTION["compta-stocks"] = String.raw`## 💡 L'essentiel en une phrase
-Le **stock** est l'ensemble des marchandises, matières et produits détenus par l'entreprise ; sa **variation** modifie le résultat.
-
-## 📚 1. Évaluation des sorties
-- **CMUP** (coût moyen unitaire pondéré) : $$ CMUP = \frac{Valeur\ du\ stock\ initial + Valeur\ des\ entr\acute{e}es}{Quantit\acute{e}\ initiale + Quantit\acute{e}\ entr\acute{e}e} $$
-- **FIFO / PEPS** : premier entré, premier sorti.
-
-## 📚 2. Variation de stocks
-$$ Variation = Stock\ initial - Stock\ final $$
-(Si le stock final est plus élevé que le stock initial, la variation est une diminution de charge.)
-
-## 📚 3. Inventaire
-Comptage physique pour comparer **stock théorique** et **stock réel** ; écart = perte, vol ou erreur.
-
-## 🧪 Exemple corrigé
-Stock initial : 100 unités à 500 F. Entrée : 100 unités à 600 F.
-CMUP = (50 000 + 60 000) / 200 = **550 F**.
-
-## ✏️ Exercices
-**Exercice 1.** 50 unités à 400 F en stock, entrée de 150 unités à 480 F. CMUP ?
-
-:::corrige
-(20 000 + 72 000) / 200 = **460 F**.
-:::
-
-**Exercice 2.** SI = 300 000 ; SF = 340 000. Variation de stocks ?
-
-:::corrige
-300 000 − 340 000 = **−40 000** (augmentation du stock).
-:::
-
-## ⚠️ Pièges
-- Ne pas confondre CMUP et moyenne simple des prix.
-
-## 🏆 À retenir pour le BAC
-CMUP, FIFO, variation de stocks, inventaire.
-`
-
-GESTION["compta-regularisations"] = String.raw`## 💡 L'essentiel en une phrase
-En fin d'année, on **régularise** les comptes pour que le résultat reflète seulement l'exercice : charges et produits constatés d'avance, à payer, à recevoir, **provisions**.
-
-## 📚 1. Charges et produits à rattacher
-- **Charges constatées d'avance (CCA)** : payées cette année pour l'année suivante.
-- **Charges à payer (CAP)** : consommées mais non encore payées.
-- **Produits constatés d'avance (PCA)** et **produits à recevoir (PAR)**.
-
-## 📚 2. Les provisions
-- **Provision pour dépréciation** (créance douteuse, stock abîmé) : $$ Provision = Cr\acute{e}ance\ HT \times taux\ de\ perte $$
-- **Provision pour risques et charges** (litige, garantie).
-
-## 📚 3. Les créances douteuses
-Un client qui ne paie plus : on le classe en **client douteux** puis on constate une dépréciation.
-
-## 🧪 Exemple corrigé
-Loyer de 600 000 F payé le 1er octobre pour 12 mois. Sur l'année N : 3 mois consommés (150 000 F) ; **CCA = 450 000 F**.
-
-## ✏️ Exercices
-**Exercice 1.** Créance douteuse de 500 000 F HT, perte probable 40 %. Provision ?
-
-:::corrige
-500 000 × 0,40 = **200 000 F**.
-:::
-
-**Exercice 2.** Différence entre CCA et CAP ?
-
-:::corrige
-CCA : charge déjà payée mais qui concerne l'exercice suivant. CAP : charge de l'exercice non encore payée.
-:::
-
-## ⚠️ Pièges
-- La provision se calcule sur la créance **HT**.
-
-## 🏆 À retenir pour le BAC
-CCA, CAP, PCA, PAR, provision pour dépréciation, principe de séparation des exercices.
-`
-
-GESTION["compta-bilan-resultat"] = String.raw`## 💡 L'essentiel en une phrase
-À la clôture de l'exercice, l'entreprise établit ses **états financiers** : le **bilan**, le **compte de résultat** et les annexes.
-
-## 📚 1. Le bilan
-- **Actif** : immobilisations, stocks, créances, trésorerie.
-- **Passif** : capitaux propres, dettes financières, dettes d'exploitation.
-- **Équilibre** : total actif = total passif.
-
-## 📚 2. Le compte de résultat
-$$ R\acute{e}sultat = Produits - Charges $$
-- Bénéfice si produits > charges ; perte sinon.
-- Soldes intermédiaires : marge commerciale, valeur ajoutée, excédent brut d'exploitation (EBE), résultat d'exploitation, résultat net.
-
-## 📚 3. La marge commerciale
-$$ Marge\ commerciale = Ventes\ de\ marchandises - Co\hat{u}t\ d'achat\ des\ marchandises\ vendues $$
-
-## 🧪 Exemple corrigé
-Ventes 12 000 000 ; achats vendus 8 000 000 ; charges de fonctionnement 2 500 000.
-Marge = 4 000 000 ; résultat ≈ 1 500 000 F.
-
-## ✏️ Exercices
-**Exercice 1.** Produits 9 500 000 ; charges 8 100 000. Résultat ?
-
-:::corrige
-9 500 000 − 8 100 000 = **1 400 000 F de bénéfice**.
-:::
-
-**Exercice 2.** Que signifie « total actif = total passif » ?
-
-:::corrige
-Tout ce que possède l'entreprise (actif) est financé par ses capitaux propres et ses dettes (passif).
-:::
-
-## ⚠️ Pièges
-- Résultat et trésorerie sont différents : bénéfice ne veut pas dire argent en caisse.
-
-## 🏆 À retenir pour le BAC
-Bilan (actif / passif), compte de résultat, résultat = produits − charges, soldes intermédiaires.
-`
-
-GESTION["compta-rapprochement-bancaire"] = String.raw`## 💡 L'essentiel en une phrase
-Le **rapprochement bancaire** compare le compte banque de l'entreprise avec le **relevé de la banque** pour expliquer les écarts.
-
-## 📚 1. Pourquoi des écarts ?
-- **Chèque émis non encore débité** par la banque.
-- **Remise de chèque non encore créditée**.
-- **Frais bancaires**, **agios**, **virements** que l'entreprise ignore.
-
-## 📚 2. Méthode
-1. Pointer écriture par écriture.
-2. Lister les opérations non communes.
-3. Vérifier que $$ Solde\ comptable + \text{rectifications} = Solde\ du\ relev\acute{e} + \text{rectifications} $$.
-4. Passer les écritures de régularisation (frais, agios…).
-
-## 🧪 Exemple corrigé
-Solde du relevé : 780 000. Chèque émis non débité : 120 000. Solde corrigé = 780 000 − 120 000 = **660 000 F** = solde comptable attendu.
-
-## ✏️ Exercices
-**Exercice 1.** Frais bancaires de 5 000 F non comptabilisés : que faire ?
-
-:::corrige
-Les enregistrer : débit charge (frais bancaires), crédit Banque 5 000 F.
-:::
-
-**Exercice 2.** Pourquoi un chèque émis ne figure-t-il pas encore au relevé ?
-
-:::corrige
-Le bénéficiaire ne l'a pas encore présenté à sa banque : la banque ne l'a pas débité.
-:::
-
-## ⚠️ Pièges
-- Les écarts de décalage dans le temps ne se comptabilisent pas : seules les opérations inconnues se régularisent.
-
-## 🏆 À retenir pour le BAC
-Origine des écarts, méthode de pointage, écritures de régularisation.
-`
-
-GESTION["compta-couts"] = String.raw`## 💡 L'essentiel en une phrase
-La **comptabilité analytique** calcule le **coût** des produits pour fixer les prix et mesurer la rentabilité.
-
-## 📚 1. Charges directes et indirectes
-- **Directes** : affectées directement à un produit (matière, main-d'œuvre directe).
-- **Indirectes** : réparties via des **centres d'analyse** à l'aide d'**unités d'œuvre**.
-
-## 📚 2. La chaîne des coûts
-$$ Co\hat{u}t\ d'achat = Prix\ d'achat + Frais\ d'achat $$
-$$ Co\hat{u}t\ de\ production = Co\hat{u}t\ des\ mati\grave{e}res + Charges\ de\ production $$
-$$ Co\hat{u}t\ de\ revient = Co\hat{u}t\ de\ production + Frais\ de\ distribution $$
-$$ R\acute{e}sultat\ analytique = Prix\ de\ vente - Co\hat{u}t\ de\ revient $$
-
-## 📚 3. Seuil de rentabilité
-$$ SR = \frac{Charges\ fixes}{Taux\ de\ marge\ sur\ co\hat{u}t\ variable} $$
-Le seuil de rentabilité est le chiffre d'affaires pour lequel le résultat est nul.
-
-## 🧪 Exemple corrigé
-CA = 10 000 000 ; charges variables = 6 000 000 ; charges fixes = 2 000 000.
-Marge sur coût variable = 4 000 000 ⇒ taux = 40 %. **SR = 2 000 000 / 0,40 = 5 000 000 F**.
-
-## ✏️ Exercices
-**Exercice 1.** Prix d'achat 400 000 F, frais d'achat 40 000 F. Coût d'achat ?
-
-:::corrige
-**440 000 F**.
-:::
-
-**Exercice 2.** Coût de revient 1 500 F, prix de vente 1 800 F. Résultat analytique unitaire ?
-
-:::corrige
-1 800 − 1 500 = **300 F** de bénéfice.
-:::
-
-## ⚠️ Pièges
-- Au seuil de rentabilité le résultat est **nul**, ce n'est pas un bénéfice.
-
-## 🏆 À retenir pour le BAC
-Coût d'achat, de production, de revient, résultat analytique, seuil de rentabilité.
-`
-
-GESTION["mf-interets-simples"] = String.raw`## 💡 L'essentiel en une phrase
-Avec l'**intérêt simple**, l'intérêt est calculé sur le capital de départ seulement et ne produit pas lui-même d'intérêts.
-
-## 📚 1. Formules
-Capital $C$, taux annuel $t$ (en %), durée $n$.
-- Durée en années : $$ I = C \times t \times n $$ (avec $t$ en décimal)
-- Durée en mois : $$ I = \frac{C \times t \times n}{12} $$
-- Durée en jours : $$ I = \frac{C \times t \times n}{360} $$
-- **Valeur acquise** : $$ A = C + I $$
-
-## 📚 2. Escompte commercial
-Pour un effet de valeur nominale $N$, taux $t$, durée $n$ jours : $$ E = \frac{N \times t \times n}{360} $$ et **valeur actuelle** $ = N - E$.
-
-## 🧪 Exemple corrigé
-$C = 500\,000$ F placés à $6\%$ pendant 9 mois : $I = 500\,000 \times 0{,}06 \times 9/12 = 22\,500$ F ; $A = 522\,500$ F.
-
-## ✏️ Exercices
-**Exercice 1.** 800 000 F à 5 % pendant 3 ans. Intérêt ?
-
-:::corrige
-800 000 × 0,05 × 3 = **120 000 F**.
-:::
-
-**Exercice 2.** Effet de 600 000 F escompté à 9 % pendant 60 jours. Escompte ?
-
-:::corrige
-600 000 × 0,09 × 60 / 360 = **9 000 F** ; valeur actuelle = 591 000 F.
-:::
-
-## ⚠️ Pièges
-- Mettre le taux en décimal (6 % = 0,06) et ajuster la durée (années, mois, jours).
-
-## 🏆 À retenir pour le BAC
-I = C·t·n, valeur acquise, escompte commercial et valeur actuelle.
-`
-
-GESTION["mf-interets-composes"] = String.raw`## 💡 L'essentiel en une phrase
-Avec les **intérêts composés**, les intérêts de chaque période sont ajoutés au capital et produisent à leur tour des intérêts.
-
-## 📚 1. Valeur acquise
-$$ A_n = C \times (1 + i)^n $$
-où $i$ est le taux **par période** (décimal) et $n$ le nombre de périodes.
-
-## 📚 2. Valeur actuelle
-$$ C = A_n \times (1 + i)^{-n} $$
-
-## 📚 3. Taux équivalents
-Taux annuel $i$, taux mensuel équivalent $i_m$ : $$ (1 + i_m)^{12} = 1 + i $$
-
-## 🧪 Exemple corrigé
-1 000 000 F à 8 % pendant 3 ans : $A_3 = 1\,000\,000 \times 1{,}08^3 = 1\,259\,712$ F.
-
-## ✏️ Exercices
-**Exercice 1.** 500 000 F à 10 % pendant 2 ans. Valeur acquise ?
-
-:::corrige
-500 000 × 1,1² = **605 000 F**.
-:::
-
-**Exercice 2.** Quelle somme placer aujourd'hui à 5 % pour avoir 1 102 500 F dans 2 ans ?
-
-:::corrige
-1 102 500 / 1,05² = **1 000 000 F**.
-:::
-
-## ⚠️ Pièges
-- Ne pas diviser un taux annuel par 12 pour passer au mensuel en intérêts composés : utiliser le taux équivalent.
-
-## 🏆 À retenir pour le BAC
-A = C(1+i)^n, valeur actuelle, taux équivalents.
-`
-
-GESTION["mf-annuites"] = String.raw`## 💡 L'essentiel en une phrase
-Une **annuité** est un versement régulier (annuel, mensuel…) ; on calcule sa **valeur acquise** (placement) ou sa **valeur actuelle** (remboursement).
-
-## 📚 1. Valeur acquise d'une suite d'annuités constantes (fin de période)
-$$ V_n = a \times \frac{(1 + i)^n - 1}{i} $$
-
-## 📚 2. Valeur actuelle
-$$ V_0 = a \times \frac{1 - (1 + i)^{-n}}{i} $$
-
-## 📚 3. Utilisation
-- Constituer un capital par versements réguliers (épargne).
-- Rembourser un emprunt par annuités constantes.
-
-## 🧪 Exemple corrigé
-On verse 100 000 F par an pendant 3 ans à 10 % : $V_3 = 100\,000 \times (1{,}1^3 - 1)/0{,}1 = 331\,000$ F.
-
-## ✏️ Exercices
-**Exercice 1.** Annuité 200 000 F, 2 ans, 5 %. Valeur acquise ?
-
-:::corrige
-200 000 × (1,05² − 1)/0,05 = 200 000 × 2,05 = **410 000 F**.
-:::
-
-**Exercice 2.** Interprète la valeur actuelle d'une suite d'annuités.
-
-:::corrige
-C'est la somme qu'il faudrait placer aujourd'hui pour obtenir la même série de versements.
-:::
-
-## ⚠️ Pièges
-- Vérifier si le versement est en **fin** ou en **début** de période.
-
-## 🏆 À retenir pour le BAC
-Valeur acquise, valeur actuelle, épargne et remboursement.
-`
-
-GESTION["mf-emprunts"] = String.raw`## 💡 L'essentiel en une phrase
-Un **emprunt** se rembourse par **annuités** composées d'un **intérêt** et d'un **amortissement** (remboursement du capital).
-
-## 📚 1. Tableau d'amortissement
-Pour chaque période :
-- **Intérêt** = capital restant dû × taux.
-- **Amortissement** = annuité − intérêt.
-- **Capital restant dû** = ancien capital − amortissement.
-
-## 📚 2. Annuités constantes
-$$ a = C \times \frac{i}{1 - (1 + i)^{-n}} $$
-
-## 📚 3. Amortissements constants
-Amortissement chaque année = $C / n$ ; l'annuité **diminue** avec le temps.
-
-## 🧪 Exemple corrigé
-Emprunt de 1 000 000 F sur 4 ans à 10 % avec amortissements constants : amortissement = 250 000 F ; intérêt année 1 = 100 000 F ; annuité 1 = **350 000 F**.
-
-## ✏️ Exercices
-**Exercice 1.** Emprunt 600 000 F, 3 ans, amortissements constants, 8 %. Annuité n°1 ?
-
-:::corrige
-Amortissement = 200 000 ; intérêt = 48 000 ; annuité = **248 000 F**.
-:::
-
-**Exercice 2.** Que représente le capital restant dû ?
-
-:::corrige
-La part de la dette qu'il reste à rembourser après chaque annuité.
-:::
-
-## ⚠️ Pièges
-- Les intérêts se calculent sur le capital **restant dû**, pas sur le capital initial.
-
-## 🏆 À retenir pour le BAC
-Tableau d'amortissement, annuités constantes, amortissements constants.
+Étapes du recrutement ; dossier du personnel ; calcul du net ; bulletin de paie ; congés ; règlement intérieur et sanctions ; fin de contrat (certificat de travail, solde de tout compte).
 `

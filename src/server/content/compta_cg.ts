@@ -287,6 +287,7 @@ COMPTA_CG["cg-provisions"] = String.raw`## 💡 L'essentiel en une phrase
 Une **provision pour dépréciation** (ou pour risques) constate une **perte probable mais non définitive** ; elle respecte le principe de **prudence** et peut être **reprise** si la perte n'a pas lieu.
 
 ## 📚 1. Les quatre familles de provisions
+
 | Nature | Cause | Calcul | Compte de dépréciation |
 |---|---|---|---|
 | Immobilisations, titres de participation | Valeur actuelle < valeur comptable | VC − valeur actuelle | 29x (ex. 296 titres) |
@@ -372,6 +373,7 @@ L'**état de rapprochement bancaire** compare le compte **521 Banque** de l'entr
 - **Attention aux sens** : le solde du **compte 521** est **débiteur** (l'entreprise a de l'argent) alors que le solde du **relevé** est **créditeur** (la banque doit de l'argent à l'entreprise).
 
 ## 📚 2. Origine des écarts
+
 | Écart | Où il se trouve | Écriture ? |
 |---|---|---|
 | **Chèque émis non encore débité** par la banque | Compta : oui. Banque : pas encore | Non (simple décalage) |
@@ -452,6 +454,7 @@ COMPTA_CG["cg-regularisations"] = String.raw`## 💡 L'essentiel en une phrase
 Selon le principe de **spécialisation (indépendance) des exercices**, chaque exercice ne supporte que **ses** charges et ne reçoit que **ses** produits ; à la clôture on **régularise** les comptes de charges et de produits.
 
 ## 📚 1. Les quatre régularisations
+
 | Nom | Définition | Effet sur le résultat | Compte de bilan |
 |---|---|---|---|
 | **CCA** Charges constatées d'avance | Charge **payée** cette année mais qui concerne l'**exercice suivant** | Charges ↓, résultat ↑ | **476** (actif) |
@@ -563,6 +566,7 @@ Bilan fonctionnel (en F) :
 **Commentaire :** l'entreprise a un fonds de roulement positif qui couvre son besoin de financement et dégage une trésorerie positive : situation **saine**.
 
 ## 📚 4. Les principaux ratios
+
 | Famille | Ratio | Formule | Lecture |
 |---|---|---|---|
 | Structure | **Autonomie financière** | Capitaux propres ÷ dettes financières | ≥ 1 : entreprise peu dépendante |

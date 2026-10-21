@@ -20,6 +20,7 @@ import { HG_3 } from "./hg3"
 import { ECO } from "./eco"
 import { DROIT } from "./droit"
 import { GESTION } from "./gestion"
+import { MF } from "./mf"
 import { COMPTA_CG } from "./compta_cg"
 import { COMPTA_CA } from "./compta_ca"
 import { COMPTA_CS } from "./compta_cs"
@@ -45,7 +46,7 @@ export type ChapterDef = {
   content: string
 }
 
-const CONTENT: Record<string, string> = { ...MATHS_1, ...MATHS_2, ...MATHS_3, ...EXTRA, ...EXTRA2, ...EXTRA3, ...FRANCAIS_CONTENT, ...PHILO_CONTENT, ...LANGUES, ...SVT_CONTENT, ...HG_1, ...HG_2, ...HG_3, ...ECO, ...DROIT, ...GESTION, ...COMPTA_CG, ...COMPTA_CA, ...COMPTA_CS }
+const CONTENT: Record<string, string> = { ...MATHS_1, ...MATHS_2, ...MATHS_3, ...EXTRA, ...EXTRA2, ...EXTRA3, ...FRANCAIS_CONTENT, ...PHILO_CONTENT, ...LANGUES, ...SVT_CONTENT, ...HG_1, ...HG_2, ...HG_3, ...ECO, ...DROIT, ...GESTION, ...MF, ...COMPTA_CG, ...COMPTA_CA, ...COMPTA_CS }
 
 export const SUBJECTS: SubjectDef[] = [
   { slug: "d-maths", serie: "D", name: "Mathématiques", emoji: "📐", description: "Programme éducatif Tle D : fonctions, intégrales, suites, probabilités…", order: 1 },

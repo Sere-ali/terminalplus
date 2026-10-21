@@ -6,6 +6,7 @@ COMPTA_CA["ca-introduction"] = String.raw`## 💡 L'essentiel en une phrase
 La **comptabilité analytique** (ou de gestion) calcule les **coûts** et les **résultats par produit** pour aider le chef d'entreprise à **fixer ses prix**, **contrôler ses dépenses** et **décider** ; elle est **interne** et part des **charges de la comptabilité générale**.
 
 ## 📚 1. Objectifs et différences avec la comptabilité générale
+
 | | Comptabilité générale | Comptabilité analytique |
 |---|---|---|
 | Destinataires | Extérieurs : État, banques, associés | **Dirigeants** de l'entreprise |
@@ -28,6 +29,7 @@ La **comptabilité analytique** (ou de gestion) calcule les **coûts** et les **
 - **Charges fixes** (loyer, assurances) / **charges variables** (matières, commissions) selon leur variation avec l'activité.
 
 ## 📚 3. Incorporables, non incorporables et supplétives
+
 | Catégorie | Définition | Exemples | Traitement |
 |---|---|---|---|
 | **Charges incorporables** | Charges de la CG liées à l'**activité normale** | Achats, salaires, amortissements, loyers | **Retenues** dans les coûts |
@@ -260,6 +262,7 @@ $$ Co\hat{u}t\ de\ production\ des\ produits\ finis = Encours\ initial + Charges
 Pour **700 unités** terminées : 350 000 / 700 = **500 F l'unité**.
 
 ## 📚 2. Les déchets, rebuts et sous-produits
+
 | Cas | Définition | Traitement |
 |---|---|---|
 | **Déchets** | Matières perdues en fabrication (chutes, sciure) | S'ils sont revendus, leur **valeur est déduite** du coût de production. Sinon, leur coût reste à la charge des produits bons |
@@ -315,6 +318,7 @@ La méthode des **coûts variables** sépare charges **fixes** et **variables** 
 - Certaines charges sont **mixtes** : on les sépare en une part fixe et une part variable.
 
 ## 📚 2. Le compte de résultat différentiel
+
 | Élément | Montant | % du CA |
 |---|---|---|
 | Chiffre d'affaires | 10 000 000 | 100 % |

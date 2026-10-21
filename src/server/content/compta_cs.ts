@@ -7,6 +7,7 @@ COMPTA_CS["cs-generalites"] = String.raw`## 💡 L'essentiel en une phrase
 Une **société** est un **contrat** par lequel deux ou plusieurs personnes mettent en commun des **apports** pour réaliser des **bénéfices** et en partager les profits comme les pertes ; une fois immatriculée, elle devient une **personne morale** distincte de ses associés. Dans l'espace OHADA, elle est régie par l'**Acte uniforme relatif au droit des sociétés commerciales et du GIE**.
 
 ## 📚 1. Les conditions de validité du contrat de société
+
 | Type | Conditions |
 |---|---|
 | **Générales** (tout contrat) | Consentement libre, **capacité**, objet **licite**, cause licite |
@@ -15,6 +16,7 @@ Une **société** est un **contrat** par lequel deux ou plusieurs personnes mett
 **Sanctions :** si une condition manque, la société peut être **annulée**.
 
 ## 📚 2. Classification des sociétés
+
 | | **SNC** (Société en nom collectif) | **SARL** | **SA** (Société anonyme) |
 |---|---|---|---|
 | Catégorie | **Société de personnes** | **Société mixte** | **Société de capitaux** |
@@ -67,6 +69,7 @@ COMPTA_CS["cs-constitution"] = String.raw`## 💡 L'essentiel en une phrase
 À la **constitution**, les associés font des **apports** qui forment le **capital social** ; la comptabilité enregistre d'abord la **souscription** (promesse d'apport) puis sa **libération** (réalisation effective), et immobilise les **frais de constitution**.
 
 ## 📚 1. Les trois sortes d'apports
+
 | Apport | Contenu | Particularité |
 |---|---|---|
 | **En numéraire** | Argent (espèces, virement) | Libéré en **tout ou partie** à la constitution |
@@ -226,6 +229,7 @@ COMPTA_CS["cs-affectation-resultat"] = String.raw`## 💡 L'essentiel en une phr
 5. L'assemblée répartit le distribuable : **réserves statutaires / facultatives**, **dividendes**, **report à nouveau**.
 
 ## 📚 2. Les comptes
+
 | Compte | Intitulé |
 |---|---|
 | 131 | Résultat net : bénéfice (139 : perte) |
@@ -307,6 +311,7 @@ COMPTA_CS["cs-modification-capital"] = String.raw`## 💡 L'essentiel en une phr
 Le **capital social** peut être **augmenté** (nouveaux apports ou incorporation de réserves) ou **réduit** (pour absorber des pertes ou racheter des titres) sur **décision de l'assemblée** ; certaines pertes obligent à agir.
 
 ## 📚 1. Augmentation du capital
+
 | Mode | Principe | Effet sur les capitaux propres |
 |---|---|---|
 | **Apports nouveaux** (numéraire ou nature) | De l'**argent frais** entre dans la société | Augmentent |
