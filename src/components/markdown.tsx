@@ -6,10 +6,13 @@ import rehypeKatex from 'rehype-katex'
 import { Eye, EyeOff } from 'lucide-react'
 import 'katex/dist/katex.min.css'
 
+/** Les grands nombres (ex. 1 250 000) ne doivent jamais être coupés en fin de ligne. */
+const keepNumbers = (t: string) => t.replace(/(\d) (?=\d{3}(?!\d))/g, '$1\u00a0')
+
 function Md({ children }: { children: string }) {
   return (
     <ReactMarkdown remarkPlugins={[remarkGfm, remarkMath]} rehypePlugins={[rehypeKatex]}>
-      {children}
+      {keepNumbers(children)}
     </ReactMarkdown>
   )
 }

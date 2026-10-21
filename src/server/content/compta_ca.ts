@@ -1,125 +1,230 @@
-// Comptabilité analytique (G2) – d'après le programme communiqué par le propriétaire du site.
+// Comptabilité analytique (G2) – version détaillée, d'après le programme communiqué par le propriétaire du site.
 
 export const COMPTA_CA: Record<string, string> = {}
 
 COMPTA_CA["ca-introduction"] = String.raw`## 💡 L'essentiel en une phrase
-La **comptabilité analytique** (de gestion) calcule les **coûts** et les **résultats par produit** pour aider le chef d'entreprise à fixer ses prix et à décider ; elle est **interne** à l'entreprise.
+La **comptabilité analytique** (ou de gestion) calcule les **coûts** et les **résultats par produit** pour aider le chef d'entreprise à **fixer ses prix**, **contrôler ses dépenses** et **décider** ; elle est **interne** et part des **charges de la comptabilité générale**.
 
-## 📚 1. Objectifs et différences
+## 📚 1. Objectifs et différences avec la comptabilité générale
 | | Comptabilité générale | Comptabilité analytique |
 |---|---|---|
-| Rôle | Image de l'entreprise pour l'extérieur (impôts, banques) | Outil de **gestion interne** |
-| Obligation | **Obligatoire** | Facultative |
-| Résultat | Global de l'entreprise | **Par produit**, service ou activité |
-| Règles | Plan comptable légal | Libres, propres à l'entreprise |
+| Destinataires | Extérieurs : État, banques, associés | **Dirigeants** de l'entreprise |
+| Obligation | **Obligatoire** (loi, SYSCOHADA) | **Facultative** |
+| Règles | Plan comptable légal strict | **Libres**, adaptées à l'entreprise |
+| Résultat | **Global** pour toute l'entreprise | **Par produit**, par activité |
+| Classement des charges | **Par nature** (achats, salaires, loyers) | **Par destination** (approvisionnement, production, distribution) |
+| Période | Exercice annuel | Plus courte (mois, trimestre) |
 
-Objectifs : connaître les **coûts**, fixer les **prix de vente**, contrôler les **dépenses**, évaluer les **stocks**.
+**Objectifs de la CA :**
+1. Connaître les **coûts** (achat, production, revient) de chaque produit.
+2. **Fixer les prix de vente** (prix de vente = coût de revient + marge).
+3. **Évaluer les stocks** de produits.
+4. **Contrôler** les services (où va l'argent ?).
+5. Expliquer le **résultat** de la comptabilité générale.
 
-## 📚 2. Notion de charges
-- **Charges incorporables** : charges de la comptabilité générale **retenues** dans les coûts.
-- **Charges non incorporables** : charges **exclues** (charges exceptionnelles, impôts sur les bénéfices…) car sans rapport avec l'activité normale.
-- **Charges supplétives** : charges **non enregistrées** en comptabilité générale mais **ajoutées** aux coûts (par exemple la **rémunération théorique** de l'exploitant, l'intérêt des capitaux propres).
+## 📚 2. Les types de charges en comptabilité analytique
+- **Charges directes** : affectables **directement** à un produit sans calcul (matière du produit, main-d'œuvre directe).
+- **Charges indirectes** : communes à plusieurs produits (loyer de l'usine, électricité, chef d'atelier) : elles sont d'abord regroupées par **centres d'analyse**, puis réparties.
+- **Charges fixes** (loyer, assurances) / **charges variables** (matières, commissions) selon leur variation avec l'activité.
+
+## 📚 3. Incorporables, non incorporables et supplétives
+| Catégorie | Définition | Exemples | Traitement |
+|---|---|---|---|
+| **Charges incorporables** | Charges de la CG liées à l'**activité normale** | Achats, salaires, amortissements, loyers | **Retenues** dans les coûts |
+| **Charges non incorporables** | Charges de la CG **étrangères** à l'activité normale ou exceptionnelles | Charges exceptionnelles, perte sur cession, impôt sur les bénéfices, dotations exceptionnelles | **Exclues** des coûts |
+| **Charges supplétives** | Charges **absentes de la CG** mais qui existent économiquement | **Rémunération théorique** de l'exploitant, **intérêt** des capitaux propres | **Ajoutées** aux coûts |
+
 $$ Charges\ de\ la\ CA = Charges\ de\ la\ CG - Charges\ non\ incorporables + Charges\ suppl\acute{e}tives $$
 
-## 🧪 Exemple corrigé
-Charges de la CG : 12 000 000 F ; non incorporables : 800 000 F ; supplétives : 500 000 F.
-Charges de la CA = 12 000 000 − 800 000 + 500 000 = **11 700 000 F**.
+## 📚 4. Exemple complet : le retraitement des charges
+Charges de la CG : **12 000 000 F**. Dont non incorporables : charges exceptionnelles 500 000 et dotation exceptionnelle 300 000. L'exploitant (entreprise individuelle) travaille sans salaire : rémunération théorique **600 000 F** ; capitaux propres **8 000 000 F** rémunérés au taux de **6 %**.
+
+| Élément | Montant |
+|---|---|
+| Charges de la comptabilité générale | 12 000 000 |
+| − Charges non incorporables (500 000 + 300 000) | − 800 000 |
+| + Charges supplétives : rémunération de l'exploitant | + 600 000 |
+| + Charges supplétives : intérêt des capitaux propres (8 000 000 × 6 %) | + 480 000 |
+| **= Charges de la comptabilité analytique** | **11 280 000** |
 
 ## ✏️ Exercices
-**Exercice 1.** Donne deux différences entre comptabilité générale et analytique.
+**Exercice 1.** Donne trois différences entre comptabilité générale et analytique.
 
 :::corrige
-La générale est obligatoire et tournée vers l'extérieur ; l'analytique est facultative, interne, et calcule des coûts par produit.
+La générale est obligatoire et tournée vers l'extérieur, classe les charges par nature et donne un résultat global. L'analytique est facultative, interne, classe les charges par destination et donne un résultat par produit.
 :::
 
-**Exercice 2.** CG : 7 500 000 ; non incorporables : 300 000 ; supplétives : 200 000. Charges de la CA ?
+**Exercice 2.** CG : 7 500 000 F ; non incorporables : 300 000 F ; supplétives : 200 000 F. Charges de la CA ?
 
 :::corrige
 7 500 000 − 300 000 + 200 000 = **7 400 000 F**.
 :::
 
+**Exercice 3.** Classe : (a) perte sur cession d'un camion ; (b) salaire du chef d'atelier ; (c) rémunération théorique du patron ; (d) amendes fiscales.
+
+:::corrige
+(a) **non incorporable** (exceptionnelle) ; (b) **incorporable** (charge indirecte de production) ; (c) **supplétive** ; (d) **non incorporable**.
+:::
+
 ## ⚠️ Pièges
-- Une charge **non incorporable** est supprimée ; une charge **supplétive** est ajoutée.
+- Une charge **non incorporable** est **retranchée** ; une charge **supplétive** est **ajoutée**.
+- La CA n'est **pas** une copie de la CG : on retraite d'abord les charges.
 
 ## 🏆 À retenir pour le BAC
-Objectifs de la CA, différences avec la CG, charges incorporables / non incorporables / supplétives.
+Objectifs et différences CG / CA ; charges directes / indirectes ; incorporables, non incorporables, supplétives ; formule de retraitement.
 `
 
 COMPTA_CA["ca-charges-indirectes"] = String.raw`## 💡 L'essentiel en une phrase
-Les **charges directes** vont directement au coût d'un produit ; les **charges indirectes** sont d'abord regroupées par **centres d'analyse**, puis réparties grâce à des **unités d'œuvre**.
+Les **charges indirectes** sont regroupées dans un **tableau de répartition** : la répartition **primaire** les affecte aux **centres d'analyse**, la répartition **secondaire** transfère les centres **auxiliaires** vers les centres **principaux**, puis on calcule le **taux de frais** de chaque centre principal.
 
-## 📚 1. Le tableau de répartition
-- **Répartition primaire** : chaque charge indirecte est affectée aux centres (administration, approvisionnement, production, distribution).
-- **Répartition secondaire** : les centres **auxiliaires** (administration, entretien, énergie) sont répartis sur les centres **principaux** (approvisionnement, production, distribution).
+## 📚 1. Les centres d'analyse
+- **Centres principaux** : leur coût entre dans le coût des produits (**Approvisionnement, Production, Distribution**).
+- **Centres auxiliaires** : ils rendent des services aux autres centres (**Administration, Entretien, Énergie**) ; leur coût est **reporté** sur les centres principaux.
 
-## 📚 2. Prestations réciproques
-Quand deux centres auxiliaires se rendent des services, on pose un **système d'équations**.
+## 📚 2. Le tableau de répartition (méthode)
+1. **Répartition primaire** : chaque charge indirecte est ventilée entre les centres à l'aide de **clés de répartition** (surface, nombre de personnes, kWh…).
+2. **Répartition secondaire** : on transfère les totaux des centres **auxiliaires** vers les centres **principaux** (ou entre auxiliaires s'il y a **prestations réciproques**).
+3. **Unité d'œuvre** : on choisit une mesure de l'activité de chaque centre principal.
+4. $$ Taux\ de\ frais = \frac{Total\ du\ centre\ principal}{Nombre\ d'unit\acute{e}s\ d'oeuvre} $$
 
-## 📚 3. Unités d'œuvre et taux de frais
-$$ Taux\ de\ frais = \frac{Total\ du\ centre\ principal}{Nombre\ d'unit\acute{e}s\ d'oeuvre} $$
-Unités d'œuvre usuelles : 100 F d'achat (approvisionnement), heure de main-d'œuvre ou heure machine (production), 100 F de ventes (distribution).
+Unités d'œuvre habituelles : **kg de matière achetée** ou **100 F d'achat** (approvisionnement), **heure de main-d'œuvre** ou **heure machine** (production), **100 F de chiffre d'affaires** (distribution).
 
-## 🧪 Exemple corrigé
-Totaux primaires : Administration 200 000 ; Approvisionnement 150 000 ; Production 600 000 ; Distribution 250 000.
-L'administration est répartie : 20 % Approvisionnement, 50 % Production, 30 % Distribution.
-- Appro : 150 000 + 40 000 = **190 000** ; Production : 600 000 + 100 000 = **700 000** ; Distribution : 250 000 + 60 000 = **310 000**.
-Si les achats sont de 1 900 000 F : taux Appro = 190 000 / 1 900 000 = **10 F pour 100 F d'achat**. Production : 3 500 heures ⇒ **200 F / heure**.
+## 📚 3. Les prestations réciproques
+Quand l'**Entretien** (E) travaille pour l'**Énergie** (N) **et** l'Énergie pour l'Entretien, on pose un **système d'équations** pour trouver les totaux réels.
 
-**Prestations réciproques :** Entretien A = 36 000 + 0,4 B ; Énergie B = 20 000 + 0,5 A.
-A = 36 000 + 0,4(20 000 + 0,5A) ⇒ 0,8 A = 44 000 ⇒ **A = 55 000** ; **B = 47 500**.
+**Exemple :** totaux primaires : Entretien **36 000**, Énergie **20 000**. L'Entretien reçoit 40 % du coût de l'Énergie ; l'Énergie reçoit 50 % du coût de l'Entretien.
+- E = 36 000 + 0,4 N
+- N = 20 000 + 0,5 E
+
+On remplace : E = 36 000 + 0,4 (20 000 + 0,5 E) = 44 000 + 0,2 E ⇒ 0,8 E = 44 000 ⇒ **E = 55 000** et **N = 20 000 + 27 500 = 47 500**.
+
+## 📚 4. Exemple complet de tableau de répartition
+Totaux de la **répartition primaire** : Entretien 36 000 ; Énergie 20 000 ; Approvisionnement 150 000 ; Production 600 500 ; Distribution 250 000.
+
+**Clés de répartition secondaire :**
+
+| Centre | Entretien | Énergie | Approvisionnement | Production | Distribution |
+|---|---|---|---|---|---|
+| Entretien (55 000) | – | 50 % | 10 % | 30 % | 10 % |
+| Énergie (47 500) | 40 % | – | 10 % | 40 % | 10 % |
+
+**Tableau de répartition :**
+
+| | Entretien | Énergie | Approvisionnement | Production | Distribution |
+|---|---|---|---|---|---|
+| Totaux primaires | 36 000 | 20 000 | 150 000 | 600 500 | 250 000 |
+| Entretien (55 000) | − 55 000 | + 27 500 | + 5 500 | + 16 500 | + 5 500 |
+| Énergie (47 500) | + 19 000 | − 47 500 | + 4 750 | + 19 000 | + 4 750 |
+| **Totaux secondaires** | 0 | 0 | **160 250** | **636 000** | **260 250** |
+
+Vérification : 160 250 + 636 000 + 260 250 = **1 056 500** = 36 000 + 20 000 + 150 000 + 600 500 + 250 000 ✓ (le total ne change pas).
+
+**Taux de frais :**
+
+| Centre | Unité d'œuvre | Nombre | Calcul | Taux |
+|---|---|---|---|---|
+| Approvisionnement | kg de matière achetée | 6 410 kg | 160 250 / 6 410 | **25 F / kg** |
+| Production | heure machine | 3 180 h | 636 000 / 3 180 | **200 F / h** |
+| Distribution | 100 F de chiffre d'affaires | 26 025 (CA 2 602 500 F) | 260 250 / 26 025 | **10 F pour 100 F de CA** |
 
 ## ✏️ Exercices
 **Exercice 1.** Total du centre Production : 840 000 F pour 4 200 heures de main-d'œuvre. Taux de frais ?
 
 :::corrige
-840 000 / 4 200 = **200 F par heure**.
+840 000 / 4 200 = **200 F par heure de main-d'œuvre**.
 :::
 
-**Exercice 2.** Total Distribution : 310 000 F ; chiffre d'affaires : 3 100 000 F. Taux par 100 F de ventes ?
+**Exercice 2.** Administration (auxiliaire) : 200 000 F, répartie 20 % Approvisionnement, 50 % Production, 30 % Distribution. Totaux primaires : Appro 150 000 ; Production 600 000 ; Distribution 250 000. Calcule les totaux secondaires.
 
 :::corrige
-310 000 / 3 100 000 = 0,10 ⇒ **10 F pour 100 F de ventes**.
+Administration → Appro : 40 000 ; Production : 100 000 ; Distribution : 60 000.
+Totaux : **Appro 190 000 ; Production 700 000 ; Distribution 310 000** (total 1 200 000 = 200 000 + 1 000 000 ✓).
+:::
+
+**Exercice 3.** Deux centres auxiliaires A et B se rendent des services : A = 30 000 + 0,4 B et B = 10 000 + 0,5 A. Calcule A et B.
+
+:::corrige
+A = 30 000 + 0,4 (10 000 + 0,5 A) = 34 000 + 0,2 A ⇒ 0,8 A = 34 000 ⇒ **A = 42 500**. Puis B = 10 000 + 0,5 × 42 500 = **31 250**. Vérification : 30 000 + 0,4 × 31 250 = 42 500 ✓.
 :::
 
 ## ⚠️ Pièges
-- La répartition **secondaire** ne conserve que les centres principaux : le total ne change pas.
-- Prestations réciproques : résoudre le système **avant** de répartir.
+- Le **total** de la répartition secondaire doit **égaler** celui de la répartition primaire.
+- Résoudre le **système** des prestations réciproques **avant** de répartir.
+- Choisir une unité d'œuvre **adaptée** à l'activité du centre.
 
 ## 🏆 À retenir pour le BAC
-Tableau de répartition (primaire / secondaire), système d'équations, unité d'œuvre et taux de frais.
+Centres principaux / auxiliaires, répartition primaire puis secondaire, prestations réciproques par équations, taux de frais = total du centre ÷ unités d'œuvre.
 `
 
 COMPTA_CA["ca-couts-complets"] = String.raw`## 💡 L'essentiel en une phrase
-Avec l'**inventaire permanent**, on suit chaque entrée et sortie de stock ; on calcule ensuite, étape par étape, le **coût d'achat**, le **coût de production**, le **coût de revient** et le **résultat analytique**.
+Avec l'**inventaire permanent**, on tient à jour les stocks (CMUP ou FIFO) ; on calcule ensuite, étape par étape, le **coût d'achat**, le **coût de production**, le **coût de revient** et le **résultat analytique** de chaque produit.
 
-## 📚 1. Évaluation des stocks
-- **CMUP** : coût moyen unitaire pondéré après chaque entrée (ou en fin de période).
-- **FIFO / PEPS** : les sorties sont évaluées au prix des **premières** entrées.
+## 📚 1. Évaluation des stocks (fiches de stock)
+- **CMUP** (coût moyen unitaire pondéré) : après chaque entrée, $$ CMUP = \frac{Valeur\ du\ stock + Valeur\ de\ l'entr\acute{e}e}{Quantit\acute{e}\ en\ stock + Quantit\acute{e}\ entr\acute{e}e} $$ Les sorties sont évaluées au CMUP.
+- **FIFO (PEPS)** : les sorties sortent **aux prix des premières entrées**.
+
+**Exemple (matière M) :** stock initial **400 kg à 180 F** (72 000) ; entrée de **1 600 kg à 220 F** (352 000) ; sortie de **1 500 kg**.
+
+| Méthode | Sortie de 1 500 kg | Stock final (500 kg) |
+|---|---|---|
+| **CMUP** : (72 000 + 352 000) / 2 000 = **212 F** | 1 500 × 212 = **318 000** | 500 × 212 = **106 000** |
+| **FIFO** | 400 × 180 + 1 100 × 220 = **314 000** | 500 × 220 = **110 000** |
 
 ## 📚 2. La chaîne des coûts
-$$ Co\hat{u}t\ d'achat = Prix\ d'achat + Charges\ directes + Charges\ indirectes\ d'approvisionnement $$
-$$ Co\hat{u}t\ de\ production = Mati\grave{e}res\ consomm\acute{e}es + Main\text{-}d'oeuvre + Charges\ de\ production $$
+$$ Co\hat{u}t\ d'achat = Prix\ d'achat + Charges\ directes\ d'achat + Charges\ indirectes\ d'approvisionnement $$
+$$ Co\hat{u}t\ de\ production = Mati\grave{e}res\ consomm\acute{e}es + Main\text{-}d'oeuvre\ directe + Charges\ indirectes\ de\ production $$
 $$ Co\hat{u}t\ de\ revient = Co\hat{u}t\ de\ production\ des\ produits\ vendus + Charges\ de\ distribution $$
 $$ R\acute{e}sultat\ analytique = Chiffre\ d'affaires - Co\hat{u}t\ de\ revient $$
 
-## 📚 3. Concordance avec la comptabilité générale
-$$ R\acute{e}sultat\ analytique = R\acute{e}sultat\ CG + Charges\ non\ incorporables - Charges\ suppl\acute{e}tives $$
-On vérifie ainsi que les deux comptabilités racontent la même histoire.
+## 📚 3. Exemple complet
+**① Coût d'achat de la matière M (1 600 kg)**
 
-## 🧪 Exemple corrigé
-- **Achat** : 1 000 kg à 200 F = 200 000 ; frais d'achat 20 000 ⇒ coût d'achat **220 000 F** (220 F/kg).
-- **Production** : 800 kg consommés = 176 000 ; main-d'œuvre 100 000 ; charges 60 000 ⇒ **336 000 F** pour 400 unités ⇒ **840 F l'unité**.
-- **Vente** : 400 unités à 1 200 F = 480 000 ; distribution 40 000 ⇒ coût de revient **376 000** ; **résultat analytique = 104 000 F**.
-- **Concordance** : CG = 100 000 ; non incorporables 30 000 ; supplétives 20 000 ⇒ analytique = 100 000 + 30 000 − 20 000 = **110 000 F**.
+| Élément | Quantité | Prix | Montant |
+|---|---|---|---|
+| Prix d'achat | 1 600 kg | 200 | 320 000 |
+| Charges indirectes d'approvisionnement | 1 600 kg | 20 F/kg | 32 000 |
+| **Coût d'achat** | 1 600 kg | **220** | **352 000** |
+
+**② Coût de production de 1 000 produits finis** (la matière sort au CMUP de 212 F)
+
+| Élément | Quantité | Prix | Montant |
+|---|---|---|---|
+| Matières consommées | 1 500 kg | 212 | 318 000 |
+| Main-d'œuvre directe | 1 000 h | 150 | 150 000 |
+| Charges indirectes de production | 800 h machine | 200 | 160 000 |
+| **Coût de production** | 1 000 unités | **628** | **628 000** |
+
+**③ Coût de revient de 800 produits vendus à 1 000 F l'unité**
+
+| Élément | Montant |
+|---|---|
+| Coût de production des produits vendus : 800 × 628 | 502 400 |
+| Charges directes de distribution | 20 000 |
+| Charges indirectes de distribution (10 % × CA de 800 000) | 80 000 |
+| **Coût de revient** | **602 400** |
+
+**④ Résultat analytique** = CA − coût de revient = 800 000 − 602 400 = **197 600 F** (soit 247 F de bénéfice par produit). Stock final de produits finis : 200 × 628 = **125 600 F**.
+
+## 📚 4. Concordance avec la comptabilité générale
+Le résultat analytique doit se **rapprocher** de celui de la CG :
+$$ R\acute{e}sultat\ analytique = R\acute{e}sultat\ de\ la\ CG + Charges\ non\ incorporables - Charges\ suppl\acute{e}tives $$
+**Vérification :** résultat CG 160 000 + non incorporables 50 000 − supplétives 12 400 = **197 600** ✓.
 
 ## ✏️ Exercices
-**Exercice 1.** Stock : 100 unités à 500 F ; entrée de 100 unités à 600 F. CMUP ?
+**Exercice 1.** Stock : 100 unités à 500 F. Entrée : 100 unités à 600 F. Sortie : 120 unités. Évalue la sortie et le stock final en CMUP et en FIFO.
 
 :::corrige
-(50 000 + 60 000) / 200 = **550 F**.
+CMUP = (50 000 + 60 000) / 200 = 550 ⇒ sortie = 120 × 550 = **66 000** ; stock final 80 × 550 = **44 000**.
+FIFO : sortie = 100 × 500 + 20 × 600 = **62 000** ; stock final 80 × 600 = **48 000**.
 :::
 
-**Exercice 2.** Coût de revient 1 500 F ; prix de vente 1 800 F ; 200 unités vendues. Résultat analytique total ?
+**Exercice 2.** Achat de 500 kg à 300 F ; charges directes d'achat 10 000 F ; charges indirectes d'approvisionnement 12 F/kg. Calcule le coût d'achat et le coût unitaire.
+
+:::corrige
+Prix = 150 000 ; + 10 000 ; + 500 × 12 = 6 000 ⇒ **coût d'achat = 166 000 F** ⇒ **332 F / kg**.
+:::
+
+**Exercice 3.** Coût de revient unitaire 1 500 F ; prix de vente 1 800 F ; 200 unités vendues. Résultat analytique ?
 
 :::corrige
 (1 800 − 1 500) × 200 = **60 000 F**.
@@ -127,94 +232,144 @@ On vérifie ainsi que les deux comptabilités racontent la même histoire.
 
 ## ⚠️ Pièges
 - Ne pas mélanger le coût de production de **toute** la production et celui des produits **vendus**.
-- La concordance : on **ajoute** les non incorporables et on **retranche** les supplétives.
+- Les sorties de stock se valorisent **au CMUP ou au FIFO**, jamais à la moyenne simple des prix.
+- Concordance : **ajouter** les non incorporables, **retrancher** les supplétives.
 
 ## 🏆 À retenir pour le BAC
-CMUP / FIFO, coût d'achat → production → revient, résultat analytique, concordance avec la CG.
+Fiches de stock (CMUP, FIFO), coût d'achat → coût de production → coût de revient → résultat analytique, concordance avec la CG.
 `
 
 COMPTA_CA["ca-cas-particuliers"] = String.raw`## 💡 L'essentiel en une phrase
-Quand la production n'est pas terminée ou produit des restes (déchets, rebuts, sous-produits), le calcul du coût de production doit en tenir compte.
+Quand la production n'est pas terminée (**encours**) ou produit des restes (**déchets, rebuts, sous-produits**), on corrige le calcul du coût de production pour que chaque produit fini porte son juste coût.
 
 ## 📚 1. Les encours de fabrication
-Un **encours** est un produit commencé mais **non terminé** à la fin de la période.
+Un **encours** est un produit **commencé mais non terminé** à la fin de la période : on lui garde son coût pour la période suivante.
 $$ Co\hat{u}t\ de\ production\ des\ produits\ finis = Encours\ initial + Charges\ de\ la\ p\acute{e}riode - Encours\ final $$
 
-## 📚 2. Déchets, rebuts, sous-produits
-- **Déchets** : matières perdues à la fabrication ; s'ils ont une valeur de revente, on la **déduit** du coût de production.
-- **Rebuts** : produits défectueux ; ils sont **sans valeur** ou vendus à bas prix. Leur coût est **supporté par les produits bons**.
-- **Sous-produits** : produits secondaires obtenus en même temps que le produit principal ; leur valeur est **déduite** du coût du produit principal.
+**Exemple :** encours initial 50 000 ; matières 200 000 ; main-d'œuvre directe 100 000 ; charges indirectes 80 000 ; encours final 80 000.
 
-## 🧪 Exemple corrigé
-Encours initial 50 000 ; charges de la période 400 000 ; encours final 80 000 ⇒ coût de production des produits finis = 50 000 + 400 000 − 80 000 = **370 000 F**.
-Si des déchets sont vendus 15 000 F ⇒ coût net = 370 000 − 15 000 = **355 000 F**.
+| Élément | Montant |
+|---|---|
+| Encours initial | 50 000 |
+| + Matières consommées | 200 000 |
+| + Main-d'œuvre directe | 100 000 |
+| + Charges indirectes de production | 80 000 |
+| − Encours final | − 80 000 |
+| **= Coût de production des produits finis** | **350 000** |
+
+Pour **700 unités** terminées : 350 000 / 700 = **500 F l'unité**.
+
+## 📚 2. Les déchets, rebuts et sous-produits
+| Cas | Définition | Traitement |
+|---|---|---|
+| **Déchets** | Matières perdues en fabrication (chutes, sciure) | S'ils sont revendus, leur **valeur est déduite** du coût de production. Sinon, leur coût reste à la charge des produits bons |
+| **Rebuts** | Produits **défectueux** non vendables comme produits normaux | Sans valeur : leur coût est **supporté par les produits bons** ; vendus à bas prix : on **déduit** le produit de cession |
+| **Sous-produits** | Produits **secondaires** obtenus en même temps que le principal | Leur **valeur est déduite** du coût du produit principal |
+
+### Exemple A : déchets revendus
+Coût de production brut : 350 000 ; déchets revendus : **15 000** ⇒ coût net = **335 000** ; pour **670 unités** : 335 000 / 670 = **500 F**.
+
+### Exemple B : rebuts sans valeur
+Production de 500 unités dont **20 rebuts** ; coût total 600 000 F.
+- Sans tenir compte des rebuts : 600 000 / 500 = 1 200 F (**faux**).
+- En tenant compte : 600 000 / **480** bonnes unités = **1 250 F** (les bonnes unités supportent le coût des rebuts).
+
+### Exemple C : sous-produit
+Un atelier produit 500 unités de produit principal et un sous-produit valant **100 000 F** ; coût commun : 900 000 F.
+Coût net du produit principal = 900 000 − 100 000 = **800 000** ⇒ **1 600 F l'unité**.
 
 ## ✏️ Exercices
-**Exercice 1.** EI = 30 000 ; charges = 250 000 ; EF = 45 000. Coût de production ?
+**Exercice 1.** EI = 30 000 ; charges de la période = 250 000 ; EF = 45 000. Coût de production des produits finis ?
 
 :::corrige
 30 000 + 250 000 − 45 000 = **235 000 F**.
 :::
 
-**Exercice 2.** Que devient le coût des rebuts ?
+**Exercice 2.** Coût de production brut : 420 000 F ; déchets vendus : 20 000 F ; 400 produits finis. Coût unitaire ?
 
 :::corrige
-Il est **supporté par les produits bons** (il augmente leur coût de production unitaire).
+Coût net = 400 000 ; 400 000 / 400 = **1 000 F l'unité**.
+:::
+
+**Exercice 3.** Production : 1 000 pièces dont 40 rebuts sans valeur ; coût total : 960 000 F. Coût unitaire d'une bonne pièce ?
+
+:::corrige
+960 000 / 960 = **1 000 F** (contre 960 F si l'on ignore les rebuts).
 :::
 
 ## ⚠️ Pièges
-- Ne pas oublier de **retrancher** l'encours final.
-- La valeur de revente des déchets se **déduit**, elle ne s'ajoute pas.
+- Toujours **retrancher** l'encours final et **ajouter** l'encours initial.
+- Diviser par le nombre de **bonnes unités**, pas par la production totale.
+- La valeur de revente des déchets **se déduit**, elle ne s'ajoute pas.
 
 ## 🏆 À retenir pour le BAC
-Formule des encours, traitement des déchets, rebuts et sous-produits.
+Formule des encours (EI + charges − EF), déchets (valeur déduite), rebuts (coût supporté par les bons), sous-produits (valeur déduite du principal).
 `
 
 COMPTA_CA["ca-couts-variables"] = String.raw`## 💡 L'essentiel en une phrase
-La **méthode des coûts variables** sépare les charges **fixes** et **variables** pour calculer la **marge sur coût variable**, le **seuil de rentabilité** et le **point mort**.
+La méthode des **coûts variables** sépare charges **fixes** et **variables** pour calculer la **marge sur coût variable**, le **seuil de rentabilité**, le **point mort**, l'**indice de sécurité** et le **levier opérationnel** ; l'**imputation rationnelle** corrige l'effet de la sous-activité.
 
 ## 📚 1. Charges fixes et variables
-- **Variables** : varient avec l'activité (matières, commissions).
-- **Fixes** : indépendantes de l'activité à court terme (loyer, salaires administratifs, amortissements).
+- **Variables** (proportionnelles à l'activité) : matières, énergie de production, commissions.
+- **Fixes** (indépendantes de l'activité à court terme) : loyer, assurances, amortissements, salaires administratifs.
+- Certaines charges sont **mixtes** : on les sépare en une part fixe et une part variable.
 
-## 📚 2. Marge sur coût variable
-$$ MSCV = Chiffre\ d'affaires - Charges\ variables \qquad Taux\ de\ MSCV = \frac{MSCV}{CA} $$
-$$ R\acute{e}sultat = MSCV - Charges\ fixes $$
+## 📚 2. Le compte de résultat différentiel
+| Élément | Montant | % du CA |
+|---|---|---|
+| Chiffre d'affaires | 10 000 000 | 100 % |
+| − Charges variables | − 6 000 000 | 60 % |
+| **= Marge sur coût variable (MSCV)** | **4 000 000** | **40 %** |
+| − Charges fixes | − 2 000 000 | |
+| **= Résultat** | **2 000 000** | |
 
-## 📚 3. Seuil de rentabilité et point mort
+$$ MSCV = CA - Charges\ variables \qquad Taux\ de\ MSCV = \frac{MSCV}{CA} \qquad R\acute{e}sultat = MSCV - Charges\ fixes $$
+
+## 📚 3. Seuil de rentabilité (chiffre d'affaires critique) et point mort
 $$ SR = \frac{Charges\ fixes}{Taux\ de\ MSCV} $$
-- Le **seuil de rentabilité** (chiffre d'affaires critique) est le CA pour lequel le résultat est **nul**.
-- $$ Point\ mort = \frac{SR}{CA} \times 360\ jours $$ : date à laquelle le seuil est atteint.
+Au seuil de rentabilité, **MSCV = charges fixes** donc **résultat nul**.
+$$ Point\ mort\ (en\ jours) = \frac{SR}{CA} \times 360 \qquad Point\ mort\ (en\ mois) = \frac{SR}{CA} \times 12 $$
+C'est la **date** à laquelle le seuil est atteint (au-delà, l'entreprise gagne de l'argent).
+
+**Application :** SR = 2 000 000 / 0,40 = **5 000 000 F** ; point mort = 5 000 000 / 10 000 000 × 360 = **180 jours** (fin juin, début juillet).
 
 ## 📚 4. Indice de sécurité et levier opérationnel
-$$ Indice\ de\ s\acute{e}curit\acute{e} = \frac{CA - SR}{CA} \qquad Levier = \frac{MSCV}{R\acute{e}sultat} $$
-Plus l'indice de sécurité est élevé, moins l'entreprise est menacée par une baisse de ventes. Le levier indique de combien varie le résultat quand le CA varie de 1 %.
+$$ Indice\ de\ s\acute{e}curit\acute{e} = \frac{CA - SR}{CA} \qquad Levier\ op\acute{e}rationnel = \frac{MSCV}{R\acute{e}sultat} $$
+- Indice de sécurité = 5 000 000 / 10 000 000 = **50 %** : le CA peut baisser de 50 % avant la perte.
+- Levier = 4 000 000 / 2 000 000 = **2** : si le CA augmente de 10 %, le résultat augmente de **20 %** (et il diminue de la même façon).
 
-## 🧪 Exemple corrigé
-CA = 10 000 000 ; charges variables = 6 000 000 ; charges fixes = 2 000 000.
-- MSCV = 4 000 000 ; taux = 40 %.
-- Résultat = 4 000 000 − 2 000 000 = **2 000 000**.
-- SR = 2 000 000 / 0,40 = **5 000 000 F**.
-- Point mort = 5 000 000 / 10 000 000 × 360 = **180 jours** (début juillet).
-- Indice de sécurité = (10 − 5)/10 = **50 %** ; levier = 4 000 000 / 2 000 000 = **2**.
+## 📚 5. L'imputation rationnelle des charges fixes
+Quand l'activité réelle est **inférieure à l'activité normale**, on n'impute aux coûts qu'une **part** des charges fixes :
+$$ Coefficient\ d'imputation = \frac{Activit\acute{e}\ r\acute{e}elle}{Activit\acute{e}\ normale} \qquad Charges\ fixes\ imput\acute{e}es = Charges\ fixes \times Coefficient $$
+La différence est une **perte de sous-activité (mali)** qui n'entre pas dans les coûts. Si l'activité réelle dépasse la normale, le coefficient est supérieur à 1 (**boni** de suractivité).
+
+**Exemple :** activité normale 10 000 h ; activité réelle 8 000 h ; charges fixes 500 000 F.
+Coefficient = 0,8 ; charges fixes imputées = **400 000** ; **mali de sous-activité = 100 000 F**.
 
 ## ✏️ Exercices
-**Exercice 1.** CA = 8 000 000 ; CV = 5 600 000 ; CF = 1 800 000. Calcule MSCV, taux, résultat, SR, indice de sécurité, levier.
+**Exercice 1.** CA = 8 000 000 ; charges variables = 5 600 000 ; charges fixes = 1 800 000. Calcule MSCV, taux, résultat, SR, point mort, indice de sécurité et levier.
 
 :::corrige
-MSCV = 2 400 000 ; taux = 30 % ; résultat = 600 000 ; SR = 1 800 000 / 0,30 = **6 000 000** ; indice = (8 − 6)/8 = **25 %** ; levier = 2 400 000 / 600 000 = **4**.
+MSCV = **2 400 000** ; taux = **30 %** ; résultat = 600 000 ; **SR = 1 800 000 / 0,30 = 6 000 000** ; point mort = 6/8 × 360 = **270 jours** ; indice de sécurité = (8 − 6)/8 = **25 %** ; levier = 2 400 000 / 600 000 = **4**.
 :::
 
-**Exercice 2.** Que signifie un résultat nul ?
+**Exercice 2.** Prix de vente unitaire 2 000 F ; coût variable unitaire 1 200 F ; charges fixes 4 000 000 F. Combien d'unités faut-il vendre pour atteindre le seuil ?
 
 :::corrige
-Que le chiffre d'affaires est exactement égal au seuil de rentabilité : la MSCV couvre juste les charges fixes.
+Marge unitaire = 800 F ⇒ **4 000 000 / 800 = 5 000 unités** (soit SR = 10 000 000 F de CA).
+:::
+
+**Exercice 3.** Activité normale 5 000 h ; réelle 4 000 h ; charges fixes 300 000 F. Charges fixes imputées et mali ?
+
+:::corrige
+Coefficient 0,8 ⇒ imputées **240 000 F** ; **mali = 60 000 F**.
 :::
 
 ## ⚠️ Pièges
-- Au seuil de rentabilité, le résultat est **nul**, il n'y a pas encore de bénéfice.
-- Ne pas confondre MSCV (par rapport aux charges variables) et marge commerciale.
+- Au seuil de rentabilité, le résultat est **nul**, pas un bénéfice.
+- Ne pas confondre **MSCV** (CA − charges variables) et **marge commerciale** (ventes − coût d'achat des marchandises vendues).
+- Le point mort se calcule avec **360 jours** (année commerciale).
 
 ## 🏆 À retenir pour le BAC
-MSCV, SR = CF / taux de MSCV, point mort en jours, indice de sécurité, levier opérationnel.
+MSCV, SR = CF / taux de MSCV, point mort, indice de sécurité, levier = MSCV / résultat, coefficient d'imputation rationnelle, mali de sous-activité.
 `
