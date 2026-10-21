@@ -20,6 +20,9 @@ import { HG_3 } from "./hg3"
 import { ECO } from "./eco"
 import { DROIT } from "./droit"
 import { GESTION } from "./gestion"
+import { COMPTA_CG } from "./compta_cg"
+import { COMPTA_CA } from "./compta_ca"
+import { COMPTA_CS } from "./compta_cs"
 
 export type Serie = "A" | "B" | "C" | "D" | "G1" | "G2"
 
@@ -42,7 +45,7 @@ export type ChapterDef = {
   content: string
 }
 
-const CONTENT: Record<string, string> = { ...MATHS_1, ...MATHS_2, ...MATHS_3, ...EXTRA, ...EXTRA2, ...EXTRA3, ...FRANCAIS_CONTENT, ...PHILO_CONTENT, ...LANGUES, ...SVT_CONTENT, ...HG_1, ...HG_2, ...HG_3, ...ECO, ...DROIT, ...GESTION }
+const CONTENT: Record<string, string> = { ...MATHS_1, ...MATHS_2, ...MATHS_3, ...EXTRA, ...EXTRA2, ...EXTRA3, ...FRANCAIS_CONTENT, ...PHILO_CONTENT, ...LANGUES, ...SVT_CONTENT, ...HG_1, ...HG_2, ...HG_3, ...ECO, ...DROIT, ...GESTION, ...COMPTA_CG, ...COMPTA_CA, ...COMPTA_CS }
 
 export const SUBJECTS: SubjectDef[] = [
   { slug: "d-maths", serie: "D", name: "Mathématiques", emoji: "📐", description: "Programme éducatif Tle D : fonctions, intégrales, suites, probabilités…", order: 1 },
@@ -69,12 +72,14 @@ export const SUBJECTS: SubjectDef[] = [
   { slug: "g1-eco", serie: "G1", name: "Économie générale", emoji: "💹", description: "Croissance, chômage, inflation, monnaie, commerce extérieur, État.", order: 3 },
   { slug: "g1-maths", serie: "G1", name: "Mathématiques", emoji: "📐", description: "Fonctions, suites, statistiques et probabilités appliquées à la gestion.", order: 4 },
   { slug: "g1-anglais", serie: "G1", name: "Anglais", emoji: "🇬🇧", description: "Grammaire, expression écrite et compréhension de texte.", order: 5 },
-  { slug: "g2-compta", serie: "G2", name: "Comptabilité et gestion", emoji: "🧾", description: "SYSCOHADA : partie double, TVA, amortissements, stocks, bilan, coûts.", order: 1 },
-  { slug: "g2-mf", serie: "G2", name: "Mathématiques financières", emoji: "💰", description: "Intérêts simples et composés, annuités, emprunts.", order: 2 },
-  { slug: "g2-droit", serie: "G2", name: "Droit", emoji: "⚖️", description: "Notions de droit, contrats, commerçants et sociétés (OHADA), droit du travail.", order: 3 },
-  { slug: "g2-eco", serie: "G2", name: "Économie générale", emoji: "💹", description: "Croissance, chômage, inflation, monnaie, commerce extérieur, État.", order: 4 },
-  { slug: "g2-maths", serie: "G2", name: "Mathématiques", emoji: "📐", description: "Fonctions, suites, statistiques et probabilités appliquées à la gestion.", order: 5 },
-  { slug: "g2-anglais", serie: "G2", name: "Anglais", emoji: "🇬🇧", description: "Grammaire, expression écrite et compréhension de texte.", order: 6 },
+  { slug: "g2-cg", serie: "G2", name: "Comptabilité générale", emoji: "🧾", description: "Opérations courantes, amortissements, provisions, rapprochement bancaire, régularisations, analyse financière.", order: 1 },
+  { slug: "g2-ca", serie: "G2", name: "Comptabilité analytique", emoji: "📈", description: "Charges, centres d'analyse, coûts complets, encours, seuil de rentabilité.", order: 2 },
+  { slug: "g2-cs", serie: "G2", name: "Comptabilité des sociétés", emoji: "🏢", description: "Constitution, apports, affectation du résultat, capital, dissolution et liquidation.", order: 3 },
+  { slug: "g2-mf", serie: "G2", name: "Mathématiques financières", emoji: "💰", description: "Intérêts simples et composés, annuités, emprunts.", order: 4 },
+  { slug: "g2-droit", serie: "G2", name: "Droit", emoji: "⚖️", description: "Notions de droit, contrats, commerçants et sociétés (OHADA), droit du travail.", order: 5 },
+  { slug: "g2-eco", serie: "G2", name: "Économie générale", emoji: "💹", description: "Croissance, chômage, inflation, monnaie, commerce extérieur, État.", order: 6 },
+  { slug: "g2-maths", serie: "G2", name: "Mathématiques", emoji: "📐", description: "Fonctions, suites, statistiques et probabilités appliquées à la gestion.", order: 7 },
+  { slug: "g2-anglais", serie: "G2", name: "Anglais", emoji: "🇬🇧", description: "Grammaire, expression écrite et compréhension de texte.", order: 8 },
 ]
 
 // 4e élément facultatif : clé du contenu quand elle diffère de la clé de la leçon (contenu partagé entre séries).
@@ -329,15 +334,30 @@ const ECO_G: Row[] = [
   ["etat-budget", "L'État et le budget", "Économie", "eco-etat-budget"],
 ]
 
-const COMPTA_G2: Row[] = [
-  ["principes", "Principes de la comptabilité (SYSCOHADA)", "Comptabilité générale", "compta-principes"],
-  ["tva", "La TVA", "Comptabilité générale", "compta-tva"],
-  ["amortissements", "Les amortissements", "Opérations de fin d'année", "compta-amortissements"],
-  ["stocks", "Les stocks", "Opérations de fin d'année", "compta-stocks"],
-  ["regularisations", "Régularisations et provisions", "Opérations de fin d'année", "compta-regularisations"],
-  ["rapprochement-bancaire", "Le rapprochement bancaire", "Trésorerie", "compta-rapprochement-bancaire"],
-  ["bilan-resultat", "Bilan et compte de résultat", "États financiers", "compta-bilan-resultat"],
-  ["couts", "Comptabilité analytique et seuil de rentabilité", "Gestion", "compta-couts"],
+const CG_G2: Row[] = [
+  ["operations-courantes", "Opérations courantes : factures, effets de commerce, personnel", "Comptabilité générale", "cg-operations-courantes"],
+  ["amortissements", "Les amortissements des immobilisations", "Travaux d'inventaire", "cg-amortissements"],
+  ["provisions", "Les provisions (dépréciations et risques)", "Travaux d'inventaire", "cg-provisions"],
+  ["rapprochement-bancaire", "L'état de rapprochement bancaire", "Travaux d'inventaire", "cg-rapprochement-bancaire"],
+  ["regularisations", "La régularisation des charges et des produits", "Travaux d'inventaire", "cg-regularisations"],
+  ["analyse-financiere", "L'analyse financière", "Analyse financière", "cg-analyse-financiere"],
+]
+
+const CA_G2: Row[] = [
+  ["introduction", "Introduction à la comptabilité analytique", "Comptabilité analytique", "ca-introduction"],
+  ["charges-indirectes", "Le traitement des charges indirectes", "Comptabilité analytique", "ca-charges-indirectes"],
+  ["couts-complets", "L'inventaire permanent et les coûts complets", "Comptabilité analytique", "ca-couts-complets"],
+  ["cas-particuliers", "Les cas particuliers de production", "Comptabilité analytique", "ca-cas-particuliers"],
+  ["couts-variables", "Coûts variables et seuil de rentabilité", "Comptabilité analytique", "ca-couts-variables"],
+]
+
+const CS_G2: Row[] = [
+  ["generalites", "Généralités sur les sociétés commerciales", "Comptabilité des sociétés", "cs-generalites"],
+  ["constitution", "La constitution des sociétés", "Comptabilité des sociétés", "cs-constitution"],
+  ["associes", "Les relations entre la société et les associés", "Comptabilité des sociétés", "cs-associes"],
+  ["affectation-resultat", "L'affectation et la répartition des résultats", "Comptabilité des sociétés", "cs-affectation-resultat"],
+  ["modification-capital", "La modification du capital social", "Comptabilité des sociétés", "cs-modification-capital"],
+  ["dissolution-liquidation", "La dissolution et la liquidation", "Comptabilité des sociétés", "cs-dissolution-liquidation"],
 ]
 
 const MF_G2: Row[] = [
@@ -372,7 +392,9 @@ export const CHAPTERS: ChapterDef[] = [
   ...build("g1-eco", "G1", ECO_G),
   ...build("g1-maths", "G1", MATHS_GESTION),
   ...build("g1-anglais", "G1", ANGLAIS),
-  ...build("g2-compta", "G2", COMPTA_G2),
+  ...build("g2-cg", "G2", CG_G2),
+  ...build("g2-ca", "G2", CA_G2),
+  ...build("g2-cs", "G2", CS_G2),
   ...build("g2-mf", "G2", MF_G2),
   ...build("g2-droit", "G2", DROIT_G),
   ...build("g2-eco", "G2", ECO_G),

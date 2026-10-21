@@ -117,6 +117,9 @@ CREATE TABLE IF NOT EXISTS settings (
 export const ADMIN_IDENTIFIERS = ['ali']
 
 async function seedCatalogue() {
+  // Ancienne matière « Comptabilité et gestion » (G2) remplacée par le programme officiel en trois matières.
+  await exec(`DELETE FROM chapters WHERE subject_slug = 'g2-compta'`)
+  await exec(`DELETE FROM subjects WHERE slug = 'g2-compta'`)
   for (const s of SUBJECTS) {
     await exec(
       `INSERT INTO subjects (slug, serie, name, emoji, description, ord)
