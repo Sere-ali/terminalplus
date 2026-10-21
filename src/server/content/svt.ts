@@ -29,6 +29,45 @@ Si les deux gènes sont sur des **chromosomes différents** (indépendants), la 
 ## ✅ Exemple
 Pois lisse (**L**, dominant) × pois ridé (**l**) : parents $LL\times ll$ ; F1 : $Ll$ lisses ; F2 : $\tfrac14LL$, $\tfrac12Ll$, $\tfrac14ll$ soit **3 lisses : 1 ridé**.
 
+## 🧪 5. Exercice type résolu : monohybridisme avec échiquier
+**Énoncé.** Chez la drosophile, l'allèle « ailes longues » (**L**) domine l'allèle « ailes vestigiales » (**v**). On croise deux drosophiles hétérozygotes **Lv × Lv**.
+
+| ♂ \ ♀ | L | v |
+|---|---|---|
+| **L** | LL (longues) | Lv (longues) |
+| **v** | Lv (longues) | vv (vestigiales) |
+
+**Résultat** : $\tfrac34$ longues, $\tfrac14$ vestigiales ; génotypes $\tfrac14LL$, $\tfrac12Lv$, $\tfrac14vv$.
+
+## 📊 6. Dihybridisme : échiquier à 16 cases (gènes indépendants)
+Parents **LlRr × LlRr** (L : lisse, R : jaune) : gamètes **LR, Lr, lR, lr** (chacun $\tfrac14$) :
+
+| Phénotype | Proportion |
+|---|---|
+| lisse jaune | $\tfrac9{16}$ |
+| lisse vert | $\tfrac3{16}$ |
+| ridé jaune | $\tfrac3{16}$ |
+| ridé vert | $\tfrac1{16}$ |
+
+## ✏️ Exercices
+**Exercice 1.** Un croisement donne 150 plantes à fleurs rouges et 50 à fleurs blanches. Quel génotype des parents ?
+
+:::corrige
+Rapport $150 : 50 = 3 : 1$ ⇒ monohybridisme avec dominance : parents **hétérozygotes** (Rr × Rr), rouge dominant.
+:::
+
+**Exercice 2.** Test-cross d'un individu à phénotype dominant donne 50 % dominants, 50 % récessifs. Quel est son génotype ?
+
+:::corrige
+**Hétérozygote** (Aa) : il produit deux types de gamètes (A et a).
+:::
+
+**Exercice 3.** Combien de chromosomes dans les gamètes humains ?
+
+:::corrige
+$n=23$ (la cellule diploïde a $2n=46$).
+:::
+
 ## ⚠️ Pièges fréquents
 - Mélanger **génotype** et **phénotype**.
 - Oublier l'**échiquier de croisement**.
@@ -58,6 +97,41 @@ Pour déterminer le mode de transmission : si deux parents sains ont un enfant m
 ## ✅ Exemple
 Deux parents hétérozygotes $AS\times AS$ pour la drépanocytose : $\tfrac14$ d'enfants sains ($AA$), $\tfrac12$ porteurs sains ($AS$), $\tfrac14$ malades ($SS$).
 
+## 📊 4. Quelques maladies héréditaires
+
+| Maladie | Type | Cause |
+|---|---|---|
+| **Drépanocytose** | Autosomique récessive | Allèle muté de l'hémoglobine (HbS) |
+| **Mucoviscidose** | Autosomique récessive | Gène CFTR (chromosome 7) |
+| **Hémophilie** | Récessive liée à l'X | Défaut de coagulation, touche surtout les garçons |
+| **Daltonisme** | Récessive liée à l'X | Perception des couleurs |
+| **Trisomie 21** | Anomalie chromosomique | 3 chromosomes 21 (caryotype 47) |
+| **Syndrome de Turner** | Anomalie des gonosomes | 45, X0 |
+
+## 🧪 5. Raisonner sur un arbre généalogique
+1. Si deux parents sains ont un enfant malade ⇒ allèle **récessif**.
+2. Si la maladie touche surtout les garçons et saute des générations ⇒ souvent **liée à l'X**.
+3. Calculer le risque : deux parents **hétérozygotes** (Aa × Aa) ⇒ $\tfrac14$ d'enfants malades.
+
+## ✏️ Exercices
+**Exercice 1.** Deux parents sains ont un enfant drépanocytaire. Quels sont leurs génotypes ? Quel est le risque d'un autre enfant malade ?
+
+:::corrige
+Les deux sont **hétérozygotes** (AS × AS) ; risque $\tfrac14 = 25\ \%$.
+:::
+
+**Exercice 2.** Écris la formule chromosomique d'une fille normale et d'un garçon normal.
+
+:::corrige
+Fille : **46, XX** ; garçon : **46, XY**.
+:::
+
+**Exercice 3.** Pourquoi l'hémophilie touche-t-elle surtout les garçons ?
+
+:::corrige
+Gène porté par le chromosome **X** ; le garçon n'en a qu'un (XY), l'allèle récessif s'exprime sans second X pour le compenser.
+:::
+
 ## 🏆 À retenir pour le BAC
 Savoir **lire un caryotype**, un **arbre généalogique** et calculer des **probabilités** (échiquier).`
 
@@ -80,6 +154,44 @@ La **reproduction humaine** est contrôlée par des **hormones** produites par l
 ## 🛡️ 4. Contrôle des naissances
 - **Pilule** : œstrogènes + progestérone synthétiques bloquant l'**ovulation**.
 - **Stérilet**, **préservatif** (protège aussi des **IST/VIH**), méthodes naturelles.
+
+## 📊 4. Hormones de la reproduction
+
+| Hormone | Origine | Rôle |
+|---|---|---|
+| **GnRH** | Hypothalamus | Stimule l'hypophyse |
+| **FSH** | Hypophyse | Croissance des follicules / spermatogenèse |
+| **LH** | Hypophyse | Ovulation / sécrétion de testostérone |
+| **Œstrogènes** | Ovaire (follicule) | Croissance de l'endomètre, caractères sexuels féminins |
+| **Progestérone** | Corps jaune | Prépare et maintient l'endomètre |
+| **Testostérone** | Testicules | Spermatogenèse, caractères sexuels masculins |
+
+## 🧪 5. Le cycle ovarien (28 jours)
+
+| Phase | Jours | Événements |
+|---|---|---|
+| **Folliculaire** | 1-14 | FSH → croissance du follicule, œstrogènes ↑ |
+| **Ovulation** | 14 | Pic de LH → libération de l'ovocyte |
+| **Lutéale** | 14-28 | Corps jaune → progestérone ↑ ; sans fécondation, chute hormonale → règles |
+
+## ✏️ Exercices
+**Exercice 1.** Quel est le rôle du pic de LH ?
+
+:::corrige
+Il déclenche l'**ovulation** (vers le 14ᵉ jour).
+:::
+
+**Exercice 2.** Comment fonctionne la pilule contraceptive ?
+
+:::corrige
+Elle apporte œstrogènes/progestatifs qui exercent un **rétrocontrôle négatif** sur l'hypophyse : plus de pic de LH, **pas d'ovulation**.
+:::
+
+**Exercice 3.** Quelle hormone maintient la grossesse au début ?
+
+:::corrige
+La **progestérone** (corps jaune puis placenta), stimulée par l'hormone **hCG**.
+:::
 
 ## ⚠️ Pièges fréquents
 - Confondre **FSH/LH** (hypophyse) et **œstrogènes/progestérone** (ovaire).
@@ -109,6 +221,38 @@ Le **système immunitaire** distingue le **soi** du **non-soi** et défend l'org
 ## ✅ Exemple
 Après un **vaccin** contre l'hépatite B, des lymphocytes **mémoire** sont produits ; lors d'une infection ultérieure la réponse est **rapide**.
 
+## 📊 4. Immunité innée et adaptative
+
+| | **Innée (non spécifique)** | **Adaptative (spécifique)** |
+|---|---|---|
+| Rapidité | Immédiate | Plusieurs jours |
+| Acteurs | Phagocytes (macrophages), inflammation | Lymphocytes **B** (anticorps), **T** (T4, T8) |
+| Mémoire | Non | **Oui** |
+
+## 🧪 5. Réponses spécifiques
+- **Réponse humorale** : LB → plasmocytes → **anticorps** (neutralisent l'antigène).
+- **Réponse cellulaire** : LT8 → **cellules cytotoxiques** (détruisent les cellules infectées) ; LT4 = « chefs d'orchestre » (cible du VIH).
+- **Vaccination** : antigène atténué → **mémoire immunitaire**. **Sérothérapie** : anticorps tout faits (protection immédiate, brève).
+
+## ✏️ Exercices
+**Exercice 1.** Pourquoi le VIH provoque-t-il le sida ?
+
+:::corrige
+Il détruit les **lymphocytes T4** : les défenses s'effondrent ⇒ maladies opportunistes.
+:::
+
+**Exercice 2.** Différence entre vaccin et sérum ?
+
+:::corrige
+Le **vaccin** (préventif) stimule la mémoire, durable ; le **sérum** (curatif) apporte des anticorps, effet immédiat et bref.
+:::
+
+**Exercice 3.** Que contient un antigène ?
+
+:::corrige
+Une molécule étrangère reconnue par les lymphocytes (protéine du microbe) déclenchant la réponse immunitaire.
+:::
+
 ## ⚠️ Pièges fréquents
 - Confondre **vaccin** (prévention) et **sérum** (guérison immédiate).
 - Dire que le VIH **est** le SIDA (le SIDA est la **maladie** due au virus).
@@ -136,6 +280,44 @@ Entre deux neurones : **fente synaptique**. Le potentiel d'action libère un **n
 ## ✅ Exemple
 Piqûre au doigt : récepteurs cutanés → nerf sensitif → moelle épinière → nerf moteur → muscle du bras qui se contracte : le retrait est **involontaire et rapide**.
 
+## 📊 4. Neurone et message nerveux
+
+| Notion | Description |
+|---|---|
+| **Neurone** | Corps cellulaire, dendrites, axone |
+| **Potentiel de repos** | Environ −70 mV (intérieur négatif) |
+| **Potentiel d'action** | Inversion brève de la polarisation, tout ou rien |
+| **Synapse** | Jonction entre deux neurones ; **neurotransmetteurs** (acétylcholine…) |
+| **Arc réflexe** | Récepteur → nerf sensitif → moelle → nerf moteur → effecteur |
+| **Réflexe** | Réponse involontaire et rapide (rotulien, retrait) |
+
+## 📊 5. Les parties du cerveau
+
+| Partie | Rôle |
+|---|---|
+| **Cortex** | Pensée, mouvement volontaire, sensations |
+| **Cervelet** | Équilibre, coordination |
+| **Bulbe rachidien** | Respiration, rythme cardiaque |
+
+## ✏️ Exercices
+**Exercice 1.** Décris le trajet d'un réflexe de retrait de la main.
+
+:::corrige
+Récepteur de la peau → nerf sensitif → **moelle épinière** → nerf moteur → muscle (effecteur).
+:::
+
+**Exercice 2.** Que se passe-t-il à une synapse ?
+
+:::corrige
+L'influx provoque la libération de **neurotransmetteurs** qui traversent la fente synaptique et excitent (ou inhibent) le neurone suivant.
+:::
+
+**Exercice 3.** Effet de la drogue ou de l'alcool ?
+
+:::corrige
+Ils perturbent les neurotransmetteurs, ralentissent les réactions et provoquent des dépendances.
+:::
+
 ## ⚠️ Pièges fréquents
 - Croire que la synapse est **électrique** (elle est **chimique**).
 - Oublier le caractère **tout ou rien** du potentiel d'action.
@@ -159,6 +341,36 @@ La **glycémie** (taux de glucose dans le sang) est maintenue autour de **1 g/L*
 
 ## ✅ Exemple
 Une glycémie à jeun de $1{,}8\ \text{g/L}$ répétée évoque un **diabète**.
+
+## 📊 4. Régulation de la glycémie
+
+| | Hyperglycémie (après repas) | Hypoglycémie (jeûne) |
+|---|---|---|
+| **Hormone** | **Insuline** (cellules β du pancréas) | **Glucagon** (cellules α) |
+| **Effet** | Stocke le glucose en **glycogène** (foie, muscles) | Libère le glucose du glycogène |
+| **Résultat** | La glycémie baisse | La glycémie remonte |
+
+**Valeur normale** : environ **1 g/L** (0,8 à 1,2).
+
+## 🧪 5. Diabète
+
+| | Diabète de type 1 | Diabète de type 2 |
+|---|---|---|
+| Cause | Destruction des cellules β (auto-immune) | Résistance à l'insuline (surpoids, sédentarité) |
+| Traitement | **Insuline** | Régime, activité, médicaments |
+
+## ✏️ Exercices
+**Exercice 1.** Pourquoi un diabétique de type 1 doit-il s'injecter de l'insuline ?
+
+:::corrige
+Son pancréas n'en produit plus ; sans insuline, le glucose reste dans le sang (hyperglycémie).
+:::
+
+**Exercice 2.** Où est stocké le glucose ?
+
+:::corrige
+Sous forme de **glycogène** dans le foie et les muscles.
+:::
 
 ## ⚠️ Pièges fréquents
 - Inverser les rôles **insuline** (abaisse) et **glucagon** (élève).
@@ -185,6 +397,41 @@ La **Terre** est formée de couches ; sa **lithosphère** est découpée en **pl
 
 ## 🇨🇮 4. La Côte d'Ivoire
 Elle repose surtout sur un **socle ancien** (granites, schistes) et au sud sur un **bassin sédimentaire côtier** (ressources pétrolières offshore). Ressources : **or, manganèse, diamant, nickel**.
+
+## 📊 4. Tectonique des plaques
+
+| Frontière | Mouvement | Exemple |
+|---|---|---|
+| **Divergente** (dorsale) | Les plaques s'écartent | Dorsale médio-atlantique |
+| **Convergente** (subduction/collision) | Les plaques se rapprochent | Andes, Himalaya |
+| **Transformante** | Coulissement | Faille de San Andreas |
+
+## 🧪 5. Preuves de la dérive des continents (Wegener)
+- **Emboîtement** des côtes (Afrique / Amérique du Sud).
+- **Fossiles identiques** (Mesosaurus) des deux côtés de l'Atlantique.
+- **Âge des fonds océaniques** croissant en s'éloignant des dorsales.
+- **Paléomagnétisme**, séismes et volcans alignés aux limites.
+
+## 📊 6. Roches
+
+| Famille | Origine | Exemple |
+|---|---|---|
+| **Sédimentaire** | Dépôt et compaction | Calcaire, grès |
+| **Magmatique** | Refroidissement du magma | Basalte, granite |
+| **Métamorphique** | Transformation sous pression/température | Gneiss, marbre |
+
+## ✏️ Exercices
+**Exercice 1.** Pourquoi la Côte d'Ivoire est-elle peu exposée aux séismes ?
+
+:::corrige
+Elle se situe au **cœur d'une plaque** (africaine), loin des frontières de plaques actives.
+:::
+
+**Exercice 2.** Que prouve l'âge croissant des fonds océaniques ?
+
+:::corrige
+Que le plancher océanique se **forme aux dorsales** et s'écarte : c'est l'**expansion océanique**.
+:::
 
 ## ⚠️ Pièges fréquents
 - Confondre **plaque** et **continent**.
