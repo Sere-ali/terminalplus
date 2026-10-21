@@ -396,3 +396,190 @@ Parce que les pays ne connaissent plus le même sort : certains deviennent **ém
 ## 🏆 À retenir pour le BAC
 Sauvy 1952 ; **Bandung 1955** ; **Belgrade 1961** ; G77 (1964) ; choc pétrolier (1973) ; NOEI (1974) ; dette et PAS ; éclatement : émergents / PMA.
 `
+
+HG_1["hg-methode-dissertation"] = String.raw`## 💡 L'essentiel en une phrase
+La **composition (ou dissertation) d'histoire-géographie** est un devoir **rédigé et argumenté** qui répond à une **question** à l'aide de **connaissances précises** (dates, acteurs, lieux, faits), organisées selon un **plan** et annoncées par une **problématique**.
+
+## 📚 1. Analyser le sujet (au brouillon)
+
+| Étape | Question à se poser | Exemple : « La décolonisation de l'Afrique noire française (1945-1960) » |
+|---|---|---|
+| **Mots-clés** | Quels termes à définir ? | *décolonisation*, *Afrique noire française* |
+| **Limites chronologiques** | Pourquoi ces dates ? | 1945 : fin de la guerre ; 1960 : « année de l'Afrique » |
+| **Limites spatiales** | Quel espace ? | AOF et AEF (Côte d'Ivoire, Sénégal, Guinée...) |
+| **Problématique** | Quelle question centrale ? | Comment et pourquoi les colonies françaises d'Afrique noire accèdent-elles à l'indépendance en quinze ans ? |
+
+## 📚 2. Choisir un plan
+
+| Type de plan | Principe | Quand l'utiliser |
+|---|---|---|
+| **Chronologique** | Périodes successives | Évolution d'un phénomène (1945-1960) |
+| **Thématique** | Aspects différents | Sujets de synthèse (« Puissance de la Chine ») |
+| **Analytique (causes - faits - conséquences)** | Pourquoi / comment / avec quels effets | Sujets de causes et de portée |
+
+En **géographie**, on préfère souvent : **atouts**, **organisation du territoire**, **limites / défis**.
+
+## 📚 3. Rédiger
+**L'introduction** (une dizaine de lignes) :
+1. **Accroche** (un fait, une date, une citation).
+2. **Définition** des termes et **cadre** (temps, lieu).
+3. **Problématique** (la question).
+4. **Annonce du plan**.
+
+**Le développement** : 2 ou 3 parties, chacune avec 2 ou 3 paragraphes. Chaque paragraphe :
+- une **idée** (phrase d'annonce),
+- des **faits précis** (dates, noms, lieux, chiffres),
+- une **explication** (lien avec le sujet),
+- une **phrase de conclusion** ou de transition.
+
+**La conclusion** : **bilan** (réponse à la problématique) + **ouverture** (élargir : Afrique d'aujourd'hui, autre période).
+
+## 🧪 4. Modèle complet (sujet d'histoire)
+**Sujet** : « La décolonisation de l'Afrique noire française (1945-1960). »
+
+**Introduction.** En 1945, l'Afrique noire est presque entièrement colonisée par les puissances européennes ; en 1960, dix-sept pays africains accèdent à l'indépendance. La décolonisation désigne le processus par lequel les colonies deviennent des États souverains. Ici, elle concerne l'AOF et l'AEF, regroupées dans l'Union française puis la Communauté. Comment et pourquoi ces colonies passent-elles en une quinzaine d'années de la dépendance à l'indépendance ? Nous verrons d'abord les causes du mouvement (I), puis ses étapes (II), enfin ses conséquences (III).
+
+**I. Les causes.** (1) L'affaiblissement de la France après 1945 et l'anticolonialisme des deux Grands (États-Unis, URSS) et de l'ONU ; (2) la prise de conscience des Africains : anciens combattants, élites, partis (RDA, PDCI), syndicats ; (3) la conférence de Bandung (1955) et l'exemple du Ghana (1957).
+**II. Les étapes.** (1) 1946 : abolition du travail forcé (loi Houphouët-Boigny), Union française ; (2) 1956 : loi-cadre Defferre, autonomie interne ; (3) 1958 : référendum, la Guinée dit « non » ; (4) 1960 : indépendances (Côte d'Ivoire le 7 août).
+**III. Les conséquences.** (1) Naissance de nouveaux États, entrée à l'ONU ; (2) frontières héritées, fragilités politiques ; (3) dépendance économique (néocolonialisme), défis du développement.
+
+**Conclusion.** Ainsi, la décolonisation de l'Afrique noire française résulte à la fois de l'affaiblissement de la métropole et de la mobilisation des Africains ; elle s'est faite largement par la négociation. Mais l'indépendance politique n'a pas mis fin à la dépendance économique, d'où les défis actuels du développement et de l'intégration africaine.
+
+## 🧪 5. Modèle de plan pour un sujet de géographie
+**Sujet** : « La puissance des États-Unis. »
+- **I. Une puissance fondée sur un territoire et une population** (taille, ressources, immigration).
+- **II. Une puissance économique, financière et technologique** (agriculture, industrie, Silicon Valley, dollar, Wall Street).
+- **III. Une puissance mondiale mais contestée** (armée, soft power, concurrence de la Chine, inégalités).
+
+## 📋 6. Check-list avant de rendre
+- ✅ Les **mots-clés** sont définis.
+- ✅ La **problématique** est une vraie question.
+- ✅ **Dates, noms et lieux** précis dans chaque paragraphe.
+- ✅ Le plan est **équilibré** (parties de longueur proche).
+- ✅ **Transitions** entre les parties.
+- ✅ Conclusion = **réponse** + **ouverture**.
+- ✅ Relecture : orthographe, phrases complètes, pas de « style télégraphique ».
+
+## ✏️ Exercices
+**Exercice 1.** Analyse le sujet « La guerre froide de 1947 à 1962 » : mots-clés, bornes, problématique.
+
+:::corrige
+Mots-clés : *guerre froide* (affrontement sans guerre directe entre deux blocs). Bornes : 1947 (doctrine Truman, plan Marshall) – 1962 (crise de Cuba). Problématique : *comment le monde se divise-t-il en deux blocs et à quelles crises cette rivalité conduit-elle ?*
+:::
+
+**Exercice 2.** Propose un plan pour « Le monde de 1945 à 1991 ».
+
+:::corrige
+I. Un monde bipolaire (1947-1962). II. Détente et crises (1962-1979). III. Fin de la guerre froide (1985-1991).
+:::
+
+**Exercice 3.** Rédige une accroche pour un sujet sur l'indépendance de la Côte d'Ivoire.
+
+:::corrige
+*Le 7 août 1960, Félix Houphouët-Boigny proclame l'indépendance de la Côte d'Ivoire, au terme d'un long combat politique mené depuis 1944.*
+:::
+
+**Exercice 4.** Pourquoi faut-il des dates et des noms précis ?
+
+:::corrige
+Ils prouvent que tu **connais le cours** et rendent les arguments **vérifiables** ; sans eux, le devoir est vague et peu noté.
+:::
+
+## ⚠️ Pièges
+- **Hors-sujet** : récitation de tout le cours.
+- **Plan sans problématique**.
+- **Narration** des événements sans explication.
+- Oublier les **bornes** du sujet.
+- Conclusion qui répète l'introduction.
+
+## 🏆 À retenir pour le BAC
+Sujet → mots-clés et bornes → problématique → plan en 2-3 parties → introduction, développement (idée + faits + explication), conclusion (bilan + ouverture).
+`
+
+HG_1["hg-methode-commentaire"] = String.raw`## 💡 L'essentiel en une phrase
+Le **commentaire (ou étude) de documents** consiste à **présenter** un ou plusieurs documents (texte, carte, tableau statistique, image), à les **analyser** en répondant à des questions ou en suivant une problématique, puis à les **critiquer** en les replaçant dans le **contexte** et le **cours**.
+
+## 📚 1. Les types de documents
+
+| Document | À repérer | Ce qu'on analyse |
+|---|---|---|
+| **Texte** (discours, traité, article) | Auteur, date, destinataire, nature | Idées principales, vocabulaire, intention |
+| **Carte** | Titre, échelle, légende | Localisation, organisation de l'espace |
+| **Statistiques / tableau** | Source, unité, dates | Évolution, comparaison, écarts (calculs) |
+| **Graphique / courbe** | Axes, unités | Tendances, ruptures |
+| **Image / affiche / caricature** | Auteur, date, éléments | Message, symboles, propagande |
+| **Photographie** | Lieu, date, sujet | Ce qu'elle montre, ses limites |
+
+## 📚 2. La méthode en quatre temps
+**1. Présenter le document** : **nature**, **auteur** (et son rôle), **date**, **lieu**, **destinataire**, **thème**.
+**2. Analyser** : relever les **idées principales** avec des **citations** ou des **chiffres** ; répondre aux questions **dans l'ordre**, avec des phrases rédigées ; confronter plusieurs documents.
+**3. Critiquer** : **intérêt** (ce que le document apprend) et **limites** (point de vue, propagande, date unique, chiffres partiels).
+**4. Conclure** : **synthèse** et lien avec le **cours** (contexte, événement plus large).
+
+## 🧪 3. Modèle complet (document adapté)
+> **Document.** Extrait adapté du discours de Félix Houphouët-Boigny à la tribune, 1958 : *« Nous voulons rester dans la Communauté, mais dans un ensemble fraternel, fondé sur l'égalité et la libre disposition de nous-mêmes. L'Afrique ne demande pas la charité ; elle demande le droit de bâtir elle-même son avenir. »*
+
+**Présentation.** Ce document est un extrait de discours politique prononcé en 1958 par Félix Houphouët-Boigny, alors ministre en France et leader du RDA, à l'occasion du débat sur la Communauté française. Il s'adresse à l'opinion et aux dirigeants français. Il porte sur la place des colonies africaines dans la France d'outre-mer.
+**Analyse.** L'auteur affirme d'abord son attachement à un cadre commun (« rester dans la Communauté ») ; mais il pose des conditions : l'**égalité** et la « **libre disposition de nous-mêmes** », expression qui renvoie au **droit des peuples à disposer d'eux-mêmes**. La phrase finale (« L'Afrique ne demande pas la charité ») refuse la tutelle et réclame la responsabilité.
+**Critique.** *Intérêt* : le texte montre la stratégie **modérée et négociée** d'Houphouët-Boigny. *Limites* : c'est un discours **politique** (il cherche à convaincre) ; il ne reflète pas tous les courants africains (Sékou Touré, par exemple, choisit l'indépendance immédiate).
+**Conclusion.** Ce document éclaire le choix d'une décolonisation par la négociation en Côte d'Ivoire, qui conduira à l'indépendance du 7 août 1960.
+
+## 📊 4. Analyser un tableau statistique
+
+| Pays | PIB/hab. 1960 | PIB/hab. 2020 | Évolution |
+|---|---|---|---|
+| A | 200 $ | 2 400 $ | × 12 |
+| B | 300 $ | 600 $ | × 2 |
+
+**Méthode** : (1) donner le titre, la source, l'unité ; (2) **calculer** les évolutions (multiplication, pourcentage : $\dfrac{V_f-V_i}{V_i}\times100$) ; (3) **comparer** ; (4) **expliquer** avec le cours.
+
+## 📚 5. Le croquis de géographie
+1. **Titre** précis.
+2. **Fond de carte** simple (frontières, mers, grandes villes).
+3. **Légende organisée** en parties (I, II, III) du plus important au moins important.
+4. **Figurés** : aplats (zones), points (villes), flèches (flux), lignes (limites).
+5. **Nomenclature** lisible et **couleurs** cohérentes.
+Exemple de légende pour « La Côte d'Ivoire, un pays en développement » : I. Un pays agricole (zone du cacao, du café, de l'hévéa, de l'anacarde) ; II. Un pays qui s'ouvre (port d'Abidjan, port de San Pédro, aéroport) ; III. Des défis (pauvreté du Nord, déforestation).
+
+## 📋 6. Check-list
+- ✅ Document **présenté** (nature, auteur, date, contexte).
+- ✅ Idées **appuyées sur des citations/chiffres**.
+- ✅ **Critique** (intérêt et limites).
+- ✅ **Lien avec le cours**.
+- ✅ Phrases **rédigées**.
+
+## ✏️ Exercices
+**Exercice 1.** Présente en deux phrases une affiche de propagande de 1942.
+
+:::corrige
+*Cette affiche de propagande, éditée en 1942 par le régime de ..., s'adresse à la population civile. Elle cherche à convaincre de soutenir l'effort de guerre.*
+:::
+
+**Exercice 2.** Que faut-il critiquer dans un discours politique ?
+
+:::corrige
+Son **point de vue** (il défend une cause), son **but** (convaincre), le **contexte** et ce qu'il **omet**.
+:::
+
+**Exercice 3.** Calcule l'évolution d'un PIB/habitant passé de 400 $ à 1 000 $.
+
+:::corrige
+$\dfrac{1000-400}{400}\times100=150\ \%$ (soit × 2,5).
+:::
+
+**Exercice 4.** Cite trois éléments obligatoires d'un croquis.
+
+:::corrige
+Un **titre**, une **légende organisée** avec figurés, une **nomenclature** (noms de lieux).
+:::
+
+## ⚠️ Pièges
+- **Paraphraser** le document au lieu de l'analyser.
+- Oublier de **présenter** le document.
+- **Ne pas citer** le texte ni les chiffres.
+- Oublier la **critique** (limites).
+- Répondre sans lien avec le **cours**.
+
+## 🏆 À retenir pour le BAC
+**Présenter → analyser (citations, chiffres) → critiquer (intérêt, limites) → conclure avec le cours.**
+`

@@ -589,6 +589,52 @@ Les **grands axes** du développement, sous forme de phrases courtes qui annonce
 Un élargissement final : rapprochement avec une autre œuvre, un autre auteur ou une question plus large.
 :::
 
+## 📊 7. Tableau de relevé (à remplir au brouillon)
+
+| Entrée | Ce que je cherche | Exemples d'indices |
+|---|---|---|
+| **Énonciation** | Qui parle ? À qui ? Avec quelle attitude ? | je, nous, modalisateurs, jugements |
+| **Lexique** | Champs lexicaux, connotations | mots de la nature, de la peur... |
+| **Grammaire** | Types de phrases, temps, ponctuation | exclamatives, imparfait, passé simple |
+| **Figures** | Comparaison, métaphore, hyperbole... | « comme », antithèse |
+| **Rythme et sonorités** | Longueur des phrases, répétitions | anaphore, allitération |
+| **Structure** | Étapes du texte, progression | début / milieu / fin |
+
+## 🧪 8. Modèle complet rédigé (texte inventé)
+> *« Le village dormait encore. Dans la cour, la vieille Adjoua pilait le manioc ; le bruit sourd du pilon rythmait l'aube comme un cœur patient. Autour d'elle, les coqs se répondaient de case en case. Elle chantait bas, sans lever les yeux, un chant que sa mère lui avait appris et que personne, désormais, ne chantait plus. »*
+
+**Introduction.** Dans ce court récit (extrait d'un roman fictif de la campagne ivoirienne), le narrateur décrit une femme âgée au travail à l'aube. Le passage appartient à la tradition du roman de terroir, qui célèbre la vie rurale et ses valeurs. Comment le narrateur fait-il de cette scène quotidienne l'image d'un monde sur le point de disparaître ? Nous verrons d'abord comment il peint une scène paisible et rythmée par le travail (I), puis comment il y laisse percer la mélancolie de la transmission perdue (II).
+
+**I. Une scène paisible rythmée par le travail.**
+- *Le cadre* : l'**imparfait** de description (« dormait », « pilait ») installe une scène **durable** et calme ; la « cour », les « cases » situent un décor rural.
+- *Le rythme* : la **comparaison** « comme un cœur patient » fait du pilon un battement de vie ; l'**allitération en [p]** (« pilait », « pilon ») imite le bruit sourd.
+- *L'harmonie* : « les coqs se répondaient de case en case » → **personnification** : le village est un chœur.
+**Transition.** Mais cette harmonie est déjà teintée de tristesse.
+
+**II. La mélancolie d'un monde qui s'efface.**
+- *La solitude* : « sans lever les yeux » ; Adjoua est seule face à ce travail.
+- *La transmission interrompue* : « que personne, désormais, ne chantait plus » → l'adverbe « désormais » et la négation « personne... plus » marquent la **fin** ; la phrase longue et lente prolonge le regret.
+- *Le point de vue* : le narrateur, par la **focalisation externe** discrète, observe avec une tendresse nostalgique.
+
+**Conclusion.** Le narrateur transforme une scène banale en tableau nostalgique : la douceur du travail rural cohabite avec la conscience de sa disparition. Ce passage rejoint ainsi la tradition des romans africains qui chantent la mémoire du village face à la modernité (ouverture : on peut le rapprocher de l'évocation de la tradition dans *L'Enfant noir* de Camara Laye).
+
+## 🔗 9. Connecteurs et formules pour commenter
+
+| Fonction | Formules |
+|---|---|
+| Introduire un indice | On relève..., Le texte met en évidence... |
+| Analyser | Cela traduit..., Ce procédé souligne..., Il en résulte... |
+| Nuancer | Pourtant, cependant, toutefois |
+| Transition | Après avoir montré que..., il faut à présent voir que... |
+| Conclure | Ainsi, en définitive, au terme de cette étude |
+
+## 📋 10. Check-list avant de rendre
+- ✅ Introduction en 4 temps, avec problématique.
+- ✅ 2 ou 3 axes qui sont des **idées** (pas des procédés).
+- ✅ Chaque remarque = citation + procédé + effet.
+- ✅ Conclusion avec bilan et ouverture.
+- ✅ Phrases rédigées, orthographe relue.
+
 ## ⚠️ Pièges fréquents
 - **Paraphraser** le texte.
 - Faire un plan par **procédés** (« lexique », « figures »).
@@ -673,6 +719,54 @@ Parce que la dissertation littéraire se fonde sur la **connaissance des œuvres
 :::corrige
 La **question centrale** qui découle du sujet et que le devoir cherche à résoudre.
 :::
+
+## 🧪 8. Modèle complet rédigé
+**Sujet.** « Le roman doit-il seulement divertir le lecteur ? »
+
+**Analyse du sujet.**
+
+| Mot-clé | Sens |
+|---|---|
+| *roman* | récit en prose fictif, de longueur variable |
+| *divertir* | distraire, procurer du plaisir |
+| *seulement* | restriction : ne faire **que** cela |
+| *doit-il* | question sur le **devoir** (finalité) |
+
+**Problématique.** Le roman a-t-il pour unique fonction de distraire, ou peut-il aussi instruire, dénoncer, faire réfléchir ?
+
+**Introduction rédigée.** Depuis ses origines, le roman captive les lecteurs par ses aventures et ses personnages. Pourtant, nombre d'écrivains lui ont assigné d'autres missions : peindre la société, défendre une cause, éveiller les consciences. Faut-il donc, comme le suggère le sujet, réduire le roman à un simple divertissement ? Autrement dit : le roman a-t-il pour unique fonction de distraire, ou peut-il aussi instruire et faire réfléchir ? Nous verrons d'abord que le roman divertit, puis qu'il dépasse largement cette fonction, avant de montrer que plaisir et réflexion s'allient dans les grandes œuvres.
+
+**Développement (plan dialectique).**
+**I. Le roman est d'abord un divertissement.**
+- *Argument* : l'intrigue, le suspense et les personnages captivent. *Exemple* : le roman d'aventures ou policier tient le lecteur en haleine.
+- *Argument* : il permet l'évasion (voyages, époques lointaines).
+**Transition.** Mais le plaisir n'épuise pas les ambitions du roman.
+**II. Le roman fait plus que divertir.**
+- *Argument* : il dénonce et témoigne. *Exemple* : *Germinal* de Zola révèle la condition des mineurs ; les romans anticoloniaux d'Afrique dénoncent la domination.
+- *Argument* : il fait réfléchir sur l'homme (psychologie, morale).
+**Transition.** Faut-il alors opposer divertir et instruire ?
+**III. Les grandes œuvres unissent plaisir et réflexion.**
+- *Argument* : le plaisir rend la réflexion accessible. *Exemple* : *Candide* de Voltaire instruit en amusant par l'ironie.
+- *Argument* : l'émotion est une voie de la connaissance.
+
+**Conclusion rédigée.** Le roman ne saurait se réduire à un simple divertissement : s'il distrait, il témoigne, dénonce et fait réfléchir. Les chefs-d'œuvre allient d'ailleurs ces deux dimensions. On peut se demander, en ouverture, si cette double fonction vaut aussi pour les autres genres, comme le théâtre ou la poésie.
+
+## 📋 9. Check-list
+- ✅ Les **mots-clés** sont définis (surtout les restrictions : *seulement*, *toujours*).
+- ✅ Problématique formulée comme une vraie question.
+- ✅ Plan **équilibré** (3 parties de longueur proche).
+- ✅ Chaque partie contient des **exemples littéraires** précis (titres, auteurs).
+- ✅ Transitions entre les parties.
+- ✅ Conclusion qui répond à la question.
+
+## 🔗 10. Connecteurs utiles
+
+| Fonction | Formules |
+|---|---|
+| Ajouter | d'abord, en outre, de plus |
+| Opposer | mais, cependant, pourtant, or |
+| Illustrer | ainsi, par exemple, comme le montre |
+| Conclure | en définitive, au total, on le voit |
 
 ## ⚠️ Pièges fréquents
 - **Hors-sujet** ou plan qui ne répond pas à la question.
