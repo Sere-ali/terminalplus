@@ -3,373 +3,522 @@
 export const HG_3: Record<string, string> = {}
 
 HG_3["hg-mondialisation"] = String.raw`## 💡 L'essentiel en une phrase
-La **mondialisation** est le processus d'**intensification des échanges** de marchandises, de capitaux, d'informations et de personnes entre toutes les régions du monde ; elle est portée par les **firmes transnationales**, les **transports** et les **technologies**, et elle crée à la fois de la **richesse** et des **inégalités**.
+La **mondialisation** est l'intensification des **échanges** (marchandises, capitaux, personnes, informations) entre tous les pays du monde ; elle est portée par les **firmes transnationales**, les **transports** et les **technologies**, et crée des **gagnants** et des **perdants**.
 
-## 📚 1. Les acteurs
-- **Les firmes transnationales (FTN)** : entreprises présentes dans plusieurs pays (Apple, Toyota, Total, Nestlé…). Elles délocalisent la production pour réduire les coûts.
-- **Les États** et les **organisations** : OMC (commerce), FMI et Banque mondiale (finance et développement), blocs régionaux (UE, ALENA, CEDEAO…).
-- **Les consommateurs** et les **migrants**.
+## 📚 1. Définition et acteurs
+- **Mondialisation** : processus d'**interdépendance** croissante des économies et des sociétés.
+- **Acteurs** :
 
-## 📚 2. Les flux
-- **Flux de marchandises** : transport maritime (conteneurs), routes, avions.
-- **Flux de capitaux** : investissements étrangers, bourses, transferts d'argent des migrants.
-- **Flux d'informations** : Internet, téléphone mobile, médias.
-- **Flux humains** : migrations, tourisme, études.
+| Acteur | Rôle |
+|---|---|
+| **Firmes transnationales (FTN)** | Entreprises présentes dans plusieurs pays (Apple, Toyota, Nestlé…) ; **délocalisent** la production |
+| **États** | Fixent les règles, négocient les accords |
+| **Organisations internationales** | **OMC** (commerce), **FMI**, **Banque mondiale**, ONU |
+| **Consommateurs et ONG** | Demandent produits, droits, environnement |
 
-## 📚 3. Les lieux de la mondialisation
-- **La Triade** (États-Unis, Europe, Japon) concentre encore une grande part de la richesse.
-- **Les pays émergents** (Chine, Inde, Brésil…) gagnent du poids.
-- **Les métropoles mondiales** (New York, Londres, Tokyo, Shanghai) commandent les échanges.
-- **Les grands ports** (Singapour, Shanghai, Rotterdam) et **les routes maritimes** (canal de Suez, de Panama, détroit de Malacca).
-- **L'Afrique** est surtout insérée par l'**exportation de matières premières** (cacao, pétrole, minerais).
+## 📚 2. Les moteurs
+- **Révolution des transports** : porte-conteneurs, avion, ports géants, **canaux** (Suez, Panama).
+- **Révolution des télécommunications** : Internet, téléphone mobile, réseaux sociaux.
+- **Libéralisation** : baisse des **droits de douane**, **GATT** (1947) puis **OMC** (1995).
+- **Rôle des FTN** et des capitaux (**IDE** = investissements directs à l'étranger).
 
-## 📚 4. Avantages et limites
-**Avantages** : accès à plus de produits, croissance, emplois, transferts de technologies.
-**Limites** : creusement des inégalités, dépendance des pays pauvres, pollution, uniformisation culturelle, vulnérabilité aux crises mondiales.
+## 📚 3. Les flux mondiaux
 
-## 🧪 Exemples
-### Exemple 1 — Une chaîne de production mondiale
-Un téléphone peut être conçu aux États-Unis, assemblé en Chine avec des composants venus de plusieurs pays, puis vendu partout dans le monde.
+| Flux | Exemple |
+|---|---|
+| **Marchandises** | 80 % du commerce par **voie maritime** ; routes Asie - Europe - Amérique |
+| **Capitaux** | Bourses (New York, Londres, Tokyo, Shanghai) ; **paradis fiscaux** |
+| **Informations** | Internet, câbles sous-marins |
+| **Hommes** | **Migrations** de travail, tourisme (1,4 milliard de touristes avant 2020) |
+| **Matières premières et énergie** | Pétrole du Golfe, cacao ivoirien, minerais |
 
-### Exemple 2 — Cacao et mondialisation
-La Côte d'Ivoire vend ses fèves de cacao à l'étranger ; elle est donc très sensible au **prix mondial** fixé sur les bourses internationales.
+## 📚 4. L'organisation du monde : centres et périphéries
+- **Triade** : **États-Unis (Amérique du Nord)**, **Union européenne**, **Asie orientale** (Japon, Chine, Corée du Sud) : concentrent la richesse, la finance, la recherche.
+- **Métropoles mondiales** (New York, Londres, Tokyo, Shanghai) : centres de décision.
+- **Pays émergents** (Chine, Inde, Brésil) : montée en puissance.
+- **Périphéries** : beaucoup de pays d'**Afrique subsaharienne**, **marginalisés** (PMA).
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Définis « firme transnationale » et donne deux exemples.
+## 📚 5. Bilan : avantages et critiques
+
+| Avantages | Critiques |
+|---|---|
+| Croissance, **baisse des prix**, diffusion des techniques | **Inégalités** entre et dans les pays |
+| Création d'**emplois** dans les pays émergents | **Délocalisations**, chômage dans certains pays |
+| Accès à l'information, aux produits | **Dégradation de l'environnement**, uniformisation culturelle |
+| Échanges culturels | **Crises financières mondiales** (2008) ; **altermondialistes** |
+
+## 🧪 Exemple
+**Le cacao** : produit en **Côte d'Ivoire et au Ghana** (60 % de la production mondiale), transformé et vendu par des **FTN** (Nestlé, Mars, Cargill…), consommé en Europe et en Amérique : exemple de **chaîne de valeur mondiale** où la plus grande part de la valeur est captée au Nord.
+
+## ✏️ Exercices
+**Exercice 1.** Définis mondialisation.
 
 :::corrige
-Entreprise qui exerce son activité (production, vente) dans plusieurs pays à la fois. Exemples : Apple, Toyota, Nestlé, Total.
+Intensification des **échanges** de biens, capitaux, personnes et informations entre les pays du monde, qui crée une **interdépendance**.
 :::
 
-**Exercice 2.** Quels sont les principaux pôles de la mondialisation ?
+**Exercice 2.** Cite trois acteurs de la mondialisation.
 
 :::corrige
-La Triade (États-Unis, Union européenne, Japon), les pays émergents (Chine, Inde, Brésil…), les métropoles mondiales et les grands ports.
+Les **firmes transnationales**, les **États**, les **organisations internationales** (OMC, FMI), les ONG.
 :::
 
-**Exercice 3.** Quelle place occupe l'Afrique dans la mondialisation ?
+**Exercice 3.** Qu'est-ce que la Triade ?
 
 :::corrige
-Une place encore limitée, surtout comme **fournisseur de matières premières** (cacao, pétrole, minerais), avec une faible part du commerce mondial.
+Les trois pôles dominants : **Amérique du Nord**, **Union européenne**, **Asie orientale** (Japon, Chine, Corée du Sud).
 :::
 
-## ⚠️ Pièges fréquents
-- Croire que la mondialisation profite de la même manière à tous les pays.
-- Réduire la mondialisation à l'économie : elle est aussi **culturelle et humaine**.
-- Confondre **mondialisation** (processus) et **mondialisme** (idéologie).
+**Exercice 4.** Pourquoi les pays africains sont-ils souvent « marginalisés » ?
+
+:::corrige
+Faible part du commerce mondial (environ 3 %), exportations de **matières premières** peu transformées, **dette**, infrastructures insuffisantes.
+:::
+
+## ⚠️ Pièges
+- Mondialisation ≠ **globalisation financière** seule.
+- Tous les pays ne sont pas **intégrés au même degré**.
+- La mondialisation n'est pas **seulement économique** (culture, information).
 
 ## 🏆 À retenir pour le BAC
-**Acteurs** (FTN, États, OMC) → **flux** (marchandises, capitaux, informations, personnes) → **lieux** (Triade, émergents, métropoles, ports) → **bilan nuancé** (richesse et inégalités).
+Définition ; acteurs (FTN, OMC) ; moteurs (transports, TIC, libéralisation) ; flux ; **Triade** ; émergents ; marginalisation de l'Afrique ; avantages / critiques.
 `
 
 HG_3["hg-inegalites-developpement"] = String.raw`## 💡 L'essentiel en une phrase
-Les pays du monde sont **inégalement développés** : un Nord riche (pays développés) s'oppose à un Sud pauvre ou émergent, et ces inégalités se mesurent avec des indicateurs comme le **PIB par habitant** et l'**Indice de développement humain (IDH)**.
+Le monde est marqué par de fortes **inégalités de développement** entre un **Nord** riche et un **Sud** plus pauvre (même si les écarts évoluent) ; on les mesure par des **indicateurs** (PIB/habitant, IDH) et on cherche à les réduire par l'**aide**, le **commerce** et le **développement durable**.
 
 ## 📚 1. Mesurer le développement
-- **PIB** (produit intérieur brut) : richesse produite dans un pays en un an ; **PIB par habitant** : richesse moyenne.
-- **IDH** (Indice de développement humain) créé par le PNUD : combine **santé** (espérance de vie), **éducation** (durée de scolarisation) et **niveau de vie** (revenu par habitant). Il va de 0 à 1.
-- **Autres indicateurs** : mortalité infantile, taux d'alphabétisation, accès à l'eau potable, à l'électricité.
 
-## 📚 2. Une planète à plusieurs vitesses
-- **Pays développés** (Amérique du Nord, Europe, Japon, Australie) : IDH élevé, économie diversifiée.
-- **Pays émergents** (Chine, Inde, Brésil, Turquie…) : croissance forte, industrialisation rapide, mais inégalités internes.
-- **Pays les moins avancés (PMA)** : surtout en Afrique subsaharienne : revenu faible, dépendance des matières premières.
+| Indicateur | Signification |
+|---|---|
+| **PIB / habitant** | Richesse produite par habitant (en dollars) |
+| **IDH** (indice de développement humain, PNUD) | Combine **santé** (espérance de vie), **éducation** (durée de scolarisation), **niveau de vie** (revenu) – de 0 à 1 |
+| **Espérance de vie** | Âge moyen de vie (plus de 80 ans au Japon, environ 60 ans dans certains pays africains) |
+| **Taux d'alphabétisation** | % de personnes sachant lire et écrire |
+| **Mortalité infantile** | Décès avant 1 an pour 1 000 naissances |
+
+## 📚 2. Les inégalités dans le monde
+- **Pays développés** (Amérique du Nord, Europe, Japon, Australie) : IDH élevé, économies de services.
+- **Pays émergents** (Chine, Inde, Brésil, Indonésie, Mexique, Afrique du Sud) : forte croissance, industrialisation.
+- **Pays les moins avancés (PMA)** : **46 pays** (dont une trentaine en Afrique) – pauvreté, faim, faible scolarisation.
+- Les écarts existent aussi **à l'intérieur** des pays (villes / campagnes, riches / pauvres).
 
 ## 📚 3. Les causes des inégalités
-- **Histoire** : colonisation, commerce inégal.
-- **Économie** : dépendance des matières premières, faible industrialisation.
-- **Politique** : instabilité, mauvaise gouvernance, conflits.
-- **Démographie** : forte croissance de la population.
-- **Environnement** : sécheresses, maladies.
 
-## 📚 4. Les moyens de réduire les inégalités
-- **Aide publique au développement** et **annulation de dettes**.
-- **Éducation et santé** pour tous.
-- **Diversification de l'économie** (industrialisation, transformation locale des matières premières).
-- **Coopération régionale** et commerce équitable.
-- **Objectifs du développement durable (ODD, 2015)** des Nations unies.
+| Cause | Explication |
+|---|---|
+| **Histoire** | Colonisation, traite négrière, économie de traite |
+| **Économiques** | Dépendance des **matières premières**, **échange inégal**, faible industrialisation, **dette** |
+| **Politiques** | **Instabilité**, corruption, guerres |
+| **Démographiques** | Forte croissance démographique, jeunesse |
+| **Naturelles** | Climat (sécheresses), maladies, enclavement |
+| **Sociales** | Faible scolarisation, inégalités de genre |
 
-## 🧪 Exemples
-### Exemple 1 — Lecture d'IDH
-Un pays avec un IDH de 0,9 offre à ses habitants une longue espérance de vie, une bonne scolarisation et des revenus élevés ; un pays à 0,4 est loin de ces niveaux.
+## 📚 4. Les conséquences
+- **Faim et malnutrition** (Sahel, Corne de l'Afrique).
+- **Maladies** : paludisme, VIH/sida, tuberculose.
+- **Migrations** vers le Nord, **exode rural**.
+- **Conflits** et instabilité.
 
-### Exemple 2 — La Côte d'Ivoire
-Elle est devenue une économie à croissance rapide depuis une dizaine d'années, mais son IDH reste en dessous de la moyenne mondiale : la croissance doit encore se traduire en **développement humain**.
+## 📚 5. Les solutions
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Quels sont les trois éléments de l'IDH ?
+| Solution | Exemples |
+|---|---|
+| **Aide publique au développement (APD)** | Objectif ONU : **0,7 % du revenu national brut** des pays riches |
+| **Annulation de la dette** | **Initiative PPTE** (pays pauvres très endettés) – la Côte d'Ivoire atteint le point d'achèvement en **2012** |
+| **Commerce équitable** | Prix justes aux producteurs (café, cacao) |
+| **Développement durable** | Répondre aux besoins d'aujourd'hui sans compromettre ceux des générations futures ; **ODD (2015)** |
+| **Initiatives africaines** | **NEPAD**, **ZLECAf**, microfinance |
+| **Investissement dans l'éducation et la santé** | Scolarisation des filles, vaccination |
 
-:::corrige
-La **santé** (espérance de vie), l'**éducation** (durée de scolarisation) et le **niveau de vie** (revenu par habitant).
-:::
+## 🧪 Exemple
+**Côte d'Ivoire** : IDH moyen (environ 0,55) ; progression économique forte depuis 2012 (PIB en hausse), mais **pauvreté** persistante (environ 40 % de la population sous le seuil national) : la croissance doit se traduire en **développement humain**.
 
-**Exercice 2.** Pourquoi le PIB par habitant ne suffit-il pas à mesurer le développement ?
-
-:::corrige
-Il ne renseigne pas sur la répartition des richesses, ni sur la santé, l'éducation ou l'environnement ; l'IDH complète donc l'analyse.
-:::
-
-**Exercice 3.** Propose deux solutions pour réduire les inégalités.
+## ✏️ Exercices
+**Exercice 1.** Que mesure l'IDH ?
 
 :::corrige
-Investir dans l'éducation et la santé, diversifier et industrialiser l'économie, annuler la dette, favoriser le commerce équitable et la coopération régionale.
+Le niveau de **développement humain** à partir de trois dimensions : santé (espérance de vie), éducation, niveau de vie (revenu).
 :::
 
-## ⚠️ Pièges fréquents
-- Confondre **croissance** (hausse du PIB) et **développement** (amélioration de la vie).
-- Dire « Nord = hémisphère nord » : c'est un groupe de pays riches (l'Australie est au Sud mais développée).
-- Oublier que les inégalités existent aussi **dans** chaque pays.
+**Exercice 2.** Cite trois causes du sous-développement.
+
+:::corrige
+Héritage colonial ; dépendance des matières premières ; instabilité politique ; dette ; forte croissance démographique.
+:::
+
+**Exercice 3.** Explique « développement durable ».
+
+:::corrige
+Développement qui satisfait les besoins du présent **sans compromettre** la capacité des générations futures à satisfaire les leurs ; il concilie **économie, social, environnement**.
+:::
+
+**Exercice 4.** Distingue croissance et développement.
+
+:::corrige
+**Croissance** : augmentation de la production (PIB). **Développement** : amélioration des conditions de vie (santé, éducation, revenus) ; une croissance sans développement est possible.
+:::
+
+## ⚠️ Pièges
+- **Pays riche** ≠ **pays développé** (pays pétroliers).
+- Ne pas confondre **PIB** et **IDH**.
+- L'Afrique n'est pas « uniformément » pauvre (écarts entre Maurice, Botswana et le Niger).
 
 ## 🏆 À retenir pour le BAC
-**Indicateurs** (PIB/hab., IDH) → **classement** (développés, émergents, PMA) → **causes** (histoire, économie, politique, démographie) → **solutions** (éducation, diversification, aide, coopération).
+Indicateurs (PIB, IDH, espérance de vie) ; Nord / Sud / émergents / PMA ; causes ; conséquences ; solutions (APD, PPTE, commerce équitable, ODD).
 `
 
 HG_3["hg-integration-regionale-afrique"] = String.raw`## 💡 L'essentiel en une phrase
-Face à des économies petites et fragmentées, les États africains s'associent dans des **organisations régionales** (CEDEAO, UEMOA, etc.) pour **faciliter les échanges**, partager des politiques économiques et peser davantage dans le monde.
+Pour surmonter la petite taille de leurs marchés et défendre leurs intérêts, les États africains s'unissent dans des **organisations régionales** (CEDEAO, UEMOA, CEMAC, SADC…) et continentales (**Union africaine**, **ZLECAf**) ; l'intégration progresse mais reste freinée par de nombreuses difficultés.
 
 ## 📚 1. Pourquoi s'intégrer ?
-- **Marchés nationaux étroits** : s'unir crée un plus grand marché.
-- **Infrastructures communes** : routes, énergie, ports.
-- **Paix et sécurité** : coopération entre voisins.
-- **Poids dans les négociations** internationales.
+- **Marchés nationaux étroits** (beaucoup d'États de petite taille, enclavés).
+- Échanges **intra-africains très faibles** (environ **15 %** du commerce africain).
+- Peser dans les négociations internationales.
+- Gérer ensemble la **sécurité**, les **infrastructures**, les **ressources** (fleuves, énergie).
 
 ## 📚 2. Les principales organisations
-- **L'Union africaine (UA)** : organisation continentale (2002), objectifs politiques, de paix et de développement.
-- **La CEDEAO** (Communauté économique des États de l'Afrique de l'Ouest), créée en **1975** à Lagos : libre circulation des personnes et des biens, monnaie à venir, mission de paix. Le Mali, le Burkina Faso et le Niger l'ont quittée en 2025.
-- **L'UEMOA** (Union économique et monétaire ouest-africaine), créée en **1994** : **8 pays** partageant le **franc CFA (XOF)** et une banque centrale, la **BCEAO** ; tarif extérieur commun.
-- **Autres** : SADC (Afrique australe), CEEAC, COMESA, EAC.
-- **ZLECAf** (Zone de libre-échange continentale africaine) : lancée en **2018-2019**, elle vise un marché commun à l'échelle du continent.
 
-## 📚 3. Les réalisations
-- **Libre circulation** des personnes (passeport CEDEAO).
-- **Monnaie commune** et politique monétaire dans l'UEMOA.
-- **Projets communs** : corridors routiers (Abidjan-Lagos), interconnexions électriques.
-- **Opérations de paix** de la CEDEAO (Liberia, Sierra Leone, Côte d'Ivoire).
+| Organisation | Création | Membres et objectifs |
+|---|---|---|
+| **OUA → Union africaine (UA)** | 1963 → **2002** | 55 États ; unité, paix, développement ; siège **Addis-Abeba** |
+| **CEDEAO** (Communauté économique des États de l'Afrique de l'Ouest) | **1975** (Lagos) | 15 membres à l'origine (retrait en 2025 du Mali, du Burkina Faso et du Niger) ; **libre circulation**, marché commun, **ECOMOG** (force de paix) ; siège **Abuja** |
+| **UEMOA** (Union économique et monétaire ouest-africaine) | **1994** | 8 pays utilisant le **franc CFA** (XOF) ; union douanière, **BCEAO** ; siège **Ouagadougou** |
+| **CEMAC** | 1994 | Afrique centrale (franc CFA – XAF) |
+| **SADC** | 1992 | Afrique australe |
+| **EAC** | 2000 (relancée) | Afrique de l'Est |
+| **ZLECAf** | **2018-2021** | **Zone de libre-échange continentale africaine** : le plus grand marché commun du monde par le nombre de pays |
+| **NEPAD** | 2001 | Programme de développement de l'UA |
 
-## 📚 4. Les obstacles
-- **Faible commerce intra-africain** (peu de produits complémentaires).
-- **Infrastructures insuffisantes**, barrières non tarifaires, contrôles routiers.
-- **Instabilité politique** et chevauchement des organisations.
-- **Dépendance extérieure** persistante.
+## 📚 3. Des réalisations
+- **Libre circulation** des personnes dans l'espace CEDEAO.
+- **Monnaie commune** (franc CFA) dans l'UEMOA et la CEMAC ; **tarif extérieur commun**.
+- **Infrastructures** : corridors routiers (Abidjan-Lagos), interconnexions électriques (WAPP), gazoduc.
+- **Paix et sécurité** : interventions de l'**ECOMOG** (Liberia, Sierra Leone), missions de l'UA.
+- **Santé et éducation** : coopération (OOAS, CAMES).
 
-## 🧪 Exemples
-### Exemple 1 — L'UEMOA
-Les pays membres partagent le franc CFA : un commerçant ivoirien peut payer un fournisseur malien ou sénégalais sans changer de monnaie.
+## 📚 4. Des difficultés
 
-### Exemple 2 — Corridor Abidjan-Lagos
-Projet routier reliant plusieurs capitales côtières pour faciliter le commerce et la circulation des personnes.
+| Difficulté | Explication |
+|---|---|
+| **Faiblesse des infrastructures** | Routes, chemins de fer insuffisants entre les pays |
+| **Barrières non tarifaires**, **contrôles routiers**, corruption | Freinent les échanges |
+| **Économies concurrentes** | Pays exportant les mêmes produits (cacao, coton) |
+| **Instabilité politique et conflits** | Coups d'État, terrorisme au Sahel |
+| **Dépendance extérieure** | Aide, liens avec les anciennes métropoles |
+| **Divergences politiques** | Retrait de pays de la CEDEAO (2025), sanctions |
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Quelle est la différence entre la CEDEAO et l'UEMOA ?
+## 📚 5. La Côte d'Ivoire dans l'intégration
+Membre de la **CEDEAO**, de l'**UEMOA**, de l'**UA**, du **Conseil de l'Entente** ; **Abidjan** est le siège de la **Banque africaine de développement (BAD)** ; premier partenaire commercial dans la zone UEMOA.
 
-:::corrige
-La **CEDEAO** (1975) est plus large (économie, circulation, paix, plusieurs monnaies). L'**UEMOA** (1994) regroupe 8 pays qui partagent la **même monnaie**, le franc CFA, et une banque centrale (BCEAO).
-:::
-
-**Exercice 2.** Cite trois objectifs de l'intégration régionale.
-
-:::corrige
-Agrandir les marchés, faciliter la circulation des biens et des personnes, financer des infrastructures communes, renforcer la paix et le poids dans les négociations.
-:::
-
-**Exercice 3.** Pourquoi le commerce entre pays africains reste-t-il faible ?
+## ✏️ Exercices
+**Exercice 1.** Quand et où est créée la CEDEAO ? Quel est son objectif ?
 
 :::corrige
-Économies souvent produisant les mêmes matières premières, infrastructures insuffisantes, obstacles aux frontières, instabilité, tournées vers l'exportation hors du continent.
+**1975** à **Lagos** ; promouvoir l'**intégration économique** de l'Afrique de l'Ouest (libre circulation, marché commun).
 :::
 
-## ⚠️ Pièges fréquents
-- Confondre **UEMOA** (économique et monétaire) et **CEDEAO** (plus large).
-- Oublier la **BCEAO** et le franc CFA dans la présentation de l'UEMOA.
-- Croire que la libre circulation fonctionne sans aucun obstacle.
+**Exercice 2.** Quelle monnaie utilise l'UEMOA ? Qui l'émet ?
+
+:::corrige
+Le **franc CFA** (XOF), émis par la **BCEAO** (Banque centrale des États de l'Afrique de l'Ouest).
+:::
+
+**Exercice 3.** Cite deux obstacles à l'intégration africaine.
+
+:::corrige
+Insuffisance des infrastructures ; barrières non tarifaires ; instabilité politique ; économies concurrentes ; dépendance extérieure.
+:::
+
+**Exercice 4.** Qu'est-ce que la ZLECAf ?
+
+:::corrige
+La **Zone de libre-échange continentale africaine** : accord supprimant progressivement les droits de douane entre les pays africains pour développer le **commerce intra-africain**.
+:::
+
+## ⚠️ Pièges
+- Ne pas confondre **CEDEAO** (15 à l'origine, communauté économique) et **UEMOA** (8, union monétaire).
+- L'**UA** (2002) succède à l'**OUA** (1963).
+- Le franc CFA de l'UEMOA et celui de la CEMAC sont **deux monnaies distinctes**.
 
 ## 🏆 À retenir pour le BAC
-**UA (2002)** — **CEDEAO (1975)** — **UEMOA (1994, franc CFA, BCEAO)** — **ZLECAf**. Objectifs : marché élargi, circulation, paix, poids international. Obstacles : infrastructures, faible commerce interne, instabilité.
+UA 2002 ; CEDEAO 1975 ; UEMOA 1994 (franc CFA) ; CEMAC ; SADC ; ZLECAf ; NEPAD ; réalisations ; obstacles ; place de la Côte d'Ivoire.
 `
 
 HG_3["hg-cote-ivoire-economie"] = String.raw`## 💡 L'essentiel en une phrase
-La **Côte d'Ivoire** est un pays d'Afrique de l'Ouest dont l'économie repose sur l'**agriculture d'exportation** (cacao, café, anacarde, hévéa) et se diversifie dans les **services, l'énergie, les mines et l'industrie**, avec **Abidjan** comme métropole économique et des **ports** tournés vers la mer.
+L'économie de la **Côte d'Ivoire** repose sur l'**agriculture d'exportation** (cacao, café, hévéa, anacarde), complétée par l'**industrie** (agro-industrie, pétrole et gaz) et les **services** (port d'Abidjan, télécommunications), avec une forte **croissance** mais des **défis** sociaux et de transformation locale.
 
-## 📚 1. Le cadre géographique
-- **Situation** : Afrique de l'Ouest, golfe de Guinée ; frontières avec le Ghana, le Liberia, la Guinée, le Mali et le Burkina Faso.
-- **Population** : environ **29 millions d'habitants** (recensement de 2021), jeune et de plus en plus urbaine.
-- **Capitales** : **Yamoussoukro** (capitale politique) et **Abidjan** (capitale économique).
-- **Climats** : équatorial au sud (forêt), tropical au centre et au nord (savane).
+## 📚 1. Les atouts
+
+| Atout | Détail |
+|---|---|
+| **Position géographique** | Golfe de Guinée, **ports d'Abidjan et de San Pédro** (débouchés pour le Mali, le Burkina) |
+| **Sol et climat** | Forêt au Sud, savane au Nord : cultures variées |
+| **Ressources** | Pétrole et gaz offshore, or, manganèse, nickel (gisements), bois |
+| **Population** | 29 millions d'habitants environ, jeune, forte urbanisation |
+| **Stabilité retrouvée** | Croissance de 6 à 8 % par an depuis 2012 (hors choc de 2020) |
 
 ## 📚 2. L'agriculture
-- **Cacao** : la Côte d'Ivoire est le **premier producteur mondial** (zones de l'Ouest et du Centre-Ouest).
-- **Café**, **hévéa** (caoutchouc), **palmier à huile**, **coton** (Nord), **anacarde** (noix de cajou), **banane**, **ananas**.
-- **Cultures vivrières** : igname, manioc, banane plantain, riz, maïs.
-- **Enjeux** : transformation locale (chocolat, broyage), prix aux producteurs, déforestation, travail des enfants.
 
-## 📚 3. L'industrie, l'énergie et les mines
-- **Industries** agroalimentaires, chimie, matériaux, raffinage.
-- **Énergie** : gaz et pétrole offshore, barrages (Kossou, Taabo, Buyo, Soubré), électricité exportée vers les pays voisins.
-- **Mines** : or, manganèse, nickel, fer (en développement).
+| Produit | Place |
+|---|---|
+| **Cacao** | **1ᵉʳ producteur mondial** (environ 40 % de l'offre mondiale), Sud-Ouest et Centre-Ouest |
+| **Café** | Ouest, Centre-Est ; déclin relatif |
+| **Hévéa (caoutchouc)** | 1ᵉʳ producteur africain |
+| **Noix de cajou (anacarde)** | **1ᵉʳ producteur mondial**, Nord et Centre |
+| **Banane, ananas, palmier à huile, coton** | Cultures d'exportation |
+| **Cultures vivrières** | Igname, manioc, riz, maïs, banane plantain |
 
-## 📚 4. Les transports et les villes
-- **Port autonome d'Abidjan** (canal de Vridi, 1950) et **port de San-Pédro** (1971) : portes du pays et de l'hinterland (Mali, Burkina Faso).
-- **Axe routier et autoroutier** : autoroute du Nord (Abidjan-Yamoussoukro), voies vers le Nord.
-- **Aéroport international d'Abidjan.**
-- **Abidjan** concentre une grande partie des activités, des emplois et des habitants : forte **macrocéphalie urbaine**.
+L'agriculture occupe environ **40 à 45 %** de la population active et fournit l'essentiel des **exportations**.
 
-## 📚 5. Les atouts et les défis
-**Atouts** : sol et climat favorables, ports, stabilité retrouvée, position régionale, investissements.
-**Défis** : transformer sur place, réduire les inégalités régionales et la pauvreté, créer des emplois pour les jeunes, protéger la forêt, moderniser les villes.
+## 📚 3. L'industrie et les mines
+- **Agro-industrie** : transformation du cacao (broyage), huile de palme, jus (SCC, Sania), conserveries, sucreries.
+- **Pétrole et gaz** : champs offshore (Baobab, Foxtrot) ; **raffinerie SIR** d'Abidjan ; électricité par centrales à gaz.
+- **Mines** : **or** (en forte hausse), manganèse (Bondoukou), nickel (Touba), diamant.
+- **BTP** et **construction** : ponts, routes, métro d'Abidjan en chantier.
 
-## 🧪 Exemples
-### Exemple 1 — Une économie exposée
-Si le prix mondial du cacao baisse, les revenus des planteurs et de l'État diminuent : d'où l'importance de **transformer** et **diversifier**.
+## 📚 4. Les services et les infrastructures
 
-### Exemple 2 — Un pays de transit
-Le port d'Abidjan sert aussi les pays enclavés du Sahel (Mali, Burkina Faso) : la Côte d'Ivoire joue un rôle de **plaque tournante** régionale.
+| Secteur | Éléments |
+|---|---|
+| **Transport** | **Port d'Abidjan** (1ᵉʳ port d'Afrique de l'Ouest francophone), port de San Pédro (exporte le cacao), aéroport Félix-Houphouët-Boigny, autoroute du Nord, réseau ferré Abidjan-Ouagadougou |
+| **Énergie** | Barrages (Kossou, Taabo, Soubré), centrales thermiques |
+| **Télécoms** | Téléphonie mobile, mobile money (Orange Money, MTN), numérique |
+| **Finance** | Siège de la **BAD**, de la **Bourse régionale (BRVM)** à Abidjan |
+| **Tourisme** | Plages (Assinie, Grand-Bassam, patrimoine UNESCO), parcs (Taï, Comoé) |
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Cite quatre productions agricoles importantes de la Côte d'Ivoire.
+## 📚 5. Le commerce extérieur
+- **Exportations** : cacao (et dérivés), pétrole raffiné, or, caoutchouc, noix de cajou, café, bananes.
+- **Importations** : biens d'équipement, hydrocarbures bruts, produits alimentaires (riz), véhicules.
+- **Partenaires** : Union européenne (Pays-Bas, France), Nigeria, États-Unis, Chine, Inde ; zones CEDEAO et UEMOA.
+- Problème : **dépendance** aux cours mondiaux du cacao.
+
+## 📚 6. Les défis
+- **Transformer sur place** davantage de matières premières (cacao, cajou, hévéa) pour capter la valeur ajoutée.
+- **Pauvreté** et **inégalités** (Nord / Sud, villes / campagnes), **chômage des jeunes**.
+- **Déforestation** et changement climatique (le cacao dévore la forêt).
+- **Travail des enfants** dans le cacao, **durabilité** des filières.
+- **Éducation** et **santé** à renforcer.
+- Objectif des plans nationaux (PND) : **émergence** à l'horizon 2030.
+
+## ✏️ Exercices
+**Exercice 1.** Cite quatre produits d'exportation ivoiriens.
 
 :::corrige
-Cacao (1er producteur mondial), café, hévéa, palmier à huile, coton, anacarde, banane, ananas (quatre au choix).
+Cacao, café, hévéa (caoutchouc), noix de cajou, banane, ananas, pétrole raffiné, or.
 :::
 
-**Exercice 2.** Pourquoi les ports d'Abidjan et de San-Pédro sont-ils importants ?
+**Exercice 2.** Quelle place occupe la Côte d'Ivoire dans la production mondiale de cacao ?
 
 :::corrige
-Ils permettent d'exporter les produits ivoiriens (cacao, café, hévéa…) et d'importer ce dont le pays a besoin, et ils desservent aussi les pays voisins enclavés (Mali, Burkina Faso).
+**1ᵉʳ producteur mondial** (environ 40 % de la production).
 :::
 
-**Exercice 3.** Quel est le principal défi d'une économie qui exporte surtout des matières premières ?
+**Exercice 3.** Pourquoi est-il important de transformer le cacao sur place ?
 
 :::corrige
-Sa **dépendance** aux prix mondiaux ; d'où la nécessité de transformer sur place, de diversifier l'économie et d'ajouter de la valeur.
+Pour créer de la **valeur ajoutée** et des **emplois**, réduire la dépendance aux cours mondiaux et mieux rémunérer le pays.
 :::
 
-## ⚠️ Pièges fréquents
-- Confondre capitale **politique** (Yamoussoukro) et capitale **économique** (Abidjan).
-- Oublier les **cultures vivrières** en ne citant que les cultures d'exportation.
-- Parler du « miracle ivoirien » sans en discuter les **limites**.
+**Exercice 4.** Rédige un paragraphe sur les atouts de la Côte d'Ivoire.
+
+:::corrige
+La Côte d'Ivoire dispose d'un **littoral** avec de grands ports (Abidjan, San Pédro), de **terres fertiles** (cacao, café, hévéa), de **ressources** (pétrole, gaz, or) et d'une **population jeune** ; la stabilité retrouvée soutient une forte croissance.
+:::
+
+## ⚠️ Pièges
+- **Café** et **cacao** : le cacao est largement premier ; le café a reculé.
+- Ne pas confondre **Abidjan** (capitale économique) et **Yamoussoukro** (capitale politique).
+- Une forte croissance ne signifie pas automatiquement **réduction de la pauvreté**.
 
 ## 🏆 À retenir pour le BAC
-**Cacao et agriculture d'exportation** → **ports (Abidjan, San-Pédro)** → **diversification** (énergie, mines, industries) → **défis** (transformation, inégalités, emploi, environnement).
+Atouts (ports, sols, ressources) ; agriculture d'exportation (cacao n°1, cajou n°1) ; industrie (agro-industrie, pétrole, mines) ; services ; commerce extérieur ; défis (transformation, pauvreté, durabilité) ; objectif émergence.
 `
 
 HG_3["hg-etats-unis"] = String.raw`## 💡 L'essentiel en une phrase
-Les **États-Unis** sont la **première puissance économique et militaire** du monde : leur puissance s'appuie sur un territoire immense et riche, une population dynamique, des entreprises innovantes, le dollar et une influence culturelle mondiale.
+Les **États-Unis** sont la **première puissance économique** (environ 25 % du PIB mondial), militaire, technologique et culturelle ; leur puissance repose sur un **vaste territoire**, une **population dynamique**, l'**innovation** et le **dollar**, mais elle est contestée par la **Chine** et des **inégalités** internes.
 
-## 📚 1. Un territoire et une population
-- **Grand pays continental** (environ 9,8 millions de km²) avec des ressources abondantes (terres agricoles, pétrole, charbon, minerais).
-- **Population** : environ **330 millions d'habitants**, issue de l'immigration ; fortes inégalités sociales.
-- **Urbanisation** : mégalopoles (New York, Los Angeles, Chicago, Houston…).
+## 📚 1. Un pays-continent
+
+| Donnée | Valeur |
+|---|---|
+| **Superficie** | Environ **9,8 millions km²** (3ᵉ ou 4ᵉ du monde) |
+| **Population** | Environ **335 millions** d'habitants |
+| **Organisation** | **50 États** fédérés ; capitale **Washington D.C.** |
+| **Façades** | Atlantique, Pacifique, golfe du Mexique ; Grands Lacs |
+| **Relief** | Appalaches (Est), **grandes plaines** (centre, Mississippi), **Rocheuses** (Ouest) |
+
+Un **territoire vaste et riche** : sols fertiles, climats variés, eau, énergie (pétrole, gaz de schiste), minerais.
 
 ## 📚 2. Une puissance économique
-- **Première économie mondiale** (PIB très élevé).
-- **Agriculture** très productive et exportatrice (maïs, soja, blé).
-- **Industrie** de pointe : aéronautique, informatique, armement, automobile.
-- **Services dominants** : finance (Wall Street), commerce, recherche, culture.
-- **Innovation** : Silicon Valley (technologies), universités (Harvard, MIT), recherche-développement.
-- **Le dollar** est la principale monnaie du commerce et des réserves.
 
-## 📚 3. Une puissance politique, militaire et culturelle
-- **Armée** la plus puissante et nombreuses bases dans le monde ; membre permanent du Conseil de sécurité.
-- **Soft power** : cinéma (Hollywood), musique, langue anglaise, universités, réseaux sociaux.
-- **Alliances** : OTAN, accords bilatéraux.
+| Secteur | Éléments |
+|---|---|
+| **Agriculture** | 1ᵉʳ exportateur agricole mondial (maïs, soja, blé, coton) ; mécanisée ; **Corn Belt** |
+| **Industrie** | Aéronautique (Boeing), automobile (Detroit), informatique, armement ; déclin de la **Rust Belt** |
+| **Hautes technologies** | **Silicon Valley** (Californie), Seattle, Boston ; Apple, Google, Microsoft, Amazon, Tesla |
+| **Services et finance** | **Wall Street** (New York), dollar, grandes banques |
+| **Énergie** | 1ᵉʳ producteur mondial de pétrole et de gaz (schiste) |
+| **Recherche** | Universités (Harvard, MIT, Stanford), dépenses élevées de R&D |
 
-## 📚 4. Les limites
-- **Inégalités sociales** et pauvreté persistante.
-- **Dette publique** élevée et déficit commercial.
-- **Concurrence** de la Chine et d'autres émergents.
-- **Contestation** de son rôle de « gendarme du monde » et divisions internes.
+## 📚 3. Un territoire organisé
+- **Mégalopole du Nord-Est (BosWash)** : de Boston à Washington, plus de 50 millions d'habitants.
+- **Villes mondiales** : New York (capitale financière), Los Angeles (cinéma), Chicago (nœud de transport), San Francisco (technologie).
+- **Sun Belt** (Sud et Ouest) : croissance récente (soleil, industries high-tech, retraités).
+- **Transports** : réseau dense (avion, autoroutes, chemin de fer de fret), ports de la côte.
 
-## 🧪 Exemples
-### Exemple 1 — La Silicon Valley
-Région de Californie où des entreprises de pointe (informatique, internet) et des universités travaillent ensemble : modèle d'innovation.
+## 📚 4. Une puissance mondiale
 
-### Exemple 2 — Soft power
-Un film hollywoodien ou une série américaine diffusés dans le monde entier font connaître le mode de vie et les valeurs américaines.
+| Domaine | Atouts |
+|---|---|
+| **Militaire** | 1ᵉʳ budget (environ 800 milliards de dollars) ; **OTAN** ; bases partout dans le monde ; arme nucléaire |
+| **Monétaire** | Le **dollar** domine les échanges et les réserves de change |
+| **Culturelle** | **Soft power** : cinéma (Hollywood), musique, médias, universités, langue anglaise |
+| **Diplomatique** | Membre permanent du Conseil de sécurité ; FMI, Banque mondiale ; influence sur l'ONU |
+| **Technologique** | Internet, intelligence artificielle, espace (NASA, SpaceX) |
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Quels sont les fondements de la puissance américaine ?
+## 📚 5. Les limites et les défis
+- **Concurrence de la Chine** (guerre commerciale, technologies).
+- **Endettement public** très élevé.
+- **Inégalités** sociales, pauvreté, **inégalités raciales**.
+- **Polarisation politique**.
+- **Désindustrialisation** de certaines régions.
+- **Immigration** : débats ; les États-Unis restent un pays d'immigration (nation « melting pot »).
+
+## 🧪 Exemple
+**Silicon Valley** : concentration d'entreprises technologiques près des universités (Stanford), de capital-risque et d'ingénieurs du monde entier ; exemple de **technopole** qui nourrit la puissance américaine.
+
+## ✏️ Exercices
+**Exercice 1.** Cite trois facteurs de la puissance américaine.
 
 :::corrige
-Un vaste territoire riche, une population importante, une économie très innovante, le dollar, la puissance militaire et l'influence culturelle (soft power).
+Territoire vaste et riche ; population nombreuse et dynamique ; innovation et recherche ; dollar ; puissance militaire ; soft power.
 :::
 
-**Exercice 2.** Cite deux limites de cette puissance.
+**Exercice 2.** Qu'est-ce que la Silicon Valley ?
 
 :::corrige
-Inégalités sociales, dette élevée, concurrence chinoise, contestation de l'influence américaine.
+Un grand **pôle de hautes technologies** en Californie (informatique, Internet) lié aux universités et au capital-risque.
 :::
 
-**Exercice 3.** Qu'appelle-t-on « soft power » ?
+**Exercice 3.** Définis « soft power ».
 
 :::corrige
-La capacité d'influencer le monde par la culture, les idées et le mode de vie plutôt que par la force.
+La capacité d'**influencer** par la culture, les idées, les médias et le mode de vie (cinéma, musique, universités) plutôt que par la force.
 :::
 
-## ⚠️ Pièges fréquents
-- Penser que la puissance américaine est uniquement **militaire**.
-- Ne citer aucune **limite**.
-- Confondre **dollar** (monnaie) et **Wall Street** (place financière).
+**Exercice 4.** Quelles sont les limites de la puissance américaine ?
+
+:::corrige
+Concurrence de la Chine, dette publique élevée, inégalités, désindustrialisation de certaines régions, divisions politiques.
+:::
+
+## ⚠️ Pièges
+- Les États-Unis ne sont plus la seule superpuissance **économique** : la Chine rattrape.
+- **Mégalopole** : zone de grandes villes presque continue, pas une seule ville.
+- Ne pas confondre **Wall Street** (finance) et **Silicon Valley** (technologie).
 
 ## 🏆 À retenir pour le BAC
-**Territoire et population** → **économie innovante et dollar** → **armée et soft power** → **limites** (inégalités, dette, concurrence).
+Territoire (50 États, 9,8 M km²) ; puissance économique (agriculture, haute technologie, finance) ; mégalopole BosWash ; Sun Belt ; puissance militaire, dollar, soft power ; limites (Chine, inégalités, dette).
 `
 
 HG_3["hg-chine"] = String.raw`## 💡 L'essentiel en une phrase
-La **Chine**, pays le plus peuplé d'Asie avec environ **1,4 milliard d'habitants**, est devenue en quelques décennies la **deuxième puissance économique mondiale** grâce à l'ouverture de son économie depuis 1978, tout en conservant un régime politique à **parti unique**.
+La **Chine** est devenue en quelques décennies la **2ᵉ puissance économique mondiale** (« atelier du monde ») grâce aux **réformes** lancées en 1978, à une main-d'œuvre abondante et à l'ouverture sur le monde ; elle est aujourd'hui une **puissance globale** mais doit résoudre de grands défis (inégalités, environnement, vieillissement).
 
-## 📚 1. Les débuts de la transformation
-- **1949** : proclamation de la République populaire de Chine (Mao Zedong), économie socialiste planifiée.
-- **1978 : réformes de Deng Xiaoping** : ouverture progressive à l'économie de marché et aux investissements étrangers.
-- **Zones économiques spéciales (ZES)**, à partir de 1980 (Shenzhen) : attirer les capitaux et les entreprises étrangères sur la côte.
+## 📚 1. Un géant territorial et démographique
 
-## 📚 2. Les moteurs de la puissance économique
-- **Main-d'œuvre abondante** et peu coûteuse, puis **montée en gamme** (technologie, ingénieurs).
-- **Investissements étrangers** et exportations massives : la Chine devient l'**« atelier du monde »**.
-- **Grandes entreprises** (Huawei, Alibaba) et grands projets d'infrastructures.
-- **Adhésion à l'OMC (2001)** : forte intégration à la mondialisation.
-- **Route de la soie** (Belt and Road) : projets de transport et d'investissement en Asie, en Afrique (ports, chemins de fer) et en Europe.
+| Donnée | Valeur |
+|---|---|
+| **Superficie** | Environ **9,6 millions km²** (3ᵉ ou 4ᵉ du monde) |
+| **Population** | Plus de **1,4 milliard** d'habitants (2ᵉ après l'Inde en 2023) |
+| **Capitale** | **Pékin** ; Shanghai (économie), Hong Kong, Canton |
+| **Régime** | **Parti communiste chinois** (parti unique), économie « socialiste de marché » |
+| **Relief** | À l'Ouest montagnes et plateaux (Tibet, Himalaya), au Centre et Est plaines fertiles |
+| **Fleuves** | Huang He (fleuve Jaune), Yangtsé (Chang Jiang), Zhujiang |
 
-## 📚 3. Les inégalités et les défis
-- **Inégalités** entre la côte riche et l'intérieur plus pauvre ; entre villes et campagnes.
-- **Pollution** et pression sur les ressources.
-- **Vieillissement** de la population (après la politique de l'enfant unique, 1979-2015).
-- **Dépendance** aux importations d'énergie et de matières premières.
-- **Libertés** limitées (régime à parti unique).
+**Contraste** : population concentrée à l'**Est** (plaines, façade maritime), ouest peu peuplé.
 
-## 📚 4. La Chine et l'Afrique
-La Chine est devenue un **partenaire majeur** de l'Afrique : achat de matières premières, **construction d'infrastructures** (routes, ports, chemins de fer), prêts, investissements. Cela favorise le développement mais pose la question de l'**endettement** et de l'équilibre des échanges.
+## 📚 2. Du maoïsme aux réformes
 
-## 🧪 Exemples
-### Exemple 1 — Shenzhen
-Petit village de pêcheurs devenu en quelques décennies une grande ville industrielle et technologique grâce au statut de zone économique spéciale.
+| Date | Étape |
+|---|---|
+| **1949** | **Mao Zedong** proclame la **République populaire de Chine** |
+| **1958-1961** | **Grand Bond en avant** : échec, famine |
+| **1966-1976** | **Révolution culturelle** |
+| **1976** | Mort de Mao |
+| **1978** | **Deng Xiaoping** lance les **« quatre modernisations »** (agriculture, industrie, défense, sciences) et l'**ouverture** |
+| **1979** | **Zones économiques spéciales (ZES)** : Shenzhen, Zhuhai, Shantou, Xiamen |
+| **1989** | Place Tian'anmen : répression |
+| **1997-1999** | Retour de **Hong Kong** et **Macao** |
+| **2001** | Entrée dans l'**OMC** |
+| **2013** | **Nouvelles routes de la soie** (Belt and Road Initiative) |
+| **2010** | 2ᵉ économie mondiale (devant le Japon) |
 
-### Exemple 2 — Atelier du monde
-La Chine fabrique et exporte de nombreux produits (électronique, vêtements, machines) vendus sur tous les continents.
+## 📚 3. Les moteurs de l'essor
+- **Main-d'œuvre abondante et peu chère**, qualifiée progressivement.
+- **Investissements étrangers** dans les ZES.
+- **Exportations** massives de produits manufacturés (textile, électronique, jouets).
+- **Marché intérieur** : classe moyenne en croissance.
+- **Politique de l'État** : planification, grands travaux, entreprises publiques.
+- **Innovation** : Huawei, Alibaba, Tencent, BYD ; 5G, intelligence artificielle, espace.
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Quelle est l'importance de l'année 1978 pour la Chine ?
+## 📚 4. Un territoire inégalement développé
+
+| Zone | Caractéristiques |
+|---|---|
+| **Façade maritime Est** | Villes géantes (Shanghai, Canton, Pékin), ports (Shanghai, Ningbo), industrie, hautes technologies |
+| **Intérieur** | Régions moins riches, agriculture, mines, développement par grands projets |
+| **Ouest** | Peu peuplé, minorités (Tibet, Xinjiang), ressources, désert |
+
+La **migration** de dizaines de millions de ruraux vers les villes (exode rural) alimente l'**urbanisation**.
+
+## 📚 5. Une puissance mondiale
+- **1ʳᵉ exportatrice** mondiale ; **1ᵉʳ partenaire commercial** de nombreux pays, dont africains.
+- **Routes de la soie** : investissements en infrastructures (ports, chemins de fer) en Asie, Afrique, Europe.
+- **Armée** modernisée (2ᵉ budget militaire mondial) ; arme nucléaire ; membre permanent du Conseil de sécurité.
+- **Chine-Afrique** : premier partenaire commercial de l'Afrique ; projets d'infrastructures (routes, stades, barrages) ; **FOCAC** (forum sino-africain, créé en 2000) ; en Côte d'Ivoire : **pont**, **stade**, coopération.
+
+## 📚 6. Les défis
+
+| Défi | Explication |
+|---|---|
+| **Inégalités** | Villes / campagnes, Est / Ouest, riches / pauvres |
+| **Environnement** | Pollution de l'air, de l'eau, 1ᵉʳ émetteur de CO₂ |
+| **Démographie** | **Vieillissement**, fin de la politique de l'enfant unique (2015) |
+| **Ressources** | Dépendance en énergie et matières premières |
+| **Libertés** | Régime autoritaire, contrôle d'Internet |
+| **Tensions** | Taïwan, mer de Chine méridionale, rivalité avec les États-Unis |
+
+## ✏️ Exercices
+**Exercice 1.** Que sont les ZES ? Cite une ville concernée.
 
 :::corrige
-Début des **réformes de Deng Xiaoping** : ouverture à l'économie de marché et aux capitaux étrangers, point de départ de la croissance rapide.
+Les **zones économiques spéciales** (1979) : régions ouvertes aux investissements étrangers avec avantages fiscaux. Exemple : **Shenzhen**.
 :::
 
-**Exercice 2.** Qu'est-ce qu'une zone économique spéciale ?
+**Exercice 2.** Que signifie « atelier du monde » ?
 
 :::corrige
-Un territoire côtier où l'État offre des avantages (impôts réduits, facilités) pour attirer les entreprises et les investissements étrangers, comme à Shenzhen.
+La Chine produit et exporte une très grande part des **biens manufacturés** consommés dans le monde (textile, électronique, jouets…).
 :::
 
-**Exercice 3.** Cite deux formes de présence chinoise en Afrique.
+**Exercice 3.** Cite trois défis de la Chine.
 
 :::corrige
-Achat de matières premières, construction d'infrastructures (routes, ports, chemins de fer), prêts et investissements.
+Inégalités (Est/Ouest, villes/campagnes), pollution, vieillissement de la population, tensions internationales (Taïwan), manque de libertés.
 :::
 
-## ⚠️ Pièges fréquents
-- Confondre **croissance économique** et **démocratisation** : la Chine reste à parti unique.
-- Oublier les **inégalités** régionales.
-- Dire que la Chine est **la première** économie : elle est la **deuxième** (derrière les États-Unis) selon le PIB.
+**Exercice 4.** Quels sont les liens entre la Chine et l'Afrique ?
+
+:::corrige
+La Chine est le **premier partenaire commercial** de l'Afrique : achats de matières premières, ventes de produits manufacturés, **financement d'infrastructures** (routes, ports, stades), forum **FOCAC**.
+:::
+
+## ⚠️ Pièges
+- **1978** (réformes de Deng Xiaoping) ≠ **1949** (République populaire).
+- La Chine reste un régime de **parti unique** malgré l'ouverture économique.
+- Elle est **2ᵉ puissance économique**, pas encore la première.
 
 ## 🏆 À retenir pour le BAC
-**1978 (Deng Xiaoping)** → **ZES et ouverture** → **atelier du monde, OMC 2001** → **puissance mondiale** → **limites** (inégalités, pollution, vieillissement) → **présence en Afrique**.
+1949 ; 1978 (Deng, ouverture) ; ZES ; OMC 2001 ; atelier du monde ; routes de la soie 2013 ; façade maritime / intérieur ; défis (inégalités, pollution, vieillissement) ; partenariat Chine-Afrique.
 `

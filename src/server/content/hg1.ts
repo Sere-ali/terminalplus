@@ -1,6 +1,6 @@
-// Histoire-Géographie Terminale (séries A, B, C, D) – Histoire (1/2)
+// Histoire-Géographie Terminale (séries A, B, C, D) – Méthode et Histoire (1/2), version détaillée.
 // Leçons rédigées avec nos propres mots, d'après les grandes lignes des programmes de Terminale.
-// Liste des chapitres à valider avec le programme officiel de l'année.
+// Liste des chapitres et dates à valider avec le programme officiel de l'année.
 
 export const HG_1: Record<string, string> = {}
 
@@ -8,317 +8,391 @@ HG_1["hg-seconde-guerre-mondiale"] = String.raw`## 💡 L'essentiel en une phras
 La **Seconde Guerre mondiale (1939-1945)** est le conflit le plus meurtrier de l'histoire : née des ambitions des régimes totalitaires et des frustrations de l'entre-deux-guerres, elle s'achève par la victoire des **Alliés** et ouvre un monde nouveau dominé par les **États-Unis** et l'**URSS**.
 
 ## 📚 1. Les causes de la guerre
-- **Le traité de Versailles (1919)** jugé humiliant par l'Allemagne (pertes de territoires, réparations, armée limitée).
-- **La crise économique de 1929** : chômage, misère, montée des extrémismes.
-- **Les régimes totalitaires et expansionnistes** : fascisme en Italie (Mussolini), nazisme en Allemagne (Hitler, au pouvoir en 1933), militarisme au Japon.
-- **La faiblesse de la Société des Nations** et la **politique d'apaisement** des démocraties (accords de Munich, 1938).
-- **Les agressions** : invasion de l'Éthiopie (1935), de la Pologne (1er septembre 1939) qui déclenche la guerre.
+
+| Cause | Explication |
+|---|---|
+| **Le traité de Versailles (1919)** | Jugé humiliant par l'Allemagne (pertes de territoires, réparations, armée limitée) |
+| **La crise de 1929** | Chômage, misère, montée des extrémismes, repli nationaliste |
+| **Les régimes totalitaires** | Fascisme (Mussolini, Italie, 1922), nazisme (Hitler, Allemagne, 1933), militarisme japonais |
+| **La faiblesse de la SDN** et la **politique d'apaisement** | Les démocraties cèdent à Hitler à **Munich (1938)** |
+| **Les agressions** | Éthiopie (1935), Chine (1937), Autriche (1938), Tchécoslovaquie (1938-39), **Pologne (1ᵉʳ septembre 1939)** |
 
 ## 📚 2. Les grandes étapes
-1. **1939-1941 : victoires de l'Axe** (Allemagne, Italie, Japon). Guerre éclair en Pologne et en France (1940). L'Allemagne attaque l'URSS en 1941.
-2. **Décembre 1941 : la guerre devient mondiale.** Le Japon attaque Pearl Harbor ; les **États-Unis** entrent en guerre.
-3. **1942-1943 : le tournant.** Victoires alliées à **Stalingrad** (URSS), El-Alamein, Midway.
-4. **1944-1945 : la défaite de l'Axe.** Débarquement en **Normandie** (6 juin 1944). Capitulation de l'Allemagne (**8 mai 1945**). Bombes atomiques sur **Hiroshima et Nagasaki** (août 1945) : capitulation du Japon (**2 septembre 1945**).
+
+| Période | Événements clés |
+|---|---|
+| **1939-1941** : victoires de l'Axe | 1ᵉʳ sept. 1939 : invasion de la Pologne ; 3 sept. : la France et le Royaume-Uni déclarent la guerre ; **juin 1940 : défaite de la France** (armistice, régime de **Vichy**, appel du **18 juin** du général de Gaulle) ; bataille d'Angleterre ; **22 juin 1941 : attaque de l'URSS** |
+| **Décembre 1941** : la guerre devient mondiale | **7 déc. : Pearl Harbor** (Japon contre États-Unis) ; entrée des **États-Unis** |
+| **1942-1943** : le tournant | Midway (juin 1942), **El-Alamein** (oct.-nov. 1942), **Stalingrad** (août 1942 – 2 février 1943) ; capitulation de l'Italie (sept. 1943) |
+| **1944-1945** : défaite de l'Axe | **6 juin 1944 : Débarquement en Normandie** ; libération de Paris (août 1944) ; conférence de **Yalta** (février 1945) ; **8 mai 1945** : capitulation de l'Allemagne ; **6 et 9 août : Hiroshima et Nagasaki** ; **2 septembre 1945** : capitulation du Japon |
+
+**Les camps :** les **Alliés** (États-Unis, URSS, Royaume-Uni, France libre, Chine…) contre l'**Axe** (Allemagne, Italie, Japon).
 
 ## 📚 3. Une guerre totale et criminelle
-- **Guerre totale** : mobilisation de toute l'économie, bombardements de civils.
-- **Génocide des Juifs (la Shoah)** et extermination des Tsiganes dans les camps nazis ; crimes de masse.
-- **Bilan humain** : plus de **50 millions de morts**, en majorité des civils.
+- **Guerre totale** : mobilisation de toute l'économie et de toute la population, **bombardements de civils**, propagande.
+- **Génocide des Juifs (la Shoah)** : environ **6 millions** de victimes dans les camps d'extermination (Auschwitz-Birkenau…) ; extermination des **Tsiganes** ; persécutions des handicapés, des opposants.
+- **Bilan humain** : **50 à 60 millions de morts**, majoritairement des civils.
 
 ## 📚 4. La participation de l'Afrique
-Des milliers de soldats africains (tirailleurs « sénégalais » venus de toute l'Afrique occidentale française, dont la Côte d'Ivoire) ont combattu aux côtés de la France ; l'Afrique a aussi fourni des matières premières. Cet engagement nourrit ensuite les revendications d'égalité et d'indépendance.
+- Des centaines de milliers de soldats africains (**tirailleurs**, dits « sénégalais », de toute l'**AOF**, dont la **Côte d'Ivoire**) combattent aux côtés de la France en Afrique du Nord, en Italie, en France.
+- Les colonies fournissent **matières premières**, vivres, main-d'œuvre. L'**Afrique équatoriale française** se rallie à la **France libre** dès 1940 (Tchad, gouverneur **Félix Éboué**).
+- **Conférence de Brazzaville (janvier-février 1944)** : de Gaulle promet des réformes mais pas l'indépendance.
+- **Après la guerre** : les anciens combattants et les élites réclament l'**égalité des droits** ; la guerre accélère la **décolonisation**.
 
 ## 📚 5. Les conséquences
-- **Un monde ruiné** : l'Europe est détruite et affaiblie.
-- **Deux superpuissances** : États-Unis et URSS.
-- **Naissance de l'ONU** (1945) pour maintenir la paix.
-- **Procès de Nuremberg** : jugement des dirigeants nazis (crimes contre l'humanité).
-- **Début de la décolonisation** et de la **guerre froide**.
+
+| Domaine | Conséquences |
+|---|---|
+| **Politique** | **Deux superpuissances** : États-Unis et URSS ; **ONU** (1945) ; **Procès de Nuremberg** (1945-46) |
+| **Économique** | Europe ruinée ; **plan Marshall** (1947) |
+| **Géopolitique** | **Guerre froide** ; **partition de l'Allemagne** ; début de la **décolonisation** |
+| **Morale** | **Déclaration universelle des droits de l'homme (1948)**, convention sur le génocide |
 
 ## 🧪 Exemples
-### Exemple 1 — Pourquoi 1941 est-elle une date clé ?
-L'attaque de l'URSS par l'Allemagne (juin) et celle de Pearl Harbor par le Japon (décembre) font entrer dans la guerre les deux futures superpuissances. Le conflit devient mondial et l'équilibre des forces change.
+### Pourquoi 1941 est-elle une date clé ?
+L'attaque de l'URSS (juin) et Pearl Harbor (décembre) font entrer dans la guerre les deux futures superpuissances. Le conflit devient **mondial** et l'équilibre des forces change.
+### Un tournant : Stalingrad
+En 1942-43, l'armée allemande est encerclée et capitule : l'Allemagne ne cessera plus de reculer.
 
-### Exemple 2 — Un événement, un résultat
-**Stalingrad (1942-1943)** : l'armée allemande est encerclée et capitule. C'est le tournant du front de l'Est : l'Allemagne ne cessera plus de reculer.
-
-## ✏️ Exercices d'entraînement
+## ✏️ Exercices
 **Exercice 1.** Cite trois causes de la Seconde Guerre mondiale.
 
 :::corrige
-Le traité de Versailles jugé injuste par l'Allemagne ; la crise de 1929 et la montée des régimes totalitaires ; la politique d'apaisement et l'échec de la SDN ; les agressions de l'Axe (Éthiopie, Pologne).
+Le traité de Versailles jugé injuste par l'Allemagne ; la crise de 1929 et la montée des totalitarismes ; la politique d'apaisement et la faiblesse de la SDN ; les agressions de l'Axe.
 :::
 
-**Exercice 2.** Donne la date de la capitulation de l'Allemagne et celle du Japon.
+**Exercice 2.** Donne les dates de capitulation de l'Allemagne et du Japon.
 
 :::corrige
 Allemagne : **8 mai 1945**. Japon : **2 septembre 1945** (après Hiroshima et Nagasaki).
 :::
 
-**Exercice 3.** Pourquoi dit-on que la guerre est « mondiale » à partir de 1941 ?
+**Exercice 3.** Pourquoi dit-on que la guerre devient mondiale en 1941 ?
 
 :::corrige
-Parce que l'attaque du Japon sur Pearl Harbor fait entrer les États-Unis dans le conflit, qui touche alors l'Europe, l'Afrique, l'Asie et le Pacifique.
+L'attaque de l'URSS (juin) et de Pearl Harbor (décembre) y font entrer l'URSS et les États-Unis ; le conflit s'étend à l'Europe, à l'Asie, à l'Afrique et à l'Océanie.
 :::
 
-**Exercice 4.** Quelles sont les conséquences politiques majeures de la guerre ?
+**Exercice 4.** Sujet : « Comment la Seconde Guerre mondiale transforme-t-elle le monde ? » Propose un plan.
 
 :::corrige
-Affaiblissement de l'Europe, domination des deux superpuissances (États-Unis et URSS), création de l'ONU, début de la guerre froide et accélération de la décolonisation.
+I. Une guerre totale qui ruine l'Europe et fait des millions de morts. II. Un nouvel ordre mondial : deux superpuissances, ONU. III. Des bouleversements coloniaux : la guerre accélère la décolonisation.
 :::
 
-## ⚠️ Pièges fréquents
-- Confondre **Axe** (Allemagne, Italie, Japon) et **Alliés** (Royaume-Uni, URSS, États-Unis, France libre…).
-- Dater le début de la guerre en 1941 au lieu de **1939**.
-- Oublier le rôle des **colonies** et des soldats africains.
-- Résumer la guerre à l'Europe : elle a aussi eu lieu en **Asie et dans le Pacifique**.
+## ⚠️ Pièges
+- Confondre **Axe** (Allemagne, Italie, Japon) et **Alliés**.
+- Oublier que la guerre se joue aussi en **Asie et en Afrique**.
+- Dater la fin de la guerre au 8 mai 1945 seulement : le Japon capitule **en septembre**.
 
 ## 🏆 À retenir pour le BAC
-**Causes** (Versailles, crise de 1929, totalitarismes) → **étapes** (victoires de l'Axe, 1941, tournant de 1942-43, victoire alliée 1945) → **bilan** (50 millions de morts, ONU, deux superpuissances, début de la guerre froide).
+Causes (Versailles, crise de 1929, totalitarismes, apaisement) ; dates : **1939, 1941, 1942-43, 6 juin 1944, 8 mai et 2 septembre 1945** ; Shoah ; rôle de l'Afrique ; conséquences : superpuissances, ONU, guerre froide, décolonisation.
 `
 
 HG_1["hg-guerre-froide"] = String.raw`## 💡 L'essentiel en une phrase
-La **guerre froide (1947-1991)** est l'affrontement **sans guerre directe** entre le bloc de l'Ouest dirigé par les **États-Unis** et le bloc de l'Est dirigé par l'**URSS** : deux systèmes, capitaliste et communiste, se disputent l'influence sur le monde.
+La **guerre froide (1947-1991)** est l'affrontement **sans guerre directe** entre les deux superpuissances, les **États-Unis** (bloc capitaliste et démocratique) et l'**URSS** (bloc communiste), qui divise le monde en **deux blocs**.
 
-## 📚 1. L'origine : deux camps opposés
-Après 1945, les anciens alliés deviennent rivaux.
-- **Les États-Unis** : démocratie libérale, économie de marché.
-- **L'URSS** : régime communiste à parti unique, économie planifiée.
-- **Le « rideau de fer »** coupe l'Europe en deux.
+## 📚 1. Les deux blocs
 
-## 📚 2. Les doctrines de 1947
-- **Doctrine Truman (mars 1947)** : les États-Unis aident les pays menacés par le communisme (politique d'**endiguement**).
-- **Plan Marshall (1947)** : aide économique américaine à l'Europe de l'Ouest.
-- **Doctrine Jdanov (septembre 1947)** : l'URSS dénonce l'impérialisme américain et crée le **Kominform**.
-- Conséquence : le monde est **bipolaire**.
+| | **Bloc de l'Ouest** | **Bloc de l'Est** |
+|---|---|---|
+| **Leader** | États-Unis | URSS |
+| **Régime** | Démocratie libérale, économie de marché | Parti unique communiste, économie planifiée |
+| **Alliances** | **OTAN** (1949) | **Pacte de Varsovie** (1955) |
+| **Organisations économiques** | **Plan Marshall** / OECE | **Kominform** (1947), **COMECON** (1949) |
+| **Idéologie** | **Doctrine Truman** : « containment » (endiguement) | **Doctrine Jdanov** : deux camps |
 
-## 📚 3. La formation des blocs
-- **Bloc de l'Ouest** : OTAN (1949), puis alliances en Asie.
-- **Bloc de l'Est** : COMECON (1949), **Pacte de Varsovie (1955)**.
-- **Division de l'Allemagne** (1949) : RFA et RDA ; Berlin devient le symbole de la division.
+## 📚 2. Les grandes étapes de la division (1947-1955)
 
-## 📚 4. Les caractéristiques
-- **Course aux armements**, en particulier nucléaires : « équilibre de la terreur ».
-- **Rivalité technologique** (conquête spatiale : Spoutnik 1957, premiers pas sur la Lune 1969).
-- **Guerres indirectes** (Corée, Vietnam…) et propagande.
+| Date | Événement |
+|---|---|
+| **Mars 1947** | **Doctrine Truman** : aide aux pays menacés par le communisme (Grèce, Turquie) |
+| **Juin 1947** | **Plan Marshall** : aide américaine à la reconstruction de l'Europe (refusée par l'URSS) |
+| **Sept. 1947** | Création du **Kominform** et doctrine Jdanov |
+| **Février 1948** | **Coup de Prague** : communistes au pouvoir en Tchécoslovaquie |
+| **Juin 1948 – mai 1949** | **Blocus de Berlin** et **pont aérien** occidental |
+| **1949** | Création de l'**OTAN** (avril) ; **RFA** (mai) et **RDA** (octobre) ; **bombe atomique soviétique** ; victoire des communistes en **Chine** (Mao) |
+| **1950-1953** | **Guerre de Corée** |
+| **1955** | **Pacte de Varsovie** |
 
-## 📚 5. La fin de la guerre froide
-- **Gorbatchev** (au pouvoir en 1985) lance la **perestroïka** (reconstruction) et la **glasnost** (transparence).
-- **1989 : chute du mur de Berlin** ; effondrement des démocraties populaires d'Europe de l'Est.
-- **1990 : réunification allemande.**
-- **1991 : dissolution de l'URSS.** Le monde bipolaire disparaît.
+## 📚 3. L'Allemagne et Berlin, symboles de la guerre froide
+- L'Allemagne, vaincue, est divisée en **4 zones d'occupation** (USA, URSS, Royaume-Uni, France) ; **Berlin**, dans la zone soviétique, l'est aussi.
+- **1948-49** : l'URSS bloque les accès à Berlin-Ouest ; les Occidentaux ravitaillent par **pont aérien**.
+- **13 août 1961** : l'Allemagne de l'Est construit le **mur de Berlin** pour empêcher l'exode de ses habitants.
+- **9 novembre 1989** : chute du mur.
+
+## 📚 4. La course aux armements et la « paix par la terreur »
+- **Armes nucléaires** : États-Unis (1945), **URSS (1949)**, puis Royaume-Uni, France, Chine. L'**équilibre de la terreur** (la certitude d'une destruction mutuelle) évite la guerre directe.
+- **Course à l'espace** : **Spoutnik** (URSS, 1957), **Gagarine** (1961), **Apollo 11** et le premier pas sur la **Lune** (États-Unis, 1969).
+- **Espionnage**, propagande, sport (boycotts des Jeux olympiques).
+
+## 📚 5. La coexistence pacifique
+À partir de **1956** (XXᵉ congrès du PCUS, **Khrouchtchev**), l'URSS parle de **coexistence pacifique** : concurrence entre les deux systèmes **sans guerre**. Mais les crises (Berlin, Cuba) restent graves (voir chapitre suivant).
 
 ## 🧪 Exemples
-### Exemple 1 — Plan Marshall et Kominform
-Deux réponses opposées en 1947 : les États-Unis aident économiquement l'Europe occidentale pour la rattacher à leur camp ; l'URSS réunit les partis communistes pour verrouiller le sien.
+### « Guerre froide » : pourquoi ?
+Il n'y a **pas d'affrontement direct** entre les deux superpuissances : elles s'affrontent par **alliés interposés** (Corée, Vietnam), par la **course aux armements**, la **propagande** et l'**espionnage**.
+### Le plan Marshall
+Environ **13 milliards de dollars** distribués à 16 pays d'Europe occidentale (1948-1952) : il relance l'économie et **lie l'Europe aux États-Unis**.
 
-### Exemple 2 — Pourquoi « froide » ?
-Parce que les deux grands **ne se font jamais la guerre directement**, la menace de destruction nucléaire mutuelle les en empêchant.
-
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Que désigne l'expression « rideau de fer » ?
-
-:::corrige
-La frontière idéologique et politique qui sépare l'Europe de l'Ouest (capitaliste) de l'Europe de l'Est (communiste).
-:::
-
-**Exercice 2.** Associe : OTAN, Pacte de Varsovie, COMECON, Plan Marshall.
+## ✏️ Exercices
+**Exercice 1.** Compare l'OTAN et le Pacte de Varsovie.
 
 :::corrige
-OTAN (1949) et Plan Marshall (1947) : bloc de l'Ouest. Pacte de Varsovie (1955) et COMECON (1949) : bloc de l'Est.
+**OTAN** (1949) : alliance militaire des pays occidentaux autour des **États-Unis**. **Pacte de Varsovie** (1955) : alliance des pays communistes autour de l'**URSS**, en réponse à l'entrée de la RFA dans l'OTAN.
 :::
 
-**Exercice 3.** Quels événements marquent la fin de la guerre froide ?
+**Exercice 2.** Que signifie « containment » ?
 
 :::corrige
-La perestroïka de Gorbatchev, la chute du mur de Berlin (1989), la réunification allemande (1990) et la dissolution de l'URSS (1991).
+La politique d'**endiguement** (doctrine Truman, 1947) : empêcher l'extension du communisme dans le monde.
 :::
 
-## ⚠️ Pièges fréquents
-- Croire que la guerre froide est une guerre **directe** entre les deux Grands.
-- Dater la fin de la guerre froide uniquement en 1989 : l'URSS disparaît en **1991**.
-- Confondre doctrine **Truman** (américaine) et doctrine **Jdanov** (soviétique).
+**Exercice 3.** Pourquoi construit-on le mur de Berlin en 1961 ?
+
+:::corrige
+Pour empêcher l'**exode** de plus de 2 millions d'Allemands de l'Est vers l'Ouest via Berlin, qui affaiblissait la RDA.
+:::
+
+**Exercice 4.** Sujet : « Le monde bipolaire de 1947 à 1955 ». Quel plan ?
+
+:::corrige
+I. La **naissance** des blocs (Truman, Marshall, Kominform). II. Les **affrontements** (Berlin, Chine, Corée). III. Les **alliances militaires** (OTAN, Pacte de Varsovie).
+:::
+
+## ⚠️ Pièges
+- Ne pas dire « guerre froide » pour toute tension : elle commence en **1947**.
+- Le **mur de Berlin** est construit en **1961**, pas en 1949.
+- Les deux blocs ne s'affrontent **jamais directement** militairement.
 
 ## 🏆 À retenir pour le BAC
-**Deux blocs** (États-Unis / URSS), **doctrines de 1947**, **alliances** (OTAN / Pacte de Varsovie), **course aux armements**, **fin** en 1989-1991.
+Deux blocs (États-Unis / URSS) ; doctrines Truman et Jdanov ; plan Marshall ; **1947, 1949, 1955, 1961, 1989** ; OTAN / Pacte de Varsovie ; équilibre de la terreur ; coexistence pacifique.
 `
 
 HG_1["hg-crises-detente"] = String.raw`## 💡 L'essentiel en une phrase
-Entre 1947 et 1991, la guerre froide alterne des **crises graves** (Berlin, Corée, Cuba, Vietnam) qui menacent la paix mondiale et des périodes de **détente** où les deux Grands négocient pour éviter l'affrontement nucléaire.
+Entre 1948 et 1979, la guerre froide connaît des **crises graves** (Berlin, Corée, Cuba, Vietnam) puis des périodes de **détente** (négociations et accords), avant un **durcissement** à la fin des années 1970 et une **fin pacifique** au milieu des années 1980.
 
 ## 📚 1. Les grandes crises
-- **Blocus de Berlin (1948-1949)** : l'URSS bloque l'accès à Berlin-Ouest ; les Occidentaux organisent un pont aérien.
-- **Guerre de Corée (1950-1953)** : la Corée du Nord (soutenue par l'URSS et la Chine) attaque la Corée du Sud (soutenue par l'ONU et les États-Unis) ; le pays reste divisé.
-- **Mur de Berlin (1961)** : la RDA construit un mur pour empêcher les départs vers l'Ouest.
-- **Crise de Cuba (octobre 1962)** : l'URSS installe des missiles à Cuba ; Kennedy ordonne un blocus ; le monde frôle la guerre nucléaire. Khrouchtchev retire les missiles.
-- **Guerre du Vietnam (années 1960-1975)** : intervention américaine contre le Nord communiste ; défaite américaine et retrait.
 
-## 📚 2. La coexistence pacifique
-À partir de **1953-1956**, après la mort de Staline, **Khrouchtchev** défend l'idée que capitalisme et communisme peuvent coexister sans guerre. La rivalité continue, mais par la compétition économique, scientifique et sportive.
+| Crise | Dates | Faits | Résultat |
+|---|---|---|---|
+| **Blocus de Berlin** | 1948-49 | L'URSS coupe Berlin-Ouest ; **pont aérien** | L'URSS cède ; **deux Allemagnes** |
+| **Guerre de Corée** | 1950-1953 | Le Nord communiste attaque le Sud ; l'**ONU** (USA) et la **Chine** s'affrontent | **Armistice de Panmunjom** (27 juillet 1953) ; division au **38ᵉ parallèle** |
+| **Indochine puis Vietnam** | 1946-54 puis 1964-1975 | Guerre d'Indochine (**Diên Biên Phu**, 1954) ; division du Vietnam ; **guerre américaine** | **Accords de Paris (1973)** ; chute de **Saïgon (30 avril 1975)** |
+| **Berlin** | 1961 | **Mur de Berlin** | Berlin divisée jusqu'en 1989 |
+| **Cuba** | **Octobre 1962** | L'URSS installe des **missiles** à Cuba ; **blocus américain** (Kennedy) | Retrait des missiles ; **téléphone rouge** (1963) |
+
+## 📚 2. La crise de Cuba (1962), la plus dangereuse
+- 1959 : **Fidel Castro** prend le pouvoir à Cuba, se rapproche de l'URSS.
+- Octobre 1962 : des avions américains repèrent des **missiles soviétiques** à 150 km de la Floride.
+- **Kennedy** impose un **blocus naval** ; Khrouchtchev finit par **retirer** les missiles contre la promesse américaine de ne pas envahir Cuba.
+- **Leçon** : le monde a frôlé la **guerre nucléaire** ; on crée un **téléphone rouge** (ligne directe Washington-Moscou).
 
 ## 📚 3. La détente (années 1960-1970)
-- **Téléphone rouge** (1963) entre Washington et Moscou.
-- **Traité de non-prolifération nucléaire (1968)**.
-- **Accords SALT** (limitation des armes stratégiques) entre Nixon et Brejnev (1972).
-- **Acte final d'Helsinki (1975)** : reconnaissance des frontières en Europe et engagement sur les droits de l'homme.
 
-## 📚 4. La reprise des tensions (« seconde guerre froide »)
-Invasion soviétique de l'**Afghanistan (1979)**, installation de missiles en Europe, programme américain de « guerre des étoiles » sous Reagan. Puis, avec **Gorbatchev**, les négociations reprennent (traité sur les missiles à moyenne portée, 1987).
+| Date | Accord |
+|---|---|
+| **1963** | **Traité d'interdiction partielle des essais nucléaires** ; téléphone rouge |
+| **1968** | **Traité de non-prolifération nucléaire (TNP)** |
+| **1972** | **SALT I** : limitation des armes stratégiques (Nixon - Brejnev) |
+| **1975** | **Conférence d'Helsinki** (CSCE) : frontières européennes reconnues, droits de l'homme |
+| **1979** | **SALT II** signé |
 
-## 🧪 Exemples
-### Exemple 1 — Cuba 1962
-Une **crise** majeure mais aussi un tournant : après avoir frôlé la guerre, les Grands installent le **téléphone rouge** et négocient (début de la détente).
+La détente est portée par la crainte du nucléaire, le **coût de la course aux armements**, et le rapprochement **États-Unis - Chine** (1972, voyage de Nixon).
 
-### Exemple 2 — Crise ou détente ?
-Berlin 1961 → crise. Accords SALT 1972 → détente. Afghanistan 1979 → retour à la tension.
+## 📚 4. Le retour des tensions (1979-1985)
+- **1979** : l'URSS envahit l'**Afghanistan**.
+- **Reagan** (1981-89) : réarmement, **« guerre des étoiles » (IDS, 1983)**.
+- **1980** : boycott des Jeux de Moscou par les États-Unis.
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Pourquoi la crise de Cuba est-elle la plus dangereuse de la guerre froide ?
+## 📚 5. La fin de la guerre froide
+- **Gorbatchev** (1985) : **perestroïka** (reconstruction économique) et **glasnost** (transparence).
+- **1987** : traité **INF** (euromissiles).
+- **1989** : révolutions pacifiques en Europe de l'Est, **chute du mur de Berlin** (9 novembre).
+- **3 octobre 1990** : **réunification allemande**.
+- **25 décembre 1991** : dissolution de l'**URSS**.
+
+## 🧪 Exemple
+**Pourquoi la crise de Cuba finit-elle sans guerre ?** Chaque camp comprend qu'une guerre nucléaire serait destructrice : on négocie un compromis (retrait des missiles soviétiques contre une garantie américaine).
+
+## ✏️ Exercices
+**Exercice 1.** Donne trois crises de la guerre froide avec leur date.
 
 :::corrige
-Parce que l'installation de missiles soviétiques près des États-Unis a failli provoquer une guerre nucléaire. Elle a été résolue par la négociation (retrait des missiles).
+Blocus de Berlin (1948-49) ; guerre de Corée (1950-53) ; construction du mur de Berlin (1961) ; crise de Cuba (1962) ; guerre du Vietnam (1964-75).
 :::
 
-**Exercice 2.** Qu'appelle-t-on « coexistence pacifique » ?
+**Exercice 2.** Qu'est-ce que la détente ? Cite deux accords.
 
 :::corrige
-La politique, défendue par Khrouchtchev, selon laquelle les deux systèmes peuvent coexister et rivaliser sans guerre.
+Une période d'**apaisement** des relations entre les deux Grands (1960-70). Accords : **SALT I (1972)**, **Helsinki (1975)**, traité de **1963**, **TNP (1968)**.
 :::
 
-**Exercice 3.** Cite deux symboles de la détente.
+**Exercice 3.** Pourquoi la crise de Cuba est-elle dite la plus grave ?
 
 :::corrige
-Le téléphone rouge (1963), les accords SALT (1972), le traité de non-prolifération (1968), l'acte final d'Helsinki (1975).
+Parce qu'elle a mis le monde au **bord de la guerre nucléaire** (missiles soviétiques à proximité des États-Unis, blocus naval).
 :::
 
-## ⚠️ Pièges fréquents
-- Confondre le **blocus de Berlin (1948)** et la **construction du mur (1961)**.
-- Penser que la détente met fin à la rivalité : elle la **canalise** seulement.
-- Oublier que les guerres de Corée et du Vietnam sont des **conflits locaux** liés à la guerre froide.
+**Exercice 4.** Sujet : « De la crise à la détente, 1947-1975 ». Plan ?
+
+:::corrige
+I. Les crises (Berlin, Corée, Cuba). II. Les causes de la détente (peur du nucléaire, coût). III. Les accords (1963, 1968, 1972, 1975).
+:::
+
+## ⚠️ Pièges
+- Ne pas confondre **perestroïka** (économie) et **glasnost** (transparence).
+- **Détente** ≠ fin de la guerre froide.
+- La guerre du Vietnam ne se termine pas en 1973 mais en **1975** (chute de Saïgon).
 
 ## 🏆 À retenir pour le BAC
-**Crises** (Berlin, Corée, Cuba, Vietnam) → **coexistence pacifique** → **détente** (SALT, Helsinki) → **reprise des tensions** (1979) → apaisement avec Gorbatchev.
+Crises : Berlin (1948, 1961), Corée (1950-53), Cuba (1962), Vietnam ; détente : 1963, 1968, 1972 (SALT I), 1975 (Helsinki) ; Afghanistan 1979 ; Gorbatchev ; 1989 ; 1991.
 `
 
 HG_1["hg-decolonisation"] = String.raw`## 💡 L'essentiel en une phrase
-La **décolonisation** est le processus par lequel les peuples colonisés d'Asie et d'Afrique accèdent à l'**indépendance** après 1945, par la négociation ou par la guerre, et mettent fin aux grands empires coloniaux européens.
+La **décolonisation** est le processus par lequel les **colonies** accèdent à l'**indépendance** ; elle se déroule surtout entre **1945 et 1975** : en Asie (années 1940-50), en Afrique du Nord (années 1950-60), en Afrique noire (**1957-1960**) et dans les colonies portugaises (**1974-75**).
 
 ## 📚 1. Les causes
-- **L'affaiblissement des métropoles** après la Seconde Guerre mondiale.
-- **L'engagement des colonisés** dans la guerre et leurs revendications d'égalité.
-- **Le rôle des deux Grands** (États-Unis et URSS), qui dénoncent le colonialisme.
-- **Le soutien de l'ONU** (droit des peuples à disposer d'eux-mêmes) et les idées de liberté.
-- **Le développement du nationalisme** et des partis politiques africains et asiatiques.
 
-## 📚 2. La décolonisation de l'Asie
-- **Inde et Pakistan (1947)** : indépendance obtenue par la non-violence (Gandhi) ; partition entre Inde et Pakistan.
-- **Indochine** : guerre contre la France ; **bataille de Diên Biên Phu (1954)** et accords de Genève.
-- **Indonésie (1949).**
+| Type | Explication |
+|---|---|
+| **Affaiblissement des métropoles** | Les puissances européennes sortent **ruinées** de la guerre |
+| **Rôle des deux Grands** | Les États-Unis et l'URSS sont **anticolonialistes** ; **Charte de l'Atlantique (1941)** : droit des peuples à disposer d'eux-mêmes |
+| **L'ONU** | La **Charte** reconnaît l'autodétermination |
+| **Prise de conscience des colonisés** | Anciens combattants, élites instruites, **nationalistes** (Gandhi, Nkrumah, Houphouët-Boigny…), journaux, syndicats, partis |
+| **Conférence de Bandung (1955)** | Pays d'Asie et d'Afrique condamnent le colonialisme |
 
-## 📚 3. La décolonisation de l'Afrique
-- **Afrique du Nord** : indépendance du Maroc et de la Tunisie (1956) ; **guerre d'Algérie (1954-1962)** pour l'Algérie.
-- **Afrique noire française** : étapes — **loi-cadre Defferre (1956)** qui donne plus d'autonomie, **référendum de 1958** (la Guinée de Sékou Touré choisit l'indépendance immédiate), puis **1960, « année de l'Afrique »** (17 indépendances, dont la Côte d'Ivoire).
-- **Afrique britannique** : le **Ghana** de Kwame Nkrumah est indépendant dès **1957**.
-- **Colonies portugaises** : indépendance tardive après de longues guerres (1974-1975).
+## 📚 2. Les grandes étapes
 
-## 📚 4. Deux voies vers l'indépendance
-- **Voie pacifique** (négociations, élections) : Ghana, Côte d'Ivoire, la plupart des colonies françaises d'Afrique noire.
-- **Voie violente** (guerre de libération) : Algérie, Indochine, colonies portugaises.
+| Zone | Faits |
+|---|---|
+| **Asie** | **Inde et Pakistan (1947)** (Gandhi, Nehru) ; **Indonésie (1949)** ; **Indochine** : guerre puis **Genève (1954)** |
+| **Afrique du Nord** | Libye (1951) ; **Maroc et Tunisie (1956)** ; **Algérie (1962)** après la guerre d'indépendance (1954-1962) et les **accords d'Évian** |
+| **Afrique noire britannique** | **Ghana (1957)**, premier pays d'Afrique noire indépendant (**Kwame Nkrumah**) ; Nigeria (1960) |
+| **Afrique noire française** | **Loi-cadre Defferre (1956)** : autonomie interne ; **référendum du 28 septembre 1958** (Communauté) : la **Guinée** de **Sékou Touré** dit **non** et devient indépendante (octobre 1958) ; **1960 : « année de l'Afrique »** (17 pays) dont la **Côte d'Ivoire (7 août 1960)** |
+| **Afrique belge** | **Congo (30 juin 1960)** |
+| **Colonies portugaises** | Angola, Mozambique, Guinée-Bissau, Cap-Vert (**1974-75**) après la **révolution des Œillets** |
+| **Afrique australe** | **Zimbabwe (1980)** ; **Namibie (1990)** ; fin de l'**apartheid** en Afrique du Sud (**Mandela** élu en **1994**) |
 
-## 🧪 Exemples
-### Exemple 1 — 1960
-Année charnière : de nombreux pays africains deviennent indépendants, dont le **Sénégal, le Mali, la Côte d'Ivoire (7 août 1960)**, le Nigeria, le Congo…
+## 📚 3. Deux voies vers l'indépendance
 
-### Exemple 2 — Deux modèles
-La **Côte d'Ivoire** obtient son indépendance par la voie pacifique ; l'**Algérie** par une longue guerre (1954-1962).
+| Voie négociée (pacifique) | Voie violente (guerre) |
+|---|---|
+| Inde, Ghana, **Côte d'Ivoire**, Sénégal, la plupart des colonies françaises d'Afrique noire | **Algérie**, **Indochine**, **Kenya**, **Angola**, Mozambique |
 
-## ✏️ Exercices d'entraînement
+## 📚 4. La décolonisation en Côte d'Ivoire
+- **1944** : **Houphouët-Boigny** fonde le **Syndicat agricole africain**.
+- **1946** : **RDA** (Rassemblement démocratique africain, Bamako) ; **abolition du travail forcé** (loi du 11 avril 1946, dite loi **Houphouët-Boigny**) ; création du **PDCI**.
+- **1956-1959** : Houphouët-Boigny ministre en France ; **loi-cadre**.
+- **7 août 1960** : **proclamation de l'indépendance** ; Houphouët-Boigny premier président.
+
+## 📚 5. Les conséquences
+- **Naissance de dizaines de nouveaux États** ; entrée à l'**ONU**.
+- Des **frontières héritées** de la colonisation, souvent sources de conflits.
+- Des **économies dépendantes** des matières premières (néocolonialisme).
+- Début du **Tiers-Monde** et du **non-alignement**.
+
+## ✏️ Exercices
 **Exercice 1.** Cite trois causes de la décolonisation.
 
 :::corrige
-Affaiblissement des métropoles après 1945 ; montée du nationalisme ; pression de l'ONU et des deux Grands ; engagement des colonisés dans la guerre.
+L'affaiblissement des métropoles ; l'anticolonialisme des deux Grands et de l'ONU ; les mouvements nationalistes ; la conférence de Bandung.
 :::
 
-**Exercice 2.** Quel est le premier pays d'Afrique noire à obtenir l'indépendance au sud du Sahara, en 1957 ?
+**Exercice 2.** Pourquoi 1960 est-elle appelée « année de l'Afrique » ?
 
 :::corrige
-Le **Ghana**, dirigé par Kwame Nkrumah (ancienne colonie britannique, la Gold Coast).
+Parce que **17 pays** d'Afrique accèdent à l'indépendance cette année-là (dont la Côte d'Ivoire, le Sénégal, le Mali, le Congo belge, le Nigeria…).
 :::
 
-**Exercice 3.** Distingue décolonisation pacifique et décolonisation violente avec un exemple chacune.
+**Exercice 3.** Qu'est-ce que le référendum du 28 septembre 1958 ?
 
 :::corrige
-Pacifique : Côte d'Ivoire, Sénégal (négociation). Violente : Algérie, Indochine (guerre de libération).
+Consultation sur la **Constitution de la Ve République** et la **Communauté française** ; la **Guinée** vote **non** et devient indépendante (octobre 1958).
 :::
 
-## ⚠️ Pièges fréquents
-- Croire que toutes les indépendances africaines datent de 1960.
-- Confondre **loi-cadre Defferre (1956)** et **référendum de 1958**.
-- Oublier que la décolonisation commence en **Asie** (1947) avant l'Afrique.
+**Exercice 4.** Distingue décolonisation négociée et violente et cite un exemple de chaque.
+
+:::corrige
+Négociée : Côte d'Ivoire, Ghana, Inde. Violente : **Algérie** (guerre de 1954 à 1962), Indochine, Angola.
+:::
+
+## ⚠️ Pièges
+- Toutes les décolonisations n'ont pas eu lieu en **1960**.
+- Les indépendances de **1960** n'effacent pas la dépendance **économique**.
+- Ne pas confondre le **Ghana (1957)** et la **Guinée (1958)**.
 
 ## 🏆 À retenir pour le BAC
-**Causes** (affaiblissement des métropoles, nationalismes, ONU) → **Asie** (1947-1954) → **Afrique** (1956-1960 et après) → **deux voies** (négociée ou armée).
+Causes ; étapes (Asie 1947, Afrique du Nord 1956-62, **Ghana 1957**, **Guinée 1958**, **1960**, colonies portugaises 1974-75, apartheid 1994) ; voies négociée / violente ; rôle de **Houphouët-Boigny** ; conséquences.
 `
 
 HG_1["hg-tiers-monde"] = String.raw`## 💡 L'essentiel en une phrase
-Le **Tiers-Monde** désigne l'ensemble des pays nouvellement indépendants d'Asie, d'Afrique et d'Amérique latine, qui, tout en restant **sous-développés**, affirment à partir de **Bandung (1955)** leur volonté de ne pas se ranger derrière l'un des deux blocs.
+Le **Tiers-Monde** (expression d'**Alfred Sauvy**, 1952) désigne les pays **pauvres**, souvent anciennement colonisés, qui refusent de choisir entre les deux blocs : ils s'organisent dans le **non-alignement** et réclament un **nouvel ordre économique mondial**.
 
-## 📚 1. L'origine du mot
-Le terme est inventé en 1952 par Alfred Sauvy, par analogie avec le « Tiers État » de la Révolution française : un monde ignoré qui veut compter.
+## 📚 1. Qu'est-ce que le Tiers-Monde ?
+- **Expression** : Sauvy compare ces pays au « tiers état » de la Révolution française : un monde **ignoré et exploité** qui veut **exister**.
+- **Caractéristiques** : faible revenu, dépendance des **matières premières**, forte croissance démographique, faible industrialisation, **dette**, institutions fragiles.
+- **Diversité** : pays très **pauvres**, pays **pétroliers**, pays **émergents**.
 
-## 📚 2. Les caractéristiques du sous-développement
-- **Faibles revenus** et pauvreté.
-- **Économie dépendante** : exportation de matières premières, importation de produits manufacturés.
-- **Population jeune et croissance démographique rapide**, urbanisation sans emplois.
-- **Insuffisances** en santé, éducation, infrastructures.
-- **Dette extérieure** élevée.
+## 📚 2. Le non-alignement
 
-## 📚 3. La Conférence de Bandung (avril 1955)
-Réunie en Indonésie, elle rassemble 29 pays d'Asie et d'Afrique. Elle :
-- condamne le **colonialisme** et le racisme ;
-- défend la **coopération** entre pays du Sud et la paix ;
-- pose les bases du **non-alignement**.
-Parmi les leaders : Nehru (Inde), Nasser (Égypte), Soekarno (Indonésie), Zhou Enlai (Chine).
+| Date | Événement |
+|---|---|
+| **Avril 1955** | **Conférence de Bandung** (Indonésie) : **29 pays** d'Asie et d'Afrique ; **Nehru** (Inde), **Nasser** (Égypte), **Soekarno** (Indonésie), **Zhou Enlai** (Chine) ; condamnent le **colonialisme** et refusent de **choisir un bloc** |
+| **1961** | **Conférence de Belgrade** : naissance du **mouvement des non-alignés** (Tito, Nehru, Nasser, Nkrumah) |
+| **1964** | **Groupe des 77** à l'ONU : défense des intérêts économiques des pays pauvres ; **CNUCED** |
+| **1973** | **Choc pétrolier** : l'**OPEP** augmente fortement le prix du pétrole (guerre du Kippour) |
+| **1974** | **Nouvel ordre économique international (NOEI)** réclamé à l'ONU |
 
-## 📚 4. Le mouvement des non-alignés
-En **1961 (Belgrade)**, naissance officielle du **mouvement des non-alignés** : refus de s'engager dans l'OTAN ou le Pacte de Varsovie, recherche d'une voie indépendante. Mais certains pays restent, dans les faits, proches d'un camp.
+## 📚 3. Les problèmes du développement
+- **Échange inégal** : les pays pauvres exportent des matières premières peu chères et achètent des produits fabriqués chers.
+- **Dette** : dans les années 1980, la **hausse des taux** et la **chute des prix** des matières premières provoquent une **crise de la dette**.
+- **Plans d'ajustement structurel (PAS)** du **FMI** et de la **Banque mondiale** : réduire les dépenses publiques, privatiser ; conséquences sociales difficiles.
+- **Pauvreté, faim, analphabétisme, maladies**.
 
-## 📚 5. Vers un nouvel ordre économique
-- Création de la **CNUCED** (1964) : défendre les intérêts économiques du Sud.
-- **Les années 1970** : revendication d'un **nouvel ordre économique international** (meilleurs prix des matières premières, aide, transfert de technologies).
-- **Crise de la dette (années 1980)** et plans d'ajustement structurel.
+## 📚 4. L'éclatement du Tiers-Monde
+Après 1980, le Tiers-Monde se **différencie** :
 
-## 🧪 Exemples
-### Exemple 1 — Dépendance
-Un pays qui exporte surtout du cacao ou du coton est vulnérable à la **chute des prix** mondiaux : ses revenus varient sans qu'il puisse agir.
+| Groupe | Exemples |
+|---|---|
+| **Dragons d'Asie / pays émergents** | Corée du Sud, Taïwan, Singapour, Hong Kong ; puis **Chine, Inde, Brésil** |
+| **Pays producteurs de pétrole** | Arabie saoudite, Koweït, Nigeria |
+| **Pays les moins avancés (PMA)** | Beaucoup de pays d'**Afrique subsaharienne** |
 
-### Exemple 2 — Bandung
-« Ni Washington, ni Moscou » : ces États veulent choisir leur propre voie et peser dans les relations internationales.
+On parle aujourd'hui de **« Sud »** et de **« pays en développement »**.
 
-## ✏️ Exercices d'entraînement
-**Exercice 1.** Qui a inventé le mot « Tiers-Monde » et pourquoi ?
+## 🧪 Exemple
+La **Conférence de Bandung (1955)** est la première réunion de pays asiatiques et africains **sans les puissances coloniales** : elle affirme l'**unité** et la **solidarité** des peuples colonisés.
 
-:::corrige
-Alfred Sauvy (1952), par analogie avec le Tiers État de 1789 : un ensemble de peuples ignorés qui revendiquent une place.
-:::
-
-**Exercice 2.** Quels sont les objectifs de la Conférence de Bandung ?
+## ✏️ Exercices
+**Exercice 1.** Qui a inventé l'expression « Tiers-Monde » et en quelle année ?
 
 :::corrige
-Condamner le colonialisme, affirmer la solidarité afro-asiatique, défendre la paix et la coopération, esquisser le non-alignement.
+Le démographe **Alfred Sauvy**, en **1952**.
 :::
 
-**Exercice 3.** Donne deux caractères du sous-développement.
+**Exercice 2.** Quel est l'importance de Bandung (1955) ?
 
 :::corrige
-Faible revenu par habitant, économie dépendante des matières premières, dette élevée, insuffisance de santé et d'éducation (deux au choix).
+C'est la première grande rencontre de pays afro-asiatiques : elle condamne le **colonialisme** et affirme la volonté de ne pas s'aligner sur les blocs.
 :::
 
-## ⚠️ Pièges fréquents
-- Penser que « non-aligné » veut dire **neutre** ou isolé : c'est une politique active d'indépendance.
-- Confondre Bandung (1955) et Belgrade (1961).
-- Utiliser « Tiers-Monde » pour un seul pays.
+**Exercice 3.** Que sont les PAS ?
+
+:::corrige
+Les **plans d'ajustement structurel** imposés par le FMI et la Banque mondiale aux pays endettés : réduction des dépenses publiques, privatisations, libéralisation, en échange de prêts.
+:::
+
+**Exercice 4.** Pourquoi dit-on que le Tiers-Monde a « éclaté » ?
+
+:::corrige
+Parce que les pays ne connaissent plus le même sort : certains deviennent **émergents** (Chine, Inde, Corée du Sud), d'autres restent très pauvres (**PMA**).
+:::
+
+## ⚠️ Pièges
+- **Non-alignement** ≠ **neutralité** : ces pays **s'affirment** sur la scène internationale.
+- Le Tiers-Monde n'est pas « uniforme » : distinguer **émergents**, **pétroliers**, **PMA**.
+- L'expression a une origine **historique** (guerre froide).
 
 ## 🏆 À retenir pour le BAC
-**Sous-développement** (dépendance, pauvreté) → **Bandung 1955** → **non-alignés 1961** → **CNUCED et nouvel ordre économique** → **crise de la dette**.
+Sauvy 1952 ; **Bandung 1955** ; **Belgrade 1961** ; G77 (1964) ; choc pétrolier (1973) ; NOEI (1974) ; dette et PAS ; éclatement : émergents / PMA.
 `
