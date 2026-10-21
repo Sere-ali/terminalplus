@@ -397,6 +397,19 @@ $a=\dfrac{(1+i)-2}{i-1}=\dfrac{-1+i}{-1+i}=1$ : translation ; $b=2-1=1$ : $z'=z+
 Un cercle de rayon $2\times\tfrac12=1$.
 :::
 
+**Exercice 5 (type BAC).** Dans le plan complexe, on considère la transformation $s : z'=(1-i)z+2i$. 1) Donner la nature et les éléments de $s$. 2) Soit $A(1)$ ; calculer $A'=s(A)$ et vérifier que $\Omega A'=\sqrt2\,\Omega A$.
+
+:::corrige
+1) $a=1-i$, $|a|=\sqrt2$, $\arg a=-\dfrac\pi4$. Centre : $\omega=\dfrac{2i}{1-(1-i)}=\dfrac{2i}{i}=2$. Similitude directe de **centre $\Omega(2)$, rapport $\sqrt2$, angle $-\dfrac\pi4$**.
+2) $z_{A'}=(1-i)\times1+2i=1+i$. $\Omega A=|1-2|=1$ ; $\Omega A'=|1+i-2|=|-1+i|=\sqrt2$. Donc $\Omega A'=\sqrt2\,\Omega A$. ✓
+:::
+
+**Exercice 6.** Un triangle $ABC$ a pour aire $5\ cm^2$. Quelle est l'aire de son image par une similitude de rapport 2,5 ?
+
+:::corrige
+Les aires sont multipliées par $k^2=6{,}25$ : $5\times6{,}25=\mathbf{31{,}25\ cm^2}$.
+:::
+
 ## ⚠️ Pièges classiques du BAC
 - Confondre rapport $|a|$ et angle $\arg a$.
 - Oublier que le centre est le point fixe.
@@ -484,6 +497,18 @@ $n+5=(n-1)+6$ ; donc $(n-1)\mid6$ ; $n-1\in\{\pm1,\pm2,\pm3,\pm6\}$ ; $n\in\{2,0
 Somme des chiffres $=15$ : divisible par 3 (non par 9). Somme alternée $8-4+2-1=5$ : non divisible par 11.
 :::
 
+**Exercice 5 (type BAC).** Montrer que, pour tout entier $n$, $n^3-n$ est divisible par 6.
+
+:::corrige
+$n^3-n=(n-1)n(n+1)$ : produit de trois entiers consécutifs. Parmi eux, au moins un est pair et exactement un est multiple de 3 ; donc le produit est divisible par 2 et par 3, premiers entre eux, donc par $6$.
+:::
+
+**Exercice 6.** Quel est le reste de la division de $7^{2025}$ par 5 ?
+
+:::corrige
+$7\equiv2\pmod5$ ; les puissances de 2 modulo 5 : $2,4,3,1$ (période 4). $2025=4\times506+1$, donc $7^{2025}\equiv2^1=2$. Reste : **2**.
+:::
+
 ## ⚠️ Pièges classiques du BAC
 - Simplifier une congruence par un facteur non inversible.
 - Oublier que $0\le r<b$.
@@ -560,6 +585,19 @@ Un diviseur commun $d$ divise $(n+1)-n=1$, donc $d=1$.
 
 :::corrige
 $\text{PGCD}(6,9)=3$ ne divise pas 10 : **aucune** solution.
+:::
+
+**Exercice 5 (type BAC).** 1) Montrer que $\text{PGCD}(2n+1,\ n)=1$ pour tout entier $n$. 2) Résoudre dans $\mathbb Z^2$ : $5x-8y=3$.
+
+:::corrige
+1) Un diviseur commun $d$ de $2n+1$ et $n$ divise $(2n+1)-2n=1$ ; donc $d=1$.
+2) $\text{PGCD}(5,8)=1$ divise 3 : il y a des solutions. Solution particulière : $x=7,\ y=4$ car $35-32=3$. Solutions générales : $x=7+8k$, $y=4+5k$, $k\in\mathbb Z$.
+:::
+
+**Exercice 6.** Deux feux clignotent, l'un toutes les 12 s, l'autre toutes les 18 s. Ils s'allument ensemble à 20 h 00. Quand se rallument-ils ensemble pour la première fois ?
+
+:::corrige
+$\text{PPCM}(12,18)=36$ : ils se rallument ensemble après **36 secondes**, soit à 20 h 00 min 36 s.
 :::
 
 ## ⚠️ Pièges classiques du BAC

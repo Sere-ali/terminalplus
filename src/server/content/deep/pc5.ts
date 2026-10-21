@@ -73,6 +73,18 @@ Dilution totale ×100 : $[H_3O^+]$ passe de $10^{-1}$ à $10^{-3}$ ; **pH = 3,0*
 $V_f=\dfrac{0{,}1\times20}{0{,}02}=100$ mL ; volume d'eau à ajouter $=100-20=\mathbf{80\ mL}$.
 :::
 
+**Exercice 5 (type BAC).** On mélange 50 mL de solution d'acide chlorhydrique à $2{,}0\times10^{-2}$ mol/L et 150 mL d'eau distillée. Calculer le pH du mélange.
+
+:::corrige
+Volume total 200 mL ; $C_f=\dfrac{2{,}0\times10^{-2}\times50}{200}=5{,}0\times10^{-3}$ mol/L. Acide fort : $[H_3O^+]=C_f$ ; $pH=-\log(5{,}0\times10^{-3})=3-\log5=\mathbf{2{,}3}$.
+:::
+
+**Exercice 6.** La concentration en $H_3O^+$ d'une solution A est 100 fois celle d'une solution B. De combien de pH diffèrent-elles ?
+
+:::corrige
+$\Delta pH=\log100=\mathbf2$ : la solution A a un pH inférieur de 2 unités.
+:::
+
 ## ⚠️ Pièges classiques du BAC
 - Oublier le **signe moins** : $pH=-\log[H_3O^+]$.
 - Dire que le pH est **proportionnel** à la concentration : c'est une échelle logarithmique.

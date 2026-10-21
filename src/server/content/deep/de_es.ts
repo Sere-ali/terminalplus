@@ -692,6 +692,18 @@ L'espagnol a **deux verbes « être »** : **ser** (identité, nature, caractér
 *Hoy **está** enfermo.* (état temporaire) ; "il est méchant" = *es malo*.
 :::
 
+**Exercice 6.** Choisis ser ou estar : « La clase ___ a las ocho y los alumnos ___ en el aula. »
+
+:::corrige
+*La clase **es** a las ocho* (heure/événement) *y los alumnos **están** en el aula* (localisation).
+:::
+
+**Exercice 7.** Traduis : « Ce café est froid. »
+
+:::corrige
+*Este café **está** frío.* (état du moment)
+:::
+
 ## ⚠️ Pièges fréquents
 - Employer **ser** pour la localisation d'un objet.
 - Employer **estar** pour la profession.
@@ -851,6 +863,12 @@ Personnes : *Es alto, tiene el pelo negro, lleva gafas.* Lieux : *El pueblo est�
 
 :::corrige
 *Pero, sin embargo, aunque.*
+:::
+
+**Exercice 5.** Écris trois phrases pour décrire ta ville en espagnol.
+
+:::corrige
+*Mi ciudad se llama Abiyán. Es grande y tiene muchos edificios. Hay un puerto importante y mucha gente.* (réponse modèle)
 :::
 
 ## ⚠️ Pièges fréquents

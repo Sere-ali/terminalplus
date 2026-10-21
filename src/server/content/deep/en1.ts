@@ -267,6 +267,18 @@ Les **phrases conditionnelles** expriment une hypothèse (*if*) et sa conséquen
 *I wish I had studied.*
 :::
 
+**Exercice 6.** Choisis le bon type : « If you (heat) water to 100 °C, it (boil). »
+
+:::corrige
+Type 0 (vérité générale) : *If you **heat** water to 100 °C, it **boils**.*
+:::
+
+**Exercice 7.** Traduis : « Si j'avais su, je serais venu. »
+
+:::corrige
+*If I had known, I would have come.* (type 3)
+:::
+
 ## ⚠️ Pièges fréquents
 - Employer **would** après *if* : *If I would...* ✘.
 - Employer *will* après *if* (type 1) : *If it will rain* ✘.

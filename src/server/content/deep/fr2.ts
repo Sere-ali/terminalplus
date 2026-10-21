@@ -257,6 +257,12 @@ Ils traduisent l'**hésitation**, l'émotion ou le silence : le rythme se brise.
 La répétition de [r] imite le **bruit** de l'eau agitée (harmonie imitative) et donne un rythme rugueux.
 :::
 
+**Exercice 5.** Commente le rythme : « Elle marchait, marchait, marchait encore, sous le soleil qui tombait de plus en plus lourd. »
+
+:::corrige
+La **répétition** « marchait, marchait, marchait » et le **rythme ternaire croissant** traduisent la **durée** et la **fatigue** ; la phrase s'allonge comme la route. Effet : lenteur, épuisement.
+:::
+
 ## ⚠️ Pièges fréquents
 - Décrire le rythme **sans** son effet.
 - Oublier de **lire à voix haute**.
