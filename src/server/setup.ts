@@ -118,6 +118,7 @@ export const ADMIN_IDENTIFIERS = ['ali']
 
 async function seedCatalogue() {
   // Ancienne matière « Comptabilité et gestion » (G2) remplacée par le programme officiel en trois matières.
+  await exec(`DELETE FROM chapters WHERE slug IN ('a-hg-methode-dissertation','b-hg-methode-dissertation','c-hg-methode-dissertation','d-hg-methode-dissertation','a-hg-methode-commentaire','b-hg-methode-commentaire','c-hg-methode-commentaire','d-hg-methode-commentaire','g1-droit-travail','g2-droit-travail')`)
   await exec(`DELETE FROM chapters WHERE subject_slug = 'g2-compta'`)
   await exec(`DELETE FROM subjects WHERE slug = 'g2-compta'`)
   for (const s of SUBJECTS) {

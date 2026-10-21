@@ -268,8 +268,8 @@ const ESPAGNOL: Row[] = [
 
 // ---------- HISTOIRE-GÉOGRAPHIE (séries A, B, C, D) ----------
 const HG: Row[] = [
-  ["methode-dissertation", "Méthodologie : la dissertation (composition)", "Méthodologie", "hg-methode-dissertation"],
-  ["methode-commentaire", "Méthodologie : le commentaire de documents et le croquis", "Méthodologie", "hg-methode-commentaire"],
+  ["methode-composition", "Méthodologie : la dissertation (composition)", "Méthodologie", "hg-methode-dissertation"],
+  ["methode-documents", "Méthodologie : le commentaire de documents et le croquis", "Méthodologie", "hg-methode-commentaire"],
   ["seconde-guerre-mondiale", "La Seconde Guerre mondiale (1939-1945)", "Histoire", "hg-seconde-guerre-mondiale"],
   ["guerre-froide", "La guerre froide : un monde bipolaire", "Histoire", "hg-guerre-froide"],
   ["crises-detente", "Crises et détente entre les deux blocs", "Histoire", "hg-crises-detente"],
@@ -325,7 +325,7 @@ const DROIT_G: Row[] = [
   ["personnes", "Les personnes physiques et morales", "Les personnes", "droit-personnes"],
   ["contrats", "Le contrat", "Les obligations", "droit-contrats"],
   ["commercants-societes", "Commerçants et sociétés commerciales (OHADA)", "Droit commercial", "droit-commercants-societes"],
-  ["travail", "Le contrat de travail", "Droit du travail", "droit-travail"],
+  ["contrat-travail", "Le contrat de travail", "Droit du travail", "droit-travail"],
   ["justice-preuve", "La justice et la preuve", "Justice", "droit-justice-preuve"],
 ]
 
