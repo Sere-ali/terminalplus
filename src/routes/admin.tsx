@@ -51,6 +51,7 @@ function AdminGate() {
               ))}
             </div>
 
+            <OnlinePanel people={overview.recent} />
             <PaymentsPanel />
             <ExamsPanel />
             <ChangePasswordPanel />
@@ -99,6 +100,9 @@ type StudentInfo = {
   locked?: boolean
   strikes?: number
   hasDevice?: boolean
+  lastSeen?: number | null
+  online?: boolean
+  studying?: string | null
 }
 
 type AdminOverview =
@@ -130,6 +134,74 @@ type PaymentsAdmin =
   | { ok: false }
   | { ok: true; waveNumber: string; pending: PaymentRow[]; decided: PaymentRow[] }
 
+function ago(ts?: number | null) {
+  if (!ts) return 'jamais connecté'
+  const s = Math.max(0, Math.round((Date.now() - ts) / 1000))
+  if (s < 90) return "à l'instant"
+  const m = Math.round(s / 60)
+  if (m < 60) return `il y a ${m} min`
+  const h = Math.round(m / 60)
+  if (h < 24) return `il y a ${h} h`
+  const d = Math.round(h / 24)
+  return `il y a ${d} jour${d > 1 ? 's' : ''}`
+}
+
+function OnlinePanel({ people }: { people: StudentInfo[] }) {
+  const online = people.filter((p) => p.online)
+  return (
+    <section className="mt-5 rounded-2xl border bg-card p-4">
+      <h2 className="flex items-center gap-2 text-lg font-bold">
+        <span className={`inline-block h-3 w-3 rounded-full ${online.length ? 'bg-green-500' : 'bg-muted-foreground/40'}`} />
+        En ligne maintenant : {online.length}
+      </h2>
+      <p className="text-xs text-muted-foreground">Mis à jour automatiquement toutes les 15 secondes. Un élève est « en ligne » quand son application est ouverte et visible.</p>
+      {online.length === 0 ? (
+        <p className="mt-2 text-sm text-muted-foreground">Personne n'est connecté pour le moment.</p>
+      ) : (
+        <ul className="mt-2 divide-y text-sm">
+          {online.map((p) => (
+            <li key={p.id} className="flex flex-wrap items-center justify-between gap-1 py-2">
+              <span className="font-medium">🟢 {p.name} <span className="text-xs font-normal text-muted-foreground">({SERIE_LABEL[p.serie]})</span></span>
+              <span className="text-xs text-muted-foreground">{p.studying ? `📖 Étudie : ${p.studying}` : "Sur l'application (pas dans une leçon)"}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  )
+}
+
+/** Message prêt à envoyer à l'élève (identifiant + mot de passe). */
+function AccessMessage({ name, whatsapp, identifier, password, onClose }: { name: string; whatsapp?: string | null; identifier: string; password: string | null; onClose: () => void }) {
+  const [copied, setCopied] = useState(false)
+  const text =
+    `Bonjour ${name}, voici tes accès TERMINALE+ :\n` +
+    `Site : ${typeof window !== 'undefined' ? window.location.origin : ''}\n` +
+    `Identifiant : ${identifier}\n` +
+    (password ? `Mot de passe : ${password}\n` : '') +
+    `Garde-les bien et ne les partage avec personne.`
+  const wa = `https://wa.me/${whatsapp ?? ''}?text=${encodeURIComponent(text)}`
+  return (
+    <div className="w-full rounded-lg border border-primary/30 bg-brand-green-soft p-3 text-sm">
+      <p className="font-semibold text-primary">✅ Modifié. Message à envoyer à {name} :</p>
+      <pre className="mt-2 whitespace-pre-wrap rounded-lg bg-background p-2 font-sans text-xs">{text}</pre>
+      <div className="mt-2 flex flex-wrap gap-2">
+        <a href={wa} target="_blank" rel="noreferrer" className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground">
+          Envoyer par WhatsApp
+        </a>
+        <button
+          type="button"
+          onClick={() => { void navigator.clipboard?.writeText(text).then(() => setCopied(true)).catch(() => {}) }}
+          className="rounded-lg border bg-background px-3 py-1.5 text-xs font-semibold hover:bg-secondary"
+        >
+          {copied ? 'Copié ✓' : 'Copier le message'}
+        </button>
+        <button type="button" onClick={onClose} className="rounded-lg px-3 py-1.5 text-xs font-semibold text-muted-foreground hover:underline">Fermer</button>
+      </div>
+    </div>
+  )
+}
+
 function makePassword() {
   const chars = 'abcdefghijkmnpqrstuvwxyz23456789'
   const bytes = crypto.getRandomValues(new Uint8Array(8))
@@ -148,11 +220,20 @@ function StudentRow({ u }: { u: StudentInfo }) {
   const [eId, setEId] = useState(u.email)
   const [eSerie, setESerie] = useState<string>(u.serie)
   const [eMsg, setEMsg] = useState<string | null>(null)
+  const [ePw, setEPw] = useState('')
+  const [sent, setSent] = useState<{ identifier: string; password: string | null } | null>(null)
   return (
     <li className="flex flex-wrap items-center justify-between gap-2 p-3">
       <span>
         <span className="font-medium">{u.name}{u.role === 'admin' && ' 👑'}</span>
         <span className="block text-xs text-muted-foreground">Identifiant : {u.email}</span>
+        {u.role !== 'admin' && (
+          <span className={`block text-xs font-semibold ${u.online ? 'text-green-600' : 'text-muted-foreground'}`}>
+            {u.online
+              ? `🟢 En ligne${u.studying ? ` · étudie : ${u.studying}` : ''}`
+              : `⚪ Hors ligne · dernière connexion : ${ago(u.lastSeen)}`}
+          </span>
+        )}
         {u.whatsapp && (
           <a
             href={`https://wa.me/${u.whatsapp}`}
@@ -202,10 +283,10 @@ function StudentRow({ u }: { u: StudentInfo }) {
         {u.role !== 'admin' && (
           <button
             type="button"
-            onClick={() => { setEditing(!editing); setEName(u.name); setEId(u.email); setESerie(u.serie); setEMsg(null) }}
+            onClick={() => { setEditing(!editing); setEName(u.name); setEId(u.email); setESerie(u.serie); setEPw(''); setEMsg(null); setSent(null) }}
             className="rounded-lg border px-2.5 py-1 text-xs font-semibold hover:bg-secondary"
           >
-            Modifier
+            Modifier / accès oubliés
           </button>
         )}
         {u.role !== 'admin' && (
@@ -234,14 +315,26 @@ function StudentRow({ u }: { u: StudentInfo }) {
               <option key={s} value={s}>{SERIE_LABEL[s]}</option>
             ))}
           </select>
+          <input value={ePw} onChange={(e) => setEPw(e.target.value)} placeholder="Nouveau mot de passe (laisser vide = inchangé)"
+            className="min-w-[14rem] rounded-lg border bg-background px-3 py-1.5 font-mono text-sm" aria-label="Nouveau mot de passe" />
+          <button type="button" onClick={() => setEPw(makePassword())} className="rounded-lg border bg-background px-3 py-1.5 text-xs font-semibold hover:bg-secondary">
+            Générer
+          </button>
           <button
             type="button"
             onClick={async () => {
+              setEMsg(null)
+              if (ePw && ePw.length < 8) { setEMsg('Le mot de passe doit avoir 8 caractères minimum.'); return }
               const r = await post<{ ok: boolean; message?: string }>('/api/admin/edit-student', {
                 profileId: u.id, name: eName, identifier: eId, serie: eSerie,
               })
-              if (r.ok) setEditing(false)
-              else setEMsg(r.message ?? 'Erreur.')
+              if (!r.ok) { setEMsg(r.message ?? 'Erreur.'); return }
+              if (ePw) {
+                const r2 = await resetPassword({ profileId: u.id, newPassword: ePw })
+                if (!r2.ok) { setEMsg(r2.message ?? 'Erreur sur le mot de passe.'); return }
+              }
+              setEditing(false)
+              setSent({ identifier: eId.trim().toLowerCase(), password: ePw || null })
             }}
             className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground"
           >
@@ -250,6 +343,7 @@ function StudentRow({ u }: { u: StudentInfo }) {
           {eMsg && <span className="text-xs font-medium text-destructive">{eMsg}</span>}
         </div>
       )}
+      {sent && <AccessMessage name={eName} whatsapp={u.whatsapp} identifier={sent.identifier} password={sent.password} onClose={() => setSent(null)} />}
       {resetting && (
         <div className="flex w-full flex-wrap items-center gap-2 rounded-lg bg-secondary p-2">
           <input
@@ -262,7 +356,7 @@ function StudentRow({ u }: { u: StudentInfo }) {
             type="button"
             onClick={async () => {
               const r = await resetPassword({ profileId: u.id, newPassword: pw })
-              setMsg(r.ok ? `Mot de passe changé. Donne « ${pw} » à ${u.name}.` : (r.message ?? 'Erreur.'))
+              if (r.ok) { setResetting(false); setSent({ identifier: u.email, password: pw }) } else { setMsg(r.message ?? 'Erreur.') }
             }}
             className="rounded-lg bg-primary px-3 py-1.5 text-xs font-semibold text-primary-foreground"
           >

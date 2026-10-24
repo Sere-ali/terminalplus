@@ -21,6 +21,7 @@ import { BASE_RULES } from './tutor-rules'
 const PRICE_FCFA = 1100
 const DEFAULT_WAVE_NUMBER = '05 86 18 96 63'
 const DAILY_LIMIT = 40
+const ONLINE_MS = 100_000 // « en ligne » = signal reçu depuis moins de 100 s
 const SERIES = ['A', 'B', 'C', 'D', 'G1', 'G2']
 const DUMMY_HASH = 'scrypt$AAAAAAAAAAAAAAAAAAAAAA==$AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA='
 const WEAK_PASSWORDS = new Set([
@@ -531,6 +532,20 @@ route('POST', '/payments/submit', async ({ session, body }) => {
 })
 
 // --- Administration ---
+// Signal de présence : l'application envoie un petit signal toutes les 45 s tant que l'élève est connecté et que l'écran est visible.
+// Il sert uniquement à afficher au Super admin qui est en ligne et quelle leçon est ouverte.
+route('POST', '/presence', async ({ session, body }) => {
+  if (!session?.profile || session.profile.role !== 'student') return { ok: true }
+  const slug = typeof body?.slug === 'string' && body.slug.length <= 200 ? body.slug : null
+  await exec(
+    `UPDATE users SET last_seen_at = now(),
+       last_chapter_slug = CASE WHEN $2::text IS NULL THEN NULL ELSE (SELECT slug FROM chapters WHERE slug = $2::text) END
+     WHERE id = $1`,
+    [session.uid, slug],
+  )
+  return { ok: true }
+})
+
 function admin(handler: Handler): Handler {
   return async (ctx) => (isAdmin(ctx.session) ? handler(ctx) : fail('Accès réservé au super administrateur.', 403, 'FORBIDDEN'))
 }
@@ -546,8 +561,12 @@ route('GET', '/admin/overview', async ({ session }) => {
      FROM subjects s LEFT JOIN chapters c ON c.subject_slug = s.slug GROUP BY s.slug ORDER BY s.ord`,
   )
   const people = await rows<any>(
-    `SELECT p.user_id, p.name, p.serie, p.role, p.paid, p.created_at, u.identifier, u.whatsapp, u.locked, u.device_strikes, (u.device_id IS NOT NULL) AS has_device
-     FROM profiles p JOIN users u ON u.id = p.user_id ORDER BY p.created_at DESC LIMIT 300`,
+    `SELECT p.user_id, p.name, p.serie, p.role, p.paid, p.created_at, u.identifier, u.whatsapp, u.locked, u.device_strikes, (u.device_id IS NOT NULL) AS has_device,
+            u.last_seen_at, c.title AS chapter_title, c.subject_slug AS chapter_subject, sj.name AS chapter_subject_name
+     FROM profiles p JOIN users u ON u.id = p.user_id
+     LEFT JOIN chapters c ON c.slug = u.last_chapter_slug
+     LEFT JOIN subjects sj ON sj.slug = c.subject_slug
+     ORDER BY p.created_at DESC LIMIT 300`,
   )
   const total = await one<{ n: number; paid: number }>(
     `SELECT count(*)::int AS n, (count(*) FILTER (WHERE role = 'student' AND paid))::int AS paid FROM profiles`,
@@ -576,6 +595,9 @@ route('GET', '/admin/overview', async ({ session }) => {
       locked: p.locked === true,
       strikes: p.device_strikes ?? 0,
       hasDevice: p.has_device === true,
+      lastSeen: p.last_seen_at ? ms(p.last_seen_at) : null,
+      online: p.role === 'student' && !!p.last_seen_at && Date.now() - ms(p.last_seen_at) < ONLINE_MS,
+      studying: p.chapter_title ? `${p.chapter_subject_name ?? ''} · ${p.chapter_title}` : null,
     })),
   }
 })

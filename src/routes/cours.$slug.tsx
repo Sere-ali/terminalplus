@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { ArrowLeft, ArrowRight, Check, Star } from 'lucide-react'
 import { post, useApi } from '@/lib/api'
@@ -7,6 +7,7 @@ import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
 import { Markdown } from '@/components/markdown'
 import { TutorPanel } from '@/components/tutor-panel'
+import { setPresenceSlug } from '@/lib/presence'
 
 export const Route = createFileRoute('/cours/$slug')({ component: CoursPage })
 
@@ -16,6 +17,10 @@ function CoursPage() {
 }
 
 function Lesson({ slug }: { slug: string }) {
+  useEffect(() => {
+    setPresenceSlug(slug)
+    return () => setPresenceSlug(null)
+  }, [slug])
   const res = useApi<ChapterResponse>(`/api/chapters/${encodeURIComponent(slug)}`)
   const progress = useApi<ProgressRow[]>('/api/progress')
   const toggle = (arg: { chapterSlug: string; field: 'done' | 'favorite' }) => post('/api/progress/toggle', arg)

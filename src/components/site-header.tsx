@@ -3,10 +3,12 @@ import { GraduationCap, LogOut, ShieldCheck } from 'lucide-react'
 import { useMe } from '@/lib/use-me'
 import { post } from '@/lib/api'
 import { InstallButton } from '@/components/install-app'
+import { usePresenceBeat } from '@/lib/presence'
 
 export function SiteHeader() {
   const me = useMe()
   const navigate = useNavigate()
+  usePresenceBeat(me.status === 'ready' && !me.isAdmin)
 
   return (
     <header className="sticky top-0 z-30 border-b bg-background/85 backdrop-blur-xl" style={{ paddingTop: 'env(safe-area-inset-top)' }}>

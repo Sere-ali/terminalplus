@@ -16,6 +16,8 @@ ALTER TABLE users ADD COLUMN IF NOT EXISTS whatsapp text;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS device_id text;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS device_strikes integer NOT NULL DEFAULT 0;
 ALTER TABLE users ADD COLUMN IF NOT EXISTS locked boolean NOT NULL DEFAULT false;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS last_seen_at timestamptz;
+ALTER TABLE users ADD COLUMN IF NOT EXISTS last_chapter_slug text;
 
 CREATE TABLE IF NOT EXISTS profiles (
   user_id uuid PRIMARY KEY REFERENCES users(id) ON DELETE CASCADE,
