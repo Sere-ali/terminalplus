@@ -64,7 +64,7 @@ function Home() {
               Des cours clairs pour toutes tes matières, et un professeur virtuel qui répond à tes questions de jour comme de nuit.
             </p>
             <p className="rise mt-5 text-sm font-semibold text-white/90" style={{ ['--d' as string]: 420 }}>
-              Accès à tous les cours : <span className="rounded-md bg-brand-orange px-2 py-0.5 text-white">1 100 F CFA</span> une seule fois, par Wave
+              Accès à tous les cours : <span className="rounded-md bg-brand-orange px-2 py-0.5 text-white">1 100 F CFA</span> une seule fois, par Wave · 1 leçon gratuite par matière pour tester
             </p>
             <div className="rise mt-7 flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-center lg:justify-start" style={{ ['--d' as string]: 540 }}>
               <InstallButton />
