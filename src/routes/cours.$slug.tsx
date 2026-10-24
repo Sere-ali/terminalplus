@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Check, Star } from 'lucide-react'
 import { post, useApi } from '@/lib/api'
 import type { ChapterResponse, ProgressRow } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
+import { UnlockBanner } from '@/components/unlock-banner'
 import { RequireStudent } from '@/components/require-student'
 import { Markdown } from '@/components/markdown'
 import { TutorPanel } from '@/components/tutor-panel'
@@ -13,10 +14,10 @@ export const Route = createFileRoute('/cours/$slug')({ component: CoursPage })
 
 function CoursPage() {
   const { slug } = Route.useParams()
-  return <RequireStudent>{() => <Lesson slug={slug} />}</RequireStudent>
+  return <RequireStudent allowUnpaid>{(me) => <Lesson slug={slug} paid={me.hasAccess} />}</RequireStudent>
 }
 
-function Lesson({ slug }: { slug: string }) {
+function Lesson({ slug, paid }: { slug: string; paid: boolean }) {
   useEffect(() => {
     setPresenceSlug(slug)
     return () => setPresenceSlug(null)
@@ -34,10 +35,17 @@ function Lesson({ slug }: { slug: string }) {
       <main className="mx-auto max-w-3xl px-4 py-5">
         {res === undefined && <div className="h-64 animate-pulse rounded-2xl bg-secondary" />}
 
-        {res && !res.ok && (
+        {res && !res.ok && res.code === 'PAYMENT_REQUIRED' && (
+          <div className="py-12">
+            <p className="mb-4 text-center text-lg font-semibold">🔒 Cette leçon fait partie de l'accès complet.</p>
+            <UnlockBanner />
+            <p className="mt-4 text-center"><Link to="/tableau" className="font-semibold text-primary underline">Retour à mes matières</Link></p>
+          </div>
+        )}
+        {res && !res.ok && res.code !== 'PAYMENT_REQUIRED' && (
           <div className="py-16 text-center">
             <p className="text-lg font-semibold">
-              {res.code === 'NOT_PUBLISHED' ? 'Cette leçon sera bientôt disponible.' : res.code === 'NOT_FOUND' ? 'Leçon introuvable.' : res.code === 'PAYMENT_REQUIRED' ? 'Paie ton accès (1 100 F par Wave) pour lire cette leçon.' : 'Connecte-toi pour lire cette leçon.'}
+              {res.code === 'NOT_PUBLISHED' ? 'Cette leçon sera bientôt disponible.' : res.code === 'NOT_FOUND' ? 'Leçon introuvable.' : 'Connecte-toi pour lire cette leçon.'}
             </p>
             <Link to="/tableau" className="mt-4 inline-block font-semibold text-primary underline">Retour à mes matières</Link>
           </div>
@@ -72,6 +80,7 @@ function Lesson({ slug }: { slug: string }) {
               ))}
             </div>
 
+            {!paid && <UnlockBanner className="mt-4" />}
             {tab === 'cours' ? (
               <>
                 <article className="mt-5 rounded-2xl border bg-card p-4 sm:p-6">
@@ -115,7 +124,7 @@ function Lesson({ slug }: { slug: string }) {
               </>
             ) : (
               <div className="mt-5">
-                <TutorPanel chapterSlug={slug} title={res.chapter.title} />
+                {paid ? <TutorPanel chapterSlug={slug} title={res.chapter.title} /> : <UnlockBanner />}
               </div>
             )}
           </>

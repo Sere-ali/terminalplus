@@ -17,6 +17,7 @@ export type ChapterListItem = {
   theme: string
   order: number
   status: 'published' | 'draft'
+  free: boolean
 }
 
 export type ChapterListResponse = {
@@ -36,6 +37,7 @@ export type ChapterResponse =
         status: 'published' | 'draft'
         serie: Serie
         subjectSlug: string
+        free: boolean
       }
       subjectName: string
       subjectEmoji: string

@@ -276,11 +276,16 @@ route('GET', '/subjects', async ({ url }) => {
   )
 })
 
+// Aperçu gratuit : la 1re leçon publiée de chaque matière est gratuite, sauf si l'admin a choisi autrement (colonne free).
+const FREE_SQL = `COALESCE(c.free, c.slug = (SELECT c2.slug FROM chapters c2 WHERE c2.subject_slug = c.subject_slug AND c2.status = 'published' ORDER BY c2.ord LIMIT 1))`
+
 route('GET', '/subjects/:slug/chapters', async ({ params }) => {
   const subject = await one<any>('SELECT slug, name, emoji, serie, description FROM subjects WHERE slug = $1', [params.slug])
   if (!subject) return null
   const chapters = await rows(
-    'SELECT slug, title, theme, ord AS "order", status FROM chapters WHERE subject_slug = $1 ORDER BY ord',
+    `SELECT c.slug, c.title, c.theme, c.ord AS "order", c.status,
+            ${FREE_SQL} AS free
+     FROM chapters c WHERE c.subject_slug = $1 ORDER BY c.ord`,
     [params.slug],
   )
   return { subject, chapters }
@@ -288,12 +293,13 @@ route('GET', '/subjects/:slug/chapters', async ({ params }) => {
 
 route('GET', '/chapters/:slug', async ({ params, session }) => {
   if (!session) return { ok: false, code: 'LOGIN_REQUIRED' }
-  if (!hasAccess(session.profile)) return { ok: false, code: 'PAYMENT_REQUIRED' }
   const c = await one<any>(
-    'SELECT slug, subject_slug, serie, title, theme, content, status FROM chapters WHERE slug = $1',
+    `SELECT c.slug, c.subject_slug, c.serie, c.title, c.theme, c.content, c.status, ${FREE_SQL} AS free
+     FROM chapters c WHERE c.slug = $1`,
     [params.slug],
   )
   if (!c) return { ok: false, code: 'NOT_FOUND' }
+  if (!hasAccess(session.profile) && !c.free) return { ok: false, code: 'PAYMENT_REQUIRED' }
   const admin = isAdmin(session)
   if (c.status !== 'published' && !admin) return { ok: false, code: 'NOT_PUBLISHED' }
   if (!admin && c.serie !== session.profile?.serie) return { ok: false, code: 'NOT_FOUND' }
@@ -313,6 +319,7 @@ route('GET', '/chapters/:slug', async ({ params, session }) => {
       status: c.status,
       serie: c.serie,
       subjectSlug: c.subject_slug,
+      free: !!c.free,
     },
     subjectName: subject?.name ?? '',
     subjectEmoji: subject?.emoji ?? '📘',
@@ -719,15 +726,15 @@ route('POST', '/admin/delete-student', admin(async ({ body }) => {
 
 route('GET', '/admin/chapter', async ({ session, url }) => {
   if (!isAdmin(session)) return { ok: false, code: 'FORBIDDEN' }
-  const c = await one<any>('SELECT slug, title, content, status FROM chapters WHERE slug = $1', [url.searchParams.get('slug')])
+  const c = await one<any>(`SELECT c.slug, c.title, c.content, c.status, ${FREE_SQL} AS free FROM chapters c WHERE c.slug = $1`, [url.searchParams.get('slug')])
   return c ? { ok: true, chapter: c } : { ok: false, code: 'NOT_FOUND' }
 })
 
 route('POST', '/admin/chapter', admin(async ({ body }) => {
   const status = body?.status === 'published' ? 'published' : 'draft'
   const n = await exec(
-    'UPDATE chapters SET title = $2, content = $3, status = $4, edited = true, updated_at = now() WHERE slug = $1',
-    [body?.slug, String(body?.title ?? '').trim().slice(0, 160), String(body?.content ?? ''), status],
+    'UPDATE chapters SET title = $2, content = $3, status = $4, free = $5, edited = true, updated_at = now() WHERE slug = $1',
+    [body?.slug, String(body?.title ?? '').trim().slice(0, 160), String(body?.content ?? ''), status, body?.free === true],
   )
   return { ok: n > 0 }
 }))

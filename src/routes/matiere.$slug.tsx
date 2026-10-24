@@ -3,16 +3,17 @@ import { ArrowLeft, Check, Lock, Star } from 'lucide-react'
 import { useApi } from '@/lib/api'
 import type { ChapterListResponse, ProgressRow } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
+import { UnlockBanner } from '@/components/unlock-banner'
 import { RequireStudent } from '@/components/require-student'
 
 export const Route = createFileRoute('/matiere/$slug')({ component: MatierePage })
 
 function MatierePage() {
   const { slug } = Route.useParams()
-  return <RequireStudent>{(me) => <Content slug={slug} isAdmin={me.isAdmin} />}</RequireStudent>
+  return <RequireStudent allowUnpaid>{(me) => <Content slug={slug} isAdmin={me.isAdmin} paid={me.hasAccess} />}</RequireStudent>
 }
 
-function Content({ slug, isAdmin }: { slug: string; isAdmin: boolean }) {
+function Content({ slug, isAdmin, paid }: { slug: string; isAdmin: boolean; paid: boolean }) {
   const data = useApi<ChapterListResponse>(`/api/subjects/${encodeURIComponent(slug)}/chapters`)
   const progress = useApi<ProgressRow[]>('/api/progress')
   const prog = new Map((progress ?? []).map((p) => [p.chapterSlug, p]))
@@ -34,6 +35,7 @@ function Content({ slug, isAdmin }: { slug: string; isAdmin: boolean }) {
           <ArrowLeft className="size-4" /> Mes matières
         </Link>
 
+        {!paid && <UnlockBanner className="mt-4" />}
         {data === undefined && <div className="mt-6 h-40 animate-pulse rounded-2xl bg-secondary" />}
         {data === null && <p className="mt-10 text-center text-muted-foreground">Cette matière n'existe pas.</p>}
 
@@ -54,6 +56,7 @@ function Content({ slug, isAdmin }: { slug: string; isAdmin: boolean }) {
                   <ul className="space-y-2">
                     {t.items.map((c) => {
                       const available = c.status === 'published' || isAdmin
+                      const locked = available && !paid && !c.free
                       const p = prog.get(c.slug)
                       const inner = (
                         <div className={`flex items-center gap-3 lift rounded-2xl border bg-card p-3.5 ${available ? ""  : 'opacity-60'}`}>
@@ -62,6 +65,11 @@ function Content({ slug, isAdmin }: { slug: string; isAdmin: boolean }) {
                           </span>
                           <span className="flex-1 text-sm font-semibold leading-snug">{c.title}</span>
                           {p?.favorite && <Star className="size-4 fill-brand-orange text-brand-orange" />}
+                          {!paid && c.status === 'published' && (c.free ? (
+                            <span className="rounded-full bg-brand-green-soft px-2 py-0.5 text-[11px] font-bold text-primary">🎁 Gratuit</span>
+                          ) : (
+                            <Lock className="size-4 text-muted-foreground" />
+                          ))}
                           {c.status !== 'published' && (
                             <span className="flex items-center gap-1 rounded-full bg-secondary px-2 py-0.5 text-[11px] font-semibold text-muted-foreground">
                               <Lock className="size-3" /> {isAdmin ? 'Brouillon' : 'Bientôt'}
@@ -71,7 +79,9 @@ function Content({ slug, isAdmin }: { slug: string; isAdmin: boolean }) {
                       )
                       return (
                         <li key={c.slug}>
-                          {available ? (
+                          {locked ? (
+                            <Link to="/paiement">{inner}</Link>
+                          ) : available ? (
                             <Link to="/cours/$slug" params={{ slug: c.slug }}>{inner}</Link>
                           ) : (
                             inner

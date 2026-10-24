@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS chapters (
 );
 ALTER TABLE chapters ADD COLUMN IF NOT EXISTS content_hash text;
 ALTER TABLE chapters ADD COLUMN IF NOT EXISTS edited boolean NOT NULL DEFAULT false;
+ALTER TABLE chapters ADD COLUMN IF NOT EXISTS free boolean;
 CREATE INDEX IF NOT EXISTS chapters_subject_idx ON chapters(subject_slug, ord);
 
 CREATE TABLE IF NOT EXISTS progress (

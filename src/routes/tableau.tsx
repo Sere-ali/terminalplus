@@ -4,19 +4,20 @@ import { post, useApi } from '@/lib/api'
 import type { ProgressRow, SubjectCard } from '@/lib/types'
 import { SiteHeader } from '@/components/site-header'
 import { RequireStudent } from '@/components/require-student'
+import { UnlockBanner } from '@/components/unlock-banner'
 import { SERIE_LABEL, type Serie } from '@/lib/use-me'
 
 export const Route = createFileRoute('/tableau')({ component: TableauPage })
 
 function TableauPage() {
   return (
-    <RequireStudent>
-      {(me) => <Dashboard name={me.name} serie={me.serie} />}
+    <RequireStudent allowUnpaid>
+      {(me) => <Dashboard name={me.name} serie={me.serie} paid={me.hasAccess} />}
     </RequireStudent>
   )
 }
 
-function Dashboard({ name, serie }: { name: string; serie: Serie }) {
+function Dashboard({ name, serie, paid }: { name: string; serie: Serie; paid: boolean }) {
   const subjects = useApi<SubjectCard[]>(`/api/subjects?serie=${serie}`)
   const progress = useApi<ProgressRow[]>('/api/progress')
 
@@ -59,6 +60,7 @@ function Dashboard({ name, serie }: { name: string; serie: Serie }) {
         <div className="tricolor" />
       </section>
       <main className="page-in mx-auto max-w-5xl px-5 py-8">
+        {!paid && <UnlockBanner />}
         <h2 className="font-[family-name:var(--font-display)] text-2xl font-bold">Tes matières</h2>
 
         <div className="stagger mt-5 grid gap-4 sm:grid-cols-2">
@@ -91,6 +93,7 @@ function Dashboard({ name, serie }: { name: string; serie: Serie }) {
           })}
         </div>
 
+        {paid ? (
         <Link to="/sujets" className="lift mt-6 flex items-center gap-3 rounded-3xl border bg-card p-5 shadow-sm">
           <span className="flex size-14 items-center justify-center rounded-2xl bg-brand-orange-soft text-3xl" aria-hidden>📝</span>
           <div className="flex-1">
@@ -99,6 +102,7 @@ function Dashboard({ name, serie }: { name: string; serie: Serie }) {
           </div>
           <ChevronRight className="size-5 text-muted-foreground" />
         </Link>
+        ) : null}
 
         <p className="mt-8 rounded-2xl border border-dashed p-4 text-sm text-muted-foreground">
           Ta série est {SERIE_LABEL[serie]}. Tu t'es trompé de série ? Écris-nous sur WhatsApp et nous la changerons pour toi.

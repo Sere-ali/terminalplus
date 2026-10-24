@@ -495,14 +495,15 @@ function SubjectBlock({
 
 function Editor({ slug, onClose }: { slug: string; onClose: () => void }) {
   const res = useApi<
-    { ok: true; chapter: { title: string; content: string; status: 'published' | 'draft' } } | { ok: false }
+    { ok: true; chapter: { title: string; content: string; status: 'published' | 'draft'; free: boolean } } | { ok: false }
   >(`/api/admin/chapter?slug=${encodeURIComponent(slug)}`)
-  const save = (arg: { slug: string; title: string; content: string; status: 'published' | 'draft' }) =>
+  const save = (arg: { slug: string; title: string; content: string; status: 'published' | 'draft'; free: boolean }) =>
     post('/api/admin/chapter', arg)
   const loadedFor = useRef<string | null>(null)
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [status, setStatus] = useState<'published' | 'draft'>('draft')
+  const [free, setFree] = useState(false)
   const [preview, setPreview] = useState(false)
   const [msg, setMsg] = useState<string | null>(null)
 
@@ -512,6 +513,7 @@ function Editor({ slug, onClose }: { slug: string; onClose: () => void }) {
       setTitle(res.chapter.title)
       setContent(res.chapter.content)
       setStatus(res.chapter.status)
+      setFree(!!res.chapter.free)
       setMsg(null)
     }
   }, [res, slug])
@@ -533,6 +535,9 @@ function Editor({ slug, onClose }: { slug: string; onClose: () => void }) {
                 <option value="published">Publié (visible des élèves)</option>
                 <option value="draft">Brouillon</option>
               </select>
+              <label className="flex items-center gap-2 rounded-lg border bg-card px-3 py-2 font-semibold">
+                <input type="checkbox" checked={free} onChange={(e) => setFree(e.target.checked)} /> 🎁 Leçon gratuite
+              </label>
               <button type="button" onClick={() => setPreview(!preview)} className="rounded-lg border px-3 py-2 font-semibold hover:bg-secondary">
                 {preview ? "Modifier le texte" : 'Aperçu'}
               </button>
@@ -553,7 +558,7 @@ function Editor({ slug, onClose }: { slug: string; onClose: () => void }) {
             <button
               type="button"
               onClick={async () => {
-                const r = await save({ slug, title, content, status })
+                const r = await save({ slug, title, content, status, free })
                 setMsg(r.ok ? 'Enregistré ✔' : "Erreur à l'enregistrement")
               }}
               className="w-full rounded-lg bg-primary px-4 py-3 font-semibold text-primary-foreground hover:bg-primary/90"
