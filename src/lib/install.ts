@@ -52,6 +52,10 @@ export function initInstall() {
 }
 
 export async function startInstall() {
+  // Android / Windows : le navigateur peut envoyer son invitation avec un léger retard, on l'attend un instant
+  if (!deferred && state.platform !== 'ios') {
+    for (let i = 0; i < 10 && !deferred; i++) await new Promise((r) => setTimeout(r, 200))
+  }
   if (deferred) {
     const d = deferred
     deferred = null
